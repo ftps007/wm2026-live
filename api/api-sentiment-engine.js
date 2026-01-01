@@ -69,7 +69,45 @@ const CONFIG = {
       '2026 World Cup host cities', 'United 2026', '2026 World Cup venues',
       '2026 World Cup stadiums', '2026 World Cup teams', '2026 World Cup travel',
       '2026 World Cup favorites', '2026 World Cup stars', '2026 World Cup streaming',
-      'USMNT 2026', 'CONCACAF 2026', 'UEFA World Cup 2026'
+      'USMNT 2026', 'CONCACAF 2026', 'UEFA World Cup 2026',
+      // === HOST CITIES - USA ===
+      'World Cup Atlanta', 'World Cup Boston', 'World Cup Dallas',
+      'World Cup Houston', 'World Cup Kansas City', 'World Cup Los Angeles',
+      'World Cup Miami', 'World Cup New York', 'World Cup Philadelphia',
+      'World Cup San Francisco', 'World Cup Seattle',
+      // === HOST CITIES - Mexico ===
+      'World Cup Mexico City', 'World Cup Guadalajara', 'World Cup Monterrey',
+      // === HOST CITIES - Canada ===
+      'World Cup Toronto', 'World Cup Vancouver',
+      // === STADIUMS - USA ===
+      'Mercedes-Benz Stadium 2026', 'Gillette Stadium World Cup', 'AT&T Stadium 2026',
+      'NRG Stadium World Cup', 'Arrowhead Stadium 2026', 'SoFi Stadium World Cup',
+      'Hard Rock Stadium 2026', 'MetLife Stadium World Cup', 'Lincoln Financial Field 2026',
+      'Levi\'s Stadium World Cup', 'Lumen Field 2026',
+      // === STADIUMS - Mexico ===
+      'Estadio Azteca 2026', 'Estadio Azteca World Cup', 'Estadio Akron 2026',
+      'Estadio BBVA World Cup', 'Azteca Stadium 2026',
+      // === STADIUMS - Canada ===
+      'BMO Field World Cup', 'BC Place 2026', 'BC Place World Cup',
+      // === STAR PLAYERS + 2026 ===
+      'Messi World Cup 2026', 'Mbappe 2026', 'Haaland World Cup',
+      'Bellingham 2026', 'Vinicius Jr World Cup', 'Harry Kane 2026',
+      'Salah World Cup 2026', 'Pulisic 2026', 'Alphonso Davies World Cup',
+      'Kimmich 2026', 'Pedri World Cup', 'Son Heung-min 2026',
+      // === FIFA SPONSORS + 2026 ===
+      'Adidas World Cup 2026', 'Coca-Cola World Cup', 'Coca-Cola FIFA',
+      'Visa World Cup 2026', 'Hyundai World Cup', 'Kia FIFA 2026',
+      'Qatar Airways World Cup', 'Budweiser World Cup 2026', 'Budweiser FIFA',
+      'McDonald\'s World Cup', 'McDonalds FIFA 2026', 'Hisense World Cup',
+      'Verizon World Cup 2026', 'Airbnb World Cup', 'DoorDash FIFA 2026',
+      // === FOOTBALL ASSOCIATIONS + 2026 ===
+      'FIFA World Cup 2026', 'UEFA World Cup qualifiers',
+      'CONCACAF 2026', 'CONMEBOL World Cup 2026', 'CAF World Cup qualifiers',
+      'AFC World Cup 2026', 'OFC World Cup qualifiers',
+      'USSF 2026', 'US Soccer World Cup', 'Canada Soccer 2026',
+      'FA England 2026', 'DFB World Cup', 'FFF France 2026',
+      'RFEF Spain 2026', 'FIGC Italy World Cup', 'AFA Argentina 2026',
+      'CBF Brazil World Cup', 'KNVB Netherlands 2026'
     ],
     
     // German (130M speakers) - Merged from App.jsx
@@ -79,7 +117,26 @@ const CONFIG = {
       'WM Qualifikation 2026', 'DFB WM 2026', 'Nationalmannschaft WM 2026',
       'WM Auslosung 2026', 'WM 2026 Gastgeber', 'WM 2026 Spielorte',
       'WM 2026 Stadien', 'WM 2026 Nationalmannschaften', 'WM 2026 Reisen',
-      'WM 2026 Favoriten', 'WM 2026 Stars', 'ÖFB WM 2026', 'Nati WM 2026'
+      'WM 2026 Favoriten', 'WM 2026 Stars', 'ÖFB WM 2026', 'Nati WM 2026',
+      // === HOST CITIES (German) ===
+      'WM Atlanta', 'WM Los Angeles', 'WM Miami', 'WM New York',
+      'WM Mexico City', 'WM Toronto', 'WM Vancouver',
+      // === STADIUMS (German) ===
+      'Estadio Azteca WM', 'MetLife Stadium WM', 'SoFi Stadium WM',
+      // === STAR PLAYERS (German) ===
+      'Messi WM 2026', 'Mbappé WM', 'Haaland WM 2026',
+      'Kimmich WM', 'Musiala WM 2026', 'Wirtz Weltmeisterschaft',
+      'Kane WM 2026', 'Bellingham WM', 'Salah WM 2026',
+      // === FIFA SPONSORS (German) ===
+      'Adidas WM 2026', 'Coca-Cola WM', 'Visa WM 2026',
+      'Hyundai WM', 'Budweiser WM 2026', 'McDonald\'s WM',
+      'WM Sponsor', 'WM Partner', 'FIFA Sponsor 2026',
+      // === FUSSBALLVERBÄNDE (German) ===
+      'DFB WM 2026', 'Deutscher Fußball-Bund 2026', 'DFB Weltmeisterschaft',
+      'ÖFB WM 2026', 'Österreichischer Fußball-Bund',
+      'SFV WM 2026', 'Schweizer Fussballverband',
+      'UEFA WM Qualifikation', 'FIFA Verband 2026',
+      'CONMEBOL WM', 'CONCACAF WM 2026', 'CAF WM Qualifikation'
     ],
     
     // Spanish (550M speakers)
@@ -88,7 +145,27 @@ const CONFIG = {
       'Eliminatorias 2026', 'Selección Mundial 2026', 'Entradas Mundial 2026',
       'Sorteo Mundial 2026', 'México 2026', 'Clasificación Mundial 2026',
       'Sedes Mundial 2026', 'Estadios Mundial 2026', 'Equipos Mundial 2026',
-      'Favoritos Mundial 2026', 'Estrellas Mundial 2026'
+      'Favoritos Mundial 2026', 'Estrellas Mundial 2026',
+      // === HOST CITIES (Spanish) ===
+      'Mundial Atlanta', 'Mundial Los Angeles', 'Mundial Miami', 'Mundial Nueva York',
+      'Mundial Ciudad de México', 'Mundial Guadalajara', 'Mundial Monterrey',
+      'Mundial Toronto', 'Mundial Vancouver',
+      // === STADIUMS (Spanish) ===
+      'Estadio Azteca Mundial 2026', 'Estadio Akron Mundial', 'Estadio BBVA Mundial',
+      'MetLife Stadium Mundial', 'SoFi Stadium Mundial', 'Hard Rock Stadium Mundial',
+      // === STAR PLAYERS (Spanish) ===
+      'Messi Mundial 2026', 'Mbappé Mundial', 'Haaland Mundial 2026',
+      'Vinicius Mundial', 'Pedri Mundial 2026', 'Raúl Jiménez Mundial',
+      // === FIFA SPONSORS (Spanish) ===
+      'Adidas Mundial 2026', 'Coca-Cola Mundial', 'Visa Mundial 2026',
+      'Hyundai Mundial', 'Budweiser Mundial', 'McDonald\'s Mundial',
+      'Patrocinador Mundial 2026', 'Patrocinador FIFA',
+      // === FEDERACIONES (Spanish) ===
+      'RFEF Mundial 2026', 'Real Federación Española',
+      'FMF Mundial 2026', 'Federación Mexicana de Fútbol',
+      'AFA Mundial 2026', 'Asociación del Fútbol Argentino',
+      'CONMEBOL eliminatorias 2026', 'CONCACAF clasificación 2026',
+      'UEFA clasificación Mundial', 'CAF eliminatorias 2026'
     ],
     
     // French (280M speakers)
@@ -96,7 +173,22 @@ const CONFIG = {
       'Coupe du Monde 2026', 'Mondial 2026', 'FIFA 2026', 'CDM 2026',
       'Qualifications Coupe du Monde 2026', 'Billets Coupe du Monde 2026',
       'Tirage Coupe du Monde 2026', 'Équipe de France 2026',
-      'Stades Coupe du Monde 2026', 'Villes hôtes 2026'
+      'Stades Coupe du Monde 2026', 'Villes hôtes 2026',
+      // === HOST CITIES (French) ===
+      'Mondial Atlanta', 'Mondial Los Angeles', 'Mondial Miami',
+      'Mondial Mexico', 'Mondial Toronto', 'Mondial Vancouver',
+      // === STAR PLAYERS (French) ===
+      'Mbappé Coupe du Monde 2026', 'Griezmann Mondial', 'Messi Mondial 2026',
+      'Haaland Coupe du Monde', 'Salah Mondial 2026',
+      // === FIFA SPONSORS (French) ===
+      'Adidas Coupe du Monde 2026', 'Coca-Cola Mondial', 'Visa Mondial 2026',
+      'Hyundai Mondial', 'Budweiser Coupe du Monde', 'McDonald\'s Mondial',
+      'Partenaire FIFA 2026', 'Sponsor Coupe du Monde',
+      // === FÉDÉRATIONS (French) ===
+      'FFF Coupe du Monde 2026', 'Fédération Française de Football',
+      'UEFA qualifications 2026', 'FIFA fédération 2026',
+      'CONMEBOL Coupe du Monde', 'CONCACAF qualifications',
+      'CAF qualifications Mondial 2026'
     ],
     
     // Portuguese (260M speakers)
@@ -104,20 +196,43 @@ const CONFIG = {
       'Copa do Mundo 2026', 'Mundial 2026', 'FIFA 2026', 'Copa 2026',
       'Eliminatórias 2026', 'Seleção Brasileira 2026', 'Ingressos Copa 2026',
       'Sorteio Copa 2026', 'Qualificação Mundial 2026', 'Estádios Copa 2026',
-      'Seleção Portuguesa 2026'
+      'Seleção Portuguesa 2026',
+      // === HOST CITIES (Portuguese) ===
+      'Copa Atlanta', 'Copa Los Angeles', 'Copa Miami', 'Copa Nova York',
+      'Copa Cidade do México', 'Copa Toronto', 'Copa Vancouver',
+      // === STAR PLAYERS (Portuguese) ===
+      'Neymar Copa 2026', 'Vinicius Jr Copa', 'Messi Copa do Mundo 2026',
+      'Mbappé Copa', 'Bruno Fernandes Mundial 2026', 'Cristiano Ronaldo 2026',
+      // === FIFA SPONSORS (Portuguese) ===
+      'Adidas Copa 2026', 'Coca-Cola Copa do Mundo', 'Visa Copa 2026',
+      'Hyundai Copa', 'Budweiser Copa do Mundo', 'McDonald\'s Copa',
+      'Patrocinador FIFA 2026', 'Patrocinador Copa do Mundo',
+      // === FEDERAÇÕES (Portuguese) ===
+      'CBF Copa 2026', 'Confederação Brasileira de Futebol',
+      'FPF Mundial 2026', 'Federação Portuguesa de Futebol',
+      'CONMEBOL eliminatórias 2026', 'UEFA qualificação',
+      'CAF eliminatórias Copa 2026'
     ],
     
     // Russian (250M speakers)
     ru: [
       'Чемпионат мира 2026', 'ЧМ 2026', 'ФИФА 2026', 'Кубок мира 2026',
       'Мундиаль 2026', 'Отборочные ЧМ 2026', 'Сборная России 2026',
-      'Билеты ЧМ 2026', 'Стадионы ЧМ 2026'
+      'Билеты ЧМ 2026', 'Стадионы ЧМ 2026',
+      // === HOST CITIES (Russian) ===
+      'ЧМ Атланта', 'ЧМ Лос-Анджелес', 'ЧМ Майами', 'ЧМ Мехико',
+      // === STAR PLAYERS (Russian) ===
+      'Месси ЧМ 2026', 'Мбаппе ЧМ', 'Холанд ЧМ 2026',
+      // === ФЕДЕРАЦИИ (Russian) ===
+      'УЕФА отборочные 2026', 'ФИФА федерация', 'КОНМЕБОЛ ЧМ 2026'
     ],
     
     // Hindi (600M speakers)
     hi: [
       'फीफा विश्व कप 2026', 'विश्व कप 2026', 'फुटबॉल विश्व कप 2026',
-      '2026 वर्ल्ड कप', 'फीफा 2026', 'विश्व कप क्वालीफायर 2026'
+      '2026 वर्ल्ड कप', 'फीफा 2026', 'विश्व कप क्वालीफायर 2026',
+      // === FEDERATIONS (Hindi) ===
+      'AIFF 2026', 'एएफसी विश्व कप'
     ],
     
     // Bengali (270M speakers)
@@ -323,6 +438,264 @@ const CONFIG = {
     ],
   },
   
+  // ==================== WM 2026 HOST CITIES ====================
+  HOST_CITIES: [
+    // 🇺🇸 USA - 11 Host Cities
+    'Atlanta', 'Boston', 'Dallas', 'Houston', 'Kansas City', 
+    'Los Angeles', 'Miami', 'New York', 'Philadelphia', 
+    'San Francisco', 'Seattle',
+    // 🇲🇽 Mexico - 3 Host Cities
+    'Mexico City', 'Ciudad de México', 'Guadalajara', 'Monterrey',
+    // 🇨🇦 Canada - 2 Host Cities
+    'Toronto', 'Vancouver'
+  ],
+  
+  // ==================== WM 2026 STADIUMS ====================
+  STADIUMS: [
+    // 🇺🇸 USA Stadiums
+    'Mercedes-Benz Stadium', 'Gillette Stadium', 'AT&T Stadium',
+    'NRG Stadium', 'Arrowhead Stadium', 'GEHA Field',
+    'SoFi Stadium', 'Hard Rock Stadium', 'MetLife Stadium',
+    'Lincoln Financial Field', 'Levi\'s Stadium', 'Lumen Field',
+    // 🇲🇽 Mexico Stadiums
+    'Estadio Azteca', 'Azteca Stadium', 'Estadio Akron', 
+    'Estadio BBVA', 'BBVA Stadium',
+    // 🇨🇦 Canada Stadiums
+    'BMO Field', 'BC Place'
+  ],
+  
+  // ==================== STAR PLAYERS ====================
+  PLAYERS: {
+    // 🇨🇦🇺🇸🇲🇽 CONCACAF - Host Countries & Region
+    concacaf: [
+      'Alphonso Davies', 'Christian Pulisic', 'Raúl Jiménez', 'Raul Jimenez',
+      'Weston McKennie', 'Tyler Adams', 'Gio Reyna', 'Giovanni Reyna',
+      'Hirving Lozano', 'Chucky Lozano', 'Jesús Corona', 'Tecatito',
+      'Jonathan David', 'Tajon Buchanan', 'Cyle Larin',
+      'Derrick Etienne Jr', 'Luis Tejada', 'Fung a Wing'
+    ],
+    
+    // 🌎 CONMEBOL - South America
+    conmebol: [
+      'Lionel Messi', 'Leo Messi', 'Neymar', 'Neymar Jr',
+      'Vinícius Jr', 'Vinicius Junior', 'Rodrygo', 'Endrick',
+      'James Rodríguez', 'James Rodriguez', 'Luis Díaz', 'Luis Diaz',
+      'Enner Valencia', 'Moisés Caicedo', 'Moises Caicedo',
+      'Miguel Almirón', 'Miguel Almiron', 'Ángel Di María', 'Angel Di Maria',
+      'Federico Valverde', 'Darwin Núñez', 'Darwin Nunez',
+      'Julián Álvarez', 'Julian Alvarez', 'Lautaro Martínez', 'Lautaro Martinez'
+    ],
+    
+    // ⚽ UEFA - Europe
+    uefa: [
+      // Germany
+      'Joshua Kimmich', 'Jamal Musiala', 'Florian Wirtz', 'Kai Havertz',
+      'Antonio Rüdiger', 'Antonio Rudiger', 'Ilkay Gündogan', 'Ilkay Gundogan',
+      // England
+      'Harry Kane', 'Jude Bellingham', 'Bukayo Saka', 'Phil Foden',
+      'Declan Rice', 'Trent Alexander-Arnold',
+      // France
+      'Kylian Mbappé', 'Kylian Mbappe', 'Antoine Griezmann', 
+      'Ousmane Dembélé', 'Ousmane Dembele', 'Aurélien Tchouaméni',
+      // Spain
+      'Pedri', 'Gavi', 'Lamine Yamal', 'Nico Williams', 'Rodri',
+      'Dani Olmo', 'Álvaro Morata', 'Alvaro Morata',
+      // Portugal
+      'Bruno Fernandes', 'Cristiano Ronaldo', 'Bernardo Silva',
+      'Rafael Leão', 'Rafael Leao', 'João Félix', 'Joao Felix',
+      // Netherlands
+      'Virgil van Dijk', 'Frenkie de Jong', 'Cody Gakpo', 'Xavi Simons',
+      // Belgium
+      'Kevin De Bruyne', 'Romelu Lukaku', 'Jeremy Doku',
+      // Other Europe
+      'Marko Arnautović', 'Marko Arnautovic', 'Marcel Sabitzer', // Austria
+      'Andy Robertson', 'Scott McTominay', // Scotland
+      'Granit Xhaka', 'Xherdan Shaqiri', // Switzerland
+      'Erling Haaland', 'Martin Ødegaard', 'Martin Odegaard', // Norway
+      'Luka Modrić', 'Luka Modric', 'Mateo Kovačić', 'Mateo Kovacic', // Croatia
+      'Robert Lewandowski', 'Piotr Zieliński', // Poland
+      'Dušan Vlahović', 'Dusan Vlahovic', // Serbia
+    ],
+    
+    // 🌍 CAF - Africa
+    caf: [
+      'Mohamed Salah', 'Mo Salah', 'Sadio Mané', 'Sadio Mane',
+      'Achraf Hakimi', 'Hakim Ziyech', 'Sofiane Boufal',
+      'Riyad Mahrez', 'Franck Kessié', 'Franck Kessie',
+      'Andre Ayew', 'Thomas Partey', 'Mohammed Kudus',
+      'Victor Osimhen', 'Percy Tau', 'Youssef Msakni',
+      'Logan Costa', 'Kalidou Koulibaly'
+    ],
+    
+    // 🌏 AFC - Asia
+    afc: [
+      'Son Heung-Min', 'Son Heung Min', 'Heung-Min Son',
+      'Takumi Minamino', 'Takefusa Kubo', 'Ritsu Doan',
+      'Mehdi Taremi', 'Sardar Azmoun', 'Alireza Jahanbakhsh',
+      'Salem Al-Dawsari', 'Almoez Ali', 'Akram Afif',
+      'Mathew Leckie', 'Yazan Al-Naimat', 'Igor Sergeev'
+    ],
+    
+    // 🌊 OFC - Oceania
+    ofc: [
+      'Chris Wood'
+    ]
+  },
+  
+  // ==================== EQUIPMENT BRANDS ====================
+  BRANDS: [
+    'Nike', 'Adidas', 'Puma', 'Kappa', 'Umbro', 
+    'New Balance', 'Joma', 'Macron', 'Errea',
+    '7Saber', 'Uhlsport', 'Kelme', 'Lotto', 
+    'Marathon', 'Fútbol Authentico', 'Hummel',
+    'Le Coq Sportif', 'Mizuno', 'Jako', 'Givova'
+  ],
+  
+  // ==================== FIFA OFFICIAL SPONSORS ====================
+  SPONSORS: {
+    // 🏅 FIFA Partners (Top Tier)
+    partners: [
+      'Adidas', 'adidas',
+      'Coca-Cola', 'Coca Cola', 'Coke',
+      'Visa',
+      'Aramco', 'Saudi Aramco',
+      'Hyundai', 'Kia', 'Hyundai-Kia',
+      'Lenovo',
+      'Qatar Airways'
+    ],
+    
+    // 🔥 FIFA World Cup Sponsors
+    worldCupSponsors: [
+      'AB InBev', 'Budweiser', 'Bud Light', 'Anheuser-Busch',
+      'McDonald\'s', 'McDonalds', 'Mcdonald',
+      'Bank of America', 'BofA',
+      'Lay\'s', 'Lays', 'PepsiCo', 'Frito-Lay',
+      'Verizon',
+      'Hisense',
+      'Unilever',
+      'Mengniu', 'Mengniu Dairy'
+    ],
+    
+    // 🤝 Regional Supporters & Suppliers
+    supporters: [
+      'DoorDash',
+      'Rock-it Cargo',
+      'Valvoline',
+      'Airbnb',
+      'The Home Depot', 'Home Depot',
+      'Fox Sports', 'Telemundo', 'TSN', 'CTV'
+    ]
+  },
+  
+  // ==================== FOOTBALL ASSOCIATIONS/FEDERATIONS ====================
+  ASSOCIATIONS: {
+    // 🌍 FIFA & Continental Confederations
+    confederations: [
+      'FIFA', 'Fédération Internationale de Football Association',
+      'UEFA', 'Union of European Football Associations',
+      'CONMEBOL', 'Confederación Sudamericana de Fútbol',
+      'CONCACAF', 'Confederation of North, Central America and Caribbean Association Football',
+      'CAF', 'Confédération Africaine de Football',
+      'AFC', 'Asian Football Confederation',
+      'OFC', 'Oceania Football Confederation'
+    ],
+    
+    // 🇪🇺 UEFA - European National Associations
+    europe: [
+      // Major
+      'DFB', 'Deutscher Fußball-Bund',           // 🇩🇪 Germany
+      'FA', 'The Football Association', 'England FA',  // 🏴󠁧󠁢󠁥󠁮󠁧󠁿 England
+      'FFF', 'Fédération Française de Football',  // 🇫🇷 France
+      'RFEF', 'Real Federación Española de Fútbol', // 🇪🇸 Spain
+      'FIGC', 'Federazione Italiana Giuoco Calcio', // 🇮🇹 Italy
+      'KNVB', 'Koninklijke Nederlandse Voetbalbond', // 🇳🇱 Netherlands
+      'RBFA', 'Royal Belgian Football Association', // 🇧🇪 Belgium
+      'FPF', 'Federação Portuguesa de Futebol',   // 🇵🇹 Portugal
+      'PZPN', 'Polski Związek Piłki Nożnej',      // 🇵🇱 Poland
+      'ÖFB', 'Österreichischer Fußball-Bund',     // 🇦🇹 Austria
+      'SFV', 'Schweizerischer Fussballverband',   // 🇨🇭 Switzerland
+      'HNS', 'Hrvatski Nogometni Savez',          // 🇭🇷 Croatia
+      'FSS', 'Fudbalski Savez Srbije',           // 🇷🇸 Serbia
+      'UAF', 'Ukrainian Association of Football', // 🇺🇦 Ukraine
+      'DBU', 'Dansk Boldspil-Union',              // 🇩🇰 Denmark
+      'SvFF', 'Svenska Fotbollförbundet',         // 🇸🇪 Sweden
+      'NFF', 'Norges Fotballforbund',             // 🇳🇴 Norway
+      'SPL', 'Suomen Palloliitto',                // 🇫🇮 Finland
+      'KSÍ', 'Knattspyrnusamband Íslands',        // 🇮🇸 Iceland
+      'EPO', 'Elliniki Podosfairiki Omospondia',  // 🇬🇷 Greece
+      'TFF', 'Türkiye Futbol Federasyonu',        // 🇹🇷 Turkey
+      'FRF', 'Federația Română de Fotbal',        // 🇷🇴 Romania
+      'MLSZ', 'Magyar Labdarúgó Szövetség',       // 🇭🇺 Hungary
+      'FACR', 'Fotbalová Asociace České Republiky', // 🇨🇿 Czech
+      'SFA', 'Scottish Football Association',     // 🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland
+      'FAW', 'Football Association of Wales',     // 🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales
+      'IFA', 'Irish Football Association',        // 🇮🇪 N. Ireland
+      'FAI', 'Football Association of Ireland',   // 🇮🇪 Ireland
+    ],
+    
+    // 🌎 CONMEBOL - South American Associations
+    southAmerica: [
+      'AFA', 'Asociación del Fútbol Argentino',   // 🇦🇷 Argentina
+      'CBF', 'Confederação Brasileira de Futebol', // 🇧🇷 Brazil
+      'FCF', 'Federación Colombiana de Fútbol',   // 🇨🇴 Colombia
+      'FEF', 'Federación Ecuatoriana de Fútbol',  // 🇪🇨 Ecuador
+      'APF', 'Asociación Paraguaya de Fútbol',    // 🇵🇾 Paraguay
+      'AUF', 'Asociación Uruguaya de Fútbol',     // 🇺🇾 Uruguay
+      'FPF', 'Federación Peruana de Fútbol',      // 🇵🇪 Peru
+      'ANFP', 'Asociación Nacional de Fútbol Profesional', // 🇨🇱 Chile
+      'FVF', 'Federación Venezolana de Fútbol',   // 🇻🇪 Venezuela
+      'FBF', 'Federación Boliviana de Fútbol',    // 🇧🇴 Bolivia
+    ],
+    
+    // 🌎 CONCACAF - North/Central America & Caribbean
+    northAmerica: [
+      'USSF', 'U.S. Soccer', 'US Soccer Federation', // 🇺🇸 USA
+      'FMF', 'Federación Mexicana de Fútbol',     // 🇲🇽 Mexico
+      'CSA', 'Canada Soccer', 'Canadian Soccer Association', // 🇨🇦 Canada
+      'FEPAFUT', 'Federación Panameña de Fútbol', // 🇵🇦 Panama
+      'FEDEFUT', 'Federación Costarricense de Fútbol', // 🇨🇷 Costa Rica
+      'FENIFUT', 'Federación Nicaragüense de Fútbol', // 🇳🇮 Nicaragua
+      'FESFUT', 'Federación Salvadoreña de Fútbol', // 🇸🇻 El Salvador
+      'FENAFUTH', 'Federación Nacional de Fútbol de Honduras', // 🇭🇳 Honduras
+      'FEDEFUT', 'Federación de Fútbol de Guatemala', // 🇬🇹 Guatemala
+      'JFF', 'Jamaica Football Federation',        // 🇯🇲 Jamaica
+    ],
+    
+    // 🌍 CAF - African Associations
+    africa: [
+      'EFA', 'Egyptian Football Association',      // 🇪🇬 Egypt
+      'FRMF', 'Fédération Royale Marocaine de Football', // 🇲🇦 Morocco
+      'NFF', 'Nigeria Football Federation',        // 🇳🇬 Nigeria
+      'SAFA', 'South African Football Association', // 🇿🇦 South Africa
+      'FSF', 'Fédération Sénégalaise de Football', // 🇸🇳 Senegal
+      'GFA', 'Ghana Football Association',         // 🇬🇭 Ghana
+      'FECAFOOT', 'Fédération Camerounaise de Football', // 🇨🇲 Cameroon
+      'FTF', 'Fédération Tunisienne de Football',  // 🇹🇳 Tunisia
+      'FAF', 'Fédération Algérienne de Football',  // 🇩🇿 Algeria
+      'FIF', 'Fédération Ivoirienne de Football',  // 🇨🇮 Ivory Coast
+    ],
+    
+    // 🌏 AFC - Asian Associations
+    asia: [
+      'JFA', 'Japan Football Association',         // 🇯🇵 Japan
+      'KFA', 'Korea Football Association',         // 🇰🇷 South Korea
+      'CFA', 'Chinese Football Association',       // 🇨🇳 China
+      'FFIRI', 'Football Federation Islamic Republic of Iran', // 🇮🇷 Iran
+      'SAFF', 'Saudi Arabian Football Federation', // 🇸🇦 Saudi Arabia
+      'QFA', 'Qatar Football Association',         // 🇶🇦 Qatar
+      'FFA', 'Football Federation Australia',      // 🇦🇺 Australia
+      'AIFF', 'All India Football Federation',     // 🇮🇳 India
+      'PSSI', 'Persatuan Sepakbola Seluruh Indonesia', // 🇮🇩 Indonesia
+      'FAT', 'Football Association of Thailand',   // 🇹🇭 Thailand
+      'VFF', 'Vietnam Football Federation',        // 🇻🇳 Vietnam
+    ],
+    
+    // 🌊 OFC - Oceania Associations
+    oceania: [
+      'NZF', 'New Zealand Football',               // 🇳🇿 New Zealand
+    ]
+  },
+  
   // Exclusion terms (other sports) - Merged from App.jsx + expanded
   EXCLUSION_TERMS: [
     // Darts
@@ -388,6 +761,21 @@ function generateContentHash(content) {
   return hash.toString(16);
 }
 
+// Get all players as flat array
+function getAllPlayers() {
+  return Object.values(CONFIG.PLAYERS).flat().map(p => p.toLowerCase());
+}
+
+// Get all sponsors as flat array
+function getAllSponsors() {
+  return Object.values(CONFIG.SPONSORS).flat().map(s => s.toLowerCase());
+}
+
+// Get all associations as flat array
+function getAllAssociations() {
+  return Object.values(CONFIG.ASSOCIATIONS).flat().map(a => a.toLowerCase());
+}
+
 function isRelevantContent(text, title) {
   const combined = `${title} ${text}`.toLowerCase();
   
@@ -395,6 +783,33 @@ function isRelevantContent(text, title) {
   const hasWMKeyword = Object.values(CONFIG.WM_KEYWORDS)
     .flat()
     .some(kw => combined.includes(kw.toLowerCase()));
+  
+  // Check for WM 2026 host cities
+  const hasHostCity = CONFIG.HOST_CITIES.some(city => 
+    combined.includes(city.toLowerCase())
+  );
+  
+  // Check for WM 2026 stadium names
+  const hasStadium = CONFIG.STADIUMS.some(stadium => 
+    combined.includes(stadium.toLowerCase())
+  );
+  
+  // Check for star players
+  const allPlayers = getAllPlayers();
+  const hasPlayer = allPlayers.some(player => combined.includes(player));
+  
+  // Check for equipment brands
+  const hasBrand = CONFIG.BRANDS.some(brand => 
+    combined.includes(brand.toLowerCase())
+  );
+  
+  // Check for FIFA sponsors
+  const allSponsors = getAllSponsors();
+  const hasSponsor = allSponsors.some(sponsor => combined.includes(sponsor));
+  
+  // Check for football associations
+  const allAssociations = getAllAssociations();
+  const hasAssociation = allAssociations.some(assoc => combined.includes(assoc));
   
   // Check for football/soccer context in 35+ languages
   const hasFootballContext = [
@@ -411,25 +826,53 @@ function isRelevantContent(text, title) {
     // Ukrainian, Persian, Bengali
     'футбол', 'فوتبال', 'ফুটবল',
     // African languages
-    'kandanda', 'mpira', 'soka', 'bola', 'ibhola', 'sokker',  // Swahili, Zulu, Afrikaans
-    // FIFA, national teams
-    'fifa', 'nationalmannschaft', 'national team', 'seleção', 'selección', 'nazionale',
+    'kandanda', 'mpira', 'soka', 'bola', 'ibhola', 'sokker',
+    // FIFA, national teams, associations
+    'fifa', 'uefa', 'conmebol', 'concacaf', 'caf', 'afc', 'ofc',
+    'nationalmannschaft', 'national team', 'seleção', 'selección', 'nazionale',
     'équipe nationale', 'сборная', 'منتخب', '代表', 'landslag',
+    'federation', 'association', 'verband', 'federación', 'fédération',
     // Tournament terms
     'weltmeisterschaft', 'world cup', 'mundial', 'coupe du monde', 'coppa del mondo',
     'чемпионат мира', 'كأس العالم', '世界杯', 'ワールドカップ', '월드컵',
-    'vm', 'wm', 'wk', 'mm', 'hm', 'ms', 'cm'
+    'vm', 'wm', 'wk', 'mm', 'hm', 'ms', 'cm',
+    // Sponsor context
+    'sponsor', 'partner', 'patrocinador', 'partenaire', 'sponsoring'
   ].some(term => combined.includes(term));
   
   // Check for exclusion terms
   const hasExclusionTerm = CONFIG.EXCLUSION_TERMS
     .some(term => combined.includes(term.toLowerCase()));
   
+  // If excluded sport and no direct WM keyword, skip
   if (hasExclusionTerm && !hasWMKeyword) {
     return false;
   }
   
-  return hasWMKeyword || (combined.includes('2026') && hasFootballContext);
+  // Include if:
+  // 1. Has direct WM keyword, OR
+  // 2. Has "2026" + football context, OR
+  // 3. Has stadium + (2026 or world cup), OR
+  // 4. Has host city + (world cup or 2026), OR
+  // 5. Has star player + (2026 or world cup), OR
+  // 6. Has brand + (world cup or 2026 or jersey/kit context), OR
+  // 7. Has sponsor + (world cup or 2026 or FIFA), OR
+  // 8. Has association + (2026 or world cup or qualifiers)
+  const has2026OrWC = combined.includes('2026') || 
+                       combined.includes('world cup') || 
+                       combined.includes('mundial') ||
+                       combined.includes('wm ') ||
+                       combined.includes('weltmeisterschaft') ||
+                       combined.includes('fifa');
+  
+  return hasWMKeyword || 
+         (combined.includes('2026') && hasFootballContext) ||
+         (hasStadium && has2026OrWC) ||
+         (hasHostCity && has2026OrWC) ||
+         (hasPlayer && has2026OrWC) ||
+         (hasBrand && has2026OrWC && (combined.includes('jersey') || combined.includes('kit') || combined.includes('trikot'))) ||
+         (hasSponsor && has2026OrWC) ||
+         (hasAssociation && has2026OrWC);
 }
 
 function detectCategory(text, title) {
@@ -760,6 +1203,285 @@ async function fetchYouTube() {
 // DATA SOURCE: REDDIT
 // =====================================================
 
+// Comprehensive list of football-related subreddits (VERIFIED)
+const REDDIT_SUBREDDITS = {
+  // ==================== GLOBAL FOOTBALL ====================
+  global: [
+    'soccer',           // 4.5M+ members - Main football sub ✅
+    'football',         // European football ✅
+    'worldcup',         // World Cup specific ✅
+  ],
+  
+  // ==================== HOST COUNTRIES ====================
+  hosts: [
+    // 🇺🇸 USA
+    'MLS', 'ussoccer', 'USMNT',
+    // 🇨🇦 Canada
+    'CanadianPL',
+    // 🇲🇽 Mexico
+    'LigaMX',
+  ],
+  
+  // ==================== MAJOR EUROPEAN LEAGUES ====================
+  leagues: [
+    // 🏴󠁧󠁢󠁥󠁮󠁧󠁿 England - Premier League
+    'PremierLeague', 'Championship',
+    // 🇩🇪 Germany - Bundesliga
+    'Bundesliga',
+    // 🇪🇸 Spain - La Liga
+    'LaLiga',
+    // 🇮🇹 Italy - Serie A
+    'seriea',
+    // 🇫🇷 France - Ligue 1
+    'Ligue1',
+    // 🇳🇱 Netherlands - Eredivisie
+    'Eredivisie',
+    // 🇵🇹 Portugal - Primeira Liga
+    'PrimeiraLiga',
+    // 🇹🇷 Turkey
+    'superlig',
+  ],
+  
+  // ==================== SOUTH AMERICA ====================
+  southAmerica: [
+    'futebol',          // Brazilian Portuguese ✅
+    'Libertadores',     // Copa Libertadores ✅
+    'BocaJuniors', 'RiverPlate',  // Argentina clubs ✅
+    'argentina',        // Country sub ✅
+    'brasil',           // Country sub ✅
+  ],
+  
+  // ==================== MAJOR CLUBS ====================
+  clubs: [
+    // 🏴󠁧󠁢󠁥󠁮󠁧󠁿 English Clubs
+    'reddevils',        // Manchester United ✅
+    'MCFC',             // Manchester City ✅
+    'LiverpoolFC',      // Liverpool ✅
+    'chelseafc',        // Chelsea ✅
+    'Gunners',          // Arsenal ✅
+    'coys',             // Tottenham ✅
+    'Everton',          // Everton ✅
+    'NUFC',             // Newcastle ✅
+    // 🇪🇸 Spanish Clubs
+    'Barca',            // FC Barcelona ✅
+    'realmadrid',       // Real Madrid ✅
+    'atletico',         // Atletico Madrid ✅
+    // 🇩🇪 German Clubs
+    'fcbayern',         // Bayern Munich ✅
+    'borussiadortmund', // Borussia Dortmund ✅
+    'schalke04',        // Schalke ✅
+    // 🇮🇹 Italian Clubs
+    'Juve',             // Juventus ✅
+    'ACMilan',          // AC Milan ✅
+    'ASRoma',           // AS Roma ✅
+    // 🇫🇷 French Clubs
+    'psg',              // Paris Saint-Germain ✅
+    // 🇳🇱 Dutch Clubs
+    'AjaxAmsterdam',    // Ajax ✅
+    'feyenoord',        // Feyenoord ✅
+    // 🇵🇹 Portuguese Clubs
+    'benfica',          // Benfica ✅
+    'fcporto',          // FC Porto ✅
+  ],
+  
+  // ==================== COUNTRY SUBREDDITS (General) ====================
+  // These often discuss national team during WC
+  countries: [
+    // Europe
+    'de', 'germany',                    // 🇩🇪 Germany ✅
+    'france',                            // 🇫🇷 France ✅
+    'unitedkingdom', 'CasualUK',        // 🇬🇧 UK ✅
+    'spain',                             // 🇪🇸 Spain ✅
+    'italy',                             // 🇮🇹 Italy ✅
+    'thenetherlands',                    // 🇳🇱 Netherlands ✅
+    'belgium',                           // 🇧🇪 Belgium ✅
+    'portugal',                          // 🇵🇹 Portugal ✅
+    'poland', 'Polska',                  // 🇵🇱 Poland ✅
+    'Austria',                           // 🇦🇹 Austria ✅
+    'Switzerland',                       // 🇨🇭 Switzerland ✅
+    'croatia',                           // 🇭🇷 Croatia ✅
+    'serbia',                            // 🇷🇸 Serbia ✅
+    'ukraine',                           // 🇺🇦 Ukraine ✅
+    'Denmark',                           // 🇩🇰 Denmark ✅
+    'sweden',                            // 🇸🇪 Sweden ✅
+    'Norway', 'norge',                   // 🇳🇴 Norway ✅
+    'Finland', 'Suomi',                  // 🇫🇮 Finland ✅
+    'Iceland',                           // 🇮🇸 Iceland ✅
+    'greece',                            // 🇬🇷 Greece ✅
+    'Turkey', 'turkiye',                 // 🇹🇷 Turkey ✅
+    'Romania',                           // 🇷🇴 Romania ✅
+    'hungary',                           // 🇭🇺 Hungary ✅
+    // Americas
+    'brasil',                            // 🇧🇷 Brazil ✅
+    'argentina',                         // 🇦🇷 Argentina ✅
+    'chile',                             // 🇨🇱 Chile ✅
+    'Colombia',                          // 🇨🇴 Colombia ✅
+    'uruguay',                           // 🇺🇾 Uruguay ✅
+    'mexico',                            // 🇲🇽 Mexico ✅
+    'Panama',                            // 🇵🇦 Panama ✅
+    'CostaRica',                         // 🇨🇷 Costa Rica ✅
+    // Asia
+    'japan',                             // 🇯🇵 Japan ✅
+    'korea',                             // 🇰🇷 South Korea ✅
+    'China',                             // 🇨🇳 China ✅
+    'iran',                              // 🇮🇷 Iran ✅
+    'saudiarabia',                       // 🇸🇦 Saudi Arabia ✅
+    'australia',                         // 🇦🇺 Australia ✅
+    'india',                             // 🇮🇳 India ✅
+    'indonesia',                         // 🇮🇩 Indonesia ✅
+    // Africa
+    'Morocco',                           // 🇲🇦 Morocco ✅
+    'Egypt',                             // 🇪🇬 Egypt ✅
+    'nigeria',                           // 🇳🇬 Nigeria ✅
+    'southafrica',                       // 🇿🇦 South Africa ✅
+    'Senegal',                           // 🇸🇳 Senegal ✅
+    'Ghana',                             // 🇬🇭 Ghana ✅
+    'algeria',                           // 🇩🇿 Algeria ✅
+  ],
+  
+  // ==================== ASIAN FOOTBALL ====================
+  asia: [
+    'JLeague',          // 🇯🇵 Japan ✅
+    'Aleague',          // 🇦🇺 Australia ✅
+  ],
+  
+  // ==================== WM 2026 HOST CITIES ====================
+  hostCities: [
+    // 🇺🇸 USA - 11 Host Cities
+    'Atlanta',          // Mercedes-Benz Stadium ✅
+    'boston',           // Gillette Stadium ✅
+    'Dallas',           // AT&T Stadium ✅
+    'houston',          // NRG Stadium ✅
+    'kansascity',       // Arrowhead Stadium ✅
+    'LosAngeles',       // SoFi Stadium ✅
+    'Miami',            // Hard Rock Stadium ✅
+    'nyc', 'newjersey', // MetLife Stadium ✅
+    'philadelphia',     // Lincoln Financial Field ✅
+    'sanfrancisco', 'bayarea', // Levi's Stadium ✅
+    'Seattle',          // Lumen Field ✅
+    // 🇲🇽 Mexico - 3 Host Cities
+    'mexico',           // Estadio Azteca ✅
+    // 🇨🇦 Canada - 2 Host Cities
+    'toronto',          // BMO Field ✅
+    'vancouver',        // BC Place ✅
+  ],
+  
+  // ==================== US CITY-SPECIFIC SUBS ====================
+  usCities: [
+    // Atlanta
+    'AtlantaUnited', 'falcons',
+    // Boston
+    'NewEnglandRevolution', 'patriots',
+    // Dallas
+    'FCDallas', 'cowboys',
+    // Houston
+    'dynamo', 'Texans',
+    // Kansas City
+    'SportingKC', 'KansasCityChiefs',
+    // Los Angeles
+    'LAFC', 'LAGalaxy', 'Dodgers', 'lakers',
+    // Miami
+    'InterMiami', 'MiamiDolphins', 'heat',
+    // New York / New Jersey
+    'NYCFC', 'NYGiants', 'nyjets',
+    // Philadelphia
+    'PhillyUnion', 'eagles', 'phillies',
+    // San Francisco / Bay Area
+    'SJEarthquakes', '49ers',
+    // Seattle
+    'SoundersFC', 'Seahawks',
+  ],
+  
+  // ==================== MEXICO CITY-SPECIFIC SUBS ====================
+  mexicoCities: [
+    'ClubAmerica', 'cruzazul', 'pumas', // Mexico City clubs ✅
+    'Chivas',                            // Guadalajara ✅
+    'Tigres', 'Rayados',                 // Monterrey clubs ✅
+  ],
+  
+  // ==================== CANADA CITY-SPECIFIC SUBS ====================
+  canadaCities: [
+    'tfc', 'TorontoFC',                  // Toronto FC ✅
+    'whitecapsfc',                       // Vancouver Whitecaps ✅
+  ],
+  
+  // ==================== EQUIPMENT & BRANDS ====================
+  brands: [
+    'SoccerJerseys',    // Soccer jerseys ✅
+    'footballkits',     // Football kits ✅
+    'Nike',             // Brand general ✅
+    'adidas',           // Brand general ✅
+  ],
+  
+  // ==================== FIFA SPONSORS ====================
+  sponsors: [
+    // 🏅 FIFA Partners
+    'Hyundai', 'kia',           // Hyundai-Kia ✅
+    // 🔥 World Cup Sponsors
+    'Budweiser', 'beer',        // AB InBev ✅
+    'McDonalds',                // McDonald's ✅
+    // 🤝 Supporters
+    'doordash',                 // DoorDash ✅
+    'airbnb',                   // Airbnb ✅
+    'HomeDepot',                // Home Depot ✅
+    'Verizon',                  // Verizon ✅
+  ],
+  
+  // ==================== FOOTBALL ASSOCIATIONS ====================
+  associations: [
+    // Verified existing subreddits for FAs
+    'ussoccer',          // USSF ✅
+    'dfb',               // DFB Germany (if exists)
+  ],
+};
+
+// Flatten all subreddits into single array
+const ALL_SUBREDDITS = [
+  ...new Set([
+    ...REDDIT_SUBREDDITS.global,
+    ...REDDIT_SUBREDDITS.hosts,
+    ...REDDIT_SUBREDDITS.leagues,
+    ...REDDIT_SUBREDDITS.southAmerica,
+    ...REDDIT_SUBREDDITS.clubs,
+    ...REDDIT_SUBREDDITS.countries,
+    ...REDDIT_SUBREDDITS.asia,
+    ...REDDIT_SUBREDDITS.hostCities,
+    ...REDDIT_SUBREDDITS.usCities,
+    ...REDDIT_SUBREDDITS.mexicoCities,
+    ...REDDIT_SUBREDDITS.canadaCities,
+    ...REDDIT_SUBREDDITS.brands,
+    ...REDDIT_SUBREDDITS.sponsors,
+    ...REDDIT_SUBREDDITS.associations,
+  ])
+];
+
+// Search terms in multiple languages + stadiums + associations
+const REDDIT_SEARCH_TERMS = [
+  // General WM terms
+  'World Cup 2026', 'WM 2026', 'FIFA 2026', 'Mundial 2026',
+  'Coupe du Monde 2026', 'Copa del Mundo 2026', 'Mondiali 2026',
+  '2026 World Cup', 'WC 2026',
+  // Host cities
+  'World Cup Atlanta', 'World Cup Miami', 'World Cup Los Angeles',
+  'World Cup New York', 'World Cup Dallas', 'World Cup Houston',
+  'World Cup Mexico City', 'World Cup Toronto', 'World Cup Vancouver',
+  // Stadium names
+  'MetLife Stadium 2026', 'SoFi Stadium World Cup', 'Estadio Azteca 2026',
+  'Hard Rock Stadium 2026', 'AT&T Stadium World Cup', 'Mercedes-Benz Stadium 2026',
+  // Star players + 2026
+  'Messi 2026', 'Mbappé 2026', 'Mbappe World Cup', 'Haaland 2026',
+  'Bellingham World Cup', 'Vinicius 2026', 'Salah World Cup',
+  'Pulisic 2026', 'Alphonso Davies World Cup', 'Kane 2026',
+  // FIFA Sponsors + 2026
+  'Adidas World Cup 2026', 'Coca-Cola World Cup', 'Budweiser FIFA 2026',
+  'McDonald\'s World Cup', 'Hyundai FIFA', 'Visa World Cup 2026',
+  'World Cup sponsor', 'FIFA sponsor 2026', 'World Cup partner',
+  // Football Associations + 2026
+  'DFB 2026', 'USSF World Cup', 'CBF 2026', 'AFA World Cup',
+  'UEFA World Cup 2026', 'CONMEBOL 2026', 'CONCACAF World Cup',
+  'FIFA qualification 2026', 'World Cup qualifiers'
+];
+
 async function getRedditAccessToken() {
   if (!CONFIG.REDDIT_CLIENT_ID || !CONFIG.REDDIT_CLIENT_SECRET) {
     return null;
@@ -785,34 +1507,33 @@ async function getRedditAccessToken() {
 }
 
 async function fetchReddit() {
-  console.log('🔴 Fetching Reddit...');
+  console.log(`🔴 Fetching Reddit from ${ALL_SUBREDDITS.length} subreddits...`);
   const articles = [];
+  const processedIds = new Set();
   
   // Get access token
   const accessToken = await getRedditAccessToken();
   
-  // Subreddits to search
-  const subreddits = [
-    'soccer', 'football', 'worldcup', 'MLS', 'Bundesliga', 
-    'LaLiga', 'PremierLeague', 'Ligue1', 'seriea',
-    'ussoccer', 'USMNT', 'CanadaSoccer', 'LigaMX'
-  ];
+  // Priority subreddits get all search terms, others get fewer
+  const prioritySubs = [...REDDIT_SUBREDDITS.global, ...REDDIT_SUBREDDITS.hosts, ...REDDIT_SUBREDDITS.leagues];
   
-  const searchTerms = ['World Cup 2026', 'WM 2026', 'FIFA 2026'];
-  
-  for (const subreddit of subreddits) {
+  for (const subreddit of ALL_SUBREDDITS) {
+    // Determine how many search terms to use based on priority
+    const isPriority = prioritySubs.includes(subreddit);
+    const searchTerms = isPriority ? REDDIT_SEARCH_TERMS : REDDIT_SEARCH_TERMS.slice(0, 3);
+    
     for (const term of searchTerms) {
       try {
         let url, headers;
         
         if (accessToken) {
-          url = `https://oauth.reddit.com/r/${subreddit}/search?q=${encodeURIComponent(term)}&sort=new&limit=25&restrict_sr=1`;
+          url = `https://oauth.reddit.com/r/${subreddit}/search?q=${encodeURIComponent(term)}&sort=new&limit=25&restrict_sr=1&t=week`;
           headers = {
             'Authorization': `Bearer ${accessToken}`,
             'User-Agent': CONFIG.REDDIT_USER_AGENT,
           };
         } else {
-          url = `https://www.reddit.com/r/${subreddit}/search.json?q=${encodeURIComponent(term)}&sort=new&limit=25&restrict_sr=1`;
+          url = `https://www.reddit.com/r/${subreddit}/search.json?q=${encodeURIComponent(term)}&sort=new&limit=25&restrict_sr=1&t=week`;
           headers = {
             'User-Agent': CONFIG.REDDIT_USER_AGENT,
           };
@@ -825,6 +1546,11 @@ async function fetchReddit() {
         
         for (const post of (data.data?.children || [])) {
           const item = post.data;
+          
+          // Skip if already processed (deduplication)
+          if (processedIds.has(item.id)) continue;
+          processedIds.add(item.id);
+          
           if (isRelevantContent(item.selftext || '', item.title || '')) {
             articles.push({
               source_key: 'reddit',
@@ -836,18 +1562,30 @@ async function fetchReddit() {
               author: item.author,
               published_at: item.created_utc ? new Date(item.created_utc * 1000).toISOString() : null,
               category_key: detectCategory(item.selftext || '', item.title || ''),
+              metadata: {
+                subreddit: item.subreddit,
+                score: item.score,
+                num_comments: item.num_comments,
+                upvote_ratio: item.upvote_ratio,
+              },
             });
           }
         }
         
-        await sleep(CONFIG.REQUEST_DELAY_MS * 5); // Reddit rate limits
+        // Rate limiting - Reddit is strict
+        await sleep(CONFIG.REQUEST_DELAY_MS * 3);
       } catch (error) {
+        // Silent fail for individual subreddits
+        if (error.message.includes('403') || error.message.includes('404')) {
+          // Subreddit doesn't exist or is private
+          continue;
+        }
         console.warn(`Reddit error for r/${subreddit}:`, error.message);
       }
     }
   }
   
-  console.log(`🔴 Reddit: Found ${articles.length} posts`);
+  console.log(`🔴 Reddit: Found ${articles.length} posts from ${ALL_SUBREDDITS.length} subreddits`);
   return articles;
 }
 
@@ -1615,7 +2353,7 @@ export default async function handler(req, res) {
   }
   
   try {
-    const { action, sources } = req.query;
+    const { action, sources, format, days } = req.query;
     
     switch (action) {
       case 'run':
@@ -1649,6 +2387,23 @@ export default async function handler(req, res) {
           .single();
         return res.status(200).json({ success: true, summary });
       
+      case 'export':
+        // Comprehensive data export
+        const exportData = await generateComprehensiveExport(parseInt(days) || 30);
+        
+        if (format === 'csv') {
+          res.setHeader('Content-Type', 'text/csv');
+          res.setHeader('Content-Disposition', `attachment; filename=wm2026_export_${new Date().toISOString().split('T')[0]}.csv`);
+          return res.status(200).send(convertToCSV(exportData.articles));
+        }
+        
+        return res.status(200).json({
+          success: true,
+          message: 'Comprehensive Export',
+          generated_at: new Date().toISOString(),
+          export: exportData
+        });
+      
       default:
         return res.status(200).json({
           success: true,
@@ -1657,6 +2412,9 @@ export default async function handler(req, res) {
             'GET /api/sentiment-engine?action=run': 'Run full pipeline',
             'GET /api/sentiment-engine?action=status': 'Get processing status',
             'GET /api/sentiment-engine?action=summary': 'Get current summary',
+            'GET /api/sentiment-engine?action=export': 'Export comprehensive data (JSON)',
+            'GET /api/sentiment-engine?action=export&format=csv': 'Export articles as CSV',
+            'GET /api/sentiment-engine?action=export&days=7': 'Export last 7 days',
           }
         });
     }
@@ -1667,6 +2425,226 @@ export default async function handler(req, res) {
       error: error.message 
     });
   }
+}
+
+// =====================================================
+// COMPREHENSIVE EXPORT FUNCTION
+// =====================================================
+
+async function generateComprehensiveExport(days = 30) {
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - days);
+  
+  console.log(`📊 Generating comprehensive export for last ${days} days...`);
+  
+  // 1. Fetch all articles with full details
+  const { data: articles, error: articlesError } = await supabase
+    .from('wm2026_articles')
+    .select('*')
+    .gte('published_at', startDate.toISOString())
+    .order('published_at', { ascending: false });
+  
+  if (articlesError) throw articlesError;
+  
+  // 2. Fetch daily aggregations
+  const { data: dailyStats, error: dailyError } = await supabase
+    .from('wm2026_daily_sentiment')
+    .select('*')
+    .gte('date', startDate.toISOString().split('T')[0])
+    .order('date', { ascending: false });
+  
+  if (dailyError) throw dailyError;
+  
+  // 3. Fetch processing logs
+  const { data: processingLogs, error: logsError } = await supabase
+    .from('wm2026_processing_log')
+    .select('*')
+    .gte('started_at', startDate.toISOString())
+    .order('started_at', { ascending: false });
+  
+  if (logsError) throw logsError;
+  
+  // 4. Calculate statistics
+  const stats = calculateExportStatistics(articles);
+  
+  return {
+    metadata: {
+      export_date: new Date().toISOString(),
+      period_start: startDate.toISOString(),
+      period_end: new Date().toISOString(),
+      total_days: days,
+      total_articles: articles?.length || 0,
+    },
+    
+    // Summary statistics
+    statistics: stats,
+    
+    // Daily aggregations
+    daily_sentiment: dailyStats || [],
+    
+    // Processing history
+    processing_logs: processingLogs || [],
+    
+    // All articles with full details
+    articles: (articles || []).map(a => ({
+      id: a.id,
+      title: a.title,
+      description: a.description,
+      url: a.url,
+      source: a.source,
+      source_type: a.source_type,
+      language: a.language,
+      country: a.country,
+      published_at: a.published_at,
+      fetched_at: a.fetched_at,
+      // Sentiment analysis
+      sentiment_score: a.sentiment_score,
+      sentiment_label: a.sentiment_label,
+      sentiment_confidence: a.sentiment_confidence,
+      // Emotions
+      emotion_joy: a.emotion_joy,
+      emotion_anger: a.emotion_anger,
+      emotion_fear: a.emotion_fear,
+      emotion_sadness: a.emotion_sadness,
+      emotion_surprise: a.emotion_surprise,
+      emotion_disgust: a.emotion_disgust,
+      dominant_emotion: a.dominant_emotion,
+      // Subjectivity
+      subjectivity_score: a.subjectivity_score,
+      // Metadata
+      category: a.category,
+      keywords_matched: a.keywords_matched,
+      is_processed: a.is_processed,
+    })),
+    
+    // Configuration used
+    config_snapshot: {
+      languages: Object.keys(CONFIG.WM_KEYWORDS).length,
+      keywords_count: Object.values(CONFIG.WM_KEYWORDS).flat().length,
+      host_cities: CONFIG.HOST_CITIES.length,
+      stadiums: CONFIG.STADIUMS.length,
+      players_count: Object.values(CONFIG.PLAYERS).flat().length,
+      sponsors_count: Object.values(CONFIG.SPONSORS).flat().length,
+      associations_count: Object.values(CONFIG.ASSOCIATIONS).flat().length,
+      brands_count: CONFIG.BRANDS.length,
+      exclusion_terms_count: CONFIG.EXCLUSION_TERMS.length,
+    },
+  };
+}
+
+function calculateExportStatistics(articles) {
+  if (!articles || articles.length === 0) {
+    return {
+      total: 0,
+      by_source: {},
+      by_language: {},
+      by_country: {},
+      by_sentiment: {},
+      by_emotion: {},
+      by_category: {},
+      sentiment_avg: 0,
+      processed_rate: 0,
+    };
+  }
+  
+  // Source distribution
+  const bySource = {};
+  articles.forEach(a => {
+    bySource[a.source_type || 'unknown'] = (bySource[a.source_type || 'unknown'] || 0) + 1;
+  });
+  
+  // Language distribution
+  const byLanguage = {};
+  articles.forEach(a => {
+    byLanguage[a.language || 'unknown'] = (byLanguage[a.language || 'unknown'] || 0) + 1;
+  });
+  
+  // Country distribution
+  const byCountry = {};
+  articles.forEach(a => {
+    byCountry[a.country || 'unknown'] = (byCountry[a.country || 'unknown'] || 0) + 1;
+  });
+  
+  // Sentiment distribution
+  const bySentiment = { positive: 0, neutral: 0, negative: 0 };
+  articles.forEach(a => {
+    if (a.sentiment_label) {
+      bySentiment[a.sentiment_label] = (bySentiment[a.sentiment_label] || 0) + 1;
+    }
+  });
+  
+  // Emotion distribution
+  const byEmotion = {};
+  articles.forEach(a => {
+    if (a.dominant_emotion) {
+      byEmotion[a.dominant_emotion] = (byEmotion[a.dominant_emotion] || 0) + 1;
+    }
+  });
+  
+  // Category distribution
+  const byCategory = {};
+  articles.forEach(a => {
+    if (a.category) {
+      byCategory[a.category] = (byCategory[a.category] || 0) + 1;
+    }
+  });
+  
+  // Average sentiment
+  const processedArticles = articles.filter(a => a.sentiment_score !== null);
+  const sentimentAvg = processedArticles.length > 0
+    ? processedArticles.reduce((sum, a) => sum + a.sentiment_score, 0) / processedArticles.length
+    : 0;
+  
+  // Processed rate
+  const processedRate = articles.length > 0
+    ? (articles.filter(a => a.is_processed).length / articles.length * 100).toFixed(2)
+    : 0;
+  
+  return {
+    total: articles.length,
+    by_source: bySource,
+    by_language: byLanguage,
+    by_country: byCountry,
+    by_sentiment: bySentiment,
+    by_emotion: byEmotion,
+    by_category: byCategory,
+    sentiment_avg: sentimentAvg.toFixed(4),
+    processed_rate: parseFloat(processedRate),
+    date_range: {
+      earliest: articles[articles.length - 1]?.published_at,
+      latest: articles[0]?.published_at,
+    },
+  };
+}
+
+function convertToCSV(articles) {
+  if (!articles || articles.length === 0) {
+    return 'No data available';
+  }
+  
+  const headers = [
+    'id', 'title', 'description', 'url', 'source', 'source_type', 
+    'language', 'country', 'published_at', 'fetched_at',
+    'sentiment_score', 'sentiment_label', 'sentiment_confidence',
+    'emotion_joy', 'emotion_anger', 'emotion_fear', 'emotion_sadness',
+    'emotion_surprise', 'emotion_disgust', 'dominant_emotion',
+    'subjectivity_score', 'category', 'keywords_matched', 'is_processed'
+  ];
+  
+  const escapeCSV = (value) => {
+    if (value === null || value === undefined) return '';
+    const str = String(value);
+    if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+      return `"${str.replace(/"/g, '""')}"`;
+    }
+    return str;
+  };
+  
+  const rows = articles.map(a => 
+    headers.map(h => escapeCSV(a[h])).join(',')
+  );
+  
+  return [headers.join(','), ...rows].join('\n');
 }
 
 // =====================================================
@@ -1686,4 +2664,5 @@ export {
   analyzeSentiment,
   analyzeEmotions,
   calculateDailyAggregation,
+  generateComprehensiveExport,
 };
