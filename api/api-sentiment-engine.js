@@ -56,25 +56,312 @@ const CONFIG = {
   MAX_ARTICLES_PER_SOURCE: 100,
   REQUEST_DELAY_MS: 100,
   
-  // Search keywords for WM2026
+  // Search keywords for WM2026 - 35+ languages, covering 6+ billion speakers
+  // Merged from App.jsx RSS feeds + expanded for global coverage
   WM_KEYWORDS: {
-    en: ['World Cup 2026', 'FIFA 2026', 'WC 2026', 'USA Canada Mexico 2026'],
-    de: ['WM 2026', 'Weltmeisterschaft 2026', 'Fußball WM 2026'],
-    es: ['Mundial 2026', 'Copa del Mundo 2026'],
-    fr: ['Coupe du Monde 2026', 'Mondial 2026'],
-    pt: ['Copa do Mundo 2026', 'Mundial 2026'],
-    it: ['Mondiali 2026', 'Coppa del Mondo 2026'],
-    ar: ['كأس العالم 2026'],
-    zh: ['2026年世界杯', '世界杯2026'],
-    ja: ['2026年ワールドカップ', 'W杯2026'],
-    ko: ['2026 월드컵'],
+    // ==================== MAJOR WORLD LANGUAGES ====================
+    
+    // English (1.5B speakers) - Merged from App.jsx
+    en: [
+      'World Cup 2026', 'FIFA 2026', 'WC 2026', 'USA Canada Mexico 2026',
+      'FIFA World Cup 2026', 'Soccer World Cup 2026', 'Football World Cup 2026',
+      '2026 World Cup draw', '2026 World Cup tickets', '2026 World Cup qualifiers',
+      '2026 World Cup host cities', 'United 2026', '2026 World Cup venues',
+      '2026 World Cup stadiums', '2026 World Cup teams', '2026 World Cup travel',
+      '2026 World Cup favorites', '2026 World Cup stars', '2026 World Cup streaming',
+      'USMNT 2026', 'CONCACAF 2026', 'UEFA World Cup 2026'
+    ],
+    
+    // German (130M speakers) - Merged from App.jsx
+    de: [
+      'WM 2026', 'Weltmeisterschaft 2026', 'Fußball WM 2026', 'FIFA WM 2026',
+      'Fußball-Weltmeisterschaft 2026', 'Fussball WM 2026', 'WM Tickets 2026',
+      'WM Qualifikation 2026', 'DFB WM 2026', 'Nationalmannschaft WM 2026',
+      'WM Auslosung 2026', 'WM 2026 Gastgeber', 'WM 2026 Spielorte',
+      'WM 2026 Stadien', 'WM 2026 Nationalmannschaften', 'WM 2026 Reisen',
+      'WM 2026 Favoriten', 'WM 2026 Stars', 'ÖFB WM 2026', 'Nati WM 2026'
+    ],
+    
+    // Spanish (550M speakers)
+    es: [
+      'Mundial 2026', 'Copa del Mundo 2026', 'FIFA 2026', 'Copa Mundial 2026',
+      'Eliminatorias 2026', 'Selección Mundial 2026', 'Entradas Mundial 2026',
+      'Sorteo Mundial 2026', 'México 2026', 'Clasificación Mundial 2026',
+      'Sedes Mundial 2026', 'Estadios Mundial 2026', 'Equipos Mundial 2026',
+      'Favoritos Mundial 2026', 'Estrellas Mundial 2026'
+    ],
+    
+    // French (280M speakers)
+    fr: [
+      'Coupe du Monde 2026', 'Mondial 2026', 'FIFA 2026', 'CDM 2026',
+      'Qualifications Coupe du Monde 2026', 'Billets Coupe du Monde 2026',
+      'Tirage Coupe du Monde 2026', 'Équipe de France 2026',
+      'Stades Coupe du Monde 2026', 'Villes hôtes 2026'
+    ],
+    
+    // Portuguese (260M speakers)
+    pt: [
+      'Copa do Mundo 2026', 'Mundial 2026', 'FIFA 2026', 'Copa 2026',
+      'Eliminatórias 2026', 'Seleção Brasileira 2026', 'Ingressos Copa 2026',
+      'Sorteio Copa 2026', 'Qualificação Mundial 2026', 'Estádios Copa 2026',
+      'Seleção Portuguesa 2026'
+    ],
+    
+    // Russian (250M speakers)
+    ru: [
+      'Чемпионат мира 2026', 'ЧМ 2026', 'ФИФА 2026', 'Кубок мира 2026',
+      'Мундиаль 2026', 'Отборочные ЧМ 2026', 'Сборная России 2026',
+      'Билеты ЧМ 2026', 'Стадионы ЧМ 2026'
+    ],
+    
+    // Hindi (600M speakers)
+    hi: [
+      'फीफा विश्व कप 2026', 'विश्व कप 2026', 'फुटबॉल विश्व कप 2026',
+      '2026 वर्ल्ड कप', 'फीफा 2026', 'विश्व कप क्वालीफायर 2026'
+    ],
+    
+    // Bengali (270M speakers)
+    bn: [
+      'বিশ্বকাপ 2026', 'ফিফা বিশ্বকাপ 2026', 'ফুটবল বিশ্বকাপ 2026',
+      '২০২৬ বিশ্বকাপ', 'বিশ্বকাপ বাছাইপর্ব 2026'
+    ],
+    
+    // Indonesian (200M speakers)
+    id: [
+      'Piala Dunia 2026', 'FIFA 2026', 'Piala Dunia FIFA 2026',
+      'Kualifikasi Piala Dunia 2026', 'Timnas Indonesia 2026',
+      'Stadion Piala Dunia 2026', 'Tiket Piala Dunia 2026'
+    ],
+    
+    // Arabic (400M speakers)
+    ar: [
+      'كأس العالم 2026', 'مونديال 2026', 'فيفا 2026', 'كأس العالم لكرة القدم 2026',
+      'تصفيات كأس العالم 2026', 'نهائيات كأس العالم 2026',
+      'تذاكر كأس العالم 2026', 'ملاعب كأس العالم 2026'
+    ],
+    
+    // Chinese (1.1B speakers)
+    zh: [
+      '2026年世界杯', '世界杯2026', '2026世界杯', 'FIFA世界杯2026',
+      '世界杯预选赛2026', '2026年足球世界杯', '世界杯门票2026',
+      '世界杯球场2026', '世界杯参赛队2026'
+    ],
+    
+    // Japanese (125M speakers)
+    ja: [
+      '2026年ワールドカップ', 'W杯2026', 'FIFAワールドカップ2026',
+      '2026年W杯', 'サッカーワールドカップ2026', '日本代表2026',
+      'ワールドカップ予選2026', 'ワールドカップチケット2026'
+    ],
+    
+    // Korean (80M speakers)
+    ko: [
+      '2026 월드컵', '2026년 월드컵', 'FIFA 월드컵 2026',
+      '월드컵 예선 2026', '대한민국 대표팀 2026', '월드컵 티켓 2026'
+    ],
+    
+    // Vietnamese (85M speakers)
+    vi: [
+      'World Cup 2026', 'FIFA 2026', 'Cúp thế giới 2026',
+      'Vòng loại World Cup 2026', 'Giải vô địch bóng đá thế giới 2026',
+      'Vé World Cup 2026', 'Sân vận động World Cup 2026'
+    ],
+    
+    // Thai (60M speakers)
+    th: [
+      'ฟุตบอลโลก 2026', 'บอลโลก 2026', 'ฟีฟ่า เวิลด์ คัพ 2026',
+      'รอบคัดเลือก ฟุตบอลโลก 2026', 'บัตรฟุตบอลโลก 2026'
+    ],
+    
+    // Persian/Farsi (110M speakers)
+    fa: [
+      'جام جهانی 2026', 'فیفا 2026', 'جام جهانی فوتبال 2026',
+      'مقدماتی جام جهانی 2026', 'بلیط جام جهانی 2026'
+    ],
+    
+    // Turkish (80M speakers)
+    tr: [
+      'Dünya Kupası 2026', 'FIFA 2026', '2026 Dünya Kupası',
+      'Dünya Kupası Elemeleri 2026', 'Milli Takım 2026',
+      'Dünya Kupası Biletleri 2026', 'Dünya Kupası Stadyumları 2026'
+    ],
+    
+    // Italian (65M speakers)
+    it: [
+      'Mondiali 2026', 'Coppa del Mondo 2026', 'FIFA 2026', 'Mondiale 2026',
+      'Qualificazioni Mondiali 2026', 'Nazionale Italiana 2026', 
+      'Biglietti Mondiali 2026', 'Stadi Mondiali 2026'
+    ],
+    
+    // Polish (45M speakers)
+    pl: [
+      'Mistrzostwa Świata 2026', 'MŚ 2026', 'FIFA 2026', 'Mundial 2026',
+      'Eliminacje MŚ 2026', 'Reprezentacja Polski 2026', 'Piłkarskie MŚ 2026',
+      'Bilety MŚ 2026', 'Stadiony MŚ 2026'
+    ],
+    
+    // Ukrainian (40M speakers)
+    uk: [
+      'Чемпіонат світу 2026', 'ЧС 2026', 'ФІФА 2026',
+      'Кубок світу 2026', 'Відбір ЧС 2026', 'Збірна України 2026'
+    ],
+    
+    // Dutch (25M speakers)
+    nl: [
+      'WK 2026', 'Wereldkampioenschap 2026', 'FIFA 2026', 'WK Voetbal 2026',
+      'WK Kwalificatie 2026', 'Oranje WK 2026', 'WK Tickets 2026'
+    ],
+    
+    // Romanian (24M speakers)
+    ro: [
+      'Cupa Mondială 2026', 'CM 2026', 'FIFA 2026',
+      'Campionatul Mondial 2026', 'Preliminarii CM 2026', 'Bilete CM 2026'
+    ],
+    
+    // Greek (13M speakers)
+    el: [
+      'Παγκόσμιο Κύπελλο 2026', 'Μουντιάλ 2026', 'FIFA 2026',
+      'Προκριματικά Μουντιάλ 2026', 'Εισιτήρια Μουντιάλ 2026'
+    ],
+    
+    // Hungarian (13M speakers)
+    hu: [
+      'Világbajnokság 2026', 'VB 2026', 'FIFA 2026',
+      'Labdarúgó-világbajnokság 2026', 'VB-selejtező 2026', 'VB jegyek 2026'
+    ],
+    
+    // Czech (10M speakers)
+    cs: [
+      'Mistrovství světa 2026', 'MS 2026', 'FIFA 2026',
+      'Fotbalové MS 2026', 'Kvalifikace MS 2026'
+    ],
+    
+    // Swedish (10M speakers)
+    sv: [
+      'VM 2026', 'Fotbolls-VM 2026', 'FIFA VM 2026',
+      'Världsmästerskapet 2026', 'VM-kval 2026', 'VM-biljetter 2026'
+    ],
+    
+    // ==================== NORDIC LANGUAGES ====================
+    
+    // Finnish (5.5M speakers)
+    fi: [
+      'MM 2026', 'Jalkapallon MM 2026', 'FIFA MM 2026',
+      'MM-kisat 2026', 'MM-karsinnat 2026', 'MM-liput 2026'
+    ],
+    
+    // Danish (6M speakers)
+    da: [
+      'VM 2026', 'Fodbold VM 2026', 'FIFA VM 2026',
+      'VM slutrunde 2026', 'VM kvalifikation 2026', 'VM billetter 2026'
+    ],
+    
+    // Norwegian (5M speakers)
+    no: [
+      'VM 2026', 'Fotball VM 2026', 'FIFA VM 2026',
+      'VM sluttspill 2026', 'VM kvalifisering 2026', 'VM billetter 2026'
+    ],
+    
+    // Icelandic (350K speakers)
+    is: [
+      'HM 2026', 'Heimsmeistaramótið 2026', 'FIFA HM 2026',
+      'HM úrslit 2026', 'HM undankeppni 2026'
+    ],
+    
+    // ==================== AFRICAN LANGUAGES ====================
+    
+    // Swahili (100M+ speakers - East Africa: Kenya, Tanzania, Uganda)
+    sw: [
+      'Kombe la Dunia 2026', 'FIFA 2026', 'Mashindano ya Dunia 2026',
+      'Mchujo Kombe la Dunia 2026', 'Tiketi Kombe la Dunia 2026'
+    ],
+    
+    // Amharic (57M speakers - Ethiopia)
+    am: [
+      'የዓለም ዋንጫ 2026', 'ፊፋ 2026', 'የእግር ኳስ የዓለም ዋንጫ 2026'
+    ],
+    
+    // Yoruba (45M speakers - Nigeria, Benin)
+    yo: [
+      'Idije Agbaye 2026', 'FIFA 2026', 'Bọọlu Agbaye 2026'
+    ],
+    
+    // Hausa (75M speakers - Nigeria, Niger, Ghana)
+    ha: [
+      'Gasar Duniya 2026', 'FIFA 2026', 'Kofin Duniya 2026'
+    ],
+    
+    // Zulu (12M speakers - South Africa)
+    zu: [
+      'Indebe Yomhlaba 2026', 'FIFA 2026', 'Ibhola Lomhlaba 2026'
+    ],
+    
+    // Afrikaans (7M speakers - South Africa, Namibia)
+    af: [
+      'Wêreldbeker 2026', 'FIFA 2026', 'Sokker Wêreldbeker 2026',
+      'WB 2026', 'Wêreldbeker kwalifikasie 2026'
+    ],
+    
+    // Igbo (45M speakers - Nigeria)
+    ig: [
+      'Asọmpi Ụwa 2026', 'FIFA 2026', 'Bọọlụ Ụwa 2026'
+    ],
+    
+    // Somali (16M speakers - Somalia, Djibouti, Ethiopia)
+    so: [
+      'Koobka Adduunka 2026', 'FIFA 2026', 'Kubadda Cagta Adduunka 2026'
+    ],
+    
+    // Wolof (5M speakers - Senegal, Gambia)
+    wo: [
+      'Coupe du Monde 2026', 'FIFA 2026', 'Kup bi Àdduna 2026'
+    ],
+    
+    // Lingala (25M speakers - DRC, Congo)
+    ln: [
+      'Kombe ya Mokili 2026', 'FIFA 2026', 'Lisano ya Mokili 2026'
+    ],
   },
   
-  // Exclusion terms (other sports)
+  // Exclusion terms (other sports) - Merged from App.jsx + expanded
   EXCLUSION_TERMS: [
-    'cricket', 'rugby', 'baseball', 'basketball', 'hockey', 'tennis',
-    'golf', 'olympics', 'NFL', 'NBA', 'NHL', 'MLB', 'F1', 'Formula 1',
-    'UFC', 'boxing', 'wrestling', 'swimming', 'athletics'
+    // Darts
+    'dart', 'darts', 'pdc', 'bdo', 'dartn',
+    // Cricket
+    'cricket', 't20', 't-20', 'icc', 'ipl', 'bcci', 'ashes', 'test match', 'cricinfo',
+    // Basketball
+    'basketball', 'nba', 'euroleague', 'fiba', 'wnba',
+    // Handball
+    'handball', 'ehf',
+    // Hockey/Ice Hockey
+    'eishockey', 'ice hockey', 'hockey', 'nhl', 'iihf', 'field hockey',
+    // Tennis
+    'tennis', 'atp', 'wta', 'wimbledon', 'us open tennis', 'roland garros', 'australian open',
+    // Other ball sports
+    'volleyball', 'rugby', 'baseball', 'mlb', 'softball', 'lacrosse',
+    // American Football
+    'nfl', 'super bowl', 'american football', 'college football',
+    // Motorsport
+    'formel 1', 'formula 1', 'f1', 'motogp', 'nascar', 'indycar', 'rallye', 'rally', 'wrc', 'dtm', 'le mans',
+    // Combat sports
+    'boxing', 'boxen', 'ufc', 'mma', 'wrestling', 'wwe', 'aew', 'ringen', 'judo', 'karate', 'taekwondo',
+    // Golf
+    'golf', 'pga', 'lpga', 'masters golf', 'ryder cup',
+    // Winter sports
+    'ski', 'skiing', 'biathlon', 'bob', 'bobsled', 'rodeln', 'luge', 'eiskunstlauf', 'figure skating', 
+    'curling', 'snowboard', 'langlauf', 'cross-country skiing', 'ski jumping', 'skispringen',
+    'skeleton', 'eisschnelllauf', 'speed skating', 'slalom', 'downhill', 'abfahrt',
+    // Athletics/Swimming
+    'leichtathletik', 'athletics', 'swimming', 'schwimmen', 'marathon', 'triathlon', 'diving', 'wasserspringen',
+    // Olympics (when not football related)
+    'olympia', 'olympics', 'paralympics', 'ioc', 'olympische spiele',
+    // Cycling
+    'tour de france', 'giro', 'cycling', 'radsport', 'vuelta', 'bike', 'radrennen',
+    // E-Sports
+    'esport', 'e-sport', 'gaming', 'league of legends', 'dota', 'counter-strike',
+    // Other
+    'snooker', 'billard', 'poker', 'chess', 'schach', 'badminton', 'tischtennis', 'table tennis',
+    'surfing', 'skateboard', 'climbing', 'klettern', 'equestrian', 'reiten', 'horse racing', 'pferderennen'
   ],
 };
 
@@ -109,9 +396,30 @@ function isRelevantContent(text, title) {
     .flat()
     .some(kw => combined.includes(kw.toLowerCase()));
   
-  // Check for football/soccer context
-  const hasFootballContext = ['soccer', 'football', 'fußball', 'fútbol', 'futebol', 'calcio']
-    .some(term => combined.includes(term));
+  // Check for football/soccer context in 35+ languages
+  const hasFootballContext = [
+    // English, German, Spanish, Portuguese, Italian
+    'soccer', 'football', 'fußball', 'fussball', 'fútbol', 'futebol', 'calcio',
+    // Dutch, Polish, Norwegian, Danish, Finnish
+    'voetbal', 'piłka nożna', 'fotball', 'fodbold', 'jalkapallo',
+    // Turkish, Russian, Greek, Hindi, Thai
+    'futbol', 'футбол', 'ποδόσφαιρο', 'फुटबॉल', 'ฟุตบอล',
+    // Vietnamese, Indonesian, Arabic, Chinese, Japanese, Korean
+    'bóng đá', 'sepak bola', 'كرة القدم', '足球', 'サッカー', '축구',
+    // Swedish, Icelandic, Romanian, Hungarian, Czech
+    'fotboll', 'fótbolti', 'fotbal', 'labdarúgás', 'fotbal',
+    // Ukrainian, Persian, Bengali
+    'футбол', 'فوتبال', 'ফুটবল',
+    // African languages
+    'kandanda', 'mpira', 'soka', 'bola', 'ibhola', 'sokker',  // Swahili, Zulu, Afrikaans
+    // FIFA, national teams
+    'fifa', 'nationalmannschaft', 'national team', 'seleção', 'selección', 'nazionale',
+    'équipe nationale', 'сборная', 'منتخب', '代表', 'landslag',
+    // Tournament terms
+    'weltmeisterschaft', 'world cup', 'mundial', 'coupe du monde', 'coppa del mondo',
+    'чемпионат мира', 'كأس العالم', '世界杯', 'ワールドカップ', '월드컵',
+    'vm', 'wm', 'wk', 'mm', 'hm', 'ms', 'cm'
+  ].some(term => combined.includes(term));
   
   // Check for exclusion terms
   const hasExclusionTerm = CONFIG.EXCLUSION_TERMS
@@ -149,17 +457,48 @@ function detectCategory(text, title) {
 // DATA SOURCE: GOOGLE NEWS RSS
 // =====================================================
 
-async function fetchGoogleNewsRSS(languages = ['en', 'de', 'es', 'fr', 'pt']) {
-  console.log('📰 Fetching Google News RSS...');
+// Language-to-country mapping for Google News (ISO codes)
+const LANG_COUNTRY_MAP = {
+  // Major languages
+  en: 'US', de: 'DE', es: 'ES', fr: 'FR', pt: 'BR', it: 'IT',
+  nl: 'NL', pl: 'PL', ru: 'RU', tr: 'TR', ar: 'SA', ja: 'JP',
+  ko: 'KR', zh: 'CN', id: 'ID', vi: 'VN', th: 'TH', el: 'GR',
+  cs: 'CZ', sv: 'SE', ro: 'RO', hu: 'HU', uk: 'UA', fa: 'IR',
+  hi: 'IN', bn: 'BD',
+  // Nordic
+  fi: 'FI', da: 'DK', no: 'NO', is: 'IS',
+  // African (use countries where language is spoken + has Google News)
+  sw: 'KE', af: 'ZA', am: 'ET', ha: 'NG', yo: 'NG', zu: 'ZA',
+  ig: 'NG', so: 'SO', wo: 'SN', ln: 'CD'
+};
+
+// All supported languages for comprehensive global coverage
+const ALL_SEARCH_LANGUAGES = [
+  // Tier 1: Major languages with most content (always search)
+  'en', 'de', 'es', 'fr', 'pt', 'it', 'ar', 'zh', 'ja', 'ko', 'ru',
+  // Tier 2: Important regional languages
+  'pl', 'nl', 'tr', 'id', 'vi', 'th', 'fa', 'hi',
+  // Tier 3: European languages
+  'uk', 'el', 'cs', 'sv', 'ro', 'hu',
+  // Tier 4: Nordic languages
+  'fi', 'da', 'no',
+  // Tier 5: African languages (where Google News supports)
+  'sw', 'af'
+];
+
+async function fetchGoogleNewsRSS(languages = ALL_SEARCH_LANGUAGES) {
+  console.log(`📰 Fetching Google News RSS for ${languages.length} languages...`);
   const articles = [];
   
   for (const lang of languages) {
     const keywords = CONFIG.WM_KEYWORDS[lang] || CONFIG.WM_KEYWORDS.en;
+    const country = LANG_COUNTRY_MAP[lang] || lang.toUpperCase();
     
-    for (const keyword of keywords) {
+    // Limit to first 3 keywords per language to avoid rate limiting
+    for (const keyword of keywords.slice(0, 3)) {
       try {
         const encodedQuery = encodeURIComponent(keyword);
-        const url = `https://news.google.com/rss/search?q=${encodedQuery}&hl=${lang}&gl=${lang.toUpperCase()}&ceid=${lang.toUpperCase()}:${lang}`;
+        const url = `https://news.google.com/rss/search?q=${encodedQuery}&hl=${lang}&gl=${country}&ceid=${country}:${lang}`;
         
         const response = await fetch(url);
         if (!response.ok) continue;
@@ -169,7 +508,7 @@ async function fetchGoogleNewsRSS(languages = ['en', 'de', 'es', 'fr', 'pt']) {
         // Parse RSS XML
         const items = text.match(/<item>([\s\S]*?)<\/item>/g) || [];
         
-        for (const item of items.slice(0, 20)) {
+        for (const item of items.slice(0, 15)) { // 15 per keyword
           const title = (item.match(/<title>([\s\S]*?)<\/title>/)?.[1] || '')
             .replace(/<!\[CDATA\[|\]\]>/g, '').trim();
           const link = item.match(/<link>([\s\S]*?)<\/link>/)?.[1] || '';
@@ -201,7 +540,7 @@ async function fetchGoogleNewsRSS(languages = ['en', 'de', 'es', 'fr', 'pt']) {
     }
   }
   
-  console.log(`📰 Google News: Found ${articles.length} articles`);
+  console.log(`📰 Google News: Found ${articles.length} articles from ${languages.length} languages`);
   return articles;
 }
 
