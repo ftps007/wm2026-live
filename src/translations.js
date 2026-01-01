@@ -1,0 +1,1709 @@
+// =============================================
+// WM 2026 Tippspiel - COMPLETE Translations
+// ALL texts centralized - NO hardcoded strings!
+// Version 2.0 - Full Refactor with Polish
+// =============================================
+
+export const translations = {
+  // ==================== GERMAN ====================
+  de: {
+    // App Header
+    appTitle: 'WM 2026',
+    appSubtitle: '11. Juni - 19. Juli',
+    points: 'Punkte',
+    logout: 'Logout',
+    login: 'Anmelden',
+    register: 'Registrieren',
+
+    // Navigation Tabs
+    tabNews: '📰 News',
+    tabVideos: '🎬 Videos',
+    tabMatches: '⚽ Spiele',
+    tabRankings: '📺 Ranglisten',
+    tabTrivia: '🧠 Trivia',
+    tabGuide: '📺 Guide',
+    tabSentiment: '📊 Stimmung',
+
+    // Countdown
+    days: 'Tage',
+    hours: 'Std',
+    minutes: 'Min',
+    seconds: 'Sek',
+
+    // News Section
+    newsTitle: '📰 Aktuelle News',
+    newsUpdating: 'Aktualisiere...',
+    newsLive: 'Live-News • Auto-Update',
+    newsLoading: 'Lade aktuelle News...',
+    newsReadArticle: 'Artikel lesen →',
+    newsError: 'Live-News konnten nicht geladen werden.',
+    newsCountryFlags: '🇩🇪 🇦🇹 🇨🇭',
+    
+    // Dummy News (Fallback)
+    dummyNews1Title: 'WM 2026: Neue $60 Supporter-Tickets angekündigt',
+    dummyNews1Summary: 'FIFA reagiert auf Kritik an hohen Ticketpreisen.',
+    dummyNews2Title: 'Deutschland-Gruppe: Diese Gegner drohen',
+    dummyNews2Summary: 'Auslosung der WM-Gruppen steht bevor.',
+    dummyNews3Title: 'MagentaTV sichert sich alle 104 Spiele',
+    dummyNews3Summary: 'ARD/ZDF zeigen 60 Spiele kostenlos.',
+    dummyNews4Title: 'DFB-Trikot 2026: Letztes adidas-Design enthüllt',
+    dummyNews4Summary: 'Nach 70 Jahren endet die Partnerschaft.',
+    dummyNews5Title: 'MetLife Stadium als Finale-Austragungsort',
+    dummyNews5Summary: '16 Stadien in 3 Ländern.',
+    tagStadiums: 'Stadien',
+    
+    // Trivia Results
+    noExplanation: 'Keine Erklärung verfügbar.',
+    triviaWorldChampion: 'Weltmeister! 🥇',
+    triviaVeryGood: 'Sehr gut! 🥈',
+    triviaWellPlayed: 'Gut gespielt! 🥉',
+    triviaKeepPracticing: 'Weiter üben! 💪',
+    
+    // Sentiment Features
+    sentimentFanMood: 'Fan-Stimmungs-Tracker',
+    sentimentSocialPulse: 'Social Media Puls',
+    sentimentGlobalSupport: 'Weltweite Team-Unterstützung',
+    sentimentWeeklyAnalysis: 'Wochen-Analyse',
+    
+    // Trivia Language Notice (empty for German - native language)
+    triviaLanguageNotice: '',
+
+    // Videos Section
+    videosTitle: '🎬 WM Videos',
+    videosAll: 'Alle',
+    videosHighlights: 'Highlights',
+    videosGermany: 'Deutschland',
+    videosPoland: 'Polen',
+    videosSongs: 'Songs',
+    videosClassics: 'Klassiker',
+    videosWC2026: 'WM 2026',
+    videosYoutubeHint: 'Klick öffnet YouTube-Suche mit den besten verfügbaren Videos',
+
+    // Matches Section
+    matchesTitle: '⚽ Spiele & Tipps',
+    yourPredictions: 'Deine Tipps',
+    allMatches: 'Alle Spiele',
+    groups: 'Gruppen',
+    thirdPlaced: 'Drittplatzierte',
+    knockoutRound: 'K.O.-Runde',
+    groupStage: 'Gruppenphase',
+    matchesGroup: 'Spiele Gruppe',
+    
+    // Sub Tabs
+    allMatchesTab: '📋 Alle Spiele',
+    groupsTab: '📺 Gruppen',
+    thirdPlacedTab: '🥉 Drittplatzierte',
+    koTab: '🎯 K.O.-Runde',
+    groupMatches: 'Spiele Gruppe',
+    
+    // Quick Fill
+    quickFill: 'Schnell ausfüllen:',
+    fillAllOpen: 'Alle offenen Spiele auf einmal ausfüllen',
+    allRandom: 'Alle Zufällig',
+    allAI: 'Alle KI',
+    resetAll: 'Zurücksetzen',
+    allMatchesHavePredictions: 'Alle Spiele haben bereits Tipps oder sind gesperrt!',
+    fillConfirm: 'offene Spiele mit',
+    aiPredictions: 'KI-Tipps ausfüllen?',
+    randomPredictions: 'Zufalls-Tipps ausfüllen?',
+    noPredictionsToReset: 'Keine Tipps zum Zurücksetzen!',
+    deleteConfirm: 'Tipps löschen? Dies kann nicht rückgängig gemacht werden!',
+    
+    // Match Info Box
+    howItWorks: "So funktioniert's:",
+    howItWorksDesc: 'Tippe das Ergebnis für jedes Spiel.',
+    exactResult: 'Exakter Tipp',
+    exactResultPoints: '3 Punkte',
+    correctTendency: 'Richtige Tendenz',
+    correctTendencyPoints: '1 Punkt',
+    useButtons: 'Nutze',
+    forQuickPredictions: 'für schnelle Tipps!',
+    predictionsUntilKickoff: 'Tipps sind bis Spielbeginn möglich.',
+    onlyAfterLogin: 'Tippabgabe nur nach Registrierung/Anmeldung möglich.',
+    predictionsRequireLogin: '🔒 Tippabgabe nur nach Registrierung/Anmeldung möglich.',
+    random: 'Zufall',
+    ai: 'KI',
+    or: 'oder',
+    
+    // Match Card
+    matches: 'Spiele',
+    match: 'Spiel',
+    locked: '🔒 Gesperrt',
+    lockedShort: 'Gesperrt',
+    freeTV: 'FREE TV',
+    abroad: 'Im Ausland?',
+    abroadTip: 'Mit VPN deutsches TV streamen',
+    localTime: 'Ortszeit',
+    venue: 'Spielort',
+    referee: 'Schiedsrichter',
+    capacity: 'Kapazität',
+    cetTime: 'MEZ',
+    localTimeLabel: 'Ortszeit',
+    homeTeams: 'Heimmannschaften:',
+    gr: 'Gr.',
+    
+    // Filter
+    filter: 'Filter',
+    all: 'Alle',
+    byGroup: 'Nach Gruppe',
+    byTeam: 'Nach Team',
+    byMatchday: 'Nach Spieltag',
+    matchday: 'Spieltag',
+
+    // Groups
+    group: 'Gruppe',
+    groupA: 'Gruppe A', groupB: 'Gruppe B', groupC: 'Gruppe C', groupD: 'Gruppe D',
+    groupE: 'Gruppe E', groupF: 'Gruppe F', groupG: 'Gruppe G', groupH: 'Gruppe H',
+    groupI: 'Gruppe I', groupJ: 'Gruppe J', groupK: 'Gruppe K', groupL: 'Gruppe L',
+
+    // Group Table
+    groupTable: 'Gruppentabelle',
+    team: 'Team',
+    played: 'Sp',
+    won: 'S',
+    drawn: 'U',
+    lost: 'N',
+    goalsFor: 'T',
+    goalsAgainst: 'GT',
+    goalDifference: 'TD',
+    pointsShort: 'P',
+    
+    // Group Table Legend
+    pos12advance: 'Platz 1-2 weiter',
+    pos3maybe: 'Platz 3 evtl. weiter',
+    posOut: 'Aus',
+    groupLegend: '🟢 Platz 1-2 weiter • 🟡 Platz 3 evtl. weiter • 🔴 Aus',
+
+    // Playoff
+    playoffOpen: 'Play-off noch offen',
+    playoffUEFA: 'UEFA',
+    playoffIntercontinental: 'Interkontinental',
+
+    // Third-placed Table
+    thirdPlacedTitle: '🥉 Rangliste aller Drittplatzierten',
+    thirdPlacedDesc: 'Die 8 besten Drittplatzierten qualifizieren sich für das Achtelfinale',
+    thirdPlacedNote: 'Berechnet basierend auf deinen Tipps',
+    thirdPlacedInfo: 'Die <strong style="color: #10b981">8 besten Dritten</strong> qualifizieren sich. Die <strong style="color: #ef4444">4 schlechtesten</strong> scheiden aus.',
+    qualifies: 'qualifiziert',
+    eliminated: 'ausgeschieden',
+    out: 'Aus',
+    advances: '✅ Weiter',
+    advancesOut: '📺 Aus',
+    noResultsYet: 'Noch keine Ergebnisse vorhanden',
+    status: 'Status',
+
+    // Knockout Round
+    roundOf32: 'Achtelfinale',
+    roundOf16: 'Achtelfinale',
+    quarterFinals: 'Viertelfinale',
+    semiFinals: 'Halbfinale',
+    thirdPlace: 'Spiel um Platz 3',
+    final: 'Finale',
+    koLockedHint: '🔒 K.O.-Runde wird nach Abschluss der Gruppenphase freigeschaltet',
+    koLockedTitle: 'K.O.-Runde noch gesperrt',
+    koLockedDesc: 'Tipps werden nach Abschluss der Vorrunde freigeschaltet',
+    
+    // Knockout Placeholders
+    winnerGroup: 'Sieger Gruppe',
+    runnerUpGroup: 'Zweiter Gruppe',
+    thirdPlaceGroup: 'Dritter Gruppe',
+    
+    // Match Types
+    typeGroup: 'Gruppenphase',
+    typeRoundOf32: 'Achtelfinale',
+    typeRoundOf16: 'Achtelfinale',
+    typeQuarter: 'Viertelfinale',
+    typeSemi: 'Halbfinale',
+    typeThird: 'Spiel um Platz 3',
+    typeFinal: 'Finale',
+    
+    // Phase names for KO display
+    phase32tel: 'Achtelfinale',
+    phaseAchtel: 'Achtelfinale',
+    phaseViertel: 'Viertelfinale',
+    phaseHalb: 'Halbfinale',
+    phaseDritter: 'Spiel um Platz 3',
+    phaseFinale: 'Finale',
+
+    // Rankings Section
+    rankingsTitle: '📺 Ranglisten',
+    wmPollTitle: 'WM-Sieger Prognose',
+    globalRanking: 'Globale Rangliste',
+    privateRankings: 'Private Ranglisten',
+    votesSubmitted: 'Stimmen abgegeben',
+    noVotesYet: 'Noch keine Stimmen abgegeben',
+    goToMatches: 'Gehe zu "Spiele" um abzustimmen!',
+    votes: 'Stimmen',
+    leagueNotFound: 'Liga nicht gefunden.',
+    noPlayersYet: 'Noch keine Spieler',
+    unknownPlayer: 'Unbekannt',
+    youLabel: 'DU',
+    pts: 'Pkt',
+    
+    // Ranking Tabs
+    pollTab: '🗳️ WM-Poll',
+    globalTab: '🌐 Global',
+    privateTab: '📺 Privat',
+    
+    // Private Rankings
+    createRanking: 'Neue Rangliste erstellen',
+    joinRanking: 'Rangliste beitreten',
+    rankingName: 'Name der Rangliste',
+    rankingNamePlaceholder: 'Name der Rangliste...',
+    enterCode: 'Code eingeben',
+    enterCodePlaceholder: 'Beitrittscode eingeben...',
+    create: 'Erstellen',
+    join: 'Beitreten',
+    share: 'Teilen',
+    qrCode: 'QR-Code',
+    qrCodeToJoin: 'QR-Code zum Beitreten',
+    copy: 'Kopieren',
+    copyLink: 'Link kopieren',
+    copied: 'Kopiert!',
+    codeCopied: 'Code kopiert!',
+    linkCopied: 'Link kopiert!',
+    sendInvitation: 'Einladung per Nachricht senden',
+    directLinkToJoin: 'Direkt-Link zum Beitreten',
+    joinCode: 'Beitrittscode',
+    globalRankingDesc: 'Alle registrierten Spieler im direkten Vergleich. Tippe richtig und klettere nach oben!',
+    yourPosition: 'Deine Position',
+    inviteViaWhatsApp: 'Per WhatsApp einladen',
+    inviteMessage: 'Tritt meiner WM 2026 Tippspiel-Rangliste bei!',
+    rank: 'Rang',
+    player: 'Spieler',
+    members: 'Mitglieder',
+    code: 'Code',
+    noLeagues: 'Noch keine Ranglisten',
+    createOrJoin: 'Erstelle eine neue Rangliste oder tritt einer bei!',
+    myRankings: 'Meine Ranglisten',
+    viewRanking: 'Rangliste ansehen',
+    backToMyRankings: 'Zurück zu meinen Ranglisten',
+    invite: 'Einladen',
+    loadingMembers: 'Lade Mitglieder...',
+    noMembersYet: 'Noch keine Mitglieder',
+    scanQRorLink: 'Du kannst auch einen QR-Code scannen oder einen Einladungslink nutzen',
+    shareRanking: 'Rangliste teilen',
+    scanToJoin: 'Code scannen zum Beitreten',
+    orEnterCode: 'Oder Code manuell eingeben:',
+    
+    // WM Poll
+    pollTitle: 'Wer wird Weltmeister 2026?',
+    pollSubtitle: 'Wähle deinen Favoriten aus allen 48 Teams!',
+    voteLater: 'Später abstimmen',
+    pollResultsTitle: 'Aktueller Abstimmungsstand',
+    pollTotalVotes: 'Stimmen insgesamt',
+    pollYourVote: 'Deine Wahl',
+    pollContinueToTrivia: 'Weiter zum Quiz',
+    pollNoVotesYet: 'Noch keine Stimmen abgegeben',
+    yourVote: 'Deine Stimme',
+    alreadyVoted: 'Du hast bereits abgestimmt',
+    totalVotes: 'Stimmen insgesamt',
+    voteNow: 'Jetzt abstimmen',
+    changeVote: 'Stimme ändern',
+    topFavorites: 'Top Favoriten',
+    
+    // WM Poll - Stars display
+    worldChampion: 'Weltmeister',
+    worldChampions: 'Weltmeister',
+
+    // Trivia Section
+    triviaTitle: '🧠 WM Trivia Quiz',
+    question: 'Frage',
+    score: 'Punkte',
+    correct: '✓ Richtig! +10 Punkte',
+    wrong: '✗ Falsch!',
+    correctAnswer: 'Richtige Antwort',
+    nextQuestion: 'Nächste Frage',
+    newRound: 'Neue Runde starten',
+    roundComplete: 'Runde beendet!',
+    yourScore: 'Dein Ergebnis',
+    outOf: 'von',
+    questionsAnswered: 'Fragen beantwortet',
+    easy: 'Leicht',
+    medium: 'Mittel',
+    hard: 'Schwer',
+    loadingQuestions: 'Lade Fragen...',
+    noQuestions: 'Keine Fragen in dieser Kategorie',
+    noQuestionsFound: 'Keine Fragen gefunden',
+    tryAgain: 'Erneut laden',
+    reloadQuestions: 'Erneut laden',
+    watchVideo: 'Video ansehen',
+    noExplanation: 'Keine Erklärung verfügbar.',
+    triviaEnglishNotice: 'Englische Übersetzungen werden hinzugefügt. Einige Fragen können noch auf Deutsch erscheinen.',
+    triviaPolishNotice: 'Polnische Übersetzungen werden hinzugefügt. Einige Fragen können noch auf Deutsch oder Englisch erscheinen.',
+    
+    // Trivia Results
+    triviaResultChampion: 'Weltmeister! 🥇',
+    triviaResultGreat: 'Sehr gut! 🥈',
+    triviaResultGood: 'Gut gespielt! 🥉',
+    triviaResultPractice: 'Weiter üben! 💪',
+    
+    // Trivia Stats
+    triviaStatsQuestions: 'Fragen',
+    triviaStatsCategories: 'Kategorien',
+    triviaStatsDifficulties: 'Schwierigkeiten',
+
+    // Guide Section
+    guideTitle: '📺 WM 2026 Fan-Guide',
+    guideLockedTitle: 'Guide kommt bald',
+    guideLockedDescription: 'Der komplette Fan-Guide zur WM 2026 mit Reisetipps, Stadion-Infos und mehr wird in Kürze freigeschaltet.',
+
+    // Sentiment Section
+    sentimentTitle: 'Wöchentliches Stimmungsbarometer',
+    sentimentComingSoon: 'Bald verfügbar!',
+    sentimentDescription: 'Bald siehst du hier wöchentliche Stimmungsanalysen aller Teams basierend auf Social Media, News und Fan-Umfragen.',
+    sentimentFeature1: 'Fan-Stimmungs-Tracker',
+    sentimentFeature2: 'Social Media Puls',
+    sentimentFeature3: 'Weltweiter Team-Support',
+    sentimentFeature4: 'Wochenanalyse',
+    
+    // Sentiment Barometer
+    wcMood: 'WM-Stimmung',
+    articlesAnalyzed: 'Artikel analysiert',
+
+    // Auth Modal
+    loginTitle: 'Anmelden',
+    registerTitle: 'Registrieren',
+    email: 'E-Mail',
+    password: 'Passwort',
+    confirmPassword: 'Passwort bestätigen',
+    username: 'Benutzername',
+    loginButton: 'Anmelden',
+    registerButton: 'Registrieren',
+    noAccount: 'Noch kein Konto?',
+    hasAccount: 'Bereits ein Konto?',
+    forgotPassword: 'Passwort vergessen?',
+    loginError: 'Anmeldung fehlgeschlagen',
+    registerError: 'Registrierung fehlgeschlagen',
+    registerSuccess: 'Registrierung erfolgreich! Bitte bestätige deine E-Mail.',
+    resetPassword: 'Passwort zurücksetzen',
+    newPassword: 'Neues Passwort setzen',
+    emailLogin: 'Login mit E-Mail-Code',
+    verifyCode: 'Code bestätigen',
+    codePlaceholder: '123456',
+    sendResetLink: 'Reset-Link senden',
+    sendCode: 'Code senden',
+    verifyBtn: 'Bestätigen',
+    setNewPassword: 'Passwort speichern',
+    resendCode: 'Code erneut senden',
+    backToLogin: 'Zurück zum Login',
+    loginWithCode: 'Login mit E-Mail-Code (ohne Passwort)',
+    loginWithPassword: 'Login mit Passwort',
+    resetLinkSent: 'Reset-Link wurde an deine E-Mail gesendet!',
+    codeSent: 'Code wurde an deine E-Mail gesendet!',
+    checkEmail: 'Bitte überprüfe dein E-Mail-Postfach.',
+    codeExpiry: 'Der Code ist 1 Stunde gültig.',
+    passwordUpdated: 'Passwort erfolgreich geändert!',
+    enterNewPassword: 'Gib dein neues Passwort ein.',
+    codeSentTo: 'Code gesendet an',
+    sendCode6Digit: 'Wir senden dir einen 6-stelligen Code per E-Mail.',
+    signUpWithGoogle: 'Mit Google registrieren',
+    loginWithGoogle: 'Mit Google anmelden',
+    secureConnection: '🔒 Sichere Verbindung',
+    emailPlaceholder: 'deine@email.com',
+    passwordPlaceholder: 'Mindestens 12 Zeichen',
+    usernamePlaceholder: 'Dein Anzeigename',
+    errorInvalidEmail: 'Bitte gib eine gültige E-Mail-Adresse ein.',
+    errorPasswordShort: 'Passwort muss mindestens 6 Zeichen haben.',
+    errorPasswordMatch: 'Passwörter stimmen nicht überein.',
+    errorInvalidCode: 'Ungültiger Code. Bitte versuche es erneut.',
+    errorGeneric: 'Ein Fehler ist aufgetreten. Bitte versuche es erneut.',
+    errorUserExists: 'Diese E-Mail ist bereits registriert.',
+    errorInvalidCredentials: 'Ungültige E-Mail oder Passwort.',
+    errorRateLimit: 'Zu viele Versuche. Bitte warte 60 Sekunden.',
+    errorUsernameTaken: 'Dieser Benutzername ist bereits vergeben.',
+    errorUsernameShort: 'Benutzername muss mindestens 3 Zeichen haben.',
+    errorUsernameInvalid: 'Benutzername darf nur Buchstaben, Zahlen und Unterstriche enthalten.',
+    errorPasswordWeak: 'Passwort zu schwach. Mind. 12 Zeichen mit 1 Großbuchstabe, 1 Kleinbuchstabe, 1 Zahl und 1 Sonderzeichen.',
+    checkingUsername: 'Prüfe Verfügbarkeit...',
+    usernameAvailable: '✓ Verfügbar',
+
+    // Footer
+    footerTitle: 'WM 2026 Tippspiel',
+    footerDate: '11. Juni - 19. Juli 2026',
+    footerCountries: 'USA • Kanada • Mexiko',
+    footerTeams: '48 Teams • 104 Spiele',
+
+    // General
+    save: 'Speichern',
+    cancel: 'Abbrechen',
+    close: 'Schließen',
+    loading: 'Lade...',
+    error: 'Fehler',
+    success: 'Erfolg',
+    confirm: 'Bestätigen',
+    back: 'Zurück',
+    next: 'Weiter',
+    yes: 'Ja',
+    no: 'Nein',
+
+    // Join/Participate
+    joinAndVote: 'Mitmachen und abstimmen!',
+    signUpToVote: 'Registriere dich, um abzustimmen und in den Ranglisten zu erscheinen.',
+    signUpToPredict: 'Registriere dich zum Tippen!',
+    signUpNow: 'Jetzt registrieren',
+    loginToPredict: 'Anmelden zum Tippen',
+
+    // ==================== FAN GUIDE ====================
+    guideHeaderTitle: '📺 FIFA WM 2026 FAN-GUIDE',
+    guideHeaderSubtitle: 'Streaming • Tickets • Reisen • Merch',
+    guideHeaderInfo: 'Alles was DACH-Fans wissen müssen',
+    guideStreaming: '📺 Streaming',
+    guideTickets: '🎫 Tickets',
+    guideTravel: '✈️ Reisen',
+    guideMerchandise: '👕 Merch',
+    guideGermany: 'Deutschland',
+    guideAustria: 'Österreich',
+    guideSwitzerland: 'Schweiz',
+    guideFreeGamesDE: '60/104 gratis',
+    guideFreeGamesAT: '104/104 gratis',
+    guideFreeGamesCH: '104/104 gratis',
+    guideVpnTitle: 'Von überall WM schauen',
+    guideVpnSubtitle: 'Im Urlaub? Mit VPN streamst du ARD & ZDF auch im Ausland.',
+    guideRecommended: 'EMPFOHLEN',
+    guideAllGames: 'ALLE 104',
+    guideFree: 'Kostenlos',
+    guideGames: 'Spiele',
+    guideFrom: 'ab',
+    guidePerMonth: '/Mo',
+    guideConference: 'Konferenz',
+    guideTicketsSubtitle: 'WM 2026 Tickets',
+    guideOfficialSale: 'Offizieller Verkauf',
+    guideRegistrationRequired: 'Registrierung erforderlich',
+    guideLottery: 'Losverfahren für deutsche Spiele',
+    guidePrices: 'Preise',
+    guideCategory1: 'Kategorie 1',
+    guideCategory3: 'Kategorie 3',
+    guideStartSale: 'Verkaufsstart',
+    guideExpected: 'Voraussichtlich',
+    guideTips: 'Tipps',
+    guideTicketTip1: 'Früh registrieren für Newsletter',
+    guideTicketTip2: 'Offizielle FIFA-Seite nutzen',
+    guideTicketTip3: 'Keine Tickets bei Drittanbietern kaufen',
+    guideOfficialPortal: 'Offizielles FIFA Ticket-Portal',
+    guideTravelTitle: '✈️ Reise-Tipps',
+    guideVisa: 'Visum',
+    guideVisaUSA: 'ESTA für USA erforderlich',
+    guideVisaCanada: 'eTA für Kanada erforderlich',
+    guideVisaMexico: 'Visa-frei bis 180 Tage',
+    guideFlights: 'Flüge',
+    guideAccommodation: 'Unterkunft',
+    guideBestTime: 'Beste Buchungszeit',
+    guideBestTimeInfo: '6-9 Monate im Voraus',
+    guideBookEarly: 'Früh buchen',
+    guidePricesRising: 'Preise steigen',
+    guideCompareFlights: 'Flüge vergleichen',
+    guideCheckHotels: 'Hotels prüfen',
+    guideMerchTitle: '👕 Fan-Artikel',
+    guideJerseys: 'Trikots',
+    guideAccessories: 'Accessoires',
+    guideMatchBalls: 'Spielbälle',
+    guideCollectibles: 'Sammlerstücke',
+    guideDfbShop: 'DFB-Fanshop',
+    guideFifaStore: 'FIFA Store',
+    guideAffiliateHint: '* Affiliate-Links - bei Kauf erhalten wir eine kleine Provision',
+  },
+  
+  // ==================== ENGLISH ====================
+  en: {
+    // App Header
+    appTitle: 'World Cup 2026',
+    appSubtitle: 'June 11 - July 19',
+    points: 'Points',
+    logout: 'Logout',
+    login: 'Login',
+    register: 'Register',
+
+    // Navigation Tabs
+    tabNews: '📰 News',
+    tabVideos: '🎬 Videos',
+    tabMatches: '⚽ Matches',
+    tabRankings: '📺 Rankings',
+    tabTrivia: '🧠 Trivia',
+    tabGuide: '📺 Guide',
+    tabSentiment: '📊 Sentiment',
+
+    // Countdown
+    days: 'Days',
+    hours: 'Hrs',
+    minutes: 'Min',
+    seconds: 'Sec',
+
+    // News Section
+    newsTitle: '📰 Latest News',
+    newsUpdating: 'Updating...',
+    newsLive: 'Live News • Auto-Update',
+    newsLoading: 'Loading latest news...',
+    newsReadArticle: 'Read article →',
+    newsError: 'Failed to load live news.',
+    newsCountryFlags: '🇺🇸 🇬🇧',
+    
+    // Dummy News (Fallback)
+    dummyNews1Title: 'World Cup 2026: New $60 Supporter Tickets announced',
+    dummyNews1Summary: 'FIFA responds to criticism of high ticket prices.',
+    dummyNews2Title: 'Germany Group: Potential opponents',
+    dummyNews2Summary: 'World Cup group draw coming soon.',
+    dummyNews3Title: 'MagentaTV secures all 104 matches',
+    dummyNews3Summary: 'ARD/ZDF show 60 matches free.',
+    dummyNews4Title: 'Germany Kit 2026: Final adidas design revealed',
+    dummyNews4Summary: 'Partnership ends after 70 years.',
+    dummyNews5Title: 'MetLife Stadium to host the Final',
+    dummyNews5Summary: '16 stadiums in 3 countries.',
+    tagStadiums: 'Stadiums',
+    
+    // Trivia Results
+    noExplanation: 'No explanation available.',
+    triviaWorldChampion: 'World Champion! 🥇',
+    triviaVeryGood: 'Very good! 🥈',
+    triviaWellPlayed: 'Well played! 🥉',
+    triviaKeepPracticing: 'Keep practicing! 💪',
+    
+    // Sentiment Features
+    sentimentFanMood: 'Fan Mood Tracker',
+    sentimentSocialPulse: 'Social Media Pulse',
+    sentimentGlobalSupport: 'Global Team Support',
+    sentimentWeeklyAnalysis: 'Weekly Analysis',
+    
+    // Trivia Language Notice
+    triviaLanguageNotice: '',
+
+    // Videos Section
+    videosTitle: '🎬 World Cup Videos',
+    videosAll: 'All',
+    videosHighlights: 'Highlights',
+    videosGermany: 'Germany',
+    videosPoland: 'Poland',
+    videosSongs: 'Songs',
+    videosClassics: 'Classics',
+    videosWC2026: 'WC 2026',
+    videosYoutubeHint: 'Click opens YouTube search with the best available videos',
+
+    // Matches Section
+    matchesTitle: '⚽ Matches & Predictions',
+    yourPredictions: 'Your Predictions',
+    allMatches: 'All Matches',
+    groups: 'Groups',
+    thirdPlaced: 'Third-Placed',
+    knockoutRound: 'Knockout Round',
+    groupStage: 'Group Stage',
+    matchesGroup: 'Group Matches',
+    
+    // Sub Tabs
+    allMatchesTab: '📋 All Matches',
+    groupsTab: '📺 Groups',
+    thirdPlacedTab: '🥉 Third-Placed',
+    koTab: '🎯 Knockout',
+    groupMatches: 'Group Matches',
+    
+    // Quick Fill
+    quickFill: 'Quick Fill:',
+    fillAllOpen: 'Fill all open matches at once',
+    allRandom: 'All Random',
+    allAI: 'All AI',
+    resetAll: 'Reset',
+    allMatchesHavePredictions: 'All matches already have predictions or are locked!',
+    fillConfirm: 'open matches with',
+    aiPredictions: 'AI predictions?',
+    randomPredictions: 'random predictions?',
+    noPredictionsToReset: 'No predictions to reset!',
+    deleteConfirm: 'Delete predictions? This cannot be undone!',
+    
+    // Match Info Box
+    howItWorks: 'How it works:',
+    howItWorksDesc: 'Predict the score for each match.',
+    exactResult: 'Exact prediction',
+    exactResultPoints: '3 points',
+    correctTendency: 'Correct tendency',
+    correctTendencyPoints: '1 point',
+    useButtons: 'Use',
+    forQuickPredictions: 'for quick predictions!',
+    predictionsUntilKickoff: 'Predictions possible until kickoff.',
+    onlyAfterLogin: 'Predictions require registration/login.',
+    predictionsRequireLogin: '🔒 Predictions require registration/login.',
+    random: 'Random',
+    ai: 'AI',
+    or: 'or',
+    
+    // Match Card
+    matches: 'matches',
+    match: 'Match',
+    locked: '🔒 Locked',
+    lockedShort: 'Locked',
+    freeTV: 'FREE TV',
+    abroad: 'Abroad?',
+    abroadTip: 'Stream with VPN',
+    localTime: 'Local time',
+    venue: 'Venue',
+    referee: 'Referee',
+    capacity: 'Capacity',
+    cetTime: 'CET',
+    localTimeLabel: 'Local',
+    homeTeams: 'Home Teams:',
+    gr: 'Gr.',
+    
+    // Filter
+    filter: 'Filter',
+    all: 'All',
+    byGroup: 'By Group',
+    byTeam: 'By Team',
+    byMatchday: 'By Matchday',
+    matchday: 'Matchday',
+
+    // Groups
+    group: 'Group',
+    groupA: 'Group A', groupB: 'Group B', groupC: 'Group C', groupD: 'Group D',
+    groupE: 'Group E', groupF: 'Group F', groupG: 'Group G', groupH: 'Group H',
+    groupI: 'Group I', groupJ: 'Group J', groupK: 'Group K', groupL: 'Group L',
+
+    // Group Table
+    groupTable: 'Group Table',
+    team: 'Team',
+    played: 'P',
+    won: 'W',
+    drawn: 'D',
+    lost: 'L',
+    goalsFor: 'GF',
+    goalsAgainst: 'GA',
+    goalDifference: 'GD',
+    pointsShort: 'Pts',
+    
+    // Group Table Legend
+    pos12advance: 'Rank 1-2 advance',
+    pos3maybe: 'Rank 3 may advance',
+    posOut: 'Out',
+    groupLegend: '🟢 Rank 1-2 advance • 🟡 Rank 3 may advance • 🔴 Out',
+
+    // Playoff
+    playoffOpen: 'Play-off pending',
+    playoffUEFA: 'UEFA',
+    playoffIntercontinental: 'Intercontinental',
+
+    // Third-placed Table
+    thirdPlacedTitle: '🥉 Third-Placed Ranking',
+    thirdPlacedDesc: 'The 8 best third-placed teams qualify for the Round of 16',
+    thirdPlacedNote: 'Calculated based on your predictions',
+    thirdPlacedInfo: 'The <strong style="color: #10b981">8 best third-placed teams</strong> qualify. The <strong style="color: #ef4444">4 worst</strong> are eliminated.',
+    qualifies: 'qualifies',
+    eliminated: 'eliminated',
+    out: 'Out',
+    advances: '✅ Advances',
+    advancesOut: '📺 Out',
+    noResultsYet: 'No results yet',
+    status: 'Status',
+
+    // Knockout Round
+    roundOf32: 'Round of 32',
+    roundOf16: 'Round of 16',
+    quarterFinals: 'Quarter-Finals',
+    semiFinals: 'Semi-Finals',
+    thirdPlace: 'Third Place',
+    final: 'Final',
+    koLockedHint: '🔒 Knockout round unlocks after group stage',
+    koLockedTitle: 'Knockout round still locked',
+    koLockedDesc: 'Predictions unlock after group stage',
+    
+    // Knockout Placeholders
+    winnerGroup: 'Winner Group',
+    runnerUpGroup: 'Runner-up Group',
+    thirdPlaceGroup: 'Third Place Group',
+    
+    // Match Types
+    typeGroup: 'Group Stage',
+    typeRoundOf32: 'Round of 32',
+    typeRoundOf16: 'Round of 16',
+    typeQuarter: 'Quarter-Finals',
+    typeSemi: 'Semi-Finals',
+    typeThird: 'Third Place',
+    typeFinal: 'Final',
+    
+    // Phase names for KO display
+    phase32tel: 'Round of 32',
+    phaseAchtel: 'Round of 16',
+    phaseViertel: 'Quarter-Finals',
+    phaseHalb: 'Semi-Finals',
+    phaseDritter: 'Third Place',
+    phaseFinale: 'Final',
+
+    // Rankings Section
+    rankingsTitle: '📺 Rankings',
+    wmPollTitle: 'World Cup Winner Poll',
+    globalRanking: 'Global Ranking',
+    privateRankings: 'Private Rankings',
+    votesSubmitted: 'votes submitted',
+    noVotesYet: 'No votes yet',
+    goToMatches: 'Go to "Matches" to vote!',
+    votes: 'Votes',
+    leagueNotFound: 'League not found.',
+    noPlayersYet: 'No players yet',
+    unknownPlayer: 'Unknown',
+    youLabel: 'YOU',
+    pts: 'Pts',
+    
+    // Ranking Tabs
+    pollTab: '🗳️ WC Poll',
+    globalTab: '🌐 Global',
+    privateTab: '📺 Private',
+    
+    // Private Rankings
+    createRanking: 'Create New Ranking',
+    joinRanking: 'Join Ranking',
+    rankingName: 'Ranking name',
+    rankingNamePlaceholder: 'Ranking name...',
+    enterCode: 'Enter code',
+    enterCodePlaceholder: 'Enter join code...',
+    create: 'Create',
+    join: 'Join',
+    share: 'Share',
+    qrCode: 'QR Code',
+    qrCodeToJoin: 'QR Code to Join',
+    copy: 'Copy',
+    copyLink: 'Copy Link',
+    copied: 'Copied!',
+    codeCopied: 'Code copied!',
+    linkCopied: 'Link copied!',
+    sendInvitation: 'Send invitation',
+    directLinkToJoin: 'Direct link to join',
+    joinCode: 'Join Code',
+    globalRankingDesc: 'All registered players in direct comparison. Predict correctly and climb up!',
+    yourPosition: 'Your Position',
+    inviteViaWhatsApp: 'Invite via WhatsApp',
+    inviteMessage: 'Join my World Cup 2026 prediction ranking!',
+    rank: 'Rank',
+    player: 'Player',
+    members: 'Members',
+    code: 'Code',
+    noLeagues: 'No rankings yet',
+    createOrJoin: 'Create a new ranking or join one!',
+    myRankings: 'My Rankings',
+    viewRanking: 'View Ranking',
+    backToMyRankings: 'Back to my rankings',
+    invite: 'Invite',
+    loadingMembers: 'Loading members...',
+    noMembersYet: 'No members yet',
+    scanQRorLink: 'You can also scan a QR code or use an invite link',
+    shareRanking: 'Share Ranking',
+    scanToJoin: 'Scan to join',
+    orEnterCode: 'Or enter code manually:',
+
+    // WM Poll
+    pollTitle: 'Who will win the 2026 World Cup?',
+    pollSubtitle: 'Choose your favorite from all 48 teams!',
+    voteLater: 'Vote later',
+    pollResultsTitle: 'Current Poll Results',
+    pollTotalVotes: 'total votes',
+    pollYourVote: 'Your vote',
+    pollContinueToTrivia: 'Continue to Trivia',
+    pollNoVotesYet: 'No votes yet',
+    yourVote: 'Your vote',
+    alreadyVoted: 'You already voted',
+    totalVotes: 'Total votes',
+    voteNow: 'Vote now',
+    changeVote: 'Change vote',
+    topFavorites: 'Top Favorites',
+    
+    // WM Poll - Stars display
+    worldChampion: 'World Champion',
+    worldChampions: 'World Champions',
+
+    // Trivia Section
+    triviaTitle: '🧠 World Cup Trivia Quiz',
+    question: 'Question',
+    score: 'Score',
+    correct: '✓ Correct! +10 points',
+    wrong: '✗ Wrong!',
+    correctAnswer: 'Correct answer',
+    nextQuestion: 'Next Question',
+    newRound: 'Start New Round',
+    roundComplete: 'Round Complete!',
+    yourScore: 'Your Score',
+    outOf: 'of',
+    questionsAnswered: 'questions answered',
+    easy: 'Easy',
+    medium: 'Medium',
+    hard: 'Hard',
+    loadingQuestions: 'Loading questions...',
+    noQuestions: 'No questions in this category',
+    noQuestionsFound: 'No questions found',
+    tryAgain: 'Try again',
+    reloadQuestions: 'Reload',
+    watchVideo: 'Watch video',
+    noExplanation: 'No explanation available.',
+    triviaEnglishNotice: 'English translations are being added. Some questions may still appear in German.',
+    triviaPolishNotice: 'Polish translations are being added. Some questions may still appear in German or English.',
+    
+    // Trivia Results
+    triviaResultChampion: 'World Champion! 🥇',
+    triviaResultGreat: 'Great job! 🥈',
+    triviaResultGood: 'Well played! 🥉',
+    triviaResultPractice: 'Keep practicing! 💪',
+    
+    // Trivia Stats
+    triviaStatsQuestions: 'Questions',
+    triviaStatsCategories: 'Categories',
+    triviaStatsDifficulties: 'Difficulties',
+
+    // Guide Section
+    guideTitle: '📺 World Cup 2026 Fan Guide',
+    guideLockedTitle: 'Guide coming soon',
+    guideLockedDescription: 'The complete fan guide for World Cup 2026 with travel tips, stadium info and more will be available soon.',
+
+    // Sentiment Section
+    sentimentTitle: 'Weekly Sentiment Barometer',
+    sentimentComingSoon: 'Coming soon!',
+    sentimentDescription: 'Soon you\'ll see weekly sentiment analyses of all teams based on social media, news and fan surveys.',
+    sentimentFeature1: 'Fan Mood Tracker',
+    sentimentFeature2: 'Social Media Pulse',
+    sentimentFeature3: 'Worldwide Team Support',
+    sentimentFeature4: 'Weekly Analysis',
+    
+    // Sentiment Barometer
+    wcMood: 'Tournament Sentiment',
+    articlesAnalyzed: 'articles analyzed',
+
+    // Auth Modal
+    loginTitle: 'Login',
+    registerTitle: 'Register',
+    email: 'Email',
+    password: 'Password',
+    confirmPassword: 'Confirm Password',
+    username: 'Username',
+    loginButton: 'Login',
+    registerButton: 'Register',
+    noAccount: "Don't have an account?",
+    hasAccount: 'Already have an account?',
+    forgotPassword: 'Forgot password?',
+    loginError: 'Login failed',
+    registerError: 'Registration failed',
+    registerSuccess: 'Registration successful! Please confirm your email.',
+    resetPassword: 'Reset Password',
+    newPassword: 'Set New Password',
+    emailLogin: 'Login with Email Code',
+    verifyCode: 'Verify Code',
+    codePlaceholder: '123456',
+    sendResetLink: 'Send Reset Link',
+    sendCode: 'Send Code',
+    verifyBtn: 'Verify',
+    setNewPassword: 'Save Password',
+    resendCode: 'Resend Code',
+    backToLogin: 'Back to Login',
+    loginWithCode: 'Login with Email Code (no password)',
+    loginWithPassword: 'Login with Password',
+    resetLinkSent: 'Reset link sent to your email!',
+    codeSent: 'Code sent to your email!',
+    checkEmail: 'Please check your email inbox.',
+    codeExpiry: 'The code is valid for 1 hour.',
+    passwordUpdated: 'Password updated successfully!',
+    enterNewPassword: 'Enter your new password.',
+    codeSentTo: 'Code sent to',
+    sendCode6Digit: "We'll send you a 6-digit code via email.",
+    signUpWithGoogle: 'Sign up with Google',
+    loginWithGoogle: 'Login with Google',
+    secureConnection: '🔒 Secure Connection',
+    emailPlaceholder: 'your@email.com',
+    passwordPlaceholder: 'At least 12 characters',
+    usernamePlaceholder: 'Your display name',
+    errorInvalidEmail: 'Please enter a valid email address.',
+    errorPasswordShort: 'Password must be at least 6 characters.',
+    errorPasswordMatch: 'Passwords do not match.',
+    errorInvalidCode: 'Invalid code. Please try again.',
+    errorGeneric: 'An error occurred. Please try again.',
+    errorUserExists: 'This email is already registered.',
+    errorInvalidCredentials: 'Invalid email or password.',
+    errorRateLimit: 'Too many attempts. Please wait 60 seconds.',
+    errorUsernameTaken: 'This username is already taken.',
+    errorUsernameShort: 'Username must be at least 3 characters.',
+    errorUsernameInvalid: 'Username can only contain letters, numbers, and underscores.',
+    errorPasswordWeak: 'Password too weak. Min. 12 chars with 1 uppercase, 1 lowercase, 1 number, and 1 special character.',
+    checkingUsername: 'Checking availability...',
+    usernameAvailable: '✓ Available',
+
+    // Footer
+    footerTitle: 'World Cup 2026 Prediction Game',
+    footerDate: 'June 11 - July 19, 2026',
+    footerCountries: 'USA • Canada • Mexico',
+    footerTeams: '48 Teams • 104 Matches',
+
+    // General
+    save: 'Save',
+    cancel: 'Cancel',
+    close: 'Close',
+    loading: 'Loading...',
+    error: 'Error',
+    success: 'Success',
+    confirm: 'Confirm',
+    back: 'Back',
+    next: 'Next',
+    yes: 'Yes',
+    no: 'No',
+
+    // Join/Participate
+    joinAndVote: 'Join and vote!',
+    signUpToVote: 'Sign up to vote and appear in the rankings.',
+    signUpToPredict: 'Sign up to make predictions!',
+    signUpNow: 'Sign up now',
+    loginToPredict: 'Login to predict',
+
+    // ==================== FAN GUIDE ====================
+    guideHeaderTitle: '📺 FIFA WORLD CUP 2026 FAN GUIDE',
+    guideHeaderSubtitle: 'Streaming • Tickets • Travel • Merch',
+    guideHeaderInfo: 'Everything fans need to know',
+    guideStreaming: '📺 Streaming',
+    guideTickets: '🎫 Tickets',
+    guideTravel: '✈️ Travel',
+    guideMerchandise: '👕 Merch',
+    guideGermany: 'Germany',
+    guideAustria: 'Austria',
+    guideSwitzerland: 'Switzerland',
+    guideFreeGamesDE: '60/104 free',
+    guideFreeGamesAT: '104/104 free',
+    guideFreeGamesCH: '104/104 free',
+    guideVpnTitle: 'Watch World Cup from anywhere',
+    guideVpnSubtitle: 'On vacation? With VPN you can stream local TV abroad.',
+    guideRecommended: 'RECOMMENDED',
+    guideAllGames: 'ALL 104',
+    guideFree: 'Free',
+    guideGames: 'games',
+    guideFrom: 'from',
+    guidePerMonth: '/mo',
+    guideConference: 'Multi-Game',
+    guideTicketsSubtitle: 'World Cup 2026 Tickets',
+    guideOfficialSale: 'Official Sale',
+    guideRegistrationRequired: 'Registration required',
+    guideLottery: 'Lottery for popular games',
+    guidePrices: 'Prices',
+    guideCategory1: 'Category 1',
+    guideCategory3: 'Category 3',
+    guideStartSale: 'Sales Start',
+    guideExpected: 'Expected',
+    guideTips: 'Tips',
+    guideTicketTip1: 'Register early for newsletter',
+    guideTicketTip2: 'Use official FIFA website',
+    guideTicketTip3: 'Don\'t buy from third parties',
+    guideOfficialPortal: 'Official FIFA Ticket Portal',
+    guideTravelTitle: '✈️ Travel Tips',
+    guideVisa: 'Visa',
+    guideVisaUSA: 'ESTA required for USA',
+    guideVisaCanada: 'eTA required for Canada',
+    guideVisaMexico: 'Visa-free up to 180 days',
+    guideFlights: 'Flights',
+    guideAccommodation: 'Accommodation',
+    guideBestTime: 'Best booking time',
+    guideBestTimeInfo: '6-9 months in advance',
+    guideBookEarly: 'Book early',
+    guidePricesRising: 'Prices rising',
+    guideCompareFlights: 'Compare flights',
+    guideCheckHotels: 'Check hotels',
+    guideMerchTitle: '👕 Fan Merchandise',
+    guideJerseys: 'Jerseys',
+    guideAccessories: 'Accessories',
+    guideMatchBalls: 'Match Balls',
+    guideCollectibles: 'Collectibles',
+    guideDfbShop: 'DFB Fan Shop',
+    guideFifaStore: 'FIFA Store',
+    guideAffiliateHint: '* Affiliate links - we receive a small commission on purchases',
+  },
+
+  // ==================== POLISH ====================
+  pl: {
+    // App Header
+    appTitle: 'MŚ 2026',
+    appSubtitle: '11 czerwca - 19 lipca',
+    points: 'Punkty',
+    logout: 'Wyloguj',
+    login: 'Zaloguj',
+    register: 'Rejestracja',
+
+    // Navigation Tabs
+    tabNews: '📰 Aktualności',
+    tabVideos: '🎬 Filmy',
+    tabMatches: '⚽ Mecze',
+    tabRankings: '📺 Rankingi',
+    tabTrivia: '🧠 Trivia',
+    tabGuide: '📺 Przewodnik',
+    tabSentiment: '📊 Nastroje',
+
+    // Countdown
+    days: 'Dni',
+    hours: 'Godz',
+    minutes: 'Min',
+    seconds: 'Sek',
+
+    // News Section
+    newsTitle: '📰 Najnowsze wiadomości',
+    newsUpdating: 'Aktualizowanie...',
+    newsLive: 'Na żywo • Auto-aktualizacja',
+    newsLoading: 'Ładowanie wiadomości...',
+    newsReadArticle: 'Czytaj artykuł →',
+    newsError: 'Nie udało się załadować wiadomości.',
+    newsCountryFlags: '🇵🇱',
+    
+    // Dummy News (Fallback)
+    dummyNews1Title: 'MŚ 2026: Ogłoszono nowe bilety za $60',
+    dummyNews1Summary: 'FIFA reaguje na krytykę wysokich cen biletów.',
+    dummyNews2Title: 'Grupa Niemiec: Potencjalni rywale',
+    dummyNews2Summary: 'Losowanie grup MŚ wkrótce.',
+    dummyNews3Title: 'MagentaTV zabezpiecza wszystkie 104 mecze',
+    dummyNews3Summary: 'ARD/ZDF pokazuje 60 meczów za darmo.',
+    dummyNews4Title: 'Koszulka Niemiec 2026: Ostatni projekt adidas',
+    dummyNews4Summary: 'Partnerstwo kończy się po 70 latach.',
+    dummyNews5Title: 'MetLife Stadium gospodarzem finału',
+    dummyNews5Summary: '16 stadionów w 3 krajach.',
+    tagStadiums: 'Stadiony',
+    
+    // Trivia Results
+    noExplanation: 'Brak wyjaśnienia.',
+    triviaWorldChampion: 'Mistrz Świata! 🥇',
+    triviaVeryGood: 'Bardzo dobrze! 🥈',
+    triviaWellPlayed: 'Dobrze zagrane! 🥉',
+    triviaKeepPracticing: 'Ćwicz dalej! 💪',
+    
+    // Sentiment Features
+    sentimentFanMood: 'Nastrój kibiców',
+    sentimentSocialPulse: 'Puls mediów społecznościowych',
+    sentimentGlobalSupport: 'Globalne wsparcie drużyn',
+    sentimentWeeklyAnalysis: 'Analiza tygodniowa',
+    
+    // Trivia Language Notice
+    triviaLanguageNotice: 'ℹ️ Pytania są wyświetlane po angielsku. Tłumaczenie na polski wkrótce.',
+
+    // Videos Section
+    videosTitle: '🎬 Filmy MŚ',
+    videosAll: 'Wszystkie',
+    videosHighlights: 'Skróty',
+    videosGermany: 'Niemcy',
+    videosPoland: 'Polska',
+    videosSongs: 'Piosenki',
+    videosClassics: 'Klasyki',
+    videosWC2026: 'MŚ 2026',
+    videosYoutubeHint: 'Kliknięcie otwiera wyszukiwarkę YouTube z najlepszymi filmami',
+
+    // Matches Section
+    matchesTitle: '⚽ Mecze i typy',
+    yourPredictions: 'Twoje typy',
+    allMatches: 'Wszystkie mecze',
+    groups: 'Grupy',
+    thirdPlaced: 'Trzecie miejsca',
+    knockoutRound: 'Faza pucharowa',
+    groupStage: 'Faza grupowa',
+    matchesGroup: 'Mecze grupy',
+    
+    // Sub Tabs
+    allMatchesTab: '📋 Wszystkie mecze',
+    groupsTab: '📺 Grupy',
+    thirdPlacedTab: '🥉 Trzecie miejsca',
+    koTab: '🎯 Faza pucharowa',
+    groupMatches: 'Mecze grupy',
+    
+    // Quick Fill
+    quickFill: 'Szybkie wypełnianie:',
+    fillAllOpen: 'Wypełnij wszystkie otwarte mecze naraz',
+    allRandom: 'Wszystkie losowo',
+    allAI: 'Wszystkie AI',
+    resetAll: 'Resetuj',
+    allMatchesHavePredictions: 'Wszystkie mecze mają już typy lub są zablokowane!',
+    fillConfirm: 'otwartych meczów z',
+    aiPredictions: 'typami AI?',
+    randomPredictions: 'losowymi typami?',
+    noPredictionsToReset: 'Brak typów do zresetowania!',
+    deleteConfirm: 'Usunąć typy? Tej operacji nie można cofnąć!',
+    
+    // Match Info Box
+    howItWorks: 'Jak to działa:',
+    howItWorksDesc: 'Wpisz wynik dla każdego meczu.',
+    exactResult: 'Dokładny wynik',
+    exactResultPoints: '3 punkty',
+    correctTendency: 'Prawidłowy trend',
+    correctTendencyPoints: '1 punkt',
+    useButtons: 'Użyj',
+    forQuickPredictions: 'do szybkich typów!',
+    predictionsUntilKickoff: 'Typy możliwe do rozpoczęcia meczu.',
+    onlyAfterLogin: 'Typowanie wymaga rejestracji/logowania.',
+    predictionsRequireLogin: '🔒 Typowanie wymaga rejestracji/logowania.',
+    random: 'Losuj',
+    ai: 'AI',
+    or: 'lub',
+    
+    // Match Card
+    matches: 'mecze',
+    match: 'Mecz',
+    locked: '🔒 Zablokowany',
+    lockedShort: 'Zablok.',
+    freeTV: 'DARMOWA TV',
+    abroad: 'Za granicą?',
+    abroadTip: 'Streamuj przez VPN',
+    localTime: 'Czas lokalny',
+    venue: 'Miejsce',
+    referee: 'Sędzia',
+    capacity: 'Pojemność',
+    cetTime: 'CET',
+    localTimeLabel: 'Lokalny',
+    homeTeams: 'Drużyny gospodarzy:',
+    gr: 'Gr.',
+    
+    // Filter
+    filter: 'Filtr',
+    all: 'Wszystkie',
+    byGroup: 'Wg grupy',
+    byTeam: 'Wg drużyny',
+    byMatchday: 'Wg kolejki',
+    matchday: 'Kolejka',
+
+    // Groups
+    group: 'Grupa',
+    groupA: 'Grupa A', groupB: 'Grupa B', groupC: 'Grupa C', groupD: 'Grupa D',
+    groupE: 'Grupa E', groupF: 'Grupa F', groupG: 'Grupa G', groupH: 'Grupa H',
+    groupI: 'Grupa I', groupJ: 'Grupa J', groupK: 'Grupa K', groupL: 'Grupa L',
+
+    // Group Table
+    groupTable: 'Tabela grupy',
+    team: 'Drużyna',
+    played: 'M',
+    won: 'W',
+    drawn: 'R',
+    lost: 'P',
+    goalsFor: 'BZ',
+    goalsAgainst: 'BS',
+    goalDifference: 'RB',
+    pointsShort: 'Pkt',
+    
+    // Group Table Legend
+    pos12advance: 'Miejsca 1-2 awansują',
+    pos3maybe: 'Miejsce 3 może awansować',
+    posOut: 'Odpada',
+    groupLegend: '🟢 Miejsca 1-2 awansują • 🟡 Miejsce 3 może awansować • 🔴 Odpada',
+
+    // Playoff
+    playoffOpen: 'Baraże w toku',
+    playoffUEFA: 'UEFA',
+    playoffIntercontinental: 'Międzykontynentalny',
+
+    // Third-placed Table
+    thirdPlacedTitle: '🥉 Ranking trzecich miejsc',
+    thirdPlacedDesc: '8 najlepszych drużyn z trzecich miejsc awansuje do 1/8 finału',
+    thirdPlacedNote: 'Obliczone na podstawie twoich typów',
+    thirdPlacedInfo: '<strong style="color: #10b981">8 najlepszych trzecich</strong> awansuje. <strong style="color: #ef4444">4 najsłabsze</strong> odpadają.',
+    qualifies: 'awansuje',
+    eliminated: 'odpada',
+    out: 'Odpada',
+    advances: '✅ Awans',
+    advancesOut: '📺 Odpada',
+    noResultsYet: 'Brak wyników',
+    status: 'Status',
+
+    // Knockout Round
+    roundOf32: '1/16 finału',
+    roundOf16: '1/8 finału',
+    quarterFinals: 'Ćwierćfinały',
+    semiFinals: 'Półfinały',
+    thirdPlace: 'O 3. miejsce',
+    final: 'Finał',
+    koLockedHint: '🔒 Faza pucharowa zostanie odblokowana po fazie grupowej',
+    koLockedTitle: 'Faza pucharowa zablokowana',
+    koLockedDesc: 'Typy zostaną odblokowane po fazie grupowej',
+    
+    // Knockout Placeholders
+    winnerGroup: 'Zwycięzca grupy',
+    runnerUpGroup: 'Drugi grupy',
+    thirdPlaceGroup: 'Trzeci grupy',
+    
+    // Match Types
+    typeGroup: 'Faza grupowa',
+    typeRoundOf32: '1/16 finału',
+    typeRoundOf16: '1/8 finału',
+    typeQuarter: 'Ćwierćfinał',
+    typeSemi: 'Półfinał',
+    typeThird: 'O 3. miejsce',
+    typeFinal: 'Finał',
+    
+    // Phase names for KO display
+    phase32tel: '1/16 finału',
+    phaseAchtel: '1/8 finału',
+    phaseViertel: 'Ćwierćfinały',
+    phaseHalb: 'Półfinały',
+    phaseDritter: 'O 3. miejsce',
+    phaseFinale: 'Finał',
+
+    // Rankings Section
+    rankingsTitle: '📺 Rankingi',
+    wmPollTitle: 'Głosowanie: Mistrz Świata',
+    globalRanking: 'Ranking globalny',
+    privateRankings: 'Rankingi prywatne',
+    votesSubmitted: 'głosów oddanych',
+    noVotesYet: 'Brak głosów',
+    goToMatches: 'Przejdź do "Mecze" aby głosować!',
+    votes: 'Głosy',
+    leagueNotFound: 'Nie znaleziono ligi.',
+    noPlayersYet: 'Brak graczy',
+    unknownPlayer: 'Nieznany',
+    youLabel: 'TY',
+    pts: 'Pkt',
+    
+    // Ranking Tabs
+    pollTab: '🗳️ Głosowanie',
+    globalTab: '🌐 Globalny',
+    privateTab: '📺 Prywatny',
+    
+    // Private Rankings
+    createRanking: 'Utwórz nowy ranking',
+    joinRanking: 'Dołącz do rankingu',
+    rankingName: 'Nazwa rankingu',
+    rankingNamePlaceholder: 'Nazwa rankingu...',
+    enterCode: 'Wpisz kod',
+    enterCodePlaceholder: 'Wpisz kod dołączenia...',
+    create: 'Utwórz',
+    join: 'Dołącz',
+    share: 'Udostępnij',
+    qrCode: 'Kod QR',
+    qrCodeToJoin: 'Kod QR do dołączenia',
+    copy: 'Kopiuj',
+    copyLink: 'Kopiuj link',
+    copied: 'Skopiowano!',
+    codeCopied: 'Kod skopiowany!',
+    linkCopied: 'Link skopiowany!',
+    sendInvitation: 'Wyślij zaproszenie',
+    directLinkToJoin: 'Bezpośredni link do dołączenia',
+    joinCode: 'Kod dołączenia',
+    globalRankingDesc: 'Wszyscy zarejestrowani gracze w bezpośrednim porównaniu. Typuj trafnie i wspinaj się w górę!',
+    yourPosition: 'Twoja pozycja',
+    inviteViaWhatsApp: 'Zaproś przez WhatsApp',
+    inviteMessage: 'Dołącz do mojego rankingu typera MŚ 2026!',
+    rank: 'Pozycja',
+    player: 'Gracz',
+    members: 'Członkowie',
+    code: 'Kod',
+    noLeagues: 'Brak rankingów',
+    createOrJoin: 'Utwórz nowy ranking lub dołącz do istniejącego!',
+    myRankings: 'Moje rankingi',
+    viewRanking: 'Zobacz ranking',
+    backToMyRankings: 'Wróć do moich rankingów',
+    invite: 'Zaproś',
+    loadingMembers: 'Ładowanie członków...',
+    noMembersYet: 'Brak członków',
+    scanQRorLink: 'Możesz też zeskanować kod QR lub użyć linku zaproszenia',
+    shareRanking: 'Udostępnij ranking',
+    scanToJoin: 'Zeskanuj aby dołączyć',
+    orEnterCode: 'Lub wpisz kod ręcznie:',
+
+    // WM Poll
+    pollTitle: 'Kto zostanie Mistrzem Świata 2026?',
+    pollSubtitle: 'Wybierz swojego faworyta spośród 48 drużyn!',
+    voteLater: 'Zagłosuj później',
+    pollResultsTitle: 'Aktualne wyniki głosowania',
+    pollTotalVotes: 'głosów łącznie',
+    pollYourVote: 'Twój głos',
+    pollContinueToTrivia: 'Przejdź do quizu',
+    pollNoVotesYet: 'Brak głosów',
+    yourVote: 'Twój głos',
+    alreadyVoted: 'Już zagłosowałeś',
+    totalVotes: 'Głosów łącznie',
+    voteNow: 'Głosuj teraz',
+    changeVote: 'Zmień głos',
+    topFavorites: 'Top Faworyci',
+    
+    // WM Poll - Stars display
+    worldChampion: 'Mistrz Świata',
+    worldChampions: 'Mistrzów Świata',
+
+    // Trivia Section
+    triviaTitle: '🧠 Quiz o Mistrzostwach Świata',
+    question: 'Pytanie',
+    score: 'Punkty',
+    correct: '✓ Dobrze! +10 punktów',
+    wrong: '✗ Źle!',
+    correctAnswer: 'Prawidłowa odpowiedź',
+    nextQuestion: 'Następne pytanie',
+    newRound: 'Nowa runda',
+    roundComplete: 'Runda zakończona!',
+    yourScore: 'Twój wynik',
+    outOf: 'z',
+    questionsAnswered: 'pytań',
+    easy: 'Łatwy',
+    medium: 'Średni',
+    hard: 'Trudny',
+    loadingQuestions: 'Ładowanie pytań...',
+    noQuestions: 'Brak pytań w tej kategorii',
+    noQuestionsFound: 'Nie znaleziono pytań',
+    tryAgain: 'Spróbuj ponownie',
+    reloadQuestions: 'Załaduj ponownie',
+    watchVideo: 'Obejrzyj film',
+    noExplanation: 'Brak wyjaśnienia.',
+    triviaEnglishNotice: 'Angielskie tłumaczenia są dodawane. Niektóre pytania mogą być jeszcze po niemiecku.',
+    triviaPolishNotice: 'Polskie tłumaczenia są dodawane. Niektóre pytania mogą być jeszcze po niemiecku lub angielsku.',
+    
+    // Trivia Results
+    triviaResultChampion: 'Mistrz Świata! 🥇',
+    triviaResultGreat: 'Świetnie! 🥈',
+    triviaResultGood: 'Dobrze zagrane! 🥉',
+    triviaResultPractice: 'Ćwicz dalej! 💪',
+    
+    // Trivia Stats
+    triviaStatsQuestions: 'Pytań',
+    triviaStatsCategories: 'Kategorii',
+    triviaStatsDifficulties: 'Poziomów',
+
+    // Guide Section
+    guideTitle: '📺 Przewodnik kibica MŚ 2026',
+    guideLockedTitle: 'Przewodnik wkrótce',
+    guideLockedDescription: 'Kompletny przewodnik kibica na MŚ 2026 z poradami podróżniczymi, informacjami o stadionach i nie tylko zostanie wkrótce udostępniony.',
+
+    // Sentiment Section
+    sentimentTitle: 'Tygodniowy barometr nastrojów',
+    sentimentComingSoon: 'Wkrótce!',
+    sentimentDescription: 'Wkrótce zobaczysz cotygodniowe analizy nastrojów wokół wszystkich reprezentacji na podstawie mediów społecznościowych, wiadomości i ankiet kibiców.',
+    sentimentFeature1: 'Barometr nastrojów kibiców',
+    sentimentFeature2: 'Puls mediów społecznościowych',
+    sentimentFeature3: 'Wsparcie dla drużyn na świecie',
+    sentimentFeature4: 'Analiza tygodniowa',
+    
+    // Sentiment Barometer
+    wcMood: 'Nastrój MŚ',
+    articlesAnalyzed: 'artykułów przeanalizowanych',
+
+    // Auth Modal
+    loginTitle: 'Logowanie',
+    registerTitle: 'Rejestracja',
+    email: 'E-mail',
+    password: 'Hasło',
+    confirmPassword: 'Potwierdź hasło',
+    username: 'Nazwa użytkownika',
+    loginButton: 'Zaloguj się',
+    registerButton: 'Zarejestruj się',
+    noAccount: 'Nie masz jeszcze konta?',
+    hasAccount: 'Masz już konto?',
+    forgotPassword: 'Zapomniałeś hasła?',
+    loginError: 'Logowanie nie powiodło się',
+    registerError: 'Rejestracja nie powiodła się',
+    registerSuccess: 'Rejestracja zakończona! Potwierdź swój adres e-mail.',
+    resetPassword: 'Zresetuj hasło',
+    newPassword: 'Ustaw nowe hasło',
+    emailLogin: 'Zaloguj kodem e-mail',
+    verifyCode: 'Zweryfikuj kod',
+    codePlaceholder: '123456',
+    sendResetLink: 'Wyślij link resetujący',
+    sendCode: 'Wyślij kod',
+    verifyBtn: 'Zweryfikuj',
+    setNewPassword: 'Zapisz hasło',
+    resendCode: 'Wyślij ponownie',
+    backToLogin: 'Wróć do logowania',
+    loginWithCode: 'Zaloguj kodem e-mail (bez hasła)',
+    loginWithPassword: 'Zaloguj hasłem',
+    resetLinkSent: 'Link resetujący wysłany na twój e-mail!',
+    codeSent: 'Kod wysłany na twój e-mail!',
+    checkEmail: 'Sprawdź swoją skrzynkę e-mail.',
+    codeExpiry: 'Kod jest ważny przez 1 godzinę.',
+    passwordUpdated: 'Hasło zostało zmienione!',
+    enterNewPassword: 'Wpisz swoje nowe hasło.',
+    codeSentTo: 'Kod wysłany na',
+    sendCode6Digit: 'Wyślemy ci 6-cyfrowy kod na e-mail.',
+    signUpWithGoogle: 'Zarejestruj przez Google',
+    loginWithGoogle: 'Zaloguj przez Google',
+    secureConnection: '🔒 Bezpieczne połączenie',
+    emailPlaceholder: 'twoj@email.com',
+    passwordPlaceholder: 'Minimum 12 znaków',
+    usernamePlaceholder: 'Twoja nazwa wyświetlana',
+    errorInvalidEmail: 'Wpisz prawidłowy adres e-mail.',
+    errorPasswordShort: 'Hasło musi mieć co najmniej 6 znaków.',
+    errorPasswordMatch: 'Hasła nie są zgodne.',
+    errorInvalidCode: 'Nieprawidłowy kod. Spróbuj ponownie.',
+    errorGeneric: 'Wystąpił błąd. Spróbuj ponownie.',
+    errorUserExists: 'Ten e-mail jest już zarejestrowany.',
+    errorInvalidCredentials: 'Nieprawidłowy e-mail lub hasło.',
+    errorRateLimit: 'Zbyt wiele prób. Poczekaj 60 sekund.',
+    errorUsernameTaken: 'Ta nazwa użytkownika jest już zajęta.',
+    errorUsernameShort: 'Nazwa użytkownika musi mieć co najmniej 3 znaki.',
+    errorUsernameInvalid: 'Nazwa użytkownika może zawierać tylko litery, cyfry i podkreślenia.',
+    errorPasswordWeak: 'Hasło za słabe. Min. 12 znaków z 1 wielką, 1 małą literą, 1 cyfrą i 1 znakiem specjalnym.',
+    checkingUsername: 'Sprawdzanie dostępności...',
+    usernameAvailable: '✓ Dostępne',
+
+    // Footer
+    footerTitle: 'Typer MŚ 2026',
+    footerDate: '11 czerwca - 19 lipca 2026',
+    footerCountries: 'USA • Kanada • Meksyk',
+    footerTeams: '48 drużyn • 104 mecze',
+
+    // General
+    save: 'Zapisz',
+    cancel: 'Anuluj',
+    close: 'Zamknij',
+    loading: 'Ładowanie...',
+    error: 'Błąd',
+    success: 'Sukces',
+    confirm: 'Potwierdź',
+    back: 'Wstecz',
+    next: 'Dalej',
+    yes: 'Tak',
+    no: 'Nie',
+
+    // Join/Participate
+    joinAndVote: 'Dołącz i głosuj!',
+    signUpToVote: 'Zarejestruj się, aby głosować i rywalizować w rankingach.',
+    signUpToPredict: 'Zarejestruj się, aby typować!',
+    signUpNow: 'Zarejestruj się',
+    loginToPredict: 'Zaloguj się, aby typować',
+
+    // ==================== FAN GUIDE ====================
+    guideHeaderTitle: '📺 PRZEWODNIK KIBICA MŚ 2026',
+    guideHeaderSubtitle: 'Streaming • Bilety • Podróże • Gadżety',
+    guideHeaderInfo: 'Wszystko co kibice muszą wiedzieć',
+    guideStreaming: '📺 Streaming',
+    guideTickets: '🎫 Bilety',
+    guideTravel: '✈️ Podróże',
+    guideMerchandise: '👕 Gadżety',
+    guideGermany: 'Niemcy',
+    guideAustria: 'Austria',
+    guideSwitzerland: 'Szwajcaria',
+    guideFreeGamesDE: '60/104 za darmo',
+    guideFreeGamesAT: '104/104 za darmo',
+    guideFreeGamesCH: '104/104 za darmo',
+    guideVpnTitle: 'Oglądaj MŚ z dowolnego miejsca',
+    guideVpnSubtitle: 'Na wakacjach? Z VPN możesz oglądać lokalną TV za granicą.',
+    guideRecommended: 'POLECANE',
+    guideAllGames: 'WSZYSTKIE 104',
+    guideFree: 'Za darmo',
+    guideGames: 'mecze',
+    guideFrom: 'od',
+    guidePerMonth: '/mies.',
+    guideConference: 'Multi-mecz',
+    guideTicketsSubtitle: 'Bilety na MŚ 2026',
+    guideOfficialSale: 'Oficjalna sprzedaż',
+    guideRegistrationRequired: 'Wymagana rejestracja',
+    guideLottery: 'Losowanie dla popularnych meczów',
+    guidePrices: 'Ceny',
+    guideCategory1: 'Kategoria 1',
+    guideCategory3: 'Kategoria 3',
+    guideStartSale: 'Start sprzedaży',
+    guideExpected: 'Przewidywany',
+    guideTips: 'Wskazówki',
+    guideTicketTip1: 'Zarejestruj się wcześniej do newslettera',
+    guideTicketTip2: 'Korzystaj z oficjalnej strony FIFA',
+    guideTicketTip3: 'Nie kupuj od pośredników',
+    guideOfficialPortal: 'Oficjalny portal biletowy FIFA',
+    guideTravelTitle: '✈️ Porady podróżne',
+    guideVisa: 'Wiza',
+    guideVisaUSA: 'ESTA wymagana dla USA',
+    guideVisaCanada: 'eTA wymagana dla Kanady',
+    guideVisaMexico: 'Bez wizy do 180 dni',
+    guideFlights: 'Loty',
+    guideAccommodation: 'Zakwaterowanie',
+    guideBestTime: 'Najlepszy czas rezerwacji',
+    guideBestTimeInfo: '6-9 miesięcy wcześniej',
+    guideBookEarly: 'Rezerwuj wcześnie',
+    guidePricesRising: 'Ceny rosną',
+    guideCompareFlights: 'Porównaj loty',
+    guideCheckHotels: 'Sprawdź hotele',
+    guideMerchTitle: '👕 Gadżety kibica',
+    guideJerseys: 'Koszulki',
+    guideAccessories: 'Akcesoria',
+    guideMatchBalls: 'Piłki meczowe',
+    guideCollectibles: 'Kolekcjonerskie',
+    guideDfbShop: 'Sklep kibica',
+    guideFifaStore: 'Sklep FIFA',
+    guideAffiliateHint: '* Linki afiliacyjne - otrzymujemy małą prowizję za zakupy',
+  }
+};
+
+// Trivia category translations
+export const triviaCategories = {
+  de: {
+    'alle': 'Alle',
+    'WM Geschichte': 'WM Geschichte',
+    'Spieler': 'Spieler',
+    'WM 2026': 'WM 2026',
+    'Rekorde': 'Rekorde',
+    'Nationen': 'Nationen',
+    'Stadien': 'Stadien',
+    'Kurioses': 'Kurioses',
+    'Regeln': 'Regeln'
+  },
+  en: {
+    'alle': 'All',
+    'WM Geschichte': 'WC History',
+    'Spieler': 'Players',
+    'WM 2026': 'WC 2026',
+    'Rekorde': 'Records',
+    'Nationen': 'Nations',
+    'Stadien': 'Stadiums',
+    'Kurioses': 'Fun Facts',
+    'Regeln': 'Rules'
+  },
+  pl: {
+    'alle': 'Wszystkie',
+    'WM Geschichte': 'Historia MŚ',
+    'Spieler': 'Piłkarze',
+    'WM 2026': 'MŚ 2026',
+    'Rekorde': 'Rekordy',
+    'Nationen': 'Reprezentacje',
+    'Stadien': 'Stadiony',
+    'Kurioses': 'Ciekawostki',
+    'Regeln': 'Przepisy'
+  }
+};
+
+// Team name translations
+export const teamTranslations = {
+  en: {
+    'Mexiko': 'Mexico', 'Südafrika': 'South Africa', 'Südkorea': 'South Korea',
+    'Republik Korea': 'South Korea', 'Kanada': 'Canada', 'Katar': 'Qatar', 
+    'Schweiz': 'Switzerland', 'Brasilien': 'Brazil', 'Marokko': 'Morocco', 
+    'Schottland': 'Scotland', 'Australien': 'Australia', 'Deutschland': 'Germany', 
+    'Elfenbeinküste': 'Ivory Coast', 'Niederlande': 'Netherlands', 'Tunesien': 'Tunisia', 
+    'Belgien': 'Belgium', 'Ägypten': 'Egypt', 'Neuseeland': 'New Zealand', 
+    'Spanien': 'Spain', 'Saudi-Arabien': 'Saudi Arabia', 'Frankreich': 'France', 
+    'Norwegen': 'Norway', 'Argentinien': 'Argentina', 'Algerien': 'Algeria', 
+    'Österreich': 'Austria', 'Jordanien': 'Jordan', 'Usbekistan': 'Uzbekistan', 
+    'Kolumbien': 'Colombia', 'Kroatien': 'Croatia', 'Senegal': 'Senegal', 
+    'Ghana': 'Ghana', 'Panama': 'Panama', 'England': 'England', 
+    'Portugal': 'Portugal', 'Japan': 'Japan', 'Iran': 'Iran', 
+    'Uruguay': 'Uruguay', 'USA': 'USA', 'Paraguay': 'Paraguay', 
+    'Haiti': 'Haiti', 'Ecuador': 'Ecuador', 'Curaçao': 'Curaçao', 
+    'Kap Verde': 'Cape Verde', 'Nigeria': 'Nigeria', 'Kamerun': 'Cameroon', 
+    'Indonesien': 'Indonesia', 'Costa Rica': 'Costa Rica', 'Serbien': 'Serbia', 
+    'Polen': 'Poland', 'Dänemark': 'Denmark', 'Italien': 'Italy', 
+    'Türkei': 'Turkey', 'Ukraine': 'Ukraine', 'Wales': 'Wales',
+    'Tschechien': 'Czech Republic', 'Irland': 'Ireland', 'Nordmazedonien': 'North Macedonia',
+    'Bosnien-Herzegowina': 'Bosnia-Herzegovina', 'Nordirland': 'Northern Ireland',
+    'Rumänien': 'Romania', 'Slowakei': 'Slovakia', 'Kosovo': 'Kosovo',
+    'Schweden': 'Sweden', 'Albanien': 'Albania', 'DR Kongo': 'DR Congo',
+    'Jamaika': 'Jamaica', 'Neukaledonien': 'New Caledonia', 'Irak': 'Iraq',
+    'Bolivien': 'Bolivia', 'Suriname': 'Suriname',
+    // Playoff teams
+    'Play-off D': 'Play-off D', 'Play-off A': 'Play-off A', 
+    'Play-off B': 'Play-off B', 'Play-off C': 'Play-off C',
+    'FIFA Play-off 1': 'FIFA Play-off 1', 'FIFA Play-off 2': 'FIFA Play-off 2',
+  },
+  pl: {
+    'Mexiko': 'Meksyk', 'Südafrika': 'RPA', 'Südkorea': 'Korea Płd.',
+    'Republik Korea': 'Korea Płd.', 'Kanada': 'Kanada', 'Katar': 'Katar', 
+    'Schweiz': 'Szwajcaria', 'Brasilien': 'Brazylia', 'Marokko': 'Maroko', 
+    'Schottland': 'Szkocja', 'Australien': 'Australia', 'Deutschland': 'Niemcy', 
+    'Elfenbeinküste': 'Wybrzeże Kości Słoniowej', 'Niederlande': 'Holandia', 
+    'Tunesien': 'Tunezja', 'Belgien': 'Belgia', 'Ägypten': 'Egipt', 
+    'Neuseeland': 'Nowa Zelandia', 'Spanien': 'Hiszpania', 
+    'Saudi-Arabien': 'Arabia Saudyjska', 'Frankreich': 'Francja', 
+    'Norwegen': 'Norwegia', 'Argentinien': 'Argentyna', 'Algerien': 'Algieria', 
+    'Österreich': 'Austria', 'Jordanien': 'Jordania', 'Usbekistan': 'Uzbekistan', 
+    'Kolumbien': 'Kolumbia', 'Kroatien': 'Chorwacja', 'Senegal': 'Senegal', 
+    'Ghana': 'Ghana', 'Panama': 'Panama', 'England': 'Anglia', 
+    'Portugal': 'Portugalia', 'Japan': 'Japonia', 'Iran': 'Iran', 
+    'Uruguay': 'Urugwaj', 'USA': 'USA', 'Paraguay': 'Paragwaj', 
+    'Haiti': 'Haiti', 'Ecuador': 'Ekwador', 'Curaçao': 'Curaçao', 
+    'Kap Verde': 'Republika Zielonego Przylądka', 'Nigeria': 'Nigeria', 
+    'Kamerun': 'Kamerun', 'Indonesien': 'Indonezja', 'Costa Rica': 'Kostaryka', 
+    'Serbien': 'Serbia', 'Polen': 'Polska', 'Dänemark': 'Dania', 
+    'Italien': 'Włochy', 'Türkei': 'Turcja', 'Ukraine': 'Ukraina', 
+    'Wales': 'Walia', 'Tschechien': 'Czechy', 'Irland': 'Irlandia', 
+    'Nordmazedonien': 'Macedonia Płn.', 'Bosnien-Herzegowina': 'Bośnia i Hercegowina',
+    'Nordirland': 'Irlandia Płn.', 'Rumänien': 'Rumunia', 'Slowakei': 'Słowacja',
+    'Kosovo': 'Kosowo', 'Schweden': 'Szwecja', 'Albanien': 'Albania',
+    'DR Kongo': 'DR Konga', 'Jamaika': 'Jamajka', 'Neukaledonien': 'Nowa Kaledonia',
+    'Irak': 'Irak', 'Bolivien': 'Boliwia', 'Suriname': 'Surinam',
+    // Playoff teams
+    'Play-off D': 'Baraż D', 'Play-off A': 'Baraż A', 
+    'Play-off B': 'Baraż B', 'Play-off C': 'Baraż C',
+    'FIFA Play-off 1': 'Baraż FIFA 1', 'FIFA Play-off 2': 'Baraż FIFA 2',
+  }
+};
+
+// Day/Month names
+export const dayNames = {
+  de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+  en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  pl: ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota']
+};
+
+export const monthNames = {
+  de: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  pl: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']
+};
+
+export const monthNamesShort = {
+  de: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+  en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  pl: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru']
+};
+
+// Helper functions
+export const t = (key, lang = 'de') => translations[lang]?.[key] || translations['de']?.[key] || key;
+
+export const translateTeam = (teamName, lang = 'de') => {
+  if (!teamName || lang === 'de') return teamName;
+  
+  // Handle KO round placeholder translations
+  if (teamName.includes('Gruppe')) {
+    const replacements = lang === 'pl' 
+      ? { 'Sieger': 'Zwycięzca', 'Verlierer': 'Przegrany', 'Gruppe': 'Grupy', '1.': '1.', '2.': '2.', '3.': '3.' }
+      : { 'Sieger': 'Winner', 'Verlierer': 'Loser', 'Gruppe': 'Group', '1.': '1st', '2.': '2nd', '3.': '3rd' };
+    return Object.entries(replacements).reduce((str, [de, tr]) => str.replace(de, tr), teamName);
+  }
+  
+  return teamTranslations[lang]?.[teamName] || teamTranslations.en?.[teamName] || teamName;
+};
+
+export const translateCategory = (category, lang = 'de') => triviaCategories[lang]?.[category] || category;
+
+export const formatDate = (date, lang = 'de', options = {}) => {
+  const d = new Date(date);
+  const dayName = dayNames[lang][d.getDay()];
+  const dayNum = d.getDate();
+  const month = options.short ? monthNamesShort[lang][d.getMonth()] : monthNames[lang][d.getMonth()];
+  const year = d.getFullYear();
+  
+  if (lang === 'en') return options.short ? `${month} ${dayNum}` : `${dayName}, ${month} ${dayNum}, ${year}`;
+  if (lang === 'pl') return options.short ? `${dayNum} ${month}` : `${dayName}, ${dayNum} ${month} ${year}`;
+  return options.short ? `${dayNum}. ${month}` : `${dayName}, ${dayNum}. ${month} ${year}`;
+};
+
+export const formatTime = (time24, lang = 'de') => {
+  if (!time24) return '';
+  if (lang === 'en') {
+    const [hours, minutes] = time24.split(':');
+    const h = parseInt(hours);
+    return `${h % 12 || 12}:${minutes} ${h >= 12 ? 'PM' : 'AM'}`;
+  }
+  return time24;
+};
+
+// Phase name translations for knockout rounds
+export const translatePhase = (phase, lang = 'de') => {
+  const phases = {
+    de: {
+      '32tel-Finale': 'Achtelfinale',
+      'Achtelfinale': 'Achtelfinale',
+      'Viertelfinale': 'Viertelfinale',
+      'Halbfinale': 'Halbfinale',
+      'Spiel um Platz 3': 'Spiel um Platz 3',
+      'Finale': 'Finale'
+    },
+    en: {
+      '32tel-Finale': 'Round of 32',
+      'Achtelfinale': 'Round of 16',
+      'Viertelfinale': 'Quarter-Finals',
+      'Halbfinale': 'Semi-Finals',
+      'Spiel um Platz 3': 'Third Place',
+      'Finale': 'Final'
+    },
+    pl: {
+      '32tel-Finale': '1/16 finału',
+      'Achtelfinale': '1/8 finału',
+      'Viertelfinale': 'Ćwierćfinały',
+      'Halbfinale': 'Półfinały',
+      'Spiel um Platz 3': 'O 3. miejsce',
+      'Finale': 'Finał'
+    }
+  };
+  return phases[lang]?.[phase] || phases.de[phase] || phase;
+};
+
+// Translate playoff type
+export const translatePlayoffType = (type, lang = 'de') => {
+  const types = {
+    de: { 'UEFA': 'UEFA', 'Interkontinental': 'Interkontinental' },
+    en: { 'UEFA': 'UEFA', 'Interkontinental': 'Intercontinental' },
+    pl: { 'UEFA': 'UEFA', 'Interkontinental': 'Międzykontynentalny' }
+  };
+  return types[lang]?.[type] || type;
+};
+
+export default translations;

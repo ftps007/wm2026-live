@@ -1,0 +1,18 @@
+{
+  "name": "WM 2026 Tippspiel",
+  "short_name": "WM2026",
+  "description": "Tippe auf alle 104 Spiele der FIFA WM 2026",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#fbbf24",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
