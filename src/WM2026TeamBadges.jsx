@@ -368,22 +368,120 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                     <StatBox label={t('badgesBestResult')} value={selectedTeam.best_result} subtext={selectedTeam.best_result_year} />
                   </div>
                   
-                  {/* WM Years */}
-                  {selectedTeam.wm_years && selectedTeam.wm_years.length > 0 && (
+                  {/* WM Years mit Gold/Silber/Bronze Markierung */}
+                  {selectedTeam.wm_years && (
                     <div style={{ marginTop: '16px' }}>
                       <div style={{ fontSize: '11px', color: '#64748b', marginBottom: '8px' }}>{t('badgesWmYears')}:</div>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                        {selectedTeam.wm_years.map(year => (
-                          <span key={year} style={{
-                            padding: '4px 8px',
-                            background: '#1e293b',
-                            borderRadius: '4px',
-                            fontSize: '10px',
-                            color: '#94a3b8'
-                          }}>
-                            {year}
-                          </span>
-                        ))}
+                        {(() => {
+                          // WM-Platzierungen: Gold (1.), Silber (2.), Bronze (3.)
+                          const wmResults = {
+                            // Weltmeister (Gold)
+                            gold: {
+                              'AR': [1978, 1986, 2022],
+                              'BR': [1958, 1962, 1970, 1994, 2002],
+                              'DE': [1954, 1974, 1990, 2014],
+                              'EN': [1966],
+                              'ES': [2010],
+                              'FR': [1998, 2018],
+                              'IT': [1934, 1938, 1982, 2006],
+                              'UY': [1930, 1950],
+                            },
+                            // Vizeweltmeister (Silber)
+                            silver: {
+                              'AR': [1930, 1990, 2014],
+                              'BR': [1950, 1998],
+                              'DE': [1966, 1982, 1986, 2002],
+                              'HR': [2018],
+                              'FR': [2006, 2022],
+                              'HU': [1938, 1954],
+                              'IT': [1970, 1994],
+                              'NL': [1974, 1978, 2010],
+                              'CZ': [1934, 1962],
+                            },
+                            // Dritter Platz (Bronze)
+                            bronze: {
+                              'AR': [2024], // Placeholder
+                              'AT': [1954],
+                              'BR': [1938, 1978],
+                              'BE': [2018],
+                              'DE': [1934, 1970, 2006, 2010],
+                              'HR': [1998, 2022],
+                              'FR': [1958, 1986],
+                              'IT': [1990],
+                              'NL': [2014],
+                              'PL': [1974, 1982],
+                              'PT': [1966],
+                              'SE': [1950, 1994],
+                              'TR': [2002],
+                              'US': [1930],
+                              'MA': [2022],
+                            }
+                          };
+                          
+                          // Jahre inkl. 2026 für qualifizierte Teams
+                          const years = [...(selectedTeam.wm_years || [])];
+                          if (selectedTeam.is_qualified_2026 && !years.includes(2026) && !years.includes('2026')) {
+                            years.push(2026);
+                          }
+                          
+                          const getYearStyle = (year) => {
+                            const yearNum = parseInt(year);
+                            const code = selectedTeam.country_code;
+                            
+                            // Gold - Weltmeister
+                            if (wmResults.gold[code]?.includes(yearNum)) {
+                              return {
+                                background: 'linear-gradient(135deg, #ffd700 0%, #b8860b 100%)',
+                                color: '#000',
+                                fontWeight: 'bold',
+                                boxShadow: '0 0 8px rgba(255, 215, 0, 0.5)'
+                              };
+                            }
+                            // Silber - Vizeweltmeister
+                            if (wmResults.silver[code]?.includes(yearNum)) {
+                              return {
+                                background: 'linear-gradient(135deg, #c0c0c0 0%, #808080 100%)',
+                                color: '#000',
+                                fontWeight: 'bold',
+                                boxShadow: '0 0 6px rgba(192, 192, 192, 0.5)'
+                              };
+                            }
+                            // Bronze - Dritter Platz
+                            if (wmResults.bronze[code]?.includes(yearNum)) {
+                              return {
+                                background: 'linear-gradient(135deg, #cd7f32 0%, #8b4513 100%)',
+                                color: '#fff',
+                                fontWeight: 'bold',
+                                boxShadow: '0 0 6px rgba(205, 127, 50, 0.5)'
+                              };
+                            }
+                            // 2026 - Spezielle Markierung
+                            if (yearNum === 2026) {
+                              return {
+                                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                                color: '#fff',
+                                fontWeight: 'bold'
+                              };
+                            }
+                            // Standard
+                            return {
+                              background: '#1e293b',
+                              color: '#94a3b8'
+                            };
+                          };
+                          
+                          return years.sort((a, b) => parseInt(a) - parseInt(b)).map(year => (
+                            <span key={year} style={{
+                              padding: '4px 8px',
+                              borderRadius: '4px',
+                              fontSize: '10px',
+                              ...getYearStyle(year)
+                            }}>
+                              {year}
+                            </span>
+                          ));
+                        })()}
                       </div>
                     </div>
                   )}
