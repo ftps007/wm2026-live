@@ -322,16 +322,16 @@ const teamInfo = {
   "Frankreich": { flag: "🇫🇷", news: "Mbappé bei Real Madrid. Deschamps plant letztes Turnier.", strength: 90 },
   "Brasilien": { flag: "🇧🇷", news: "Ancelotti neuer Trainer! Vinicius Jr. & Rodrygo führen an.", strength: 89 },
   "Argentinien": { flag: "🇦🇷", news: "Messi (39) letzte WM? Titelverteidiger mit Ãlvarez & Mac Allister.", strength: 91 },
-  "England": { flag: "👑´ó §ó ¢ó ¥ó ®ó §ó ¿", news: "Tuchel neuer Trainer! Bellingham, Saka, Foden in Hochform.", strength: 87 },
+  "England": { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", news: "Tuchel neuer Trainer! Bellingham, Saka, Foden in Hochform.", strength: 87 },
   "Spanien": { flag: "🇪🇸", news: "Lamine Yamal (17) Superstar! Euro 2024 Sieger.", strength: 89 },
   "Portugal": { flag: "🇵🇹", news: "Ronaldo (41) dabei! Bruno Fernandes & Rafael Leão führen.", strength: 86 },
   "Niederlande": { flag: "🇳🇱", news: "Koeman setzt auf Gakpo, Simons & de Jong.", strength: 85 },
   "Italien": { flag: "🇮🇹", news: "Nach EM-Aus im Umbruch. Tonali zurück, junge Talente.", strength: 84 },
-  "Kroatien": { flag: "🇭🇷", news: "Modrić (40) Abschiedstour? Goldene Generation endet.", strength: 83 },
+  "Kroatien": { flag: "🇭🇷", news: "ModriÄ‡ (40) Abschiedstour? Goldene Generation endet.", strength: 83 },
   "USA": { flag: "🇺🇸", news: "Heimvorteil! Pulisic, McKennie & Reyna wollen Geschichte schreiben.", strength: 82 },
   "Mexiko": { flag: "🇲🇽", news: "Co-Gastgeber träumt vom Viertelfinal-Fluch brechen.", strength: 80 },
   "Kanada": { flag: "🇨🇦", news: "Davies als Star. Erste WM als Gastgeber.", strength: 78 },
-  "Österreich": { flag: "🇦🇹", news: "Rangnick-Revolution! Laimer, Sabitzer & Arnautović.", strength: 79 },
+  "Österreich": { flag: "🇦🇹", news: "Rangnick-Revolution! Laimer, Sabitzer & ArnautoviÄ‡.", strength: 79 },
   "Schweiz": { flag: "🇨🇭", news: "Xhaka führt, Yakin baut neue Generation auf.", strength: 80 },
   "Japan": { flag: "🇯🇵", news: "Kubo, Mitoma, Doan - schnellste Offensive Asiens.", strength: 81 },
   "Südkorea": { flag: "🇰🇷", news: "Son Heung-min letzte WM? Kim Min-jae Weltklasse.", strength: 79 },
@@ -353,11 +353,11 @@ const teamInfo = {
   "Ecuador": { flag: "🇪🇨", news: "Junge Talente um Caicedo & Páez.", strength: 78 },
   "Paraguay": { flag: "🇵🇾", news: "Almiron führt die Guaraníes.", strength: 74 },
   "Dänemark": { flag: "🇩🇰", news: "Hjulmand plant. Højlund & Lindstrøm neue Stars.", strength: 80 },
-  "Serbien": { flag: "🇷🇸", news: "Vlahović, Mitrović, Tadić - Offensivpower.", strength: 79 },
+  "Serbien": { flag: "🇷🇸", news: "VlahoviÄ‡, MitroviÄ‡, TadiÄ‡ - Offensivpower.", strength: 79 },
   "Polen": { flag: "🇵🇱", news: "Lewandowski (37) noch dabei? Zalewski Hoffnung.", strength: 78 },
   "Ukraine": { flag: "🇺🇦", news: "Trotz Krieg qualifiziert. Mudryk & Dovbyk als Stars.", strength: 77 },
-  "Türkei": { flag: "🇹🇷", news: "Yıldız (19) neuer Superstar. Montella bringt System.", strength: 78 },
-  "Schottland": { flag: "👑´ó §ó ¢ó ³ó £ó ´ó ¿", news: "Erste WM seit 1998! Robertson führt.", strength: 74 },
+  "Türkei": { flag: "🇹🇷", news: "YÄ±ldÄ±z (19) neuer Superstar. Montella bringt System.", strength: 78 },
+  "Schottland": { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", news: "Erste WM seit 1998! Robertson führt.", strength: 74 },
   "Haiti": { flag: "🇭🇹", news: "Historische Qualifikation! Gold Cup Überraschung.", strength: 65 },
   "Panama": { flag: "🇵🇦", news: "Dritte WM-Teilnahme. Canaleros mit Erfahrung.", strength: 70 },
   "Costa Rica": { flag: "🇨🇷", news: "Keylor Navas Rücktritt? Neue Generation gefragt.", strength: 72 },
@@ -505,7 +505,7 @@ const videosData = [
   // Klassiker
   { id: 30, title: "Maradonas Hand Gottes & Jahrhunderttor", category: "Klassiker", year: 1986, searchQuery: "Maradona+Hand+of+God+Goal+of+the+Century+1986", emoji: "âœ‹" },
   { id: 31, title: "Zidanes Kopfstoß im WM-Finale 2006", category: "Klassiker", year: 2006, searchQuery: "Zidane+headbutt+Materazzi+World+Cup+2006+Final", emoji: "🇦🇷🇫🇷" },
-  { id: 32, title: "Pelé - Die größten WM-Momente", category: "Klassiker", year: 1970, searchQuery: "Pele+best+World+Cup+goals+moments", emoji: "👑‘‘" },
+  { id: 32, title: "Pelé - Die größten WM-Momente", category: "Klassiker", year: 1970, searchQuery: "Pele+best+World+Cup+goals+moments", emoji: "👑" },
   { id: 33, title: "Deutschland vs Italien 4:3 - WM 1970", category: "Klassiker", year: 1970, searchQuery: "Germany+Italy+4-3+1970+World+Cup+Game+of+Century", emoji: "🇮🇹" },
   { id: 34, title: "Wembley-Tor 1966 - War der Ball drin?", category: "Klassiker", year: 1966, searchQuery: "Wembley+Goal+1966+World+Cup+Final+England+Germany", emoji: "🇦🇷🇫🇷" },
   { id: 35, title: "Brasilien 1970 - Bestes Team aller Zeiten?", category: "Klassiker", year: 1970, searchQuery: "Brazil+1970+World+Cup+best+team+ever+Pele", emoji: "🇧🇷" },
@@ -963,7 +963,7 @@ function AppContent() {
         )}
 
         {/* VIDEOS */}
-        {activeTab === 'videos' && (<div><div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('videosTitle')}</div><div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>{[{key: 'alle', label: t('videosAll')}, {key: 'Highlights', label: t('videosHighlights')}, {key: 'Deutschland', label: t('videosGermany')}, {key: 'Songs', label: t('videosSongs')}, {key: 'Klassiker', label: t('videosClassics')}, {key: 'WM 2026', label: t('videosWC2026')}].map(cat => (<button key={cat.key} onClick={() => setVideoCategory(cat.key)} style={{ padding: '6px 12px', background: videoCategory === cat.key ? '#10b981' : '#1e293b', border: '1px solid #334155', borderRadius: '16px', color: videoCategory === cat.key ? 'white' : '#94a3b8', fontSize: '11px', cursor: 'pointer' }}>{cat.label}</button>))}</div><div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>{filteredVideos.map(v => (<a key={v.id} href={getYouTubeUrl(v.searchQuery)} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}><div style={{ background: '#1e293b', borderRadius: '10px', overflow: 'hidden', border: '1px solid #334155', cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = '#ff0000'; e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={e => { e.currentTarget.style.borderColor = '#334155'; e.currentTarget.style.transform = 'scale(1)'; }}><div style={{ position: 'relative', height: '90px', background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '40px' }}>{v.emoji}</span><div style={{ position: 'absolute', bottom: '8px', right: '8px', background: '#ff0000', borderRadius: '4px', padding: '2px 6px', display: 'flex', alignItems: 'center', gap: '4px' }}><svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg><span style={{ fontSize: '9px', color: 'white', fontWeight: 'bold' }}>YouTube</span></div></div><div style={{ padding: '10px' }}><div style={{ fontSize: '11px', fontWeight: 'bold', color: 'white', marginBottom: '4px', lineHeight: '1.3' }}>{v.title}</div><div style={{ fontSize: '9px', color: '#64748b' }}>{v.category} â€¢ {v.year}</div></div></div></a>))}</div><div style={{ marginTop: '16px', padding: '12px', background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,0,0,0.3)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}><svg width="20" height="20" viewBox="0 0 24 24" fill="#ff0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg><span style={{ fontSize: '10px', color: '#ff6b6b' }}>{t('videosYoutubeHint')}</span></div></div>)}
+        {activeTab === 'videos' && (<div><div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('videosTitle')}</div><div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>{[{key: 'alle', label: t('videosAll')}, {key: 'Highlights', label: t('videosHighlights')}, {key: 'Deutschland', label: t('videosGermany')}, {key: 'Songs', label: t('videosSongs')}, {key: 'Klassiker', label: t('videosClassics')}, {key: 'WM 2026', label: t('videosWC2026')}].map(cat => (<button key={cat.key} onClick={() => setVideoCategory(cat.key)} style={{ padding: '6px 12px', background: videoCategory === cat.key ? '#10b981' : '#1e293b', border: '1px solid #334155', borderRadius: '16px', color: videoCategory === cat.key ? 'white' : '#94a3b8', fontSize: '11px', cursor: 'pointer' }}>{cat.label}</button>))}</div><div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>{filteredVideos.map(v => (<a key={v.id} href={getYouTubeUrl(v.searchQuery)} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}><div style={{ background: '#1e293b', borderRadius: '10px', overflow: 'hidden', border: '1px solid #334155', cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = '#ff0000'; e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={e => { e.currentTarget.style.borderColor = '#334155'; e.currentTarget.style.transform = 'scale(1)'; }}><div style={{ position: 'relative', height: '90px', background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '40px' }}>{v.emoji}</span><div style={{ position: 'absolute', bottom: '8px', right: '8px', background: '#ff0000', borderRadius: '4px', padding: '2px 6px', display: 'flex', alignItems: 'center', gap: '4px' }}><svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg><span style={{ fontSize: '9px', color: 'white', fontWeight: 'bold' }}>YouTube</span></div></div><div style={{ padding: '10px' }}><div style={{ fontSize: '11px', fontWeight: 'bold', color: 'white', marginBottom: '4px', lineHeight: '1.3' }}>{v.title}</div><div style={{ fontSize: '9px', color: '#64748b' }}>{v.category} • {v.year}</div></div></div></a>))}</div><div style={{ marginTop: '16px', padding: '12px', background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,0,0,0.3)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}><svg width="20" height="20" viewBox="0 0 24 24" fill="#ff0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg><span style={{ fontSize: '10px', color: '#ff6b6b' }}>{t('videosYoutubeHint')}</span></div></div>)}
 
         {/* MATCHES */}
         {activeTab === 'matches' && (
@@ -1174,7 +1174,7 @@ function AppContent() {
       </main>
 
       {/* FOOTER */}
-      <footer style={{ borderTop: '1px solid #334155', marginTop: '32px' }}><div style={{ maxWidth: '800px', margin: '0 auto', padding: '24px 16px', textAlign: 'center', color: '#64748b', fontSize: '11px' }}><p style={{ margin: '0 0 4px' }}>{t('footerTitle')} â€¢ {t('footerDate')}</p><p style={{ margin: 0 }}>{t('footerCountries')} â€¢ {t('footerTeams')}</p></div></footer>
+      <footer style={{ borderTop: '1px solid #334155', marginTop: '32px' }}><div style={{ maxWidth: '800px', margin: '0 auto', padding: '24px 16px', textAlign: 'center', color: '#64748b', fontSize: '11px' }}><p style={{ margin: '0 0 4px' }}>{t('footerTitle')} • {t('footerDate')}</p><p style={{ margin: 0 }}>{t('footerCountries')} • {t('footerTeams')}</p></div></footer>
 
       {/* WM POLL MODAL */}
       {showWMPoll && (
@@ -1195,7 +1195,7 @@ function AppContent() {
                   { name: 'Spanien', flag: '🇪🇸', stars: 1 },        // 1
                   { name: 'Argentinien', flag: '🇦🇷', stars: 3 },   // 2
                   { name: 'Frankreich', flag: '🇫🇷', stars: 2 },    // 3
-                  { name: 'England', flag: '👑´ó §ó ¢ó ¥ó ®ó §ó ¿', stars: 1 },    // 4
+                  { name: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', stars: 1 },    // 4
                   { name: 'Brasilien', flag: '🇧🇷', stars: 5 },     // 5
                   { name: 'Portugal', flag: '🇵🇹', stars: 0 },      // 6
                   { name: 'Niederlande', flag: '🇳🇱', stars: 0 },   // 7
@@ -1220,7 +1220,7 @@ function AppContent() {
                   { name: 'Panama', flag: '🇵🇦', stars: 0 },        // 30
                   { name: 'Algerien', flag: '🇩🇿', stars: 0 },      // 34
                   { name: 'Ägypten', flag: '🇪🇬', stars: 0 },       // 35
-                  { name: 'Schottland', flag: '👑´ó §ó ¢ó ³ó £ó ´ó ¿', stars: 0 }, // 36
+                  { name: 'Schottland', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', stars: 0 }, // 36
                   { name: 'Paraguay', flag: '🇵🇾', stars: 0 },      // 39
                   { name: 'Tunesien', flag: '🇹🇳', stars: 0 },      // 41
                   { name: 'Elfenbeinküste', flag: '🇨🇮', stars: 0 },// 42
