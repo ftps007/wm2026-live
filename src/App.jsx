@@ -9,13 +9,14 @@ import RanglistenSection from './RanglistenSection';
 import { LanguageProvider, useLanguage, LanguageSelector } from './LanguageContext';
 import SentimentBarometer from './SentimentBarometer';
 import SentimentDashboard from './SentimentDashboardPremium';
+import WM2026TeamBadges from './WM2026TeamBadges';
 
 // ==================== NEWS RSS FEED CONFIG ====================
 // Comprehensive WM 2026 coverage - all categories
 
 const RSS_FEEDS_DE = [
   // Core Keywords
-  { url: 'https://news.google.com/rss/search?q="Fußball-WM+2026"&hl=de&gl=DE&ceid=DE:de', tag: 'WM 2026', tagColor: '#10b981' },
+  { url: 'https://news.google.com/rss/search?q="FuÃŸball-WM+2026"&hl=de&gl=DE&ceid=DE:de', tag: 'WM 2026', tagColor: '#10b981' },
   { url: 'https://news.google.com/rss/search?q="Fussball+WM+2026"&hl=de&gl=DE&ceid=DE:de', tag: 'WM 2026', tagColor: '#10b981' },
   { url: 'https://news.google.com/rss/search?q="Weltmeisterschaft+2026"&hl=de&gl=DE&ceid=DE:de', tag: 'WM 2026', tagColor: '#10b981' },
   { url: 'https://news.google.com/rss/search?q="FIFA+WM+2026"&hl=de&gl=DE&ceid=DE:de', tag: 'FIFA', tagColor: '#3b82f6' },
@@ -33,10 +34,10 @@ const RSS_FEEDS_DE = [
   // Stars & Teams
   { url: 'https://news.google.com/rss/search?q=WM+2026+Favoriten&hl=de&gl=DE&ceid=DE:de', tag: 'Favoriten', tagColor: '#ef4444' },
   { url: 'https://news.google.com/rss/search?q=WM+2026+Stars&hl=de&gl=DE&ceid=DE:de', tag: 'Stars', tagColor: '#ef4444' },
-  // 🇦🇹 Österreich
-  { url: 'https://news.google.com/rss/search?q=ÖFB+WM+2026&hl=de&gl=AT&ceid=AT:de', tag: '🇦🇹 ÖFB', tagColor: '#ef4444' },
-  // 🇨🇭 Schweiz
-  { url: 'https://news.google.com/rss/search?q=Nati+WM+2026&hl=de&gl=CH&ceid=CH:de', tag: '🇨🇭 Nati', tagColor: '#ef4444' },
+  // ðŸ‡¦ðŸ‡¹ Ã–sterreich
+  { url: 'https://news.google.com/rss/search?q=Ã–FB+WM+2026&hl=de&gl=AT&ceid=AT:de', tag: 'ðŸ‡¦ðŸ‡¹ Ã–FB', tagColor: '#ef4444' },
+  // ðŸ‡¨ðŸ‡­ Schweiz
+  { url: 'https://news.google.com/rss/search?q=Nati+WM+2026&hl=de&gl=CH&ceid=CH:de', tag: 'ðŸ‡¨ðŸ‡­ Nati', tagColor: '#ef4444' },
 ];
 
 const RSS_FEEDS_EN = [
@@ -59,8 +60,8 @@ const RSS_FEEDS_EN = [
   { url: 'https://news.google.com/rss/search?q=World+Cup+2026+stars&hl=en&gl=US&ceid=US:en', tag: 'Stars', tagColor: '#ef4444' },
   // Broadcasting
   { url: 'https://news.google.com/rss/search?q=World+Cup+2026+streaming&hl=en&gl=US&ceid=US:en', tag: 'Streaming', tagColor: '#ec4899' },
-  // 🇬🇧 UK
-  { url: 'https://news.google.com/rss/search?q=World+Cup+2026&hl=en&gl=GB&ceid=GB:en', tag: '🇬🇧 UK', tagColor: '#3b82f6' },
+  // ðŸ‡¬ðŸ‡§ UK
+  { url: 'https://news.google.com/rss/search?q=World+Cup+2026&hl=en&gl=GB&ceid=GB:en', tag: 'ðŸ‡¬ðŸ‡§ UK', tagColor: '#3b82f6' },
 ];
 
 // RSS Parser using rss2json.com (free, 10k requests/day)
@@ -106,7 +107,7 @@ const EXCLUDE_KEYWORDS = [
 
 // Must contain at least one of these to be considered football-related
 const INCLUDE_KEYWORDS = [
-  'fußball', 'fussball', 'football', 'soccer', 'fifa', 
+  'fuÃŸball', 'fussball', 'football', 'soccer', 'fifa', 
   'nationalmannschaft', 'national team',
   'wm 2026', 'world cup 2026', 'weltmeisterschaft',
   'stadion', 'stadium', 'qualifikation', 'qualification', 'qualifier',
@@ -128,7 +129,7 @@ async function fetchRSSNews(lang = 'de') {
       
       // Detect language from feed URL
       const isGerman = feed.url.includes('hl=de');
-      const langFlag = isGerman ? '🇩🇪' : '🇺🇸';
+      const langFlag = isGerman ? 'ðŸ‡©ðŸ‡ª' : 'ðŸ‡ºðŸ‡¸';
       
       if (data.status === 'ok' && data.items) {
         return data.items.slice(0, 3).map((item, index) => {
@@ -205,74 +206,74 @@ async function fetchRSSNews(lang = 'de') {
 // ==================== MATCH DATA - ALL 104 MATCHES ====================
 const matchData = [
   // GRUPPENPHASE - Tag 1-3
-  { id: 1, date: "2026-06-11", group: "A", team1: "Mexiko", team2: "Südafrika", city: "Mexico City", stadium: "Estadio Azteca", type: "Gruppenphase", localTime: "12:00", cetTime: "21:00" },
-  { id: 2, date: "2026-06-11", group: "A", team1: "Südkorea", team2: "Dänemark", city: "Guadalajara", stadium: "Estadio Akron", type: "Gruppenphase", localTime: "19:00", cetTime: "04:00" },
+  { id: 1, date: "2026-06-11", group: "A", team1: "Mexiko", team2: "SÃ¼dafrika", city: "Mexico City", stadium: "Estadio Azteca", type: "Gruppenphase", localTime: "12:00", cetTime: "21:00" },
+  { id: 2, date: "2026-06-11", group: "A", team1: "SÃ¼dkorea", team2: "DÃ¤nemark", city: "Guadalajara", stadium: "Estadio Akron", type: "Gruppenphase", localTime: "19:00", cetTime: "04:00" },
   { id: 3, date: "2026-06-12", group: "B", team1: "Kanada", team2: "Italien", city: "Toronto", stadium: "BMO Field", type: "Gruppenphase", localTime: "15:00", cetTime: "21:00" },
   { id: 4, date: "2026-06-12", group: "D", team1: "USA", team2: "Paraguay", city: "Los Angeles", stadium: "SoFi Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "03:00" },
   { id: 5, date: "2026-06-13", group: "C", team1: "Haiti", team2: "Schottland", city: "Boston", stadium: "Gillette Stadium", type: "Gruppenphase", localTime: "21:00", cetTime: "03:00" },
-  { id: 6, date: "2026-06-13", group: "D", team1: "Australien", team2: "Türkei", city: "Vancouver", stadium: "BC Place", type: "Gruppenphase", localTime: "21:00", cetTime: "06:00" },
+  { id: 6, date: "2026-06-13", group: "D", team1: "Australien", team2: "TÃ¼rkei", city: "Vancouver", stadium: "BC Place", type: "Gruppenphase", localTime: "21:00", cetTime: "06:00" },
   { id: 7, date: "2026-06-13", group: "C", team1: "Brasilien", team2: "Marokko", city: "New York", stadium: "MetLife Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
   { id: 8, date: "2026-06-13", group: "B", team1: "Katar", team2: "Schweiz", city: "San Francisco", stadium: "Levi's Stadium", type: "Gruppenphase", localTime: "12:00", cetTime: "21:00" },
-  { id: 9, date: "2026-06-14", group: "E", team1: "Elfenbeinküste", team2: "Ecuador", city: "Philadelphia", stadium: "Lincoln Financial Field", type: "Gruppenphase", localTime: "19:00", cetTime: "01:00" },
-  { id: 10, date: "2026-06-14", group: "E", team1: "Deutschland", team2: "Curaçao", city: "Houston", stadium: "NRG Stadium", type: "Gruppenphase", localTime: "13:00", cetTime: "20:00" },
+  { id: 9, date: "2026-06-14", group: "E", team1: "ElfenbeinkÃ¼ste", team2: "Ecuador", city: "Philadelphia", stadium: "Lincoln Financial Field", type: "Gruppenphase", localTime: "19:00", cetTime: "01:00" },
+  { id: 10, date: "2026-06-14", group: "E", team1: "Deutschland", team2: "CuraÃ§ao", city: "Houston", stadium: "NRG Stadium", type: "Gruppenphase", localTime: "13:00", cetTime: "20:00" },
   { id: 11, date: "2026-06-14", group: "F", team1: "Niederlande", team2: "Japan", city: "Dallas", stadium: "AT&T Stadium", type: "Gruppenphase", localTime: "16:00", cetTime: "23:00" },
   { id: 12, date: "2026-06-14", group: "F", team1: "Ukraine", team2: "Tunesien", city: "Monterrey", stadium: "Estadio BBVA", type: "Gruppenphase", localTime: "21:00", cetTime: "04:00" },
   { id: 13, date: "2026-06-15", group: "H", team1: "Saudi-Arabien", team2: "Uruguay", city: "Miami", stadium: "Hard Rock Stadium", type: "Gruppenphase", localTime: "12:00", cetTime: "18:00" },
   { id: 14, date: "2026-06-15", group: "G", team1: "England", team2: "Senegal", city: "Atlanta", stadium: "Mercedes-Benz Stadium", type: "Gruppenphase", localTime: "15:00", cetTime: "21:00" },
   { id: 15, date: "2026-06-15", group: "G", team1: "Polen", team2: "Panama", city: "Seattle", stadium: "Lumen Field", type: "Gruppenphase", localTime: "18:00", cetTime: "03:00" },
-  { id: 16, date: "2026-06-15", group: "H", team1: "Ägypten", team2: "Kolumbien", city: "Kansas City", stadium: "Arrowhead Stadium", type: "Gruppenphase", localTime: "19:00", cetTime: "02:00" },
+  { id: 16, date: "2026-06-15", group: "H", team1: "Ã„gypten", team2: "Kolumbien", city: "Kansas City", stadium: "Arrowhead Stadium", type: "Gruppenphase", localTime: "19:00", cetTime: "02:00" },
   { id: 17, date: "2026-06-16", group: "I", team1: "Spanien", team2: "Nigeria", city: "Mexico City", stadium: "Estadio Azteca", type: "Gruppenphase", localTime: "12:00", cetTime: "19:00" },
   { id: 18, date: "2026-06-16", group: "J", team1: "Argentinien", team2: "Algerien", city: "New York", stadium: "MetLife Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
-  { id: 19, date: "2026-06-16", group: "J", team1: "Österreich", team2: "Jordanien", city: "San Francisco", stadium: "Levi's Stadium", type: "Gruppenphase", localTime: "12:00", cetTime: "21:00" },
+  { id: 19, date: "2026-06-16", group: "J", team1: "Ã–sterreich", team2: "Jordanien", city: "San Francisco", stadium: "Levi's Stadium", type: "Gruppenphase", localTime: "12:00", cetTime: "21:00" },
   { id: 20, date: "2026-06-16", group: "I", team1: "Serbien", team2: "Neuseeland", city: "Houston", stadium: "NRG Stadium", type: "Gruppenphase", localTime: "19:00", cetTime: "02:00" },
   { id: 21, date: "2026-06-17", group: "K", team1: "Frankreich", team2: "Costa Rica", city: "Los Angeles", stadium: "SoFi Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "03:00" },
   { id: 22, date: "2026-06-17", group: "L", team1: "Portugal", team2: "Ghana", city: "Dallas", stadium: "AT&T Stadium", type: "Gruppenphase", localTime: "16:00", cetTime: "23:00" },
   { id: 23, date: "2026-06-17", group: "L", team1: "Kroatien", team2: "Iran", city: "Miami", stadium: "Hard Rock Stadium", type: "Gruppenphase", localTime: "12:00", cetTime: "18:00" },
   { id: 24, date: "2026-06-17", group: "K", team1: "Kamerun", team2: "Indonesien", city: "Atlanta", stadium: "Mercedes-Benz Stadium", type: "Gruppenphase", localTime: "15:00", cetTime: "21:00" },
-  { id: 25, date: "2026-06-18", group: "A", team1: "Südafrika", team2: "Südkorea", city: "Guadalajara", stadium: "Estadio Akron", type: "Gruppenphase", localTime: "17:00", cetTime: "00:00" },
-  { id: 26, date: "2026-06-18", group: "A", team1: "Mexiko", team2: "Dänemark", city: "Mexico City", stadium: "Estadio Azteca", type: "Gruppenphase", localTime: "20:00", cetTime: "03:00" },
+  { id: 25, date: "2026-06-18", group: "A", team1: "SÃ¼dafrika", team2: "SÃ¼dkorea", city: "Guadalajara", stadium: "Estadio Akron", type: "Gruppenphase", localTime: "17:00", cetTime: "00:00" },
+  { id: 26, date: "2026-06-18", group: "A", team1: "Mexiko", team2: "DÃ¤nemark", city: "Mexico City", stadium: "Estadio Azteca", type: "Gruppenphase", localTime: "20:00", cetTime: "03:00" },
   { id: 27, date: "2026-06-18", group: "B", team1: "Schweiz", team2: "Kanada", city: "Vancouver", stadium: "BC Place", type: "Gruppenphase", localTime: "18:00", cetTime: "03:00" },
   { id: 28, date: "2026-06-18", group: "B", team1: "Italien", team2: "Katar", city: "Toronto", stadium: "BMO Field", type: "Gruppenphase", localTime: "15:00", cetTime: "21:00" },
   { id: 29, date: "2026-06-19", group: "C", team1: "Schottland", team2: "Brasilien", city: "Boston", stadium: "Gillette Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
   { id: 30, date: "2026-06-19", group: "C", team1: "Marokko", team2: "Haiti", city: "Philadelphia", stadium: "Lincoln Financial Field", type: "Gruppenphase", localTime: "15:00", cetTime: "21:00" },
   { id: 31, date: "2026-06-19", group: "D", team1: "Paraguay", team2: "Australien", city: "Seattle", stadium: "Lumen Field", type: "Gruppenphase", localTime: "18:00", cetTime: "03:00" },
-  { id: 32, date: "2026-06-19", group: "D", team1: "Türkei", team2: "USA", city: "Los Angeles", stadium: "SoFi Stadium", type: "Gruppenphase", localTime: "21:00", cetTime: "06:00" },
+  { id: 32, date: "2026-06-19", group: "D", team1: "TÃ¼rkei", team2: "USA", city: "Los Angeles", stadium: "SoFi Stadium", type: "Gruppenphase", localTime: "21:00", cetTime: "06:00" },
   { id: 33, date: "2026-06-20", group: "E", team1: "Ecuador", team2: "Deutschland", city: "New York", stadium: "MetLife Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
-  { id: 34, date: "2026-06-20", group: "E", team1: "Curaçao", team2: "Elfenbeinküste", city: "Houston", stadium: "NRG Stadium", type: "Gruppenphase", localTime: "13:00", cetTime: "20:00" },
+  { id: 34, date: "2026-06-20", group: "E", team1: "CuraÃ§ao", team2: "ElfenbeinkÃ¼ste", city: "Houston", stadium: "NRG Stadium", type: "Gruppenphase", localTime: "13:00", cetTime: "20:00" },
   { id: 35, date: "2026-06-20", group: "F", team1: "Japan", team2: "Ukraine", city: "Kansas City", stadium: "Arrowhead Stadium", type: "Gruppenphase", localTime: "19:00", cetTime: "02:00" },
   { id: 36, date: "2026-06-20", group: "F", team1: "Tunesien", team2: "Niederlande", city: "Dallas", stadium: "AT&T Stadium", type: "Gruppenphase", localTime: "16:00", cetTime: "23:00" },
   { id: 37, date: "2026-06-21", group: "G", team1: "Senegal", team2: "Polen", city: "Atlanta", stadium: "Mercedes-Benz Stadium", type: "Gruppenphase", localTime: "15:00", cetTime: "21:00" },
   { id: 38, date: "2026-06-21", group: "G", team1: "Panama", team2: "England", city: "Miami", stadium: "Hard Rock Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
-  { id: 39, date: "2026-06-21", group: "H", team1: "Uruguay", team2: "Ägypten", city: "San Francisco", stadium: "Levi's Stadium", type: "Gruppenphase", localTime: "12:00", cetTime: "21:00" },
+  { id: 39, date: "2026-06-21", group: "H", team1: "Uruguay", team2: "Ã„gypten", city: "San Francisco", stadium: "Levi's Stadium", type: "Gruppenphase", localTime: "12:00", cetTime: "21:00" },
   { id: 40, date: "2026-06-21", group: "H", team1: "Kolumbien", team2: "Saudi-Arabien", city: "Monterrey", stadium: "Estadio BBVA", type: "Gruppenphase", localTime: "19:00", cetTime: "02:00" },
   { id: 41, date: "2026-06-22", group: "I", team1: "Nigeria", team2: "Serbien", city: "Houston", stadium: "NRG Stadium", type: "Gruppenphase", localTime: "13:00", cetTime: "20:00" },
   { id: 42, date: "2026-06-22", group: "I", team1: "Neuseeland", team2: "Spanien", city: "Mexico City", stadium: "Estadio Azteca", type: "Gruppenphase", localTime: "17:00", cetTime: "00:00" },
-  { id: 43, date: "2026-06-22", group: "J", team1: "Algerien", team2: "Österreich", city: "New York", stadium: "MetLife Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
+  { id: 43, date: "2026-06-22", group: "J", team1: "Algerien", team2: "Ã–sterreich", city: "New York", stadium: "MetLife Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
   { id: 44, date: "2026-06-22", group: "J", team1: "Jordanien", team2: "Argentinien", city: "Dallas", stadium: "AT&T Stadium", type: "Gruppenphase", localTime: "16:00", cetTime: "23:00" },
   { id: 45, date: "2026-06-23", group: "K", team1: "Costa Rica", team2: "Kamerun", city: "Atlanta", stadium: "Mercedes-Benz Stadium", type: "Gruppenphase", localTime: "15:00", cetTime: "21:00" },
   { id: 46, date: "2026-06-23", group: "K", team1: "Indonesien", team2: "Frankreich", city: "Los Angeles", stadium: "SoFi Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "03:00" },
   { id: 47, date: "2026-06-23", group: "L", team1: "Ghana", team2: "Kroatien", city: "Philadelphia", stadium: "Lincoln Financial Field", type: "Gruppenphase", localTime: "19:00", cetTime: "01:00" },
   { id: 48, date: "2026-06-23", group: "L", team1: "Iran", team2: "Portugal", city: "Boston", stadium: "Gillette Stadium", type: "Gruppenphase", localTime: "21:00", cetTime: "03:00" },
-  { id: 49, date: "2026-06-24", group: "A", team1: "Dänemark", team2: "Südafrika", city: "Guadalajara", stadium: "Estadio Akron", type: "Gruppenphase", localTime: "17:00", cetTime: "00:00" },
-  { id: 50, date: "2026-06-24", group: "A", team1: "Südkorea", team2: "Mexiko", city: "Mexico City", stadium: "Estadio Azteca", type: "Gruppenphase", localTime: "17:00", cetTime: "00:00" },
+  { id: 49, date: "2026-06-24", group: "A", team1: "DÃ¤nemark", team2: "SÃ¼dafrika", city: "Guadalajara", stadium: "Estadio Akron", type: "Gruppenphase", localTime: "17:00", cetTime: "00:00" },
+  { id: 50, date: "2026-06-24", group: "A", team1: "SÃ¼dkorea", team2: "Mexiko", city: "Mexico City", stadium: "Estadio Azteca", type: "Gruppenphase", localTime: "17:00", cetTime: "00:00" },
   { id: 51, date: "2026-06-24", group: "B", team1: "Katar", team2: "Kanada", city: "Vancouver", stadium: "BC Place", type: "Gruppenphase", localTime: "18:00", cetTime: "03:00" },
   { id: 52, date: "2026-06-24", group: "B", team1: "Schweiz", team2: "Italien", city: "Toronto", stadium: "BMO Field", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
   { id: 53, date: "2026-06-25", group: "C", team1: "Haiti", team2: "Brasilien", city: "New York", stadium: "MetLife Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
   { id: 54, date: "2026-06-25", group: "C", team1: "Schottland", team2: "Marokko", city: "Boston", stadium: "Gillette Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
-  { id: 55, date: "2026-06-25", group: "D", team1: "Türkei", team2: "Paraguay", city: "Seattle", stadium: "Lumen Field", type: "Gruppenphase", localTime: "18:00", cetTime: "03:00" },
+  { id: 55, date: "2026-06-25", group: "D", team1: "TÃ¼rkei", team2: "Paraguay", city: "Seattle", stadium: "Lumen Field", type: "Gruppenphase", localTime: "18:00", cetTime: "03:00" },
   { id: 56, date: "2026-06-25", group: "D", team1: "Australien", team2: "USA", city: "Los Angeles", stadium: "SoFi Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "03:00" },
-  { id: 57, date: "2026-06-26", group: "E", team1: "Curaçao", team2: "Ecuador", city: "Philadelphia", stadium: "Lincoln Financial Field", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
-  { id: 58, date: "2026-06-26", group: "E", team1: "Deutschland", team2: "Elfenbeinküste", city: "Houston", stadium: "NRG Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "01:00" },
+  { id: 57, date: "2026-06-26", group: "E", team1: "CuraÃ§ao", team2: "Ecuador", city: "Philadelphia", stadium: "Lincoln Financial Field", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
+  { id: 58, date: "2026-06-26", group: "E", team1: "Deutschland", team2: "ElfenbeinkÃ¼ste", city: "Houston", stadium: "NRG Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "01:00" },
   { id: 59, date: "2026-06-26", group: "F", team1: "Tunesien", team2: "Japan", city: "Kansas City", stadium: "Arrowhead Stadium", type: "Gruppenphase", localTime: "19:00", cetTime: "02:00" },
   { id: 60, date: "2026-06-26", group: "F", team1: "Ukraine", team2: "Niederlande", city: "Dallas", stadium: "AT&T Stadium", type: "Gruppenphase", localTime: "19:00", cetTime: "02:00" },
   { id: 61, date: "2026-06-27", group: "G", team1: "Panama", team2: "Senegal", city: "Atlanta", stadium: "Mercedes-Benz Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
   { id: 62, date: "2026-06-27", group: "G", team1: "Polen", team2: "England", city: "Miami", stadium: "Hard Rock Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
   { id: 63, date: "2026-06-27", group: "H", team1: "Kolumbien", team2: "Uruguay", city: "San Francisco", stadium: "Levi's Stadium", type: "Gruppenphase", localTime: "15:00", cetTime: "00:00" },
-  { id: 64, date: "2026-06-27", group: "H", team1: "Ägypten", team2: "Saudi-Arabien", city: "Monterrey", stadium: "Estadio BBVA", type: "Gruppenphase", localTime: "18:00", cetTime: "01:00" },
+  { id: 64, date: "2026-06-27", group: "H", team1: "Ã„gypten", team2: "Saudi-Arabien", city: "Monterrey", stadium: "Estadio BBVA", type: "Gruppenphase", localTime: "18:00", cetTime: "01:00" },
   { id: 65, date: "2026-06-28", group: "I", team1: "Neuseeland", team2: "Nigeria", city: "Houston", stadium: "NRG Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "01:00" },
   { id: 66, date: "2026-06-28", group: "I", team1: "Serbien", team2: "Spanien", city: "Mexico City", stadium: "Estadio Azteca", type: "Gruppenphase", localTime: "18:00", cetTime: "01:00" },
   { id: 67, date: "2026-06-28", group: "J", team1: "Jordanien", team2: "Algerien", city: "New York", stadium: "MetLife Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
-  { id: 68, date: "2026-06-28", group: "J", team1: "Österreich", team2: "Argentinien", city: "Kansas City", stadium: "Arrowhead Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "01:00" },
+  { id: 68, date: "2026-06-28", group: "J", team1: "Ã–sterreich", team2: "Argentinien", city: "Kansas City", stadium: "Arrowhead Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "01:00" },
   { id: 69, date: "2026-06-29", group: "K", team1: "Indonesien", team2: "Costa Rica", city: "Atlanta", stadium: "Mercedes-Benz Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
   { id: 70, date: "2026-06-29", group: "K", team1: "Kamerun", team2: "Frankreich", city: "Los Angeles", stadium: "SoFi Stadium", type: "Gruppenphase", localTime: "18:00", cetTime: "03:00" },
   { id: 71, date: "2026-06-29", group: "L", team1: "Iran", team2: "Ghana", city: "Philadelphia", stadium: "Lincoln Financial Field", type: "Gruppenphase", localTime: "18:00", cetTime: "00:00" },
@@ -318,63 +319,63 @@ const matchData = [
 
 // ==================== TEAM INFORMATION ====================
 const teamInfo = {
-  "Deutschland": { flag: "🇩🇪", news: "Musiala & Wirtz in Topform. Nagelsmann baut auf junge Spieler.", strength: 88 },
-  "Frankreich": { flag: "🇫🇷", news: "Mbappé bei Real Madrid. Deschamps plant letztes Turnier.", strength: 90 },
-  "Brasilien": { flag: "🇧🇷", news: "Ancelotti neuer Trainer! Vinicius Jr. & Rodrygo führen an.", strength: 89 },
-  "Argentinien": { flag: "🇦🇷", news: "Messi (39) letzte WM? Titelverteidiger mit Álvarez & Mac Allister.", strength: 91 },
-  "England": { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", news: "Tuchel neuer Trainer! Bellingham, Saka, Foden in Hochform.", strength: 87 },
-  "Spanien": { flag: "🇪🇸", news: "Lamine Yamal (17) Superstar! Euro 2024 Sieger.", strength: 89 },
-  "Portugal": { flag: "🇵🇹", news: "Ronaldo (41) dabei! Bruno Fernandes & Rafael Leão führen.", strength: 86 },
-  "Niederlande": { flag: "🇳🇱", news: "Koeman setzt auf Gakpo, Simons & de Jong.", strength: 85 },
-  "Italien": { flag: "🇮🇹", news: "Nach EM-Aus im Umbruch. Tonali zurück, junge Talente.", strength: 84 },
-  "Kroatien": { flag: "🇭🇷", news: "Modrić (40) Abschiedstour? Goldene Generation endet.", strength: 83 },
-  "USA": { flag: "🇺🇸", news: "Heimvorteil! Pulisic, McKennie & Reyna wollen Geschichte schreiben.", strength: 82 },
-  "Mexiko": { flag: "🇲🇽", news: "Co-Gastgeber träumt vom Viertelfinal-Fluch brechen.", strength: 80 },
-  "Kanada": { flag: "🇨🇦", news: "Davies als Star. Erste WM als Gastgeber.", strength: 78 },
-  "Österreich": { flag: "🇦🇹", news: "Rangnick-Revolution! Laimer, Sabitzer & Arnautović.", strength: 79 },
-  "Schweiz": { flag: "🇨🇭", news: "Xhaka führt, Yakin baut neue Generation auf.", strength: 80 },
-  "Japan": { flag: "🇯🇵", news: "Kubo, Mitoma, Doan - schnellste Offensive Asiens.", strength: 81 },
-  "Südkorea": { flag: "🇰🇷", news: "Son Heung-min letzte WM? Kim Min-jae Weltklasse.", strength: 79 },
-  "Australien": { flag: "🇦🇺", news: "Socceroos mit Erfahrung. Physische Spielweise.", strength: 75 },
-  "Saudi-Arabien": { flag: "🇸🇦", news: "WM 2034 Gastgeber. Al-Dawsari noch dabei.", strength: 74 },
-  "Katar": { flag: "🇶🇦", news: "Asien-Meister will WM-Debakel 2022 vergessen.", strength: 73 },
-  "Marokko": { flag: "🇲🇦", news: "Nach Halbfinale 2022 hohe Erwartungen. Hakimi, En-Nesyri.", strength: 82 },
-  "Senegal": { flag: "🇸🇳", news: "Afrika-Meister mit Mané in Saudi-Form.", strength: 80 },
-  "Nigeria": { flag: "🇳🇬", news: "Super Eagles mit Osimhen als Hoffnungsträger.", strength: 78 },
-  "Elfenbeinküste": { flag: "🇨🇮", news: "Afrika-Cup 2023 Sieger! Haller & Kessié führen.", strength: 77 },
-  "Ghana": { flag: "🇬🇭", news: "Black Stars im Generationswechsel.", strength: 74 },
-  "Kamerun": { flag: "🇨🇲", news: "Unberechenbare Löwen. Eto'o als Verbandschef.", strength: 75 },
-  "Ägypten": { flag: "🇪🇬", news: "Salah jagt WM-Tor. Pharaonen hungrig.", strength: 77 },
-  "Südafrika": { flag: "🇿🇦", news: "Bafana Bafana zurück bei WM. AFCON 2023 Dritter.", strength: 72 },
-  "Tunesien": { flag: "🇹🇳", news: "Adlige des afrikanischen Fußballs.", strength: 73 },
-  "Algerien": { flag: "🇩🇿", news: "Fennecs wollen 2019er-Magie zurückbringen.", strength: 76 },
-  "Uruguay": { flag: "🇺🇾", news: "Valverde & Núñez neue Generation. Suárez Rücktritt?", strength: 83 },
-  "Kolumbien": { flag: "🇨🇴", news: "James Rodríguez Renaissance! Díaz & Arias stark.", strength: 81 },
-  "Ecuador": { flag: "🇪🇨", news: "Junge Talente um Caicedo & Páez.", strength: 78 },
-  "Paraguay": { flag: "🇵🇾", news: "Almiron führt die Guaraníes.", strength: 74 },
-  "Dänemark": { flag: "🇩🇰", news: "Hjulmand plant. Højlund & Lindstrøm neue Stars.", strength: 80 },
-  "Serbien": { flag: "🇷🇸", news: "Vlahović, Mitrović, Tadić - Offensivpower.", strength: 79 },
-  "Polen": { flag: "🇵🇱", news: "Lewandowski (37) noch dabei? Zalewski Hoffnung.", strength: 78 },
-  "Ukraine": { flag: "🇺🇦", news: "Trotz Krieg qualifiziert. Mudryk & Dovbyk als Stars.", strength: 77 },
-  "Türkei": { flag: "🇹🇷", news: "Yıldız (19) neuer Superstar. Montella bringt System.", strength: 78 },
-  "Schottland": { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", news: "Erste WM seit 1998! Robertson führt.", strength: 74 },
-  "Haiti": { flag: "🇭🇹", news: "Historische Qualifikation! Gold Cup Überraschung.", strength: 65 },
-  "Panama": { flag: "🇵🇦", news: "Dritte WM-Teilnahme. Canaleros mit Erfahrung.", strength: 70 },
-  "Costa Rica": { flag: "🇨🇷", news: "Keylor Navas Rücktritt? Neue Generation gefragt.", strength: 72 },
-  "Iran": { flag: "🇮🇷", news: "Taremi & Azmoun erfahren. Politische Spannungen.", strength: 76 },
-  "Neuseeland": { flag: "🇳🇿", news: "All Whites über Playoffs. Chris Wood als Torjäger.", strength: 68 },
-  "Indonesien": { flag: "🇮🇩", news: "Historisch erste WM! Shin Tae-yong als Architekt.", strength: 62 },
-  "Curaçao": { flag: "🇨🇼", news: "Kleinste Nation der WM! Bachita & Martina führen.", strength: 60 },
-  "Jordanien": { flag: "🇯🇴", news: "Asien-Cup 2023 Finale! Historischer Erfolg.", strength: 70 },
+  "Deutschland": { flag: "ðŸ‡©ðŸ‡ª", news: "Musiala & Wirtz in Topform. Nagelsmann baut auf junge Spieler.", strength: 88 },
+  "Frankreich": { flag: "ðŸ‡«ðŸ‡·", news: "MbappÃ© bei Real Madrid. Deschamps plant letztes Turnier.", strength: 90 },
+  "Brasilien": { flag: "ðŸ‡§ðŸ‡·", news: "Ancelotti neuer Trainer! Vinicius Jr. & Rodrygo fÃ¼hren an.", strength: 89 },
+  "Argentinien": { flag: "ðŸ‡¦ðŸ‡·", news: "Messi (39) letzte WM? Titelverteidiger mit Ãlvarez & Mac Allister.", strength: 91 },
+  "England": { flag: "ðŸ´ó §ó ¢ó ¥ó ®ó §ó ¿", news: "Tuchel neuer Trainer! Bellingham, Saka, Foden in Hochform.", strength: 87 },
+  "Spanien": { flag: "ðŸ‡ªðŸ‡¸", news: "Lamine Yamal (17) Superstar! Euro 2024 Sieger.", strength: 89 },
+  "Portugal": { flag: "ðŸ‡µðŸ‡¹", news: "Ronaldo (41) dabei! Bruno Fernandes & Rafael LeÃ£o fÃ¼hren.", strength: 86 },
+  "Niederlande": { flag: "ðŸ‡³ðŸ‡±", news: "Koeman setzt auf Gakpo, Simons & de Jong.", strength: 85 },
+  "Italien": { flag: "ðŸ‡®ðŸ‡¹", news: "Nach EM-Aus im Umbruch. Tonali zurÃ¼ck, junge Talente.", strength: 84 },
+  "Kroatien": { flag: "ðŸ‡­ðŸ‡·", news: "ModriÄ‡ (40) Abschiedstour? Goldene Generation endet.", strength: 83 },
+  "USA": { flag: "ðŸ‡ºðŸ‡¸", news: "Heimvorteil! Pulisic, McKennie & Reyna wollen Geschichte schreiben.", strength: 82 },
+  "Mexiko": { flag: "ðŸ‡²ðŸ‡½", news: "Co-Gastgeber trÃ¤umt vom Viertelfinal-Fluch brechen.", strength: 80 },
+  "Kanada": { flag: "ðŸ‡¨ðŸ‡¦", news: "Davies als Star. Erste WM als Gastgeber.", strength: 78 },
+  "Ã–sterreich": { flag: "ðŸ‡¦ðŸ‡¹", news: "Rangnick-Revolution! Laimer, Sabitzer & ArnautoviÄ‡.", strength: 79 },
+  "Schweiz": { flag: "ðŸ‡¨ðŸ‡­", news: "Xhaka fÃ¼hrt, Yakin baut neue Generation auf.", strength: 80 },
+  "Japan": { flag: "ðŸ‡¯ðŸ‡µ", news: "Kubo, Mitoma, Doan - schnellste Offensive Asiens.", strength: 81 },
+  "SÃ¼dkorea": { flag: "ðŸ‡°ðŸ‡·", news: "Son Heung-min letzte WM? Kim Min-jae Weltklasse.", strength: 79 },
+  "Australien": { flag: "ðŸ‡¦ðŸ‡º", news: "Socceroos mit Erfahrung. Physische Spielweise.", strength: 75 },
+  "Saudi-Arabien": { flag: "ðŸ‡¸ðŸ‡¦", news: "WM 2034 Gastgeber. Al-Dawsari noch dabei.", strength: 74 },
+  "Katar": { flag: "ðŸ‡¶ðŸ‡¦", news: "Asien-Meister will WM-Debakel 2022 vergessen.", strength: 73 },
+  "Marokko": { flag: "ðŸ‡²ðŸ‡¦", news: "Nach Halbfinale 2022 hohe Erwartungen. Hakimi, En-Nesyri.", strength: 82 },
+  "Senegal": { flag: "ðŸ‡¸ðŸ‡³", news: "Afrika-Meister mit ManÃ© in Saudi-Form.", strength: 80 },
+  "Nigeria": { flag: "ðŸ‡³ðŸ‡¬", news: "Super Eagles mit Osimhen als HoffnungstrÃ¤ger.", strength: 78 },
+  "ElfenbeinkÃ¼ste": { flag: "ðŸ‡¨ðŸ‡®", news: "Afrika-Cup 2023 Sieger! Haller & KessiÃ© fÃ¼hren.", strength: 77 },
+  "Ghana": { flag: "ðŸ‡¬ðŸ‡­", news: "Black Stars im Generationswechsel.", strength: 74 },
+  "Kamerun": { flag: "ðŸ‡¨ðŸ‡²", news: "Unberechenbare LÃ¶wen. Eto'o als Verbandschef.", strength: 75 },
+  "Ã„gypten": { flag: "ðŸ‡ªðŸ‡¬", news: "Salah jagt WM-Tor. Pharaonen hungrig.", strength: 77 },
+  "SÃ¼dafrika": { flag: "ðŸ‡¿ðŸ‡¦", news: "Bafana Bafana zurÃ¼ck bei WM. AFCON 2023 Dritter.", strength: 72 },
+  "Tunesien": { flag: "ðŸ‡¹ðŸ‡³", news: "Adlige des afrikanischen FuÃŸballs.", strength: 73 },
+  "Algerien": { flag: "ðŸ‡©ðŸ‡¿", news: "Fennecs wollen 2019er-Magie zurÃ¼ckbringen.", strength: 76 },
+  "Uruguay": { flag: "ðŸ‡ºðŸ‡¾", news: "Valverde & NÃºÃ±ez neue Generation. SuÃ¡rez RÃ¼cktritt?", strength: 83 },
+  "Kolumbien": { flag: "ðŸ‡¨ðŸ‡´", news: "James RodrÃ­guez Renaissance! DÃ­az & Arias stark.", strength: 81 },
+  "Ecuador": { flag: "ðŸ‡ªðŸ‡¨", news: "Junge Talente um Caicedo & PÃ¡ez.", strength: 78 },
+  "Paraguay": { flag: "ðŸ‡µðŸ‡¾", news: "Almiron fÃ¼hrt die GuaranÃ­es.", strength: 74 },
+  "DÃ¤nemark": { flag: "ðŸ‡©ðŸ‡°", news: "Hjulmand plant. HÃ¸jlund & LindstrÃ¸m neue Stars.", strength: 80 },
+  "Serbien": { flag: "ðŸ‡·ðŸ‡¸", news: "VlahoviÄ‡, MitroviÄ‡, TadiÄ‡ - Offensivpower.", strength: 79 },
+  "Polen": { flag: "ðŸ‡µðŸ‡±", news: "Lewandowski (37) noch dabei? Zalewski Hoffnung.", strength: 78 },
+  "Ukraine": { flag: "ðŸ‡ºðŸ‡¦", news: "Trotz Krieg qualifiziert. Mudryk & Dovbyk als Stars.", strength: 77 },
+  "TÃ¼rkei": { flag: "ðŸ‡¹ðŸ‡·", news: "YÄ±ldÄ±z (19) neuer Superstar. Montella bringt System.", strength: 78 },
+  "Schottland": { flag: "ðŸ´ó §ó ¢ó ³ó £ó ´ó ¿", news: "Erste WM seit 1998! Robertson fÃ¼hrt.", strength: 74 },
+  "Haiti": { flag: "ðŸ‡­ðŸ‡¹", news: "Historische Qualifikation! Gold Cup Ãœberraschung.", strength: 65 },
+  "Panama": { flag: "ðŸ‡µðŸ‡¦", news: "Dritte WM-Teilnahme. Canaleros mit Erfahrung.", strength: 70 },
+  "Costa Rica": { flag: "ðŸ‡¨ðŸ‡·", news: "Keylor Navas RÃ¼cktritt? Neue Generation gefragt.", strength: 72 },
+  "Iran": { flag: "ðŸ‡®ðŸ‡·", news: "Taremi & Azmoun erfahren. Politische Spannungen.", strength: 76 },
+  "Neuseeland": { flag: "ðŸ‡³ðŸ‡¿", news: "All Whites Ã¼ber Playoffs. Chris Wood als TorjÃ¤ger.", strength: 68 },
+  "Indonesien": { flag: "ðŸ‡®ðŸ‡©", news: "Historisch erste WM! Shin Tae-yong als Architekt.", strength: 62 },
+  "CuraÃ§ao": { flag: "ðŸ‡¨ðŸ‡¼", news: "Kleinste Nation der WM! Bachita & Martina fÃ¼hren.", strength: 60 },
+  "Jordanien": { flag: "ðŸ‡¯ðŸ‡´", news: "Asien-Cup 2023 Finale! Historischer Erfolg.", strength: 70 },
 };
 
 // ==================== TRIVIA QUESTIONS ====================
 // Trivia questions loaded from Supabase (1300+ Fragen)
 
 // ==================== TV BROADCAST DATA ====================
-// WM 2026 TV-Übertragungen für DACH-Region
+// WM 2026 TV-Ãœbertragungen fÃ¼r DACH-Region
 const tvBroadcasts = {
-  // Öffentlich-rechtliche zeigen ausgewählte Spiele
+  // Ã–ffentlich-rechtliche zeigen ausgewÃ¤hlte Spiele
   free: {
     DE: ['ARD', 'ZDF'],
     AT: ['ORF', 'ServusTV'],
@@ -388,15 +389,15 @@ const tvBroadcasts = {
   }
 };
 
-// Welche Spiele sind Free-TV? (Eröffnung, Deutschland-Spiele, K.O.-Runde ab Viertelfinale, Finale)
+// Welche Spiele sind Free-TV? (ErÃ¶ffnung, Deutschland-Spiele, K.O.-Runde ab Viertelfinale, Finale)
 const isFreeTVMatch = (match) => {
-  // Eröffnungsspiel
+  // ErÃ¶ffnungsspiel
   if (match.id === 1) return true;
   // Deutschland-Spiele
   if (match.team1 === 'Deutschland' || match.team2 === 'Deutschland') return true;
-  // Österreich-Spiele (für ORF)
-  if (match.team1 === 'Österreich' || match.team2 === 'Österreich') return true;
-  // Schweiz-Spiele (für SRF)
+  // Ã–sterreich-Spiele (fÃ¼r ORF)
+  if (match.team1 === 'Ã–sterreich' || match.team2 === 'Ã–sterreich') return true;
+  // Schweiz-Spiele (fÃ¼r SRF)
   if (match.team1 === 'Schweiz' || match.team2 === 'Schweiz') return true;
   // K.O.-Runde ab Viertelfinale
   if (['Viertelfinale', 'Halbfinale', 'Spiel um Platz 3', 'Finale'].includes(match.type)) return true;
@@ -408,36 +409,36 @@ const NORDVPN_AFFILIATE_URL = 'https://www.kqzyfj.com/click-101616485-13756265';
 
 // ==================== STADIUM DATA ====================
 const stadiumData = {
-  "Estadio Azteca": { capacity: 87523, homeTeams: [{ team: "Club América", league: "Liga MX" }, { team: "Cruz Azul", league: "Liga MX" }, { team: "Mexico NT", league: "National" }], city: "Mexico City", country: "🇲🇽", wiki: "https://en.wikipedia.org/wiki/Estadio_Azteca" },
-  "Estadio Akron": { capacity: 49850, homeTeams: [{ team: "CD Guadalajara", league: "Liga MX" }], city: "Guadalajara", country: "🇲🇽", wiki: "https://en.wikipedia.org/wiki/Estadio_Akron" },
-  "Estadio BBVA": { capacity: 53500, homeTeams: [{ team: "CF Monterrey", league: "Liga MX" }], city: "Monterrey", country: "🇲🇽", wiki: "https://en.wikipedia.org/wiki/Estadio_BBVA" },
-  "MetLife Stadium": { capacity: 82500, homeTeams: [{ team: "NY Giants", league: "NFL" }, { team: "NY Jets", league: "NFL" }], city: "East Rutherford", country: "🇺🇸", wiki: "https://en.wikipedia.org/wiki/MetLife_Stadium" },
-  "SoFi Stadium": { capacity: 70240, homeTeams: [{ team: "LA Rams", league: "NFL" }, { team: "LA Chargers", league: "NFL" }], city: "Los Angeles", country: "🇺🇸", wiki: "https://en.wikipedia.org/wiki/SoFi_Stadium" },
-  "AT&T Stadium": { capacity: 80000, homeTeams: [{ team: "Dallas Cowboys", league: "NFL" }], city: "Dallas", country: "🇺🇸", wiki: "https://en.wikipedia.org/wiki/AT%26T_Stadium" },
-  "NRG Stadium": { capacity: 72220, homeTeams: [{ team: "Houston Texans", league: "NFL" }, { team: "Houston Dynamo", league: "MLS" }], city: "Houston", country: "🇺🇸", wiki: "https://en.wikipedia.org/wiki/NRG_Stadium" },
-  "Hard Rock Stadium": { capacity: 65326, homeTeams: [{ team: "Miami Dolphins", league: "NFL" }, { team: "Inter Miami", league: "MLS" }], city: "Miami", country: "🇺🇸", wiki: "https://en.wikipedia.org/wiki/Hard_Rock_Stadium" },
-  "Mercedes-Benz Stadium": { capacity: 71000, homeTeams: [{ team: "Atlanta Falcons", league: "NFL" }, { team: "Atlanta United", league: "MLS" }], city: "Atlanta", country: "🇺🇸", wiki: "https://en.wikipedia.org/wiki/Mercedes-Benz_Stadium" },
-  "Lincoln Financial Field": { capacity: 69796, homeTeams: [{ team: "Philadelphia Eagles", league: "NFL" }, { team: "Philadelphia Union", league: "MLS" }], city: "Philadelphia", country: "🇺🇸", wiki: "https://en.wikipedia.org/wiki/Lincoln_Financial_Field" },
-  "Levi's Stadium": { capacity: 68500, homeTeams: [{ team: "San Francisco 49ers", league: "NFL" }, { team: "SJ Earthquakes", league: "MLS" }], city: "San Francisco", country: "🇺🇸", wiki: "https://en.wikipedia.org/wiki/Levi%27s_Stadium" },
-  "Gillette Stadium": { capacity: 65878, homeTeams: [{ team: "New England Patriots", league: "NFL" }, { team: "New England Revolution", league: "MLS" }], city: "Boston", country: "🇺🇸", wiki: "https://en.wikipedia.org/wiki/Gillette_Stadium" },
-  "Arrowhead Stadium": { capacity: 76416, homeTeams: [{ team: "Kansas City Chiefs", league: "NFL" }], city: "Kansas City", country: "🇺🇸", wiki: "https://en.wikipedia.org/wiki/Arrowhead_Stadium" },
-  "Lumen Field": { capacity: 68740, homeTeams: [{ team: "Seattle Seahawks", league: "NFL" }, { team: "Seattle Sounders", league: "MLS" }], city: "Seattle", country: "🇺🇸", wiki: "https://en.wikipedia.org/wiki/Lumen_Field" },
-  "BC Place": { capacity: 54500, homeTeams: [{ team: "BC Lions", league: "CFL" }, { team: "Vancouver Whitecaps", league: "MLS" }], city: "Vancouver", country: "🇨🇦", wiki: "https://en.wikipedia.org/wiki/BC_Place" },
-  "BMO Field": { capacity: 45736, homeTeams: [{ team: "Toronto FC", league: "MLS" }, { team: "Toronto Argonauts", league: "CFL" }], city: "Toronto", country: "🇨🇦", wiki: "https://en.wikipedia.org/wiki/BMO_Field" },
+  "Estadio Azteca": { capacity: 87523, homeTeams: [{ team: "Club AmÃ©rica", league: "Liga MX" }, { team: "Cruz Azul", league: "Liga MX" }, { team: "Mexico NT", league: "National" }], city: "Mexico City", country: "ðŸ‡²ðŸ‡½", wiki: "https://en.wikipedia.org/wiki/Estadio_Azteca" },
+  "Estadio Akron": { capacity: 49850, homeTeams: [{ team: "CD Guadalajara", league: "Liga MX" }], city: "Guadalajara", country: "ðŸ‡²ðŸ‡½", wiki: "https://en.wikipedia.org/wiki/Estadio_Akron" },
+  "Estadio BBVA": { capacity: 53500, homeTeams: [{ team: "CF Monterrey", league: "Liga MX" }], city: "Monterrey", country: "ðŸ‡²ðŸ‡½", wiki: "https://en.wikipedia.org/wiki/Estadio_BBVA" },
+  "MetLife Stadium": { capacity: 82500, homeTeams: [{ team: "NY Giants", league: "NFL" }, { team: "NY Jets", league: "NFL" }], city: "East Rutherford", country: "ðŸ‡ºðŸ‡¸", wiki: "https://en.wikipedia.org/wiki/MetLife_Stadium" },
+  "SoFi Stadium": { capacity: 70240, homeTeams: [{ team: "LA Rams", league: "NFL" }, { team: "LA Chargers", league: "NFL" }], city: "Los Angeles", country: "ðŸ‡ºðŸ‡¸", wiki: "https://en.wikipedia.org/wiki/SoFi_Stadium" },
+  "AT&T Stadium": { capacity: 80000, homeTeams: [{ team: "Dallas Cowboys", league: "NFL" }], city: "Dallas", country: "ðŸ‡ºðŸ‡¸", wiki: "https://en.wikipedia.org/wiki/AT%26T_Stadium" },
+  "NRG Stadium": { capacity: 72220, homeTeams: [{ team: "Houston Texans", league: "NFL" }, { team: "Houston Dynamo", league: "MLS" }], city: "Houston", country: "ðŸ‡ºðŸ‡¸", wiki: "https://en.wikipedia.org/wiki/NRG_Stadium" },
+  "Hard Rock Stadium": { capacity: 65326, homeTeams: [{ team: "Miami Dolphins", league: "NFL" }, { team: "Inter Miami", league: "MLS" }], city: "Miami", country: "ðŸ‡ºðŸ‡¸", wiki: "https://en.wikipedia.org/wiki/Hard_Rock_Stadium" },
+  "Mercedes-Benz Stadium": { capacity: 71000, homeTeams: [{ team: "Atlanta Falcons", league: "NFL" }, { team: "Atlanta United", league: "MLS" }], city: "Atlanta", country: "ðŸ‡ºðŸ‡¸", wiki: "https://en.wikipedia.org/wiki/Mercedes-Benz_Stadium" },
+  "Lincoln Financial Field": { capacity: 69796, homeTeams: [{ team: "Philadelphia Eagles", league: "NFL" }, { team: "Philadelphia Union", league: "MLS" }], city: "Philadelphia", country: "ðŸ‡ºðŸ‡¸", wiki: "https://en.wikipedia.org/wiki/Lincoln_Financial_Field" },
+  "Levi's Stadium": { capacity: 68500, homeTeams: [{ team: "San Francisco 49ers", league: "NFL" }, { team: "SJ Earthquakes", league: "MLS" }], city: "San Francisco", country: "ðŸ‡ºðŸ‡¸", wiki: "https://en.wikipedia.org/wiki/Levi%27s_Stadium" },
+  "Gillette Stadium": { capacity: 65878, homeTeams: [{ team: "New England Patriots", league: "NFL" }, { team: "New England Revolution", league: "MLS" }], city: "Boston", country: "ðŸ‡ºðŸ‡¸", wiki: "https://en.wikipedia.org/wiki/Gillette_Stadium" },
+  "Arrowhead Stadium": { capacity: 76416, homeTeams: [{ team: "Kansas City Chiefs", league: "NFL" }], city: "Kansas City", country: "ðŸ‡ºðŸ‡¸", wiki: "https://en.wikipedia.org/wiki/Arrowhead_Stadium" },
+  "Lumen Field": { capacity: 68740, homeTeams: [{ team: "Seattle Seahawks", league: "NFL" }, { team: "Seattle Sounders", league: "MLS" }], city: "Seattle", country: "ðŸ‡ºðŸ‡¸", wiki: "https://en.wikipedia.org/wiki/Lumen_Field" },
+  "BC Place": { capacity: 54500, homeTeams: [{ team: "BC Lions", league: "CFL" }, { team: "Vancouver Whitecaps", league: "MLS" }], city: "Vancouver", country: "ðŸ‡¨ðŸ‡¦", wiki: "https://en.wikipedia.org/wiki/BC_Place" },
+  "BMO Field": { capacity: 45736, homeTeams: [{ team: "Toronto FC", league: "MLS" }, { team: "Toronto Argonauts", league: "CFL" }], city: "Toronto", country: "ðŸ‡¨ðŸ‡¦", wiki: "https://en.wikipedia.org/wiki/BMO_Field" },
 };
 
 // ==================== GROUP DATA ====================
 const groupTeams = {
-  A: ["Mexiko", "Südafrika", "Südkorea", "Dänemark"],
+  A: ["Mexiko", "SÃ¼dafrika", "SÃ¼dkorea", "DÃ¤nemark"],
   B: ["Kanada", "Italien", "Katar", "Schweiz"],
   C: ["Brasilien", "Marokko", "Haiti", "Schottland"],
-  D: ["USA", "Paraguay", "Australien", "Türkei"],
-  E: ["Deutschland", "Curaçao", "Elfenbeinküste", "Ecuador"],
+  D: ["USA", "Paraguay", "Australien", "TÃ¼rkei"],
+  E: ["Deutschland", "CuraÃ§ao", "ElfenbeinkÃ¼ste", "Ecuador"],
   F: ["Niederlande", "Japan", "Ukraine", "Tunesien"],
   G: ["England", "Senegal", "Polen", "Panama"],
-  H: ["Saudi-Arabien", "Uruguay", "Ägypten", "Kolumbien"],
+  H: ["Saudi-Arabien", "Uruguay", "Ã„gypten", "Kolumbien"],
   I: ["Spanien", "Nigeria", "Serbien", "Neuseeland"],
-  J: ["Argentinien", "Algerien", "Österreich", "Jordanien"],
+  J: ["Argentinien", "Algerien", "Ã–sterreich", "Jordanien"],
   K: ["Frankreich", "Costa Rica", "Kamerun", "Indonesien"],
   L: ["Portugal", "Ghana", "Kroatien", "Iran"],
 };
@@ -478,45 +479,45 @@ const aiPredictionsCache = {};
 // Using YouTube search URLs - always work and show latest available videos
 const videosData = [
   // Highlights
-  { id: 1, title: "WM 2022 Finale: Argentinien vs Frankreich", category: "Highlights", year: 2022, searchQuery: "Argentina+vs+France+World+Cup+2022+Final+highlights", emoji: "🇦🇷🇫🇷" },
-  { id: 2, title: "Deutschland 7:1 Brasilien - WM 2014", category: "Highlights", year: 2014, searchQuery: "Germany+7-1+Brazil+World+Cup+2014+highlights", emoji: "🇩🇪" },
-  { id: 3, title: "WM 2022: Alle Tore des Turniers", category: "Highlights", year: 2022, searchQuery: "World+Cup+2022+all+goals", emoji: "⚽" },
-  { id: 4, title: "Kroatien vs Brasilien - Elfmeterschießen WM 2022", category: "Highlights", year: 2022, searchQuery: "Croatia+vs+Brazil+penalties+World+Cup+2022", emoji: "🇭🇷" },
-  { id: 5, title: "Marokko - Historischer Weg ins Halbfinale 2022", category: "Highlights", year: 2022, searchQuery: "Morocco+World+Cup+2022+all+goals+highlights", emoji: "🇲🇦" },
-  { id: 6, title: "Japan schockt Deutschland & Spanien", category: "Highlights", year: 2022, searchQuery: "Japan+beats+Germany+Spain+World+Cup+2022", emoji: "🇯🇵" },
-  { id: 7, title: "Saudi-Arabien besiegt Argentinien", category: "Highlights", year: 2022, searchQuery: "Saudi+Arabia+Argentina+World+Cup+2022+highlights", emoji: "🇸🇦" },
+  { id: 1, title: "WM 2022 Finale: Argentinien vs Frankreich", category: "Highlights", year: 2022, searchQuery: "Argentina+vs+France+World+Cup+2022+Final+highlights", emoji: "ðŸ‡¦ðŸ‡·ðŸ‡«ðŸ‡·" },
+  { id: 2, title: "Deutschland 7:1 Brasilien - WM 2014", category: "Highlights", year: 2014, searchQuery: "Germany+7-1+Brazil+World+Cup+2014+highlights", emoji: "ðŸ‡©ðŸ‡ª" },
+  { id: 3, title: "WM 2022: Alle Tore des Turniers", category: "Highlights", year: 2022, searchQuery: "World+Cup+2022+all+goals", emoji: "âš½" },
+  { id: 4, title: "Kroatien vs Brasilien - ElfmeterschieÃŸen WM 2022", category: "Highlights", year: 2022, searchQuery: "Croatia+vs+Brazil+penalties+World+Cup+2022", emoji: "ðŸ‡­ðŸ‡·" },
+  { id: 5, title: "Marokko - Historischer Weg ins Halbfinale 2022", category: "Highlights", year: 2022, searchQuery: "Morocco+World+Cup+2022+all+goals+highlights", emoji: "ðŸ‡²ðŸ‡¦" },
+  { id: 6, title: "Japan schockt Deutschland & Spanien", category: "Highlights", year: 2022, searchQuery: "Japan+beats+Germany+Spain+World+Cup+2022", emoji: "ðŸ‡¯ðŸ‡µ" },
+  { id: 7, title: "Saudi-Arabien besiegt Argentinien", category: "Highlights", year: 2022, searchQuery: "Saudi+Arabia+Argentina+World+Cup+2022+highlights", emoji: "ðŸ‡¸ðŸ‡¦" },
   
   // Deutschland
-  { id: 10, title: "Deutschland wird Weltmeister 2014", category: "Deutschland", year: 2014, searchQuery: "Germany+wins+World+Cup+2014+Final+Götze+goal", emoji: "🏆" },
-  { id: 11, title: "Deutschland vs Argentinien - Finale 2014", category: "Deutschland", year: 2014, searchQuery: "Germany+vs+Argentina+2014+World+Cup+Final+highlights", emoji: "🇦🇷🇫🇷" },
-  { id: 12, title: "Deutschlands 4 WM-Titel - Alle Finals", category: "Deutschland", year: 2014, searchQuery: "Germany+all+World+Cup+wins+1954+1974+1990+2014", emoji: "🇦🇷🇫🇷" },
-  { id: 13, title: "Sommermärchen 2006 - Best Moments", category: "Deutschland", year: 2006, searchQuery: "Germany+World+Cup+2006+Sommermärchen+highlights", emoji: "🎆" },
-  { id: 14, title: "Deutschland WM 2010 - Alle Tore", category: "Deutschland", year: 2010, searchQuery: "Germany+World+Cup+2010+all+goals+highlights", emoji: "🇩🇪" },
+  { id: 10, title: "Deutschland wird Weltmeister 2014", category: "Deutschland", year: 2014, searchQuery: "Germany+wins+World+Cup+2014+Final+GÃ¶tze+goal", emoji: "ðŸ†" },
+  { id: 11, title: "Deutschland vs Argentinien - Finale 2014", category: "Deutschland", year: 2014, searchQuery: "Germany+vs+Argentina+2014+World+Cup+Final+highlights", emoji: "ðŸ‡¦ðŸ‡·ðŸ‡«ðŸ‡·" },
+  { id: 12, title: "Deutschlands 4 WM-Titel - Alle Finals", category: "Deutschland", year: 2014, searchQuery: "Germany+all+World+Cup+wins+1954+1974+1990+2014", emoji: "ðŸ‡¦ðŸ‡·ðŸ‡«ðŸ‡·" },
+  { id: 13, title: "SommermÃ¤rchen 2006 - Best Moments", category: "Deutschland", year: 2006, searchQuery: "Germany+World+Cup+2006+SommermÃ¤rchen+highlights", emoji: "ðŸŽ†" },
+  { id: 14, title: "Deutschland WM 2010 - Alle Tore", category: "Deutschland", year: 2010, searchQuery: "Germany+World+Cup+2010+all+goals+highlights", emoji: "ðŸ‡©ðŸ‡ª" },
   
   // Songs
-  { id: 20, title: "Shakira - Waka Waka (WM 2010)", category: "Songs", year: 2010, searchQuery: "Shakira+Waka+Waka+World+Cup+2010+official", emoji: "🎵" },
-  { id: 21, title: "K'naan - Wavin' Flag (WM 2010)", category: "Songs", year: 2010, searchQuery: "Knaan+Wavin+Flag+World+Cup+2010+official", emoji: "🎶" },
-  { id: 22, title: "Ricky Martin - Cup of Life (WM 1998)", category: "Songs", year: 1998, searchQuery: "Ricky+Martin+Cup+of+Life+World+Cup+1998", emoji: "🎤" },
-  { id: 23, title: "Pitbull ft. J.Lo - We Are One (WM 2014)", category: "Songs", year: 2014, searchQuery: "Pitbull+Jennifer+Lopez+We+Are+One+World+Cup+2014", emoji: "🎵" },
-  { id: 24, title: "Hayya Hayya - Official WM 2022 Song", category: "Songs", year: 2022, searchQuery: "Hayya+Hayya+Better+Together+World+Cup+2022+official", emoji: "🎶" },
-  { id: 25, title: "Sportfreunde Stiller - 54 74 90 2006", category: "Songs", year: 2006, searchQuery: "Sportfreunde+Stiller+54+74+90+2006", emoji: "🎸" },
-  { id: 26, title: "Zeit dass sich was dreht - WM 2006", category: "Songs", year: 2006, searchQuery: "Zeit+dass+sich+was+dreht+Grönemeyer+2006", emoji: "🎤" },
+  { id: 20, title: "Shakira - Waka Waka (WM 2010)", category: "Songs", year: 2010, searchQuery: "Shakira+Waka+Waka+World+Cup+2010+official", emoji: "ðŸŽµ" },
+  { id: 21, title: "K'naan - Wavin' Flag (WM 2010)", category: "Songs", year: 2010, searchQuery: "Knaan+Wavin+Flag+World+Cup+2010+official", emoji: "ðŸŽ¶" },
+  { id: 22, title: "Ricky Martin - Cup of Life (WM 1998)", category: "Songs", year: 1998, searchQuery: "Ricky+Martin+Cup+of+Life+World+Cup+1998", emoji: "ðŸŽ¤" },
+  { id: 23, title: "Pitbull ft. J.Lo - We Are One (WM 2014)", category: "Songs", year: 2014, searchQuery: "Pitbull+Jennifer+Lopez+We+Are+One+World+Cup+2014", emoji: "ðŸŽµ" },
+  { id: 24, title: "Hayya Hayya - Official WM 2022 Song", category: "Songs", year: 2022, searchQuery: "Hayya+Hayya+Better+Together+World+Cup+2022+official", emoji: "ðŸŽ¶" },
+  { id: 25, title: "Sportfreunde Stiller - 54 74 90 2006", category: "Songs", year: 2006, searchQuery: "Sportfreunde+Stiller+54+74+90+2006", emoji: "ðŸŽ¸" },
+  { id: 26, title: "Zeit dass sich was dreht - WM 2006", category: "Songs", year: 2006, searchQuery: "Zeit+dass+sich+was+dreht+GrÃ¶nemeyer+2006", emoji: "ðŸŽ¤" },
   
   // Klassiker
-  { id: 30, title: "Maradonas Hand Gottes & Jahrhunderttor", category: "Klassiker", year: 1986, searchQuery: "Maradona+Hand+of+God+Goal+of+the+Century+1986", emoji: "✋" },
-  { id: 31, title: "Zidanes Kopfstoß im WM-Finale 2006", category: "Klassiker", year: 2006, searchQuery: "Zidane+headbutt+Materazzi+World+Cup+2006+Final", emoji: "🇦🇷🇫🇷" },
-  { id: 32, title: "Pelé - Die größten WM-Momente", category: "Klassiker", year: 1970, searchQuery: "Pele+best+World+Cup+goals+moments", emoji: "👑" },
-  { id: 33, title: "Deutschland vs Italien 4:3 - WM 1970", category: "Klassiker", year: 1970, searchQuery: "Germany+Italy+4-3+1970+World+Cup+Game+of+Century", emoji: "🇮🇹" },
-  { id: 34, title: "Wembley-Tor 1966 - War der Ball drin?", category: "Klassiker", year: 1966, searchQuery: "Wembley+Goal+1966+World+Cup+Final+England+Germany", emoji: "🇦🇷🇫🇷" },
-  { id: 35, title: "Brasilien 1970 - Bestes Team aller Zeiten?", category: "Klassiker", year: 1970, searchQuery: "Brazil+1970+World+Cup+best+team+ever+Pele", emoji: "🇧🇷" },
-  { id: 36, title: "WM Finale 1990: Deutschland vs Argentinien", category: "Klassiker", year: 1990, searchQuery: "Germany+Argentina+1990+World+Cup+Final", emoji: "🇦🇷🇫🇷" },
-  { id: 37, title: "Zinedine Zidane - Beste WM-Momente", category: "Klassiker", year: 2006, searchQuery: "Zidane+best+World+Cup+goals+moments", emoji: "🇫🇷" },
+  { id: 30, title: "Maradonas Hand Gottes & Jahrhunderttor", category: "Klassiker", year: 1986, searchQuery: "Maradona+Hand+of+God+Goal+of+the+Century+1986", emoji: "âœ‹" },
+  { id: 31, title: "Zidanes KopfstoÃŸ im WM-Finale 2006", category: "Klassiker", year: 2006, searchQuery: "Zidane+headbutt+Materazzi+World+Cup+2006+Final", emoji: "ðŸ‡¦ðŸ‡·ðŸ‡«ðŸ‡·" },
+  { id: 32, title: "PelÃ© - Die grÃ¶ÃŸten WM-Momente", category: "Klassiker", year: 1970, searchQuery: "Pele+best+World+Cup+goals+moments", emoji: "ðŸ‘‘" },
+  { id: 33, title: "Deutschland vs Italien 4:3 - WM 1970", category: "Klassiker", year: 1970, searchQuery: "Germany+Italy+4-3+1970+World+Cup+Game+of+Century", emoji: "ðŸ‡®ðŸ‡¹" },
+  { id: 34, title: "Wembley-Tor 1966 - War der Ball drin?", category: "Klassiker", year: 1966, searchQuery: "Wembley+Goal+1966+World+Cup+Final+England+Germany", emoji: "ðŸ‡¦ðŸ‡·ðŸ‡«ðŸ‡·" },
+  { id: 35, title: "Brasilien 1970 - Bestes Team aller Zeiten?", category: "Klassiker", year: 1970, searchQuery: "Brazil+1970+World+Cup+best+team+ever+Pele", emoji: "ðŸ‡§ðŸ‡·" },
+  { id: 36, title: "WM Finale 1990: Deutschland vs Argentinien", category: "Klassiker", year: 1990, searchQuery: "Germany+Argentina+1990+World+Cup+Final", emoji: "ðŸ‡¦ðŸ‡·ðŸ‡«ðŸ‡·" },
+  { id: 37, title: "Zinedine Zidane - Beste WM-Momente", category: "Klassiker", year: 2006, searchQuery: "Zidane+best+World+Cup+goals+moments", emoji: "ðŸ‡«ðŸ‡·" },
   
   // WM 2026 Preview
-  { id: 40, title: "WM 2026: Alle 16 Stadien", category: "WM 2026", year: 2026, searchQuery: "World+Cup+2026+all+stadiums+USA+Mexico+Canada", emoji: "🏟️" },
-  { id: 41, title: "WM 2026: 48 Teams - Neues Format erklärt", category: "WM 2026", year: 2026, searchQuery: "World+Cup+2026+48+teams+new+format+explained", emoji: "📋" },
-  { id: 42, title: "Road to WM 2026 - Qualifikation", category: "WM 2026", year: 2026, searchQuery: "World+Cup+2026+qualification+Europe+UEFA", emoji: "🛤️" },
-  { id: 43, title: "MetLife Stadium - Das Finale-Stadion", category: "WM 2026", year: 2026, searchQuery: "MetLife+Stadium+World+Cup+2026+Final+venue", emoji: "🗽" },
+  { id: 40, title: "WM 2026: Alle 16 Stadien", category: "WM 2026", year: 2026, searchQuery: "World+Cup+2026+all+stadiums+USA+Mexico+Canada", emoji: "ðŸŸï¸" },
+  { id: 41, title: "WM 2026: 48 Teams - Neues Format erklÃ¤rt", category: "WM 2026", year: 2026, searchQuery: "World+Cup+2026+48+teams+new+format+explained", emoji: "ðŸ“‹" },
+  { id: 42, title: "Road to WM 2026 - Qualifikation", category: "WM 2026", year: 2026, searchQuery: "World+Cup+2026+qualification+Europe+UEFA", emoji: "ðŸ›¤ï¸" },
+  { id: 43, title: "MetLife Stadium - Das Finale-Stadion", category: "WM 2026", year: 2026, searchQuery: "MetLife+Stadium+World+Cup+2026+Final+venue", emoji: "ðŸ—½" },
 ];
 
 // Helper function to generate YouTube search URL
@@ -811,6 +812,7 @@ function AppContent() {
     { id: 'matches', label: t('tabMatches') }, 
     { id: 'leagues', label: t('tabRankings') }, 
     { id: 'trivia', label: t('tabTrivia') },
+    { id: 'badges', label: t('tabBadges') },
     { id: 'sentiment', label: t('tabSentiment') },
     { id: 'guide', label: t('tabGuide'), locked: true }
   ];
@@ -887,7 +889,7 @@ function AppContent() {
               }}
             >
               {tab.label}
-              {tab.locked && <span style={{ fontSize: '8px' }}>🔒</span>}
+              {tab.locked && <span style={{ fontSize: '8px' }}>ðŸ”’</span>}
             </button>
           ))}
         </div>
@@ -916,7 +918,7 @@ function AppContent() {
             
             {newsLoading && news.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '40px', color: '#64748b' }}>
-                <div style={{ fontSize: '24px', marginBottom: '8px' }}>🔒</div>
+                <div style={{ fontSize: '24px', marginBottom: '8px' }}>ðŸ”’</div>
                 <div style={{ fontSize: '12px' }}>{t('newsLoading')}</div>
               </div>
             ) : (
@@ -947,7 +949,7 @@ function AppContent() {
                     <div style={{ fontSize: '13px', fontWeight: 'bold', color: 'white', marginBottom: '4px' }}>{item.title}</div>
                     <div style={{ fontSize: '11px', color: '#94a3b8' }}>{item.summary}</div>
                     <div style={{ fontSize: '9px', color: '#10b981', marginTop: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      📖 {t('newsReadArticle')}
+                      ðŸ“– {t('newsReadArticle')}
                     </div>
                   </div>
                 </a>
@@ -956,14 +958,14 @@ function AppContent() {
             
             {newsError && (
               <div style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: '8px', padding: '12px', marginTop: '12px' }}>
-                <span style={{ fontSize: '11px', color: '#ef4444' }}>⚠️ {newsError}</span>
+                <span style={{ fontSize: '11px', color: '#ef4444' }}>âš ï¸ {newsError}</span>
               </div>
             )}
           </div>
         )}
 
         {/* VIDEOS */}
-        {activeTab === 'videos' && (<div><div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('videosTitle')}</div><div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>{[{key: 'alle', label: t('videosAll')}, {key: 'Highlights', label: t('videosHighlights')}, {key: 'Deutschland', label: t('videosGermany')}, {key: 'Songs', label: t('videosSongs')}, {key: 'Klassiker', label: t('videosClassics')}, {key: 'WM 2026', label: t('videosWC2026')}].map(cat => (<button key={cat.key} onClick={() => setVideoCategory(cat.key)} style={{ padding: '6px 12px', background: videoCategory === cat.key ? '#10b981' : '#1e293b', border: '1px solid #334155', borderRadius: '16px', color: videoCategory === cat.key ? 'white' : '#94a3b8', fontSize: '11px', cursor: 'pointer' }}>{cat.label}</button>))}</div><div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>{filteredVideos.map(v => (<a key={v.id} href={getYouTubeUrl(v.searchQuery)} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}><div style={{ background: '#1e293b', borderRadius: '10px', overflow: 'hidden', border: '1px solid #334155', cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = '#ff0000'; e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={e => { e.currentTarget.style.borderColor = '#334155'; e.currentTarget.style.transform = 'scale(1)'; }}><div style={{ position: 'relative', height: '90px', background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '40px' }}>{v.emoji}</span><div style={{ position: 'absolute', bottom: '8px', right: '8px', background: '#ff0000', borderRadius: '4px', padding: '2px 6px', display: 'flex', alignItems: 'center', gap: '4px' }}><svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg><span style={{ fontSize: '9px', color: 'white', fontWeight: 'bold' }}>YouTube</span></div></div><div style={{ padding: '10px' }}><div style={{ fontSize: '11px', fontWeight: 'bold', color: 'white', marginBottom: '4px', lineHeight: '1.3' }}>{v.title}</div><div style={{ fontSize: '9px', color: '#64748b' }}>{v.category} • {v.year}</div></div></div></a>))}</div><div style={{ marginTop: '16px', padding: '12px', background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,0,0,0.3)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}><svg width="20" height="20" viewBox="0 0 24 24" fill="#ff0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg><span style={{ fontSize: '10px', color: '#ff6b6b' }}>{t('videosYoutubeHint')}</span></div></div>)}
+        {activeTab === 'videos' && (<div><div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('videosTitle')}</div><div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>{[{key: 'alle', label: t('videosAll')}, {key: 'Highlights', label: t('videosHighlights')}, {key: 'Deutschland', label: t('videosGermany')}, {key: 'Songs', label: t('videosSongs')}, {key: 'Klassiker', label: t('videosClassics')}, {key: 'WM 2026', label: t('videosWC2026')}].map(cat => (<button key={cat.key} onClick={() => setVideoCategory(cat.key)} style={{ padding: '6px 12px', background: videoCategory === cat.key ? '#10b981' : '#1e293b', border: '1px solid #334155', borderRadius: '16px', color: videoCategory === cat.key ? 'white' : '#94a3b8', fontSize: '11px', cursor: 'pointer' }}>{cat.label}</button>))}</div><div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>{filteredVideos.map(v => (<a key={v.id} href={getYouTubeUrl(v.searchQuery)} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}><div style={{ background: '#1e293b', borderRadius: '10px', overflow: 'hidden', border: '1px solid #334155', cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = '#ff0000'; e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={e => { e.currentTarget.style.borderColor = '#334155'; e.currentTarget.style.transform = 'scale(1)'; }}><div style={{ position: 'relative', height: '90px', background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '40px' }}>{v.emoji}</span><div style={{ position: 'absolute', bottom: '8px', right: '8px', background: '#ff0000', borderRadius: '4px', padding: '2px 6px', display: 'flex', alignItems: 'center', gap: '4px' }}><svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg><span style={{ fontSize: '9px', color: 'white', fontWeight: 'bold' }}>YouTube</span></div></div><div style={{ padding: '10px' }}><div style={{ fontSize: '11px', fontWeight: 'bold', color: 'white', marginBottom: '4px', lineHeight: '1.3' }}>{v.title}</div><div style={{ fontSize: '9px', color: '#64748b' }}>{v.category} â€¢ {v.year}</div></div></div></a>))}</div><div style={{ marginTop: '16px', padding: '12px', background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,0,0,0.3)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}><svg width="20" height="20" viewBox="0 0 24 24" fill="#ff0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg><span style={{ fontSize: '10px', color: '#ff6b6b' }}>{t('videosYoutubeHint')}</span></div></div>)}
 
         {/* MATCHES */}
         {activeTab === 'matches' && (
@@ -1037,7 +1039,7 @@ function AppContent() {
           {/* Loading State */}
           {triviaLoading && (
             <div style={{ background: '#1e293b', borderRadius: '12px', padding: '40px', border: '1px solid #334155', textAlign: 'center' }}>
-              <div style={{ fontSize: '24px', marginBottom: '12px' }}>🔒</div>
+              <div style={{ fontSize: '24px', marginBottom: '12px' }}>ðŸ”’</div>
               <div style={{ color: '#94a3b8', fontSize: '12px' }}>{t('loadingQuestions')}</div>
             </div>
           )}
@@ -1057,7 +1059,7 @@ function AppContent() {
                   background: triviaRound[triviaIndex].difficulty === 'easy' ? 'rgba(16,185,129,0.2)' : triviaRound[triviaIndex].difficulty === 'medium' ? 'rgba(251,191,36,0.2)' : 'rgba(239,68,68,0.2)',
                   color: triviaRound[triviaIndex].difficulty === 'easy' ? '#10b981' : triviaRound[triviaIndex].difficulty === 'medium' ? '#fbbf24' : '#ef4444'
                 }}>
-                  {triviaRound[triviaIndex].difficulty === 'easy' ? `⭐ ${t('easy')}` : triviaRound[triviaIndex].difficulty === 'medium' ? `⭐⭐ ${t('medium')}` : `⭐⭐⭐ ${t('hard')}`}
+                  {triviaRound[triviaIndex].difficulty === 'easy' ? `â­ ${t('easy')}` : triviaRound[triviaIndex].difficulty === 'medium' ? `â­â­ ${t('medium')}` : `â­â­â­ ${t('hard')}`}
                 </span>
               </div>
               
@@ -1096,27 +1098,27 @@ function AppContent() {
               {triviaAnswered && (
                 <div style={{ marginTop: '16px', padding: '14px', background: triviaSelected === triviaRound[triviaIndex].correctIndex ? 'rgba(16,185,129,0.1)' : 'rgba(239,68,68,0.1)', border: triviaSelected === triviaRound[triviaIndex].correctIndex ? '1px solid rgba(16,185,129,0.3)' : '1px solid rgba(239,68,68,0.3)', borderRadius: '10px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '16px' }}>{triviaSelected === triviaRound[triviaIndex].correctIndex ? '✅' : '❌'}</span>
+                    <span style={{ fontSize: '16px' }}>{triviaSelected === triviaRound[triviaIndex].correctIndex ? 'âœ…' : 'âŒ'}</span>
                     <span style={{ fontSize: '12px', fontWeight: 'bold', color: triviaSelected === triviaRound[triviaIndex].correctIndex ? '#10b981' : '#ef4444' }}>
                       {triviaSelected === triviaRound[triviaIndex].correctIndex ? t('correct') : `${t('wrong')} ${t('correctAnswer')}: ${triviaRound[triviaIndex].options[triviaRound[triviaIndex].correctIndex]}`}
                     </span>
                   </div>
-                  <div style={{ fontSize: '11px', color: '#94a3b8', lineHeight: '1.5' }}>💡 {triviaRound[triviaIndex].explanation}</div>
+                  <div style={{ fontSize: '11px', color: '#94a3b8', lineHeight: '1.5' }}>ðŸ’¡ {triviaRound[triviaIndex].explanation}</div>
                 </div>
               )}
               
               {/* Next / Restart buttons */}
               {triviaAnswered && triviaIndex < triviaRound.length - 1 && (
-                <button onClick={nextQuestion} style={{ width: '100%', marginTop: '16px', padding: '12px', background: '#3b82f6', border: 'none', borderRadius: '8px', color: 'white', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>{t('nextQuestion')} →</button>
+                <button onClick={nextQuestion} style={{ width: '100%', marginTop: '16px', padding: '12px', background: '#3b82f6', border: 'none', borderRadius: '8px', color: 'white', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>{t('nextQuestion')} â†’</button>
               )}
               {triviaAnswered && triviaIndex === triviaRound.length - 1 && (
                 <div>
                   <div style={{ marginTop: '16px', padding: '16px', background: 'linear-gradient(135deg, rgba(16,185,129,0.2), rgba(59,130,246,0.2))', borderRadius: '10px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>🔒</div>
+                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>ðŸ”’</div>
                     <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#10b981' }}>{triviaScore} {t('points')}</div>
                     <div style={{ fontSize: '11px', color: '#94a3b8' }}>{triviaScore >= 80 ? t('triviaWorldChampion') : triviaScore >= 60 ? t('triviaVeryGood') : triviaScore >= 40 ? t('triviaWellPlayed') : t('triviaKeepPracticing')}</div>
                   </div>
-                  <button onClick={resetTrivia} style={{ width: '100%', marginTop: '12px', padding: '12px', background: '#10b981', border: 'none', borderRadius: '8px', color: 'white', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>{t('newRound')} 🔄</button>
+                  <button onClick={resetTrivia} style={{ width: '100%', marginTop: '12px', padding: '12px', background: '#10b981', border: 'none', borderRadius: '8px', color: 'white', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>{t('newRound')} ðŸ”„</button>
                 </div>
               )}
             </div>
@@ -1125,7 +1127,7 @@ function AppContent() {
           {/* Empty state */}
           {!triviaLoading && triviaRound.length === 0 && (
             <div style={{ background: '#1e293b', borderRadius: '12px', padding: '40px', border: '1px solid #334155', textAlign: 'center' }}>
-              <div style={{ fontSize: '24px', marginBottom: '12px' }}>⏳</div>
+              <div style={{ fontSize: '24px', marginBottom: '12px' }}>â³</div>
               <div style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '16px' }}>{t('noQuestionsFound')}</div>
               <button onClick={loadTriviaQuestions} style={{ padding: '10px 20px', background: '#3b82f6', border: 'none', borderRadius: '8px', color: 'white', fontSize: '12px', cursor: 'pointer' }}>{t('tryAgain')}</button>
             </div>
@@ -1148,6 +1150,11 @@ function AppContent() {
           </div>
         </div>)}
 
+        {/* TEAM BADGES */}
+        {activeTab === 'badges' && (
+          <WM2026TeamBadges language={language} user={user} />
+        )}
+
         {/* SENTIMENT - FULL DASHBOARD */}
         {activeTab === 'sentiment' && (
           <SentimentDashboard language={language} user={user} />
@@ -1162,7 +1169,7 @@ function AppContent() {
             border: '1px solid #334155',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: '48px', marginBottom: '16px' }}>🔒</div>
+            <div style={{ fontSize: '48px', marginBottom: '16px' }}>ðŸ”’</div>
             <div style={{ fontSize: '18px', fontWeight: 'bold', color: 'white', marginBottom: '8px' }}>
               {t('guideLockedTitle')}
             </div>
@@ -1174,7 +1181,7 @@ function AppContent() {
       </main>
 
       {/* FOOTER */}
-      <footer style={{ borderTop: '1px solid #334155', marginTop: '32px' }}><div style={{ maxWidth: '800px', margin: '0 auto', padding: '24px 16px', textAlign: 'center', color: '#64748b', fontSize: '11px' }}><p style={{ margin: '0 0 4px' }}>{t('footerTitle')} • {t('footerDate')}</p><p style={{ margin: 0 }}>{t('footerCountries')} • {t('footerTeams')}</p></div></footer>
+      <footer style={{ borderTop: '1px solid #334155', marginTop: '32px' }}><div style={{ maxWidth: '800px', margin: '0 auto', padding: '24px 16px', textAlign: 'center', color: '#64748b', fontSize: '11px' }}><p style={{ margin: '0 0 4px' }}>{t('footerTitle')} â€¢ {t('footerDate')}</p><p style={{ margin: 0 }}>{t('footerCountries')} â€¢ {t('footerTeams')}</p></div></footer>
 
       {/* WM POLL MODAL */}
       {showWMPoll && (
@@ -1182,7 +1189,7 @@ function AppContent() {
           <div style={{ background: '#1e293b', borderRadius: 16, maxWidth: 600, width: '100%', maxHeight: '90vh', overflow: 'hidden', border: '1px solid #334155' }}>
             {/* Header */}
             <div style={{ background: 'linear-gradient(135deg, #10b981, #3b82f6)', padding: '20px', textAlign: 'center' }}>
-              <div style={{ fontSize: 40, marginBottom: 8 }}>🔒</div>
+              <div style={{ fontSize: 40, marginBottom: 8 }}>ðŸ”’</div>
               <div style={{ fontSize: 18, fontWeight: 'bold', color: 'white' }}>{t('pollTitle')}</div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>{t('pollSubtitle')}</div>
             </div>
@@ -1192,48 +1199,48 @@ function AppContent() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
                 {[
                   // Sorted by FIFA World Ranking (December 2024)
-                  { name: 'Spanien', flag: '🇪🇸', stars: 1 },        // 1
-                  { name: 'Argentinien', flag: '🇦🇷', stars: 3 },   // 2
-                  { name: 'Frankreich', flag: '🇫🇷', stars: 2 },    // 3
-                  { name: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', stars: 1 },    // 4
-                  { name: 'Brasilien', flag: '🇧🇷', stars: 5 },     // 5
-                  { name: 'Portugal', flag: '🇵🇹', stars: 0 },      // 6
-                  { name: 'Niederlande', flag: '🇳🇱', stars: 0 },   // 7
-                  { name: 'Belgien', flag: '🇧🇪', stars: 0 },       // 8
-                  { name: 'Deutschland', flag: '🇩🇪', stars: 4 },   // 9
-                  { name: 'Kroatien', flag: '🇭🇷', stars: 0 },      // 10
-                  { name: 'Marokko', flag: '🇲🇦', stars: 0 },       // 11
-                  { name: 'Kolumbien', flag: '🇨🇴', stars: 0 },     // 13
-                  { name: 'USA', flag: '🇺🇸', stars: 0 },           // 14
-                  { name: 'Mexiko', flag: '🇲🇽', stars: 0 },        // 15
-                  { name: 'Uruguay', flag: '🇺🇾', stars: 2 },       // 16
-                  { name: 'Schweiz', flag: '🇨🇭', stars: 0 },       // 17
-                  { name: 'Japan', flag: '🇯🇵', stars: 0 },         // 18
-                  { name: 'Senegal', flag: '🇸🇳', stars: 0 },       // 19
-                  { name: 'Iran', flag: '🇮🇷', stars: 0 },          // 20
-                  { name: 'Republik Korea', flag: '🇰🇷', stars: 0 },// 22
-                  { name: 'Ecuador', flag: '🇪🇨', stars: 0 },       // 23
-                  { name: 'Österreich', flag: '🇦🇹', stars: 0 },    // 24
-                  { name: 'Australien', flag: '🇦🇺', stars: 0 },    // 26
-                  { name: 'Kanada', flag: '🇨🇦', stars: 0 },        // 27
-                  { name: 'Norwegen', flag: '🇳🇴', stars: 0 },      // 29
-                  { name: 'Panama', flag: '🇵🇦', stars: 0 },        // 30
-                  { name: 'Algerien', flag: '🇩🇿', stars: 0 },      // 34
-                  { name: 'Ägypten', flag: '🇪🇬', stars: 0 },       // 35
-                  { name: 'Schottland', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', stars: 0 }, // 36
-                  { name: 'Paraguay', flag: '🇵🇾', stars: 0 },      // 39
-                  { name: 'Tunesien', flag: '🇹🇳', stars: 0 },      // 41
-                  { name: 'Elfenbeinküste', flag: '🇨🇮', stars: 0 },// 42
-                  { name: 'Usbekistan', flag: '🇺🇿', stars: 0 },    // 50
-                  { name: 'Katar', flag: '🇶🇦', stars: 0 },         // 54
-                  { name: 'Saudi-Arabien', flag: '🇸🇦', stars: 0 }, // 60
-                  { name: 'Südafrika', flag: '🇿🇦', stars: 0 },     // 61
-                  { name: 'Jordanien', flag: '🇯🇴', stars: 0 },     // 64
-                  { name: 'Kap Verde', flag: '🇨🇻', stars: 0 },     // 67
-                  { name: 'Ghana', flag: '🇬🇭', stars: 0 },         // 73
-                  { name: 'Curaçao', flag: '🇨🇼', stars: 0 },       // 82
-                  { name: 'Neuseeland', flag: '🇳🇿', stars: 0 },    // 85
-                  { name: 'Haiti', flag: '🇭🇹', stars: 0 }          // 88
+                  { name: 'Spanien', flag: 'ðŸ‡ªðŸ‡¸', stars: 1 },        // 1
+                  { name: 'Argentinien', flag: 'ðŸ‡¦ðŸ‡·', stars: 3 },   // 2
+                  { name: 'Frankreich', flag: 'ðŸ‡«ðŸ‡·', stars: 2 },    // 3
+                  { name: 'England', flag: 'ðŸ´ó §ó ¢ó ¥ó ®ó §ó ¿', stars: 1 },    // 4
+                  { name: 'Brasilien', flag: 'ðŸ‡§ðŸ‡·', stars: 5 },     // 5
+                  { name: 'Portugal', flag: 'ðŸ‡µðŸ‡¹', stars: 0 },      // 6
+                  { name: 'Niederlande', flag: 'ðŸ‡³ðŸ‡±', stars: 0 },   // 7
+                  { name: 'Belgien', flag: 'ðŸ‡§ðŸ‡ª', stars: 0 },       // 8
+                  { name: 'Deutschland', flag: 'ðŸ‡©ðŸ‡ª', stars: 4 },   // 9
+                  { name: 'Kroatien', flag: 'ðŸ‡­ðŸ‡·', stars: 0 },      // 10
+                  { name: 'Marokko', flag: 'ðŸ‡²ðŸ‡¦', stars: 0 },       // 11
+                  { name: 'Kolumbien', flag: 'ðŸ‡¨ðŸ‡´', stars: 0 },     // 13
+                  { name: 'USA', flag: 'ðŸ‡ºðŸ‡¸', stars: 0 },           // 14
+                  { name: 'Mexiko', flag: 'ðŸ‡²ðŸ‡½', stars: 0 },        // 15
+                  { name: 'Uruguay', flag: 'ðŸ‡ºðŸ‡¾', stars: 2 },       // 16
+                  { name: 'Schweiz', flag: 'ðŸ‡¨ðŸ‡­', stars: 0 },       // 17
+                  { name: 'Japan', flag: 'ðŸ‡¯ðŸ‡µ', stars: 0 },         // 18
+                  { name: 'Senegal', flag: 'ðŸ‡¸ðŸ‡³', stars: 0 },       // 19
+                  { name: 'Iran', flag: 'ðŸ‡®ðŸ‡·', stars: 0 },          // 20
+                  { name: 'Republik Korea', flag: 'ðŸ‡°ðŸ‡·', stars: 0 },// 22
+                  { name: 'Ecuador', flag: 'ðŸ‡ªðŸ‡¨', stars: 0 },       // 23
+                  { name: 'Ã–sterreich', flag: 'ðŸ‡¦ðŸ‡¹', stars: 0 },    // 24
+                  { name: 'Australien', flag: 'ðŸ‡¦ðŸ‡º', stars: 0 },    // 26
+                  { name: 'Kanada', flag: 'ðŸ‡¨ðŸ‡¦', stars: 0 },        // 27
+                  { name: 'Norwegen', flag: 'ðŸ‡³ðŸ‡´', stars: 0 },      // 29
+                  { name: 'Panama', flag: 'ðŸ‡µðŸ‡¦', stars: 0 },        // 30
+                  { name: 'Algerien', flag: 'ðŸ‡©ðŸ‡¿', stars: 0 },      // 34
+                  { name: 'Ã„gypten', flag: 'ðŸ‡ªðŸ‡¬', stars: 0 },       // 35
+                  { name: 'Schottland', flag: 'ðŸ´ó §ó ¢ó ³ó £ó ´ó ¿', stars: 0 }, // 36
+                  { name: 'Paraguay', flag: 'ðŸ‡µðŸ‡¾', stars: 0 },      // 39
+                  { name: 'Tunesien', flag: 'ðŸ‡¹ðŸ‡³', stars: 0 },      // 41
+                  { name: 'ElfenbeinkÃ¼ste', flag: 'ðŸ‡¨ðŸ‡®', stars: 0 },// 42
+                  { name: 'Usbekistan', flag: 'ðŸ‡ºðŸ‡¿', stars: 0 },    // 50
+                  { name: 'Katar', flag: 'ðŸ‡¶ðŸ‡¦', stars: 0 },         // 54
+                  { name: 'Saudi-Arabien', flag: 'ðŸ‡¸ðŸ‡¦', stars: 0 }, // 60
+                  { name: 'SÃ¼dafrika', flag: 'ðŸ‡¿ðŸ‡¦', stars: 0 },     // 61
+                  { name: 'Jordanien', flag: 'ðŸ‡¯ðŸ‡´', stars: 0 },     // 64
+                  { name: 'Kap Verde', flag: 'ðŸ‡¨ðŸ‡»', stars: 0 },     // 67
+                  { name: 'Ghana', flag: 'ðŸ‡¬ðŸ‡­', stars: 0 },         // 73
+                  { name: 'CuraÃ§ao', flag: 'ðŸ‡¨ðŸ‡¼', stars: 0 },       // 82
+                  { name: 'Neuseeland', flag: 'ðŸ‡³ðŸ‡¿', stars: 0 },    // 85
+                  { name: 'Haiti', flag: 'ðŸ‡­ðŸ‡¹', stars: 0 }          // 88
                 ].map(team => (
                   <button
                     key={team.name}
@@ -1252,7 +1259,7 @@ function AppContent() {
                   >
                     <div style={{ fontSize: 22, marginBottom: 2 }}>{team.flag}</div>
                     <div style={{ fontSize: 9, color: 'white', fontWeight: 'bold' }}>{translateTeam(team.name)}</div>
-                    {team.stars > 0 && <div style={{ fontSize: 7, marginTop: 1 }}>{'⭐'.repeat(team.stars)}</div>}
+                    {team.stars > 0 && <div style={{ fontSize: 7, marginTop: 1 }}>{'â­'.repeat(team.stars)}</div>}
                   </button>
                 ))}
               </div>

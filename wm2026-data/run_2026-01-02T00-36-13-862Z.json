@@ -1,0 +1,31 @@
+{
+  "results": {
+    "mode": "full",
+    "fetch": {
+      "google": 4757,
+      "reddit": 0,
+      "youtube": 76,
+      "mastodon": 132,
+      "bluesky": 0,
+      "total": 4965,
+      "new": 0,
+      "duplicates": 0
+    },
+    "analysis": {
+      "processed": 237,
+      "failed": 0
+    },
+    "models_used": 11
+  },
+  "aggregation": {
+    "date": "2026-01-02",
+    "window_days": 7,
+    "article_count": 474,
+    "sentiment_avg": 0.5,
+    "sentiment_positive_count": 0,
+    "sentiment_negative_count": 0,
+    "controversy_rate": 0,
+    "hype_avg": 0,
+    "viral_potential_count": 0
+  }
+}
