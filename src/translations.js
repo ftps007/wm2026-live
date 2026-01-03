@@ -23,9 +23,8 @@ export const translations = {
     tabTrivia: 'ðŸ§  Trivia',
     tabGuide: 'ðŸ“º Guide',
     tabSentiment: 'ðŸ“Š Stimmung',
-    tabBadges: '🏅 Teams',
 
-    // Badges Section
+    tabBadges: '🏅 Teams',
     badgesTitle: '🏅 Team-Steckbriefe',
     badgesSubtitle: 'Alle 48 WM-Teilnehmer im Überblick',
     badgesSearch: 'Team suchen...',
@@ -54,6 +53,7 @@ export const translations = {
     badgesPremiumOnly: '🔒 Premium-Feature',
     badgesPremiumDesc: 'Detaillierte Team-Analysen mit Premium freischalten',
     close: 'Schließen',
+
 
     // Countdown
     days: 'Tage',
@@ -458,7 +458,7 @@ export const translations = {
     // General
     save: 'Speichern',
     cancel: 'Abbrechen',
-    close: 'SchlieÃŸen',
+    
     loading: 'Lade...',
     error: 'Fehler',
     success: 'Erfolg',
@@ -553,9 +553,8 @@ export const translations = {
     tabTrivia: 'ðŸ§  Trivia',
     tabGuide: 'ðŸ“º Guide',
     tabSentiment: 'ðŸ“Š Sentiment',
-    tabBadges: '🏅 Teams',
 
-    // Badges Section
+    tabBadges: '🏅 Teams',
     badgesTitle: '🏅 Team Profiles',
     badgesSubtitle: 'All 48 World Cup participants at a glance',
     badgesSearch: 'Search team...',
@@ -584,6 +583,7 @@ export const translations = {
     badgesPremiumOnly: '🔒 Premium Feature',
     badgesPremiumDesc: 'Unlock detailed team analysis with Premium',
     close: 'Close',
+
 
     // Countdown
     days: 'Days',
@@ -1083,9 +1083,8 @@ export const translations = {
     tabTrivia: 'ðŸ§  Trivia',
     tabGuide: 'ðŸ“º Przewodnik',
     tabSentiment: 'ðŸ“Š Nastroje',
-    tabBadges: '🏅 Drużyny',
 
-    // Badges Section
+    tabBadges: '🏅 Drużyny',
     badgesTitle: '🏅 Profile drużyn',
     badgesSubtitle: 'Wszystkie 48 uczestników MŚ w pigułce',
     badgesSearch: 'Szukaj drużyny...',
@@ -1114,6 +1113,35 @@ export const translations = {
     badgesPremiumOnly: '🔒 Funkcja Premium',
     badgesPremiumDesc: 'Odblokuj szczegółowe analizy z Premium',
     close: 'Zamknij',
+
+
+    tabBadges: '🏅 Teams',
+    badgesLoading: 'Loading team data...',
+    badgesError: 'Error loading data',
+    badgesNoData: 'No data available',
+    badgesTabStats: '📊 Statistics',
+    badgesTabScorers: '⚽ Top Scorers',
+    badgesTabLegends: '⭐ Legends',
+    badgesTabCoaches: '👔 Coaches',
+    badgesTabH2H: '⚔️ Head to Head',
+    badgesAppearances: 'WC Appearances',
+    badgesBestResult: 'Best Result',
+    badgesGoalsScored: 'Total WC Goals',
+    badgesWmYears: 'WC Years',
+    badgesQualified: 'Qualified',
+    badgesHost: 'Host Nation',
+    badgesDebutant: 'WC Debutant',
+    badgesAllConf: 'All Confederations',
+    badgesGoals: 'Goals',
+    badgesActive: 'Active',
+    badgesRetired: 'Retired',
+    badgesCurrentCoach: 'Current Coach',
+    badgesRecord: 'Record',
+    badgesH2HLoading: 'Loading head to head...',
+    badgesPremiumOnly: '🔒 Premium Feature',
+    badgesPremiumDesc: 'Unlock detailed team analysis with Premium',
+    close: 'Close',
+
 
     // Countdown
     days: 'Dni',

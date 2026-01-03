@@ -419,41 +419,49 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
               {/* Scorers Tab */}
               {activeModalTab === 'scorers' && (
                 <div>
-                  {scorers[selectedTeam.country_code]?.length > 0 ? (
-                    scorers[selectedTeam.country_code].map((scorer, idx) => (
-                      <div key={idx} style={{
-                        padding: '12px',
-                        background: '#1e293b',
-                        borderRadius: '8px',
-                        marginBottom: '8px',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center'
-                      }}>
-                        <div>
-                          <div style={{ fontSize: '13px', fontWeight: 'bold', color: 'white' }}>
-                            {scorer.player_name}
-                            {scorer.is_all_time_record && <span style={{ marginLeft: '6px' }}>👑</span>}
+                  {(() => {
+                    // Filter: nur Spieler mit mind. 1 Tor, Top 10
+                    const filteredScorers = (scorers[selectedTeam.country_code] || [])
+                      .filter(s => s.goals > 0)
+                      .sort((a, b) => b.goals - a.goals)
+                      .slice(0, 10);
+                    
+                    return filteredScorers.length > 0 ? (
+                      filteredScorers.map((scorer, idx) => (
+                        <div key={idx} style={{
+                          padding: '12px',
+                          background: '#1e293b',
+                          borderRadius: '8px',
+                          marginBottom: '8px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <div>
+                            <div style={{ fontSize: '13px', fontWeight: 'bold', color: 'white' }}>
+                              {scorer.player_name}
+                              {scorer.is_all_time_record && <span style={{ marginLeft: '6px' }} title="WM-Rekordtorschütze aller Zeiten">👑</span>}
+                            </div>
+                            <div style={{ fontSize: '10px', color: '#64748b' }}>
+                              {scorer.wm_tournaments?.join(', ')}
+                            </div>
                           </div>
-                          <div style={{ fontSize: '10px', color: '#64748b' }}>
-                            {scorer.wm_tournaments?.join(', ')}
+                          <div style={{ textAlign: 'right' }}>
+                            <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#10b981' }}>
+                              {scorer.goals}
+                            </div>
+                            <div style={{ fontSize: '9px', color: scorer.is_active ? '#10b981' : '#ef4444' }}>
+                              {scorer.is_active ? '🟢 ' + t('badgesActive') : '🔴 ' + t('badgesRetired')}
+                            </div>
                           </div>
                         </div>
-                        <div style={{ textAlign: 'right' }}>
-                          <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#10b981' }}>
-                            {scorer.goals}
-                          </div>
-                          <div style={{ fontSize: '9px', color: '#64748b' }}>
-                            {scorer.is_active ? '🟢 ' + t('badgesActive') : t('badgesRetired')}
-                          </div>
-                        </div>
+                      ))
+                    ) : (
+                      <div style={{ textAlign: 'center', color: '#64748b', padding: '20px' }}>
+                        {t('badgesNoData')}
                       </div>
-                    ))
-                  ) : (
-                    <div style={{ textAlign: 'center', color: '#64748b', padding: '20px' }}>
-                      {t('badgesNoData')}
-                    </div>
-                  )}
+                    );
+                  })()}
                 </div>
               )}
 
