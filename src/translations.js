@@ -241,7 +241,7 @@ export const translations = {
     pts: 'Pkt',
     
     // Ranking Tabs
-    pollTab: '🗳️ WM-Poll',
+    pollTab: '🗳ï¸ WM-Poll',
     globalTab: '🌍 Global',
     privateTab: '📺 Privat',
     
@@ -740,7 +740,7 @@ export const translations = {
     pts: 'Pts',
     
     // Ranking Tabs
-    pollTab: '🗳️ WC Poll',
+    pollTab: '🗳ï¸ WC Poll',
     globalTab: '🌍 Global',
     privateTab: '📺 Private',
     
@@ -1064,7 +1064,7 @@ export const translations = {
     sentimentWeeklyAnalysis: 'Analiza tygodniowa',
     
     // Trivia Language Notice
-    triviaLanguageNotice: 'ℹï¸ Pytania sÄ… wyÅ›wietlane po angielsku. TÅ‚umaczenie na polski wkrótce.',
+    triviaLanguageNotice: 'â„¹ï¸ Pytania sÄ… wyÅ›wietlane po angielsku. TÅ‚umaczenie na polski wkrótce.',
 
     // Videos Section
     videosTitle: '🎬 Filmy MÅš',
@@ -1239,7 +1239,7 @@ export const translations = {
     pts: 'Pkt',
     
     // Ranking Tabs
-    pollTab: '🗳️ GÅ‚osowanie',
+    pollTab: '🗳ï¸ GÅ‚osowanie',
     globalTab: '🌍 Globalny',
     privateTab: '📺 Prywatny',
     

@@ -9,6 +9,7 @@ import RanglistenSection from './RanglistenSection';
 import { LanguageProvider, useLanguage, LanguageSelector } from './LanguageContext';
 import SentimentBarometer from './SentimentBarometer';
 import SentimentDashboard from './SentimentDashboardPremium';
+import WM2026TeamBadges from './WM2026TeamBadges';
 
 // ==================== NEWS RSS FEED CONFIG ====================
 // Comprehensive WM 2026 coverage - all categories
@@ -811,6 +812,7 @@ function AppContent() {
     { id: 'matches', label: t('tabMatches') }, 
     { id: 'leagues', label: t('tabRankings') }, 
     { id: 'trivia', label: t('tabTrivia') },
+    { id: 'teams', label: '🏅 Teams' },
     { id: 'sentiment', label: t('tabSentiment') },
     { id: 'guide', label: t('tabGuide'), locked: true }
   ];
@@ -1149,6 +1151,10 @@ function AppContent() {
         </div>)}
 
         {/* SENTIMENT - FULL DASHBOARD */}
+        {activeTab === 'teams' && (
+          <WM2026TeamBadges />
+        )}
+
         {activeTab === 'sentiment' && (
           <SentimentDashboard language={language} user={user} />
         )}
