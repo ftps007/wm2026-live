@@ -306,7 +306,7 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
               padding: '20px',
               position: 'relative',
               overflow: 'hidden',
-              minHeight: '200px'
+              minHeight: '300px'
             }}>
               {/* Layout: Flag + Name | Jersey */}
               <div style={{
