@@ -303,22 +303,38 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
             {/* Modal Header */}
             <div style={{
               background: 'linear-gradient(135deg, #10b981, #3b82f6)',
-              padding: '20px',
-              textAlign: 'center'
+              padding: '24px 20px',
+              textAlign: 'center',
+              position: 'relative',
+              overflow: 'hidden',
+              minHeight: '120px'
             }}>
-              <div style={{ fontSize: '48px', marginBottom: '8px' }}>
+              {/* Large Flag Background */}
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                fontSize: '140px',
+                opacity: 0.25,
+                pointerEvents: 'none',
+                lineHeight: 1
+              }}>
                 {selectedTeam.flag_emoji}
               </div>
-              <div style={{ fontSize: '20px', fontWeight: 'bold', color: 'white' }}>
-                {language === 'en' ? selectedTeam.name_en : selectedTeam.name_de}
-              </div>
-              {selectedTeam.titles > 0 && (
-                <div style={{ fontSize: '14px', marginTop: '4px' }}>
-                  {'⭐'.repeat(selectedTeam.titles)} {getMedalIcon(selectedTeam.titles)}
+              {/* Content over flag */}
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <div style={{ fontSize: '20px', fontWeight: 'bold', color: 'white' }}>
+                  {language === 'en' ? selectedTeam.name_en : selectedTeam.name_de}
                 </div>
-              )}
-              <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.8)', marginTop: '4px' }}>
-                {selectedTeam.confederation} • {selectedTeam.wm2026_group ? `${t('group')} ${selectedTeam.wm2026_group}` : t('badgesQualified')}
+                {selectedTeam.titles > 0 && (
+                  <div style={{ fontSize: '14px', marginTop: '4px' }}>
+                    {'⭐'.repeat(selectedTeam.titles)} {getMedalIcon(selectedTeam.titles)}
+                  </div>
+                )}
+                <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.8)', marginTop: '4px' }}>
+                  {selectedTeam.confederation} • {selectedTeam.wm2026_group ? `${t('group')} ${selectedTeam.wm2026_group}` : t('badgesQualified')}
+                </div>
               </div>
             </div>
 
