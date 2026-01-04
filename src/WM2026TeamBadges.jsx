@@ -309,16 +309,21 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
               overflow: 'hidden',
               minHeight: '120px'
             }}>
-              {/* Large Flag Background */}
+              {/* Large Flag Background - Full Width */}
               <div style={{
                 position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                fontSize: '140px',
-                opacity: 0.25,
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '280px',
+                opacity: 0.3,
                 pointerEvents: 'none',
-                lineHeight: 1
+                lineHeight: 1,
+                overflow: 'hidden'
               }}>
                 {selectedTeam.flag_emoji}
               </div>
