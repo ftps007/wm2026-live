@@ -303,42 +303,51 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
             {/* Modal Header */}
             <div style={{
               background: 'linear-gradient(135deg, #10b981, #3b82f6)',
-              padding: '24px 20px',
-              textAlign: 'center',
+              padding: '20px',
               position: 'relative',
               overflow: 'hidden',
-              minHeight: '120px'
+              minHeight: '200px'
             }}>
-              {/* Large Flag Background - Full Width */}
+              {/* Layout: Flag + Name | Jersey */}
               <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '280px',
-                opacity: 0.3,
-                pointerEvents: 'none',
-                lineHeight: 1,
-                overflow: 'hidden'
+                justifyContent: 'space-between',
+                position: 'relative',
+                zIndex: 1
               }}>
-                {selectedTeam.flag_emoji}
-              </div>
-              {/* Content over flag */}
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ fontSize: '20px', fontWeight: 'bold', color: 'white' }}>
-                  {language === 'en' ? selectedTeam.name_en : selectedTeam.name_de}
-                </div>
-                {selectedTeam.titles > 0 && (
-                  <div style={{ fontSize: '14px', marginTop: '4px' }}>
-                    {'⭐'.repeat(selectedTeam.titles)} {getMedalIcon(selectedTeam.titles)}
+                {/* Left: Flag + Name */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <div style={{ 
+                    fontSize: '280px', 
+                    lineHeight: 1,
+                    filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))'
+                  }}>
+                    {selectedTeam.flag_emoji}
                   </div>
-                )}
-                <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.8)', marginTop: '4px' }}>
-                  {selectedTeam.confederation} • {selectedTeam.wm2026_group ? `${t('group')} ${selectedTeam.wm2026_group}` : t('badgesQualified')}
+                  <div>
+                    <div style={{ fontSize: '36px', fontWeight: 'bold', color: 'white' }}>
+                      {language === 'en' ? selectedTeam.name_en : selectedTeam.name_de}
+                    </div>
+                    {selectedTeam.titles > 0 && (
+                      <div style={{ fontSize: '20px', marginTop: '4px' }}>
+                        {'⭐'.repeat(selectedTeam.titles)} {getMedalIcon(selectedTeam.titles)}
+                      </div>
+                    )}
+                    <div style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>
+                      {selectedTeam.confederation} • {selectedTeam.wm2026_group ? `${t('group')} ${selectedTeam.wm2026_group}` : t('badgesQualified')}
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Right: Jersey Placeholder - TODO: Add real kit images */}
+                <div style={{ 
+                  fontSize: '120px', 
+                  lineHeight: 1,
+                  opacity: 0.9,
+                  filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))'
+                }}>
+                  👕
                 </div>
               </div>
             </div>
