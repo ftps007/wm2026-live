@@ -303,10 +303,10 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
             {/* Modal Header */}
             <div style={{
               background: 'linear-gradient(135deg, #10b981, #3b82f6)',
-              padding: '20px',
+              padding: '16px 20px',
               position: 'relative',
               overflow: 'hidden',
-              minHeight: '300px'
+              minHeight: '140px'
             }}>
               {/* Layout: Flag + Name | Jersey */}
               <div style={{
@@ -319,22 +319,22 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                 {/* Left: Flag + Name */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <div style={{ 
-                    fontSize: '280px', 
+                    fontSize: '120px', 
                     lineHeight: 1,
                     filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))'
                   }}>
                     {selectedTeam.flag_emoji}
                   </div>
                   <div>
-                    <div style={{ fontSize: '36px', fontWeight: 'bold', color: 'white' }}>
+                    <div style={{ fontSize: '26px', fontWeight: 'bold', color: 'white' }}>
                       {language === 'en' ? selectedTeam.name_en : selectedTeam.name_de}
                     </div>
                     {selectedTeam.titles > 0 && (
-                      <div style={{ fontSize: '20px', marginTop: '4px' }}>
+                      <div style={{ fontSize: '16px', marginTop: '4px' }}>
                         {'⭐'.repeat(selectedTeam.titles)} {getMedalIcon(selectedTeam.titles)}
                       </div>
                     )}
-                    <div style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>
+                    <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>
                       {selectedTeam.confederation} • {selectedTeam.wm2026_group ? `${t('group')} ${selectedTeam.wm2026_group}` : t('badgesQualified')}
                     </div>
                   </div>
@@ -342,7 +342,7 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                 
                 {/* Right: Jersey Placeholder - TODO: Add real kit images */}
                 <div style={{ 
-                  fontSize: '120px', 
+                  fontSize: '80px', 
                   lineHeight: 1,
                   opacity: 0.9,
                   filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))'
