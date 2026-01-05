@@ -494,15 +494,6 @@ const videosData = [
   { id: 13, title: "Sommermärchen 2006 - Best Moments", category: "Deutschland", year: 2006, videoId: "xrIchWnAisg", searchQuery: "Germany+World+Cup+2006+Sommermärchen+highlights", emoji: "🎆" },
   { id: 14, title: "Deutschland WM 2010 - Alle Tore", category: "Deutschland", year: 2010, videoId: "hwQfH8ABkAQ", searchQuery: "Germany+World+Cup+2010+all+goals+highlights", emoji: "🇩🇪" },
 
-  // Songs
-  { id: 20, title: "Shakira - Waka Waka (WM 2010)", category: "Songs", year: 2010, videoId: "pRpeEdMmmQ0", searchQuery: "Shakira+Waka+Waka+World+Cup+2010+official", emoji: "🎵" },
-  { id: 21, title: "K'naan - Wavin' Flag (WM 2010)", category: "Songs", year: 2010, videoId: "WTJSt4wP2ME", searchQuery: "Knaan+Wavin+Flag+World+Cup+2010+official", emoji: "🎶" },
-  { id: 22, title: "Ricky Martin - Cup of Life (WM 1998)", category: "Songs", year: 1998, videoId: "dZDj2CnG5dE", searchQuery: "Ricky+Martin+Cup+of+Life+World+Cup+1998", emoji: "🎤" },
-  { id: 23, title: "Pitbull ft. J.Lo - We Are One (WM 2014)", category: "Songs", year: 2014, videoId: "TGtWWb9emYI", searchQuery: "Pitbull+Jennifer+Lopez+We+Are+One+World+Cup+2014", emoji: "🎵" },
-  { id: 24, title: "Hayya Hayya - Official WM 2022 Song", category: "Songs", year: 2022, videoId: "vyDjFVZgJoo", searchQuery: "Hayya+Hayya+Better+Together+World+Cup+2022+official", emoji: "🎶" },
-  { id: 25, title: "Sportfreunde Stiller - 54 74 90 2006", category: "Songs", year: 2006, videoId: "rj9KyVpCfYg", searchQuery: "Sportfreunde+Stiller+54+74+90+2006", emoji: "🎸" },
-  { id: 26, title: "Zeit dass sich was dreht - WM 2006", category: "Songs", year: 2006, videoId: "LKi4BlO_ls8", searchQuery: "Zeit+dass+sich+was+dreht+Grönemeyer+2006", emoji: "🎤" },
-
   // Klassiker
   { id: 30, title: "Maradonas Hand Gottes & Jahrhunderttor", category: "Klassiker", year: 1986, videoId: "-ccNkksrfls", searchQuery: "Maradona+Hand+of+God+Goal+of+the+Century+1986", emoji: "âœ‹" },
   { id: 31, title: "Zidanes Kopfstoß im WM-Finale 2006", category: "Klassiker", year: 2006, videoId: "jb16JvUCVQs", searchQuery: "Zidane+headbutt+Materazzi+World+Cup+2006+Final", emoji: "🇦🇷🇫🇷" },
@@ -1019,7 +1010,7 @@ function AppContent() {
               <div>
                 <div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('videosTitle')}</div>
                 <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
-                  {[{key: 'alle', label: t('videosAll')}, {key: 'Highlights', label: t('videosHighlights')}, {key: 'Deutschland', label: t('videosGermany')}, {key: 'Songs', label: t('videosSongs')}, {key: 'Klassiker', label: t('videosClassics')}, {key: 'WM 2026', label: t('videosWC2026')}].map(cat => (
+                  {[{key: 'alle', label: t('videosAll')}, {key: 'Highlights', label: t('videosHighlights')}, {key: 'Deutschland', label: t('videosGermany')}, {key: 'Klassiker', label: t('videosClassics')}, {key: 'WM 2026', label: t('videosWC2026')}].map(cat => (
                     <button key={cat.key} onClick={() => setVideoCategory(cat.key)} style={{ padding: '6px 12px', background: videoCategory === cat.key ? '#10b981' : '#1e293b', border: '1px solid #334155', borderRadius: '16px', color: videoCategory === cat.key ? 'white' : '#94a3b8', fontSize: '11px', cursor: 'pointer' }}>{cat.label}</button>
                   ))}
                 </div>
