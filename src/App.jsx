@@ -1237,7 +1237,7 @@ function AppContent() {
             
             {/* Teams Grid - Sorted by FIFA World Ranking */}
             <div style={{ padding: 16, maxHeight: '60vh', overflowY: 'auto' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(3, 1fr)' : 'repeat(4, 1fr)', gap: 8 }}>
                 {[
                   // Sorted by FIFA World Ranking (December 2024)
                   { name: 'Spanien', flag: '🇪🇸', stars: 1 },        // 1
