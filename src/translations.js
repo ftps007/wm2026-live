@@ -78,6 +78,8 @@ export const translations = {
     videosClassics: 'Klassiker',
     videosWC2026: 'WM 2026',
     videosYoutubeHint: 'Klick öffnet YouTube-Suche mit den besten verfügbaren Videos',
+    playlistsTitle: '🎵 WM Playlists',
+    playlistsSpotifyHint: 'Spotify-Playlists für die perfekte WM-Stimmung',
 
     // Matches Section
     matchesTitle: '⚽ Spiele & Tipps',
@@ -606,6 +608,8 @@ export const translations = {
     videosClassics: 'Classics',
     videosWC2026: 'WC 2026',
     videosYoutubeHint: 'Click opens YouTube search with the best available videos',
+    playlistsTitle: '🎵 World Cup Playlists',
+    playlistsSpotifyHint: 'Spotify playlists for the perfect World Cup vibes',
 
     // Matches Section
     matchesTitle: '⚽ Matches & Predictions',
@@ -1134,6 +1138,8 @@ export const translations = {
     videosClassics: 'Klasyki',
     videosWC2026: 'MÅš 2026',
     videosYoutubeHint: 'KlikniÄ™cie otwiera wyszukiwarkÄ™ YouTube z najlepszymi filmami',
+    playlistsTitle: '🎵 Playlisty MŚ',
+    playlistsSpotifyHint: 'Playlisty Spotify na idealny klimat Mistrzostw Świata',
 
     // Matches Section
     matchesTitle: '⚽ Mecze i typy',
