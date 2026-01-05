@@ -10,6 +10,7 @@ import { LanguageProvider, useLanguage, LanguageSelector } from './LanguageConte
 import SentimentBarometer from './SentimentBarometer';
 import SentimentDashboard from './SentimentDashboardPremium';
 import WM2026TeamBadges from './WM2026TeamBadges';
+import { useDevice } from './useDevice';
 
 // ==================== NEWS RSS FEED CONFIG ====================
 // Comprehensive WM 2026 coverage - all categories
@@ -552,6 +553,7 @@ function Countdown() {
 // ==================== MAIN APP ====================
 function AppContent() {
   const { t, language, translateTeam, translateCategory } = useLanguage();
+  const { isMobile, isTablet, isDesktop, responsive } = useDevice();
   const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState('news');
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -824,12 +826,12 @@ function AppContent() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#0f172a' }}>
-      {/* HEADER - fixed height */}
-      <header style={{ position: 'sticky', top: 0, zIndex: 40, background: 'linear-gradient(135deg, #1e293b, #0f172a)', borderBottom: '1px solid #334155', height: '90px' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '5px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
+      {/* HEADER - responsive height */}
+      <header style={{ position: 'sticky', top: 0, zIndex: 40, background: 'linear-gradient(135deg, #1e293b, #0f172a)', borderBottom: '1px solid #334155', height: responsive.headerHeight }}>
+        <div style={{ maxWidth: responsive.maxWidth, margin: '0 auto', padding: `5px ${responsive.contentPadding}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
           {/* LEFT: Logo */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '120px' }}>
-            <img src="/Logo_WM2026.png" alt="WM 2026" style={{ width: '120px', height: 'auto', display: 'block' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: responsive.logoWidth }}>
+            <img src="/Logo_WM2026.png" alt="WM 2026" style={{ width: responsive.logoWidth, height: 'auto', display: 'block' }} />
           </div>
           
           {/* CENTER: Sentiment Barometer */}
@@ -856,28 +858,29 @@ function AppContent() {
       </header>
 
       {/* TOP NAV */}
-      <nav style={{ position: 'sticky', top: '90px', zIndex: 30, background: 'rgba(30,41,59,0.95)', backdropFilter: 'blur(8px)' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', overflowX: 'auto' }}>
+      <nav style={{ position: 'sticky', top: responsive.headerHeight, zIndex: 30, background: 'rgba(30,41,59,0.95)', backdropFilter: 'blur(8px)' }}>
+        <div style={{ maxWidth: responsive.maxWidth, margin: '0 auto', display: 'flex', overflowX: 'auto', justifyContent: isDesktop ? 'center' : 'flex-start' }}>
           {tabs.map(tab => (
-            <button 
-              key={tab.id} 
-              onClick={() => !tab.locked && handleTabClick(tab.id)} 
-              style={{ 
-                flex: 1, 
-                padding: '10px 6px', 
-                fontSize: '10px', 
-                background: 'transparent', 
-                border: 'none', 
-                cursor: tab.locked ? 'not-allowed' : 'pointer', 
-                whiteSpace: 'nowrap', 
-                minWidth: 'fit-content', 
-                color: tab.locked ? '#475569' : (activeTab === tab.id ? '#fbbf24' : '#94a3b8'), 
+            <button
+              key={tab.id}
+              onClick={() => !tab.locked && handleTabClick(tab.id)}
+              style={{
+                flex: isDesktop ? 'none' : 1,
+                padding: isDesktop ? '12px 16px' : '10px 6px',
+                fontSize: responsive.fontSize.sm,
+                background: 'transparent',
+                border: 'none',
+                cursor: tab.locked ? 'not-allowed' : 'pointer',
+                whiteSpace: 'nowrap',
+                minWidth: 'fit-content',
+                color: tab.locked ? '#475569' : (activeTab === tab.id ? '#fbbf24' : '#94a3b8'),
                 borderBottom: activeTab === tab.id ? '2px solid #fbbf24' : '2px solid transparent',
                 opacity: tab.locked ? 0.5 : 1,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '4px'
+                gap: '4px',
+                transition: 'all 0.2s'
               }}
             >
               {tab.label}
@@ -888,10 +891,10 @@ function AppContent() {
       </nav>
 
       {/* COUNTDOWN */}
-      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '16px' }}><Countdown /></div>
+      <div style={{ maxWidth: responsive.maxWidth, margin: '0 auto', padding: responsive.contentPadding }}><Countdown /></div>
 
       {/* MAIN */}
-      <main style={{ maxWidth: '800px', margin: '0 auto', padding: '16px' }}>
+      <main style={{ maxWidth: responsive.maxWidth, margin: '0 auto', padding: responsive.contentPadding }}>
         {/* NEWS */}
         {activeTab === 'news' && (
           <div>
@@ -1014,11 +1017,11 @@ function AppContent() {
                     <button key={cat.key} onClick={() => setVideoCategory(cat.key)} style={{ padding: '6px 12px', background: videoCategory === cat.key ? '#10b981' : '#1e293b', border: '1px solid #334155', borderRadius: '16px', color: videoCategory === cat.key ? 'white' : '#94a3b8', fontSize: '11px', cursor: 'pointer' }}>{cat.label}</button>
                   ))}
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: `repeat(${responsive.videoColumns}, 1fr)`, gap: responsive.gap.md }}>
                   {filteredVideos.map(v => (
                     <a key={v.id} href={v.videoId ? `https://www.youtube.com/watch?v=${v.videoId}` : getYouTubeUrl(v.searchQuery)} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                      <div style={{ background: '#1e293b', borderRadius: '10px', overflow: 'hidden', border: '1px solid #334155', cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = '#ff0000'; e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={e => { e.currentTarget.style.borderColor = '#334155'; e.currentTarget.style.transform = 'scale(1)'; }}>
-                        <div style={{ position: 'relative', height: '100px', background: v.videoId ? `url(https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg) center/cover` : 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div className="video-card" style={{ background: '#1e293b', borderRadius: responsive.borderRadius, overflow: 'hidden', border: '1px solid #334155', cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = '#ff0000'; e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={e => { e.currentTarget.style.borderColor = '#334155'; e.currentTarget.style.transform = 'scale(1)'; }}>
+                        <div style={{ position: 'relative', height: responsive.videoHeight, background: v.videoId ? `url(https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg) center/cover` : 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           {!v.videoId && <span style={{ fontSize: '40px' }}>{v.emoji}</span>}
                           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: 'rgba(255,0,0,0.9)', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
@@ -1046,12 +1049,13 @@ function AppContent() {
             {mediaSubTab === 'playlists' && (
               <div>
                 <div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('playlistsTitle')}</div>
-                <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
+                <div style={{ borderRadius: responsive.borderRadius, overflow: 'hidden' }}>
                   <iframe
-                    style={{ borderRadius: '12px' }}
+                    className="spotify-embed"
+                    style={{ borderRadius: responsive.borderRadius }}
                     src="https://open.spotify.com/embed/playlist/5rDAK7QpmLtrykxatHGY6Z?utm_source=generator"
                     width="100%"
-                    height="352"
+                    height={responsive.spotifyHeight}
                     frameBorder="0"
                     allowFullScreen
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
