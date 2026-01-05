@@ -827,7 +827,7 @@ export default function SpieleSection({ user, predictions, savePrediction, match
         </div>
       )}
 
-      {/* ========== ALLE SPIELE (4 per row) ========== */}
+      {/* ========== ALLE SPIELE (1 per row for mobile-friendly) ========== */}
       {activeSubTab === 'alle' && (
         <div>
           {Object.entries(matchesByDate).sort((a, b) => a[0].localeCompare(b[0])).map(([date, matches]) => (
@@ -837,75 +837,61 @@ export default function SpieleSection({ user, predictions, savePrediction, match
                 <span style={{ fontSize: 12, fontWeight: 'bold', color: 'white' }}>{formatDateGerman(date, language)}</span>
                 <span style={{ fontSize: 10, color: '#94a3b8' }}>({matches.length} {tt('matches')})</span>
               </div>
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(4, 1fr)', 
-                gap: 10 
-              }}>
-                {matches.map(match => <MatchCard key={match.id} match={match} showDate={false} compact={true} />)}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {matches.map(match => <MatchCard key={match.id} match={match} showDate={false} compact={false} />)}
               </div>
             </div>
           ))}
         </div>
       )}
 
-      {/* ========== GRUPPEN (Table left, 3x2 matches right) ========== */}
+      {/* ========== GRUPPEN (Table first, then playoff, then matches) ========== */}
       {activeSubTab === 'gruppen' && (
         <div>
           {/* Group Selector */}
           <div style={{ display: 'flex', gap: 4, marginBottom: 16, flexWrap: 'wrap' }}>
             {GROUPS.map(g => (
-              <button key={g} onClick={() => setSelectedGroup(g)} 
+              <button key={g} onClick={() => setSelectedGroup(g)}
                 style={{ padding: '6px 12px', background: selectedGroup === g ? getGroupColor(g) : '#1e293b', border: '1px solid #334155', borderRadius: 4, color: 'white', fontSize: 11, cursor: 'pointer', fontWeight: selectedGroup === g ? 'bold' : 'normal' }}>
                 {g}
               </button>
             ))}
           </div>
 
-          <div style={{ fontSize: 13, fontWeight: 'bold', color: '#94a3b8', marginBottom: 12 }}>
+          {/* Group Table First */}
+          <GroupTable group={selectedGroup} />
+
+          {/* Play-off Info directly under table */}
+          {TEAMS[selectedGroup].some(t => PLAYOFF_INFO[t.name]) && (
+            <div style={{ background: 'rgba(251,191,36,0.1)', border: '1px solid rgba(251,191,36,0.3)', borderRadius: 10, padding: 12, marginTop: 12 }}>
+              <div style={{ fontSize: 11, fontWeight: 'bold', color: '#fbbf24', marginBottom: 6 }}>⚠️ {t('playoffOpen', language)}</div>
+              {TEAMS[selectedGroup].filter(t => PLAYOFF_INFO[t.name]).map(t => (
+                <div key={t.name} style={{ marginBottom: 6 }}>
+                  <div style={{ fontSize: 10, color: '#fbbf24', fontWeight: 'bold' }}>{t.name} ({translatePlayoffType(PLAYOFF_INFO[t.name].type, language)}):</div>
+                  <div style={{ display: 'flex', gap: 3, flexWrap: 'wrap', marginTop: 3 }}>
+                    {PLAYOFF_INFO[t.name].teams.map(team => (
+                      <span key={team} style={{ fontSize: 9, background: '#334155', padding: '2px 6px', borderRadius: 3, color: '#94a3b8' }}>{tTeam(team)}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Group Matches Title */}
+          <div style={{ fontSize: 13, fontWeight: 'bold', color: '#94a3b8', marginTop: 20, marginBottom: 12 }}>
             {t('groupMatches', language)} {selectedGroup}
           </div>
 
-          {/* 4-Column Grid: Table (col 1) + 3 matches per row (cols 2-4) */}
-          {(() => {
-            const groupMatches = MATCHES.filter(m => m.group === selectedGroup).sort((a, b) => {
+          {/* Matches one by one */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {MATCHES.filter(m => m.group === selectedGroup).sort((a, b) => {
               if (a.date !== b.date) return a.date.localeCompare(b.date);
               return a.cet.localeCompare(b.cet);
-            });
-            
-            return (
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 10 }}>
-                {/* Table in column 1, spanning 2 rows */}
-                <div style={{ gridColumn: '1', gridRow: '1 / 3' }}>
-                  <GroupTable group={selectedGroup} />
-                  
-                  {/* Play-off Info */}
-                  {TEAMS[selectedGroup].some(t => PLAYOFF_INFO[t.name]) && (
-                    <div style={{ background: 'rgba(251,191,36,0.1)', border: '1px solid rgba(251,191,36,0.3)', borderRadius: 10, padding: 12, marginTop: 10 }}>
-                      <div style={{ fontSize: 11, fontWeight: 'bold', color: '#fbbf24', marginBottom: 6 }}>⚠️ {t('playoffOpen', language)}</div>
-                      {TEAMS[selectedGroup].filter(t => PLAYOFF_INFO[t.name]).map(t => (
-                        <div key={t.name} style={{ marginBottom: 6 }}>
-                          <div style={{ fontSize: 10, color: '#fbbf24', fontWeight: 'bold' }}>{t.name} ({translatePlayoffType(PLAYOFF_INFO[t.name].type, language)}):</div>
-                          <div style={{ display: 'flex', gap: 3, flexWrap: 'wrap', marginTop: 3 }}>
-                            {PLAYOFF_INFO[t.name].teams.map(team => (
-                              <span key={team} style={{ fontSize: 9, background: '#334155', padding: '2px 6px', borderRadius: 3, color: '#94a3b8' }}>{tTeam(team)}</span>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                
-                {/* 6 Matches: 3 in row 1 (cols 2-4), 3 in row 2 (cols 2-4) */}
-                {groupMatches.map((match, idx) => (
-                  <div key={match.id} style={{ gridColumn: (idx % 3) + 2, gridRow: Math.floor(idx / 3) + 1 }}>
-                    <MatchCard match={match} compact={true} />
-                  </div>
-                ))}
-              </div>
-            );
-          })()}
+            }).map(match => (
+              <MatchCard key={match.id} match={match} compact={false} />
+            ))}
+          </div>
         </div>
       )}
 
@@ -978,16 +964,16 @@ export default function SpieleSection({ user, predictions, savePrediction, match
           {['32tel-Finale', 'Achtelfinale', 'Viertelfinale', 'Halbfinale', 'Spiel um Platz 3', 'Finale'].map(phase => {
             const phaseMatches = MATCHES.filter(m => m.type === phase);
             if (phaseMatches.length === 0) return null;
-            
+
             const phaseName = translatePhase(phase, language);
-            
+
             return (
               <div key={phase} style={{ marginBottom: 20 }}>
                 <div style={{ fontSize: 13, fontWeight: 'bold', marginBottom: 10, color: phase === 'Finale' ? '#fbbf24' : '#94a3b8' }}>
                   {phase === 'Finale' ? '🏆' : '🎯'} {phaseName} ({phaseMatches.length} {tt('matches')})
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
-                  {phaseMatches.map(match => <MatchCard key={match.id} match={match} compact={true} />)}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  {phaseMatches.map(match => <MatchCard key={match.id} match={match} compact={false} />)}
                 </div>
               </div>
             );
