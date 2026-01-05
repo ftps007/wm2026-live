@@ -834,11 +834,6 @@ function AppContent() {
             <img src="/Logo_WM2026.png" alt="WM 2026" style={{ width: 'var(--logo-width)', height: 'auto', display: 'block' }} />
           </div>
 
-          {/* CENTER: Sentiment Barometer */}
-          <div style={{ flex: '1', display: 'flex', justifyContent: 'center' }}>
-            <SentimentBarometer language={language} onClick={() => setActiveTab('sentiment')} />
-          </div>
-
           {/* RIGHT: Language + Auth */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 'var(--space-md)' }}>
             <LanguageSelector />
