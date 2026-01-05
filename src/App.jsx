@@ -479,29 +479,29 @@ const aiPredictionsCache = {};
 // Using YouTube search URLs - always work and show latest available videos
 const videosData = [
   // Highlights
-  { id: 1, title: "WM 2022 Finale: Argentinien vs Frankreich", category: "Highlights", year: 2022, searchQuery: "Argentina+vs+France+World+Cup+2022+Final+highlights", emoji: "🇦🇷🇫🇷" },
-  { id: 2, title: "Deutschland 7:1 Brasilien - WM 2014", category: "Highlights", year: 2014, searchQuery: "Germany+7-1+Brazil+World+Cup+2014+highlights", emoji: "🇩🇪" },
-  { id: 3, title: "WM 2022: Alle Tore des Turniers", category: "Highlights", year: 2022, searchQuery: "World+Cup+2022+all+goals", emoji: "⚽" },
-  { id: 4, title: "Kroatien vs Brasilien - Elfmeterschießen WM 2022", category: "Highlights", year: 2022, searchQuery: "Croatia+vs+Brazil+penalties+World+Cup+2022", emoji: "🇭🇷" },
-  { id: 5, title: "Marokko - Historischer Weg ins Halbfinale 2022", category: "Highlights", year: 2022, searchQuery: "Morocco+World+Cup+2022+all+goals+highlights", emoji: "🇲🇦" },
-  { id: 6, title: "Japan schockt Deutschland & Spanien", category: "Highlights", year: 2022, searchQuery: "Japan+beats+Germany+Spain+World+Cup+2022", emoji: "🇯🇵" },
-  { id: 7, title: "Saudi-Arabien besiegt Argentinien", category: "Highlights", year: 2022, searchQuery: "Saudi+Arabia+Argentina+World+Cup+2022+highlights", emoji: "🇸🇦" },
+  { id: 1, title: "WM 2022 Finale: Argentinien vs Frankreich", category: "Highlights", year: 2022, videoId: "xzCEdSKMkdU", searchQuery: "Argentina+vs+France+World+Cup+2022+Final+highlights", emoji: "🇦🇷🇫🇷" },
+  { id: 2, title: "Deutschland 7:1 Brasilien - WM 2014", category: "Highlights", year: 2014, videoId: "5gnr2MhIqG4", searchQuery: "Germany+7-1+Brazil+World+Cup+2014+highlights", emoji: "🇩🇪" },
+  { id: 3, title: "WM 2022: Alle Tore des Turniers", category: "Highlights", year: 2022, videoId: "LIokm6X7gk4", searchQuery: "World+Cup+2022+all+goals", emoji: "⚽" },
+  { id: 4, title: "Kroatien vs Brasilien - Elfmeterschießen WM 2022", category: "Highlights", year: 2022, videoId: "qqWXm_RdVMs", searchQuery: "Croatia+vs+Brazil+penalties+World+Cup+2022", emoji: "🇭🇷" },
+  { id: 5, title: "Marokko - Historischer Weg ins Halbfinale 2022", category: "Highlights", year: 2022, videoId: "C0yl1hVNeEU", searchQuery: "Morocco+World+Cup+2022+all+goals+highlights", emoji: "🇲🇦" },
+  { id: 6, title: "Japan schockt Deutschland & Spanien", category: "Highlights", year: 2022, videoId: "1MwtVod1Czc", searchQuery: "Japan+beats+Germany+Spain+World+Cup+2022", emoji: "🇯🇵" },
+  { id: 7, title: "Saudi-Arabien besiegt Argentinien", category: "Highlights", year: 2022, videoId: "ckEOmFjYXXM", searchQuery: "Saudi+Arabia+Argentina+World+Cup+2022+highlights", emoji: "🇸🇦" },
   
   // Deutschland
-  { id: 10, title: "Deutschland wird Weltmeister 2014", category: "Deutschland", year: 2014, searchQuery: "Germany+wins+World+Cup+2014+Final+Götze+goal", emoji: "🏆" },
-  { id: 11, title: "Deutschland vs Argentinien - Finale 2014", category: "Deutschland", year: 2014, searchQuery: "Germany+vs+Argentina+2014+World+Cup+Final+highlights", emoji: "🇦🇷🇫🇷" },
-  { id: 12, title: "Deutschlands 4 WM-Titel - Alle Finals", category: "Deutschland", year: 2014, searchQuery: "Germany+all+World+Cup+wins+1954+1974+1990+2014", emoji: "🇦🇷🇫🇷" },
-  { id: 13, title: "Sommermärchen 2006 - Best Moments", category: "Deutschland", year: 2006, searchQuery: "Germany+World+Cup+2006+Sommermärchen+highlights", emoji: "🎆" },
-  { id: 14, title: "Deutschland WM 2010 - Alle Tore", category: "Deutschland", year: 2010, searchQuery: "Germany+World+Cup+2010+all+goals+highlights", emoji: "🇩🇪" },
+  { id: 10, title: "Deutschland wird Weltmeister 2014", category: "Deutschland", year: 2014, videoId: "wbPseHCbXzk", searchQuery: "Germany+wins+World+Cup+2014+Final+Götze+goal", emoji: "🏆" },
+  { id: 11, title: "Deutschland vs Argentinien - Finale 2014", category: "Deutschland", year: 2014, videoId: "LtvnNxHDgMI", searchQuery: "Germany+vs+Argentina+2014+World+Cup+Final+highlights", emoji: "🇩🇪🇦🇷" },
+  { id: 12, title: "Deutschlands 4 WM-Titel - Alle Finals", category: "Deutschland", year: 2014, videoId: "5gnr2MhIqG4", searchQuery: "Germany+all+World+Cup+wins+1954+1974+1990+2014", emoji: "🏆" },
+  { id: 13, title: "Sommermärchen 2006 - Best Moments", category: "Deutschland", year: 2006, videoId: "AYnepO-T_zw", searchQuery: "Germany+World+Cup+2006+Sommermärchen+highlights", emoji: "🎆" },
+  { id: 14, title: "Deutschland WM 2010 - Alle Tore", category: "Deutschland", year: 2010, videoId: "e_3AyGMvr58", searchQuery: "Germany+World+Cup+2010+all+goals+highlights", emoji: "🇩🇪" },
   
   // Songs
-  { id: 20, title: "Shakira - Waka Waka (WM 2010)", category: "Songs", year: 2010, searchQuery: "Shakira+Waka+Waka+World+Cup+2010+official", emoji: "🎵" },
-  { id: 21, title: "K'naan - Wavin' Flag (WM 2010)", category: "Songs", year: 2010, searchQuery: "Knaan+Wavin+Flag+World+Cup+2010+official", emoji: "🎶" },
-  { id: 22, title: "Ricky Martin - Cup of Life (WM 1998)", category: "Songs", year: 1998, searchQuery: "Ricky+Martin+Cup+of+Life+World+Cup+1998", emoji: "🎤" },
-  { id: 23, title: "Pitbull ft. J.Lo - We Are One (WM 2014)", category: "Songs", year: 2014, searchQuery: "Pitbull+Jennifer+Lopez+We+Are+One+World+Cup+2014", emoji: "🎵" },
-  { id: 24, title: "Hayya Hayya - Official WM 2022 Song", category: "Songs", year: 2022, searchQuery: "Hayya+Hayya+Better+Together+World+Cup+2022+official", emoji: "🎶" },
-  { id: 25, title: "Sportfreunde Stiller - 54 74 90 2006", category: "Songs", year: 2006, searchQuery: "Sportfreunde+Stiller+54+74+90+2006", emoji: "🎸" },
-  { id: 26, title: "Zeit dass sich was dreht - WM 2006", category: "Songs", year: 2006, searchQuery: "Zeit+dass+sich+was+dreht+Grönemeyer+2006", emoji: "🎤" },
+  { id: 20, title: "Shakira - Waka Waka (WM 2010)", category: "Songs", year: 2010, videoId: "pRpeEdMmmQ0", searchQuery: "Shakira+Waka+Waka+World+Cup+2010+official", emoji: "🎵" },
+  { id: 21, title: "K'naan - Wavin' Flag (WM 2010)", category: "Songs", year: 2010, videoId: "WTJSt4wP2ME", searchQuery: "Knaan+Wavin+Flag+World+Cup+2010+official", emoji: "🎶" },
+  { id: 22, title: "Ricky Martin - Cup of Life (WM 1998)", category: "Songs", year: 1998, videoId: "8BsHOlPRnvo", searchQuery: "Ricky+Martin+Cup+of+Life+World+Cup+1998", emoji: "🎤" },
+  { id: 23, title: "Pitbull ft. J.Lo - We Are One (WM 2014)", category: "Songs", year: 2014, videoId: "TGtWWb9emYI", searchQuery: "Pitbull+Jennifer+Lopez+We+Are+One+World+Cup+2014", emoji: "🎵" },
+  { id: 24, title: "Hayya Hayya - Official WM 2022 Song", category: "Songs", year: 2022, videoId: "Y8I3gOdqaEk", searchQuery: "Hayya+Hayya+Better+Together+World+Cup+2022+official", emoji: "🎶" },
+  { id: 25, title: "Sportfreunde Stiller - 54 74 90 2006", category: "Songs", year: 2006, videoId: "Ug4XePrABpc", searchQuery: "Sportfreunde+Stiller+54+74+90+2006", emoji: "🎸" },
+  { id: 26, title: "Zeit dass sich was dreht - WM 2006", category: "Songs", year: 2006, videoId: "6jSiHdWuoP0", searchQuery: "Zeit+dass+sich+was+dreht+Grönemeyer+2006", emoji: "🎤" },
   
   // Klassiker
   { id: 30, title: "Maradonas Hand Gottes & Jahrhunderttor", category: "Klassiker", year: 1986, searchQuery: "Maradona+Hand+of+God+Goal+of+the+Century+1986", emoji: "âœ‹" },
@@ -571,6 +571,7 @@ function AppContent() {
   const [groupFilter, setGroupFilter] = useState('alle');
   const [teamFilter, setTeamFilter] = useState('alle');
   const [videoCategory, setVideoCategory] = useState('alle');
+  const [mediaSubTab, setMediaSubTab] = useState('videos');
   const [triviaIndex, setTriviaIndex] = useState(0);
   const [triviaScore, setTriviaScore] = useState(0);
   const [triviaAnswered, setTriviaAnswered] = useState(false);
@@ -807,8 +808,8 @@ function AppContent() {
   // Poll is now shown inside Spiele tab, not as fullscreen takeover
 
   const tabs = [
-    { id: 'news', label: t('tabNews') }, 
-    { id: 'videos', label: t('tabVideos') }, 
+    { id: 'news', label: t('tabNews') },
+    { id: 'media', label: t('tabMedia') },
     { id: 'matches', label: t('tabMatches') }, 
     { id: 'leagues', label: t('tabRankings') }, 
     { id: 'trivia', label: t('tabTrivia') },
@@ -964,8 +965,116 @@ function AppContent() {
           </div>
         )}
 
-        {/* VIDEOS & PLAYLISTS */}
-        {activeTab === 'videos' && (<div><div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('videosTitle')}</div><div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>{[{key: 'alle', label: t('videosAll')}, {key: 'Highlights', label: t('videosHighlights')}, {key: 'Deutschland', label: t('videosGermany')}, {key: 'Songs', label: t('videosSongs')}, {key: 'Klassiker', label: t('videosClassics')}, {key: 'WM 2026', label: t('videosWC2026')}].map(cat => (<button key={cat.key} onClick={() => setVideoCategory(cat.key)} style={{ padding: '6px 12px', background: videoCategory === cat.key ? '#10b981' : '#1e293b', border: '1px solid #334155', borderRadius: '16px', color: videoCategory === cat.key ? 'white' : '#94a3b8', fontSize: '11px', cursor: 'pointer' }}>{cat.label}</button>))}</div><div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>{filteredVideos.map(v => (<a key={v.id} href={getYouTubeUrl(v.searchQuery)} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}><div style={{ background: '#1e293b', borderRadius: '10px', overflow: 'hidden', border: '1px solid #334155', cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = '#ff0000'; e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={e => { e.currentTarget.style.borderColor = '#334155'; e.currentTarget.style.transform = 'scale(1)'; }}><div style={{ position: 'relative', height: '90px', background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '40px' }}>{v.emoji}</span><div style={{ position: 'absolute', bottom: '8px', right: '8px', background: '#ff0000', borderRadius: '4px', padding: '2px 6px', display: 'flex', alignItems: 'center', gap: '4px' }}><svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg><span style={{ fontSize: '9px', color: 'white', fontWeight: 'bold' }}>YouTube</span></div></div><div style={{ padding: '10px' }}><div style={{ fontSize: '11px', fontWeight: 'bold', color: 'white', marginBottom: '4px', lineHeight: '1.3' }}>{v.title}</div><div style={{ fontSize: '9px', color: '#64748b' }}>{v.category} • {v.year}</div></div></div></a>))}</div><div style={{ marginTop: '16px', padding: '12px', background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,0,0,0.3)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}><svg width="20" height="20" viewBox="0 0 24 24" fill="#ff0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg><span style={{ fontSize: '10px', color: '#ff6b6b' }}>{t('videosYoutubeHint')}</span></div><div style={{ marginTop: '24px' }}><div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('playlistsTitle')}</div><div style={{ borderRadius: '12px', overflow: 'hidden' }}><iframe style={{ borderRadius: '12px' }} src="https://open.spotify.com/embed/playlist/5rDAK7QpmLtrykxatHGY6Z?utm_source=generator" width="100%" height="352" frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div><div style={{ marginTop: '12px', padding: '12px', background: 'rgba(30,215,96,0.1)', border: '1px solid rgba(30,215,96,0.3)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}><svg width="20" height="20" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg><span style={{ fontSize: '10px', color: '#1DB954' }}>{t('playlistsSpotifyHint')}</span></div></div></div>)}
+        {/* MEDIA (Videos & Playlists) */}
+        {activeTab === 'media' && (
+          <div>
+            {/* Sub-tabs: Videos / Playlists */}
+            <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+              <button
+                onClick={() => setMediaSubTab('videos')}
+                style={{
+                  flex: 1,
+                  padding: '12px',
+                  background: mediaSubTab === 'videos' ? 'linear-gradient(135deg, #ff0000 0%, #cc0000 100%)' : '#1e293b',
+                  border: mediaSubTab === 'videos' ? 'none' : '1px solid #334155',
+                  borderRadius: '10px',
+                  color: 'white',
+                  fontSize: '13px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
+                }}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                {t('mediaSubVideos')}
+              </button>
+              <button
+                onClick={() => setMediaSubTab('playlists')}
+                style={{
+                  flex: 1,
+                  padding: '12px',
+                  background: mediaSubTab === 'playlists' ? 'linear-gradient(135deg, #1DB954 0%, #1aa34a 100%)' : '#1e293b',
+                  border: mediaSubTab === 'playlists' ? 'none' : '1px solid #334155',
+                  borderRadius: '10px',
+                  color: 'white',
+                  fontSize: '13px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
+                }}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                {t('mediaSubPlaylists')}
+              </button>
+            </div>
+
+            {/* Videos Content */}
+            {mediaSubTab === 'videos' && (
+              <div>
+                <div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('videosTitle')}</div>
+                <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
+                  {[{key: 'alle', label: t('videosAll')}, {key: 'Highlights', label: t('videosHighlights')}, {key: 'Deutschland', label: t('videosGermany')}, {key: 'Songs', label: t('videosSongs')}, {key: 'Klassiker', label: t('videosClassics')}, {key: 'WM 2026', label: t('videosWC2026')}].map(cat => (
+                    <button key={cat.key} onClick={() => setVideoCategory(cat.key)} style={{ padding: '6px 12px', background: videoCategory === cat.key ? '#10b981' : '#1e293b', border: '1px solid #334155', borderRadius: '16px', color: videoCategory === cat.key ? 'white' : '#94a3b8', fontSize: '11px', cursor: 'pointer' }}>{cat.label}</button>
+                  ))}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  {filteredVideos.map(v => (
+                    <a key={v.id} href={v.videoId ? `https://www.youtube.com/watch?v=${v.videoId}` : getYouTubeUrl(v.searchQuery)} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <div style={{ background: '#1e293b', borderRadius: '10px', overflow: 'hidden', border: '1px solid #334155', cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = '#ff0000'; e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={e => { e.currentTarget.style.borderColor = '#334155'; e.currentTarget.style.transform = 'scale(1)'; }}>
+                        <div style={{ position: 'relative', height: '100px', background: v.videoId ? `url(https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg) center/cover` : 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          {!v.videoId && <span style={{ fontSize: '40px' }}>{v.emoji}</span>}
+                          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: 'rgba(255,0,0,0.9)', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                          </div>
+                          <div style={{ position: 'absolute', bottom: '6px', right: '6px', background: 'rgba(0,0,0,0.8)', borderRadius: '4px', padding: '2px 6px' }}>
+                            <span style={{ fontSize: '9px', color: 'white', fontWeight: 'bold' }}>{v.year}</span>
+                          </div>
+                        </div>
+                        <div style={{ padding: '10px' }}>
+                          <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'white', marginBottom: '4px', lineHeight: '1.3' }}>{v.title}</div>
+                          <div style={{ fontSize: '9px', color: '#64748b' }}>{v.category}</div>
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+                <div style={{ marginTop: '16px', padding: '12px', background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,0,0,0.3)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#ff0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                  <span style={{ fontSize: '10px', color: '#ff6b6b' }}>{t('videosYoutubeHint')}</span>
+                </div>
+              </div>
+            )}
+
+            {/* Playlists Content */}
+            {mediaSubTab === 'playlists' && (
+              <div>
+                <div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('playlistsTitle')}</div>
+                <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
+                  <iframe
+                    style={{ borderRadius: '12px' }}
+                    src="https://open.spotify.com/embed/playlist/5rDAK7QpmLtrykxatHGY6Z?utm_source=generator"
+                    width="100%"
+                    height="352"
+                    frameBorder="0"
+                    allowFullScreen
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                  ></iframe>
+                </div>
+                <div style={{ marginTop: '12px', padding: '12px', background: 'rgba(30,215,96,0.1)', border: '1px solid rgba(30,215,96,0.3)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                  <span style={{ fontSize: '10px', color: '#1DB954' }}>{t('playlistsSpotifyHint')}</span>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* MATCHES */}
         {activeTab === 'matches' && (

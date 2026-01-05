@@ -17,7 +17,7 @@ export const translations = {
 
     // Navigation Tabs
     tabNews: '📰 News',
-    tabVideos: '🎬 Videos',
+    tabMedia: '🎬 Media',
     tabMatches: '⚽ Spiele',
     tabRankings: '📺 Ranglisten',
     tabTrivia: '🧠  Trivia',
@@ -68,7 +68,9 @@ export const translations = {
     // Trivia Language Notice (empty for German - native language)
     triviaLanguageNotice: '',
 
-    // Videos Section
+    // Media Section
+    mediaSubVideos: '🎬 Videos',
+    mediaSubPlaylists: '🎵 Playlists',
     videosTitle: '🎬 WM Videos',
     videosAll: 'Alle',
     videosHighlights: 'Highlights',
@@ -547,7 +549,7 @@ export const translations = {
 
     // Navigation Tabs
     tabNews: '📰 News',
-    tabVideos: '🎬 Videos',
+    tabMedia: '🎬 Media',
     tabMatches: '⚽ Matches',
     tabRankings: '📺 Rankings',
     tabTrivia: '🧠  Trivia',
@@ -598,7 +600,9 @@ export const translations = {
     // Trivia Language Notice
     triviaLanguageNotice: '',
 
-    // Videos Section
+    // Media Section
+    mediaSubVideos: '🎬 Videos',
+    mediaSubPlaylists: '🎵 Playlists',
     videosTitle: '🎬 World Cup Videos',
     videosAll: 'All',
     videosHighlights: 'Highlights',
@@ -1077,7 +1081,7 @@ export const translations = {
 
     // Navigation Tabs
     tabNews: '📰 AktualnoÅ›ci',
-    tabVideos: '🎬 Filmy',
+    tabMedia: '🎬 Media',
     tabMatches: '⚽ Mecze',
     tabRankings: '📺 Rankingi',
     tabTrivia: '🧠  Trivia',
@@ -1128,7 +1132,9 @@ export const translations = {
     // Trivia Language Notice
     triviaLanguageNotice: 'â„¹ï¸ Pytania sÄ… wyÅ›wietlane po angielsku. TÅ‚umaczenie na polski wkrótce.',
 
-    // Videos Section
+    // Media Section
+    mediaSubVideos: '🎬 Filmy',
+    mediaSubPlaylists: '🎵 Playlisty',
     videosTitle: '🎬 Filmy MÅš',
     videosAll: 'Wszystkie',
     videosHighlights: 'Skróty',
