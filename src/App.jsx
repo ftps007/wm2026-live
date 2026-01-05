@@ -496,7 +496,7 @@ const videosData = [
   { id: 14, title: "Deutschland WM 2010 - Alle Tore", category: "Deutschland", year: 2010, videoId: "hwQfH8ABkAQ", searchQuery: "Germany+World+Cup+2010+all+goals+highlights", emoji: "🇩🇪" },
 
   // Klassiker
-  { id: 30, title: "Maradonas Hand Gottes & Jahrhunderttor", category: "Klassiker", year: 1986, videoId: "-ccNkksrfls", searchQuery: "Maradona+Hand+of+God+Goal+of+the+Century+1986", emoji: "âœ‹" },
+  { id: 30, title: "Maradonas Hand Gottes & Jahrhunderttor", category: "Klassiker", year: 1986, videoId: "-ccNkksrfls", searchQuery: "Maradona+Hand+of+God+Goal+of+the+Century+1986", emoji: "✋" },
   { id: 31, title: "Zidanes Kopfstoß im WM-Finale 2006", category: "Klassiker", year: 2006, videoId: "jb16JvUCVQs", searchQuery: "Zidane+headbutt+Materazzi+World+Cup+2006+Final", emoji: "🇦🇷🇫🇷" },
   { id: 32, title: "Pelé - Die größten WM-Momente", category: "Klassiker", year: 1970, videoId: "bUTRZGCiiFs", searchQuery: "Pele+best+World+Cup+goals+moments", emoji: "👑" },
   { id: 33, title: "Deutschland vs Italien 4:3 - WM 1970", category: "Klassiker", year: 1970, videoId: "DIxr3kQnYvk", searchQuery: "Germany+Italy+4-3+1970+World+Cup+Game+of+Century", emoji: "🇮🇹" },
@@ -922,7 +922,7 @@ function AppContent() {
             
             {newsError && (
               <div style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: '8px', padding: '12px', marginTop: '12px' }}>
-                <span style={{ fontSize: '11px', color: '#ef4444' }}>âš ï¸ {newsError}</span>
+                <span style={{ fontSize: '11px', color: '#ef4444' }}>⚠️ {newsError}</span>
               </div>
             )}
           </div>
@@ -1135,7 +1135,7 @@ function AppContent() {
               {triviaAnswered && (
                 <div style={{ marginTop: '16px', padding: '14px', background: triviaSelected === triviaRound[triviaIndex].correctIndex ? 'rgba(16,185,129,0.1)' : 'rgba(239,68,68,0.1)', border: triviaSelected === triviaRound[triviaIndex].correctIndex ? '1px solid rgba(16,185,129,0.3)' : '1px solid rgba(239,68,68,0.3)', borderRadius: '10px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '16px' }}>{triviaSelected === triviaRound[triviaIndex].correctIndex ? '✅' : 'âŒ'}</span>
+                    <span style={{ fontSize: '16px' }}>{triviaSelected === triviaRound[triviaIndex].correctIndex ? '✅' : '❌'}</span>
                     <span style={{ fontSize: '12px', fontWeight: 'bold', color: triviaSelected === triviaRound[triviaIndex].correctIndex ? '#10b981' : '#ef4444' }}>
                       {triviaSelected === triviaRound[triviaIndex].correctIndex ? t('correct') : `${t('wrong')} ${t('correctAnswer')}: ${triviaRound[triviaIndex].options[triviaRound[triviaIndex].correctIndex]}`}
                     </span>
@@ -1146,7 +1146,7 @@ function AppContent() {
               
               {/* Next / Restart buttons */}
               {triviaAnswered && triviaIndex < triviaRound.length - 1 && (
-                <button onClick={nextQuestion} style={{ width: '100%', marginTop: '16px', padding: '12px', background: '#3b82f6', border: 'none', borderRadius: '8px', color: 'white', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>{t('nextQuestion')} â†’</button>
+                <button onClick={nextQuestion} style={{ width: '100%', marginTop: '16px', padding: '12px', background: '#3b82f6', border: 'none', borderRadius: '8px', color: 'white', fontSize: '13px', fontWeight: 'bold', cursor: 'pointer' }}>{t('nextQuestion')} →</button>
               )}
               {triviaAnswered && triviaIndex === triviaRound.length - 1 && (
                 <div>
@@ -1164,7 +1164,7 @@ function AppContent() {
           {/* Empty state */}
           {!triviaLoading && triviaRound.length === 0 && (
             <div style={{ background: '#1e293b', borderRadius: '12px', padding: '40px', border: '1px solid #334155', textAlign: 'center' }}>
-              <div style={{ fontSize: '24px', marginBottom: '12px' }}>â³</div>
+              <div style={{ fontSize: '24px', marginBottom: '12px' }}>⏳</div>
               <div style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '16px' }}>{t('noQuestionsFound')}</div>
               <button onClick={loadTriviaQuestions} style={{ padding: '10px 20px', background: '#3b82f6', border: 'none', borderRadius: '8px', color: 'white', fontSize: '12px', cursor: 'pointer' }}>{t('tryAgain')}</button>
             </div>
