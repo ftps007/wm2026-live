@@ -476,48 +476,48 @@ const getAIPrediction = (team1, team2) => {
 // Store AI predictions (generated once per session)
 const aiPredictionsCache = {};
 
-// Using YouTube search URLs - always work and show latest available videos
+// Using YouTube video IDs for real thumbnails where available
 const videosData = [
   // Highlights
   { id: 1, title: "WM 2022 Finale: Argentinien vs Frankreich", category: "Highlights", year: 2022, videoId: "xzCEdSKMkdU", searchQuery: "Argentina+vs+France+World+Cup+2022+Final+highlights", emoji: "🇦🇷🇫🇷" },
-  { id: 2, title: "Deutschland 7:1 Brasilien - WM 2014", category: "Highlights", year: 2014, videoId: "5gnr2MhIqG4", searchQuery: "Germany+7-1+Brazil+World+Cup+2014+highlights", emoji: "🇩🇪" },
-  { id: 3, title: "WM 2022: Alle Tore des Turniers", category: "Highlights", year: 2022, videoId: "LIokm6X7gk4", searchQuery: "World+Cup+2022+all+goals", emoji: "⚽" },
-  { id: 4, title: "Kroatien vs Brasilien - Elfmeterschießen WM 2022", category: "Highlights", year: 2022, videoId: "qqWXm_RdVMs", searchQuery: "Croatia+vs+Brazil+penalties+World+Cup+2022", emoji: "🇭🇷" },
-  { id: 5, title: "Marokko - Historischer Weg ins Halbfinale 2022", category: "Highlights", year: 2022, videoId: "C0yl1hVNeEU", searchQuery: "Morocco+World+Cup+2022+all+goals+highlights", emoji: "🇲🇦" },
-  { id: 6, title: "Japan schockt Deutschland & Spanien", category: "Highlights", year: 2022, videoId: "1MwtVod1Czc", searchQuery: "Japan+beats+Germany+Spain+World+Cup+2022", emoji: "🇯🇵" },
-  { id: 7, title: "Saudi-Arabien besiegt Argentinien", category: "Highlights", year: 2022, videoId: "ckEOmFjYXXM", searchQuery: "Saudi+Arabia+Argentina+World+Cup+2022+highlights", emoji: "🇸🇦" },
-  
+  { id: 2, title: "Deutschland 7:1 Brasilien - WM 2014", category: "Highlights", year: 2014, videoId: "aE4BdIP6bvc", searchQuery: "Germany+7-1+Brazil+World+Cup+2014+highlights", emoji: "🇩🇪" },
+  { id: 3, title: "WM 2022: Alle Tore des Turniers", category: "Highlights", year: 2022, videoId: "E1UEWy_vKfE", searchQuery: "World+Cup+2022+all+goals", emoji: "⚽" },
+  { id: 4, title: "Kroatien vs Brasilien - Elfmeterschießen WM 2022", category: "Highlights", year: 2022, videoId: "uR9vgLLDhE0", searchQuery: "Croatia+vs+Brazil+penalties+World+Cup+2022", emoji: "🇭🇷" },
+  { id: 5, title: "Marokko - Historischer Weg ins Halbfinale 2022", category: "Highlights", year: 2022, videoId: "HN_q5TWugPE", searchQuery: "Morocco+World+Cup+2022+all+goals+highlights", emoji: "🇲🇦" },
+  { id: 6, title: "Japan schockt Deutschland & Spanien", category: "Highlights", year: 2022, videoId: "91eoGiLSCgY", searchQuery: "Japan+beats+Germany+Spain+World+Cup+2022", emoji: "🇯🇵" },
+  { id: 7, title: "Saudi-Arabien besiegt Argentinien", category: "Highlights", year: 2022, videoId: "spLV1gF0fkI", searchQuery: "Saudi+Arabia+Argentina+World+Cup+2022+highlights", emoji: "🇸🇦" },
+
   // Deutschland
-  { id: 10, title: "Deutschland wird Weltmeister 2014", category: "Deutschland", year: 2014, videoId: "wbPseHCbXzk", searchQuery: "Germany+wins+World+Cup+2014+Final+Götze+goal", emoji: "🏆" },
-  { id: 11, title: "Deutschland vs Argentinien - Finale 2014", category: "Deutschland", year: 2014, videoId: "LtvnNxHDgMI", searchQuery: "Germany+vs+Argentina+2014+World+Cup+Final+highlights", emoji: "🇩🇪🇦🇷" },
-  { id: 12, title: "Deutschlands 4 WM-Titel - Alle Finals", category: "Deutschland", year: 2014, videoId: "5gnr2MhIqG4", searchQuery: "Germany+all+World+Cup+wins+1954+1974+1990+2014", emoji: "🏆" },
-  { id: 13, title: "Sommermärchen 2006 - Best Moments", category: "Deutschland", year: 2006, videoId: "AYnepO-T_zw", searchQuery: "Germany+World+Cup+2006+Sommermärchen+highlights", emoji: "🎆" },
-  { id: 14, title: "Deutschland WM 2010 - Alle Tore", category: "Deutschland", year: 2010, videoId: "e_3AyGMvr58", searchQuery: "Germany+World+Cup+2010+all+goals+highlights", emoji: "🇩🇪" },
-  
+  { id: 10, title: "Deutschland wird Weltmeister 2014", category: "Deutschland", year: 2014, videoId: "ffAYByv2pLc", searchQuery: "Germany+wins+World+Cup+2014+Final+Götze+goal", emoji: "🏆" },
+  { id: 11, title: "Deutschland vs Argentinien - Finale 2014", category: "Deutschland", year: 2014, videoId: "8wTyv-5E5Kc", searchQuery: "Germany+vs+Argentina+2014+World+Cup+Final+highlights", emoji: "🇩🇪🇦🇷" },
+  { id: 12, title: "Deutschlands 4 WM-Titel - Alle Finals", category: "Deutschland", year: 2014, videoId: "HDaAnWP0RnE", searchQuery: "Germany+all+World+Cup+wins+1954+1974+1990+2014", emoji: "🏆" },
+  { id: 13, title: "Sommermärchen 2006 - Best Moments", category: "Deutschland", year: 2006, videoId: "xrIchWnAisg", searchQuery: "Germany+World+Cup+2006+Sommermärchen+highlights", emoji: "🎆" },
+  { id: 14, title: "Deutschland WM 2010 - Alle Tore", category: "Deutschland", year: 2010, videoId: "hwQfH8ABkAQ", searchQuery: "Germany+World+Cup+2010+all+goals+highlights", emoji: "🇩🇪" },
+
   // Songs
   { id: 20, title: "Shakira - Waka Waka (WM 2010)", category: "Songs", year: 2010, videoId: "pRpeEdMmmQ0", searchQuery: "Shakira+Waka+Waka+World+Cup+2010+official", emoji: "🎵" },
   { id: 21, title: "K'naan - Wavin' Flag (WM 2010)", category: "Songs", year: 2010, videoId: "WTJSt4wP2ME", searchQuery: "Knaan+Wavin+Flag+World+Cup+2010+official", emoji: "🎶" },
-  { id: 22, title: "Ricky Martin - Cup of Life (WM 1998)", category: "Songs", year: 1998, videoId: "8BsHOlPRnvo", searchQuery: "Ricky+Martin+Cup+of+Life+World+Cup+1998", emoji: "🎤" },
+  { id: 22, title: "Ricky Martin - Cup of Life (WM 1998)", category: "Songs", year: 1998, videoId: "dZDj2CnG5dE", searchQuery: "Ricky+Martin+Cup+of+Life+World+Cup+1998", emoji: "🎤" },
   { id: 23, title: "Pitbull ft. J.Lo - We Are One (WM 2014)", category: "Songs", year: 2014, videoId: "TGtWWb9emYI", searchQuery: "Pitbull+Jennifer+Lopez+We+Are+One+World+Cup+2014", emoji: "🎵" },
-  { id: 24, title: "Hayya Hayya - Official WM 2022 Song", category: "Songs", year: 2022, videoId: "Y8I3gOdqaEk", searchQuery: "Hayya+Hayya+Better+Together+World+Cup+2022+official", emoji: "🎶" },
-  { id: 25, title: "Sportfreunde Stiller - 54 74 90 2006", category: "Songs", year: 2006, videoId: "Ug4XePrABpc", searchQuery: "Sportfreunde+Stiller+54+74+90+2006", emoji: "🎸" },
-  { id: 26, title: "Zeit dass sich was dreht - WM 2006", category: "Songs", year: 2006, videoId: "6jSiHdWuoP0", searchQuery: "Zeit+dass+sich+was+dreht+Grönemeyer+2006", emoji: "🎤" },
-  
+  { id: 24, title: "Hayya Hayya - Official WM 2022 Song", category: "Songs", year: 2022, videoId: "vyDjFVZgJoo", searchQuery: "Hayya+Hayya+Better+Together+World+Cup+2022+official", emoji: "🎶" },
+  { id: 25, title: "Sportfreunde Stiller - 54 74 90 2006", category: "Songs", year: 2006, videoId: "rj9KyVpCfYg", searchQuery: "Sportfreunde+Stiller+54+74+90+2006", emoji: "🎸" },
+  { id: 26, title: "Zeit dass sich was dreht - WM 2006", category: "Songs", year: 2006, videoId: "LKi4BlO_ls8", searchQuery: "Zeit+dass+sich+was+dreht+Grönemeyer+2006", emoji: "🎤" },
+
   // Klassiker
-  { id: 30, title: "Maradonas Hand Gottes & Jahrhunderttor", category: "Klassiker", year: 1986, searchQuery: "Maradona+Hand+of+God+Goal+of+the+Century+1986", emoji: "âœ‹" },
-  { id: 31, title: "Zidanes Kopfstoß im WM-Finale 2006", category: "Klassiker", year: 2006, searchQuery: "Zidane+headbutt+Materazzi+World+Cup+2006+Final", emoji: "🇦🇷🇫🇷" },
-  { id: 32, title: "Pelé - Die größten WM-Momente", category: "Klassiker", year: 1970, searchQuery: "Pele+best+World+Cup+goals+moments", emoji: "👑" },
-  { id: 33, title: "Deutschland vs Italien 4:3 - WM 1970", category: "Klassiker", year: 1970, searchQuery: "Germany+Italy+4-3+1970+World+Cup+Game+of+Century", emoji: "🇮🇹" },
-  { id: 34, title: "Wembley-Tor 1966 - War der Ball drin?", category: "Klassiker", year: 1966, searchQuery: "Wembley+Goal+1966+World+Cup+Final+England+Germany", emoji: "🇦🇷🇫🇷" },
-  { id: 35, title: "Brasilien 1970 - Bestes Team aller Zeiten?", category: "Klassiker", year: 1970, searchQuery: "Brazil+1970+World+Cup+best+team+ever+Pele", emoji: "🇧🇷" },
-  { id: 36, title: "WM Finale 1990: Deutschland vs Argentinien", category: "Klassiker", year: 1990, searchQuery: "Germany+Argentina+1990+World+Cup+Final", emoji: "🇦🇷🇫🇷" },
-  { id: 37, title: "Zinedine Zidane - Beste WM-Momente", category: "Klassiker", year: 2006, searchQuery: "Zidane+best+World+Cup+goals+moments", emoji: "🇫🇷" },
-  
-  // WM 2026 Preview
-  { id: 40, title: "WM 2026: Alle 16 Stadien", category: "WM 2026", year: 2026, searchQuery: "World+Cup+2026+all+stadiums+USA+Mexico+Canada", emoji: "🏟️" },
-  { id: 41, title: "WM 2026: 48 Teams - Neues Format erklärt", category: "WM 2026", year: 2026, searchQuery: "World+Cup+2026+48+teams+new+format+explained", emoji: "📋" },
-  { id: 42, title: "Road to WM 2026 - Qualifikation", category: "WM 2026", year: 2026, searchQuery: "World+Cup+2026+qualification+Europe+UEFA", emoji: "🛤ï¸" },
-  { id: 43, title: "MetLife Stadium - Das Finale-Stadion", category: "WM 2026", year: 2026, searchQuery: "MetLife+Stadium+World+Cup+2026+Final+venue", emoji: "🗽" },
+  { id: 30, title: "Maradonas Hand Gottes & Jahrhunderttor", category: "Klassiker", year: 1986, videoId: "-ccNkksrfls", searchQuery: "Maradona+Hand+of+God+Goal+of+the+Century+1986", emoji: "âœ‹" },
+  { id: 31, title: "Zidanes Kopfstoß im WM-Finale 2006", category: "Klassiker", year: 2006, videoId: "jb16JvUCVQs", searchQuery: "Zidane+headbutt+Materazzi+World+Cup+2006+Final", emoji: "🇦🇷🇫🇷" },
+  { id: 32, title: "Pelé - Die größten WM-Momente", category: "Klassiker", year: 1970, videoId: "bUTRZGCiiFs", searchQuery: "Pele+best+World+Cup+goals+moments", emoji: "👑" },
+  { id: 33, title: "Deutschland vs Italien 4:3 - WM 1970", category: "Klassiker", year: 1970, videoId: "DIxr3kQnYvk", searchQuery: "Germany+Italy+4-3+1970+World+Cup+Game+of+Century", emoji: "🇮🇹" },
+  { id: 34, title: "Wembley-Tor 1966 - War der Ball drin?", category: "Klassiker", year: 1966, videoId: "C0aK2IgORGA", searchQuery: "Wembley+Goal+1966+World+Cup+Final+England+Germany", emoji: "🇦🇷🇫🇷" },
+  { id: 35, title: "Brasilien 1970 - Bestes Team aller Zeiten?", category: "Klassiker", year: 1970, videoId: "kCwYo9nL_Dk", searchQuery: "Brazil+1970+World+Cup+best+team+ever+Pele", emoji: "🇧🇷" },
+  { id: 36, title: "WM Finale 1990: Deutschland vs Argentinien", category: "Klassiker", year: 1990, videoId: "RG7SaUhHJ8E", searchQuery: "Germany+Argentina+1990+World+Cup+Final", emoji: "🇦🇷🇫🇷" },
+  { id: 37, title: "Zinedine Zidane - Beste WM-Momente", category: "Klassiker", year: 2006, videoId: "BCyFCXBhJKg", searchQuery: "Zidane+best+World+Cup+goals+moments", emoji: "🇫🇷" },
+
+  // WM 2026
+  { id: 40, title: "WM 2026: Alle 16 Stadien", category: "WM 2026", year: 2026, videoId: "XNAKyAJmpAU", searchQuery: "World+Cup+2026+all+stadiums+USA+Mexico+Canada", emoji: "🏟️" },
+  { id: 41, title: "WM 2026: 48 Teams - Neues Format erklärt", category: "WM 2026", year: 2026, videoId: "9aZxn_CCIQ8", searchQuery: "World+Cup+2026+48+teams+new+format+explained", emoji: "📋" },
+  { id: 42, title: "Road to WM 2026 - Qualifikation", category: "WM 2026", year: 2026, videoId: "R1AcCwoMF6U", searchQuery: "World+Cup+2026+qualification+Europe+UEFA", emoji: "🛤ï¸" },
+  { id: 43, title: "MetLife Stadium - Das Finale-Stadion", category: "WM 2026", year: 2026, videoId: "1YJMVxYD39o", searchQuery: "MetLife+Stadium+World+Cup+2026+Final+venue", emoji: "🗽" },
 ];
 
 // Helper function to generate YouTube search URL
