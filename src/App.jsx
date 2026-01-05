@@ -826,124 +826,98 @@ function AppContent() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#0f172a' }}>
-      {/* HEADER - responsive height */}
-      <header style={{ position: 'sticky', top: 0, zIndex: 40, background: 'linear-gradient(135deg, #1e293b, #0f172a)', borderBottom: '1px solid #334155', height: responsive.headerHeight }}>
-        <div style={{ maxWidth: responsive.maxWidth, margin: '0 auto', padding: `5px ${responsive.contentPadding}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
+      {/* HEADER */}
+      <header style={{ position: 'sticky', top: 0, zIndex: 40, background: 'linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary))', borderBottom: '1px solid var(--color-border)', height: 'var(--header-height)' }}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', paddingTop: '5px', paddingBottom: '5px' }}>
           {/* LEFT: Logo */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: responsive.logoWidth }}>
-            <img src="/Logo_WM2026.png" alt="WM 2026" style={{ width: responsive.logoWidth, height: 'auto', display: 'block' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'var(--logo-width)' }}>
+            <img src="/Logo_WM2026.png" alt="WM 2026" style={{ width: 'var(--logo-width)', height: 'auto', display: 'block' }} />
           </div>
-          
+
           {/* CENTER: Sentiment Barometer */}
           <div style={{ flex: '1', display: 'flex', justifyContent: 'center' }}>
             <SentimentBarometer language={language} onClick={() => setActiveTab('sentiment')} />
           </div>
-          
+
           {/* RIGHT: Language + Auth */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '12px' }}>
-            {/* Language Selector */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 'var(--space-md)' }}>
             <LanguageSelector />
-            
+
             {user ? (
               <>
-                <div style={{ textAlign: 'right' }}><div style={{ fontSize: '20px', fontWeight: 'bold', color: '#fbbf24' }}>{totalPoints}</div><div style={{ fontSize: '9px', color: '#64748b' }}>{t('points')}</div></div>
-                <div style={{ textAlign: 'right' }}><div style={{ fontSize: '11px', color: 'white' }}>{user.user_metadata?.username || user.email?.split('@')[0]}</div><button onClick={handleLogout} style={{ background: 'transparent', border: 'none', color: '#ef4444', fontSize: '9px', cursor: 'pointer', padding: 0 }}>{t('logout')}</button></div>
-                <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', color: 'white', fontWeight: 'bold' }}>{(user.user_metadata?.username || user.email)?.[0]?.toUpperCase()}</div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: 'var(--font-lg)', fontWeight: 'bold', color: 'var(--color-warning)' }}>{totalPoints}</div>
+                  <div style={{ fontSize: 'var(--font-xs)', color: 'var(--color-text-muted)' }}>{t('points')}</div>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: 'var(--font-xs)', color: 'white' }}>{user.user_metadata?.username || user.email?.split('@')[0]}</div>
+                  <button onClick={handleLogout} style={{ background: 'transparent', border: 'none', color: 'var(--color-error)', fontSize: 'var(--font-xs)', cursor: 'pointer', padding: 0 }}>{t('logout')}</button>
+                </div>
+                <div style={{ width: '36px', height: '36px', borderRadius: 'var(--radius-full)', background: 'var(--color-accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'var(--font-md)', color: 'white', fontWeight: 'bold' }}>
+                  {(user.user_metadata?.username || user.email)?.[0]?.toUpperCase()}
+                </div>
               </>
             ) : (
-              <button onClick={() => openAuthModal('login')} style={{ padding: '8px 16px', background: '#10b981', border: 'none', borderRadius: '8px', color: 'white', fontSize: '12px', fontWeight: 'bold', cursor: 'pointer' }}>{t('login')}</button>
+              <button onClick={() => openAuthModal('login')} className="btn btn-primary" style={{ padding: 'var(--space-sm) var(--space-lg)', minHeight: 'auto' }}>{t('login')}</button>
             )}
           </div>
         </div>
       </header>
 
       {/* TOP NAV */}
-      <nav style={{ position: 'sticky', top: responsive.headerHeight, zIndex: 30, background: 'rgba(30,41,59,0.95)', backdropFilter: 'blur(8px)' }}>
-        <div style={{ maxWidth: responsive.maxWidth, margin: '0 auto', display: 'flex', overflowX: 'auto', justifyContent: isDesktop ? 'center' : 'flex-start' }}>
+      <nav className="hide-scrollbar" style={{ position: 'sticky', top: 'var(--header-height)', zIndex: 30, background: 'rgba(30,41,59,0.95)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}>
+        <div className="container" style={{ display: 'flex', overflowX: 'auto', justifyContent: isDesktop ? 'center' : 'flex-start', padding: 0 }}>
           {tabs.map(tab => (
             <button
               key={tab.id}
               onClick={() => !tab.locked && handleTabClick(tab.id)}
-              style={{
-                flex: isDesktop ? 'none' : 1,
-                padding: isDesktop ? '12px 16px' : '10px 6px',
-                fontSize: responsive.fontSize.sm,
-                background: 'transparent',
-                border: 'none',
-                cursor: tab.locked ? 'not-allowed' : 'pointer',
-                whiteSpace: 'nowrap',
-                minWidth: 'fit-content',
-                color: tab.locked ? '#475569' : (activeTab === tab.id ? '#fbbf24' : '#94a3b8'),
-                borderBottom: activeTab === tab.id ? '2px solid #fbbf24' : '2px solid transparent',
-                opacity: tab.locked ? 0.5 : 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '4px',
-                transition: 'all 0.2s'
-              }}
+              className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`}
+              disabled={tab.locked}
             >
               {tab.label}
-              {tab.locked && <span style={{ fontSize: '8px' }}>🔒</span>}
+              {tab.locked && <span style={{ fontSize: '8px', marginLeft: '4px' }}>🔒</span>}
             </button>
           ))}
         </div>
       </nav>
 
       {/* COUNTDOWN */}
-      <div style={{ maxWidth: responsive.maxWidth, margin: '0 auto', padding: responsive.contentPadding }}><Countdown /></div>
+      <div className="container" style={{ paddingTop: 'var(--space-md)', paddingBottom: 'var(--space-md)' }}><Countdown /></div>
 
       {/* MAIN */}
-      <main style={{ maxWidth: responsive.maxWidth, margin: '0 auto', padding: responsive.contentPadding }}>
+      <main className="container">
         {/* NEWS */}
         {activeTab === 'news' && (
-          <div>
-            <div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="animate-fade-in">
+            <div style={{ fontSize: 'var(--font-md)', fontWeight: 'bold', color: 'white', marginBottom: 'var(--space-md)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>{t('newsTitle')}</span>
-              {newsLoading && <span style={{ fontSize: '10px', color: '#64748b' }}>{t('newsUpdating')}</span>}
+              {newsLoading && <span style={{ fontSize: 'var(--font-xs)', color: 'var(--color-text-muted)' }}>{t('newsUpdating')}</span>}
             </div>
             
             {/* Live indicator */}
             {!newsLoading && news.length > 0 && news[0].url && (
-              <div style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: '8px', padding: '8px 12px', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ width: '8px', height: '8px', background: '#10b981', borderRadius: '50%', animation: 'pulse 2s infinite' }}></span>
-                <span style={{ fontSize: '11px', color: '#10b981' }}>{t('newsCountryFlags')} {t('newsLive')}</span>
+              <div style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 'var(--radius-sm)', padding: 'var(--space-sm) var(--space-md)', marginBottom: 'var(--space-md)', display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
+                <span className="animate-pulse" style={{ width: '8px', height: '8px', background: 'var(--color-accent)', borderRadius: 'var(--radius-full)' }}></span>
+                <span style={{ fontSize: 'var(--font-xs)', color: 'var(--color-accent)' }}>{t('newsCountryFlags')} {t('newsLive')}</span>
               </div>
             )}
             
             {newsLoading && news.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '40px', color: '#64748b' }}>
-                <div style={{ fontSize: '24px', marginBottom: '8px' }}>🔒</div>
-                <div style={{ fontSize: '12px' }}>{t('newsLoading')}</div>
+              <div className="card" style={{ textAlign: 'center', padding: 'var(--space-2xl)' }}>
+                <div style={{ fontSize: '24px', marginBottom: 'var(--space-sm)' }}>🔒</div>
+                <div style={{ fontSize: 'var(--font-sm)', color: 'var(--color-text-muted)' }}>{t('newsLoading')}</div>
               </div>
             ) : (
               news.map(item => (
-                <a 
-                  key={item.id} 
-                  href={item.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: 'none', display: 'block' }}
-                >
-                  <div style={{ 
-                    background: '#1e293b', 
-                    borderRadius: '10px', 
-                    padding: '14px', 
-                    marginBottom: '10px', 
-                    border: '1px solid #334155',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                  }}
-                  onMouseOver={e => { e.currentTarget.style.borderColor = '#10b981'; e.currentTarget.style.transform = 'translateX(4px)'; }}
-                  onMouseOut={e => { e.currentTarget.style.borderColor = '#334155'; e.currentTarget.style.transform = 'translateX(0)'; }}
-                  >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                      <span style={{ fontSize: '9px', background: item.tagColor, color: 'white', padding: '2px 8px', borderRadius: '4px' }}>{item.tag}</span>
-                      <span style={{ fontSize: '10px', color: '#64748b' }}>{item.date}</span>
+                <a key={item.id} href={item.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+                  <div className="card" style={{ padding: 'var(--space-md)', marginBottom: 'var(--space-sm)', cursor: 'pointer' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--space-xs)' }}>
+                      <span style={{ fontSize: 'var(--font-xs)', background: item.tagColor, color: 'white', padding: '2px 8px', borderRadius: '4px' }}>{item.tag}</span>
+                      <span style={{ fontSize: 'var(--font-xs)', color: 'var(--color-text-muted)' }}>{item.date}</span>
                     </div>
-                    <div style={{ fontSize: '13px', fontWeight: 'bold', color: 'white', marginBottom: '4px' }}>{item.title}</div>
-                    <div style={{ fontSize: '11px', color: '#94a3b8' }}>{item.summary}</div>
-                    <div style={{ fontSize: '9px', color: '#10b981', marginTop: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <div style={{ fontSize: 'var(--font-base)', fontWeight: '600', color: 'white', marginBottom: '4px' }}>{item.title}</div>
+                    <div style={{ fontSize: 'var(--font-xs)', color: 'var(--color-text-secondary)' }}>{item.summary}</div>
+                    <div style={{ fontSize: 'var(--font-xs)', color: 'var(--color-accent)', marginTop: 'var(--space-sm)', display: 'flex', alignItems: 'center', gap: '4px' }}>
                       📖 {t('newsReadArticle')}
                     </div>
                   </div>
@@ -963,84 +937,50 @@ function AppContent() {
         {activeTab === 'media' && (
           <div>
             {/* Sub-tabs: Videos / Playlists */}
-            <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
-              <button
-                onClick={() => setMediaSubTab('videos')}
-                style={{
-                  flex: 1,
-                  padding: '12px',
-                  background: mediaSubTab === 'videos' ? 'linear-gradient(135deg, #ff0000 0%, #cc0000 100%)' : '#1e293b',
-                  border: mediaSubTab === 'videos' ? 'none' : '1px solid #334155',
-                  borderRadius: '10px',
-                  color: 'white',
-                  fontSize: '13px',
-                  fontWeight: 'bold',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px'
-                }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+            <div style={{ display: 'flex', gap: 'var(--space-sm)', marginBottom: 'var(--space-lg)' }}>
+              <button onClick={() => setMediaSubTab('videos')} className={`sub-tab ${mediaSubTab === 'videos' ? 'active-youtube' : ''}`}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                 {t('mediaSubVideos')}
               </button>
-              <button
-                onClick={() => setMediaSubTab('playlists')}
-                style={{
-                  flex: 1,
-                  padding: '12px',
-                  background: mediaSubTab === 'playlists' ? 'linear-gradient(135deg, #1DB954 0%, #1aa34a 100%)' : '#1e293b',
-                  border: mediaSubTab === 'playlists' ? 'none' : '1px solid #334155',
-                  borderRadius: '10px',
-                  color: 'white',
-                  fontSize: '13px',
-                  fontWeight: 'bold',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px'
-                }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              <button onClick={() => setMediaSubTab('playlists')} className={`sub-tab ${mediaSubTab === 'playlists' ? 'active-spotify' : ''}`}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
                 {t('mediaSubPlaylists')}
               </button>
             </div>
 
             {/* Videos Content */}
             {mediaSubTab === 'videos' && (
-              <div>
-                <div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('videosTitle')}</div>
-                <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
+              <div className="animate-fade-in">
+                <div style={{ fontSize: 'var(--font-md)', fontWeight: 'bold', color: 'white', marginBottom: 'var(--space-md)' }}>{t('videosTitle')}</div>
+                <div style={{ display: 'flex', gap: 'var(--space-sm)', marginBottom: 'var(--space-lg)', flexWrap: 'wrap' }}>
                   {[{key: 'alle', label: t('videosAll')}, {key: 'Highlights', label: t('videosHighlights')}, {key: 'Deutschland', label: t('videosGermany')}, {key: 'Klassiker', label: t('videosClassics')}, {key: 'WM 2026', label: t('videosWC2026')}].map(cat => (
-                    <button key={cat.key} onClick={() => setVideoCategory(cat.key)} style={{ padding: '6px 12px', background: videoCategory === cat.key ? '#10b981' : '#1e293b', border: '1px solid #334155', borderRadius: '16px', color: videoCategory === cat.key ? 'white' : '#94a3b8', fontSize: '11px', cursor: 'pointer' }}>{cat.label}</button>
+                    <button key={cat.key} onClick={() => setVideoCategory(cat.key)} className={`filter-pill ${videoCategory === cat.key ? 'active' : ''}`}>{cat.label}</button>
                   ))}
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: `repeat(${responsive.videoColumns}, 1fr)`, gap: responsive.gap.md }}>
+                <div className="grid-responsive" style={{ gridTemplateColumns: `repeat(${responsive.videoColumns}, 1fr)` }}>
                   {filteredVideos.map(v => (
                     <a key={v.id} href={v.videoId ? `https://www.youtube.com/watch?v=${v.videoId}` : getYouTubeUrl(v.searchQuery)} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                      <div className="video-card" style={{ background: '#1e293b', borderRadius: responsive.borderRadius, overflow: 'hidden', border: '1px solid #334155', cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = '#ff0000'; e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseOut={e => { e.currentTarget.style.borderColor = '#334155'; e.currentTarget.style.transform = 'scale(1)'; }}>
+                      <div className="video-card">
                         <div style={{ position: 'relative', height: responsive.videoHeight, background: v.videoId ? `url(https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg) center/cover` : 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           {!v.videoId && <span style={{ fontSize: '40px' }}>{v.emoji}</span>}
-                          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: 'rgba(255,0,0,0.9)', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: 'rgba(255,0,0,0.9)', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
                           </div>
-                          <div style={{ position: 'absolute', bottom: '6px', right: '6px', background: 'rgba(0,0,0,0.8)', borderRadius: '4px', padding: '2px 6px' }}>
-                            <span style={{ fontSize: '9px', color: 'white', fontWeight: 'bold' }}>{v.year}</span>
+                          <div style={{ position: 'absolute', bottom: '6px', right: '6px', background: 'rgba(0,0,0,0.85)', borderRadius: '4px', padding: '3px 8px' }}>
+                            <span style={{ fontSize: '10px', color: 'white', fontWeight: '600' }}>{v.year}</span>
                           </div>
                         </div>
-                        <div style={{ padding: '10px' }}>
-                          <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'white', marginBottom: '4px', lineHeight: '1.3' }}>{v.title}</div>
-                          <div style={{ fontSize: '9px', color: '#64748b' }}>{v.category}</div>
+                        <div style={{ padding: 'var(--space-md)' }}>
+                          <div style={{ fontSize: 'var(--font-sm)', fontWeight: '600', color: 'white', marginBottom: '4px', lineHeight: '1.4' }}>{v.title}</div>
+                          <div style={{ fontSize: 'var(--font-xs)', color: 'var(--color-text-muted)' }}>{v.category}</div>
                         </div>
                       </div>
                     </a>
                   ))}
                 </div>
-                <div style={{ marginTop: '16px', padding: '12px', background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,0,0,0.3)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#ff0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                  <span style={{ fontSize: '10px', color: '#ff6b6b' }}>{t('videosYoutubeHint')}</span>
+                <div className="hint-box hint-box-youtube" style={{ marginTop: 'var(--space-lg)' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                  <span>{t('videosYoutubeHint')}</span>
                 </div>
               </div>
             )}
@@ -1048,12 +988,10 @@ function AppContent() {
             {/* Playlists Content */}
             {mediaSubTab === 'playlists' && (
               <div>
-                <div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('playlistsTitle')}</div>
-                <div style={{ borderRadius: responsive.borderRadius, overflow: 'hidden' }}>
+                <div style={{ fontSize: 'var(--font-md)', fontWeight: 'bold', color: 'white', marginBottom: 'var(--space-md)' }}>{t('playlistsTitle')}</div>
+                <div className="spotify-container">
                   <iframe
-                    className="spotify-embed"
-                    style={{ borderRadius: responsive.borderRadius }}
-                    src="https://open.spotify.com/embed/playlist/5rDAK7QpmLtrykxatHGY6Z?utm_source=generator"
+                    src="https://open.spotify.com/embed/playlist/5rDAK7QpmLtrykxatHGY6Z?utm_source=generator&theme=0"
                     width="100%"
                     height={responsive.spotifyHeight}
                     frameBorder="0"
@@ -1062,9 +1000,9 @@ function AppContent() {
                     loading="lazy"
                   ></iframe>
                 </div>
-                <div style={{ marginTop: '12px', padding: '12px', background: 'rgba(30,215,96,0.1)', border: '1px solid rgba(30,215,96,0.3)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-                  <span style={{ fontSize: '10px', color: '#1DB954' }}>{t('playlistsSpotifyHint')}</span>
+                <div className="hint-box hint-box-spotify" style={{ marginTop: 'var(--space-md)' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                  <span>{t('playlistsSpotifyHint')}</span>
                 </div>
               </div>
             )}

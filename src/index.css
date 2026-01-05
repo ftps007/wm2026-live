@@ -1,8 +1,9 @@
-/* WM 2026 Tippspiel - Responsive Design
- * Optimized for: Desktop (Chrome, Safari, Edge) & Mobile (iOS, Android)
- */
+/* ==============================================
+   WM 2026 Tippspiel - Perfect Responsive Design
+   Optimized for: Chrome, Safari, Edge, iOS, Android
+   ============================================== */
 
-/* CSS Reset & Base */
+/* ==================== CSS RESET ==================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -13,6 +14,8 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
@@ -21,271 +24,515 @@ body {
   color: white;
   line-height: 1.5;
   overflow-x: hidden;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Better touch targets for mobile */
-button, a {
-  touch-action: manipulation;
-}
-
-/* CSS Variables for responsive values */
-:root {
-  /* Mobile first (default) */
-  --app-max-width: 100%;
-  --app-padding: 12px;
-  --header-height: 80px;
-  --content-padding: 12px;
-  --card-padding: 12px;
-  --font-size-xs: 9px;
-  --font-size-sm: 11px;
-  --font-size-md: 13px;
-  --font-size-lg: 16px;
-  --font-size-xl: 20px;
-  --gap-sm: 8px;
-  --gap-md: 12px;
-  --gap-lg: 16px;
-  --border-radius: 10px;
-  --grid-columns: 2;
-  --video-grid-columns: 2;
-  --news-grid-columns: 1;
-}
-
-/* Tablet (768px+) */
-@media (min-width: 768px) {
-  :root {
-    --app-max-width: 720px;
-    --app-padding: 20px;
-    --header-height: 90px;
-    --content-padding: 16px;
-    --card-padding: 16px;
-    --font-size-xs: 10px;
-    --font-size-sm: 12px;
-    --font-size-md: 14px;
-    --font-size-lg: 18px;
-    --font-size-xl: 24px;
-    --gap-sm: 10px;
-    --gap-md: 16px;
-    --gap-lg: 20px;
-    --border-radius: 12px;
-    --video-grid-columns: 3;
-    --news-grid-columns: 2;
-  }
-}
-
-/* Desktop (1024px+) */
-@media (min-width: 1024px) {
-  :root {
-    --app-max-width: 960px;
-    --app-padding: 24px;
-    --header-height: 100px;
-    --content-padding: 20px;
-    --card-padding: 20px;
-    --font-size-xs: 11px;
-    --font-size-sm: 13px;
-    --font-size-md: 15px;
-    --font-size-lg: 20px;
-    --font-size-xl: 28px;
-    --gap-sm: 12px;
-    --gap-md: 20px;
-    --gap-lg: 24px;
-    --border-radius: 14px;
-    --video-grid-columns: 4;
-    --news-grid-columns: 2;
-  }
-}
-
-/* Large Desktop (1280px+) */
-@media (min-width: 1280px) {
-  :root {
-    --app-max-width: 1200px;
-    --video-grid-columns: 4;
-    --news-grid-columns: 3;
-  }
-}
-
-/* App Container */
-.app-container {
   min-height: 100vh;
-  background: #0f172a;
+  min-height: -webkit-fill-available;
 }
 
-/* Header */
-.app-header {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: linear-gradient(135deg, #1e293b, #0f172a);
-  border-bottom: 1px solid #334155;
-  height: var(--header-height);
+/* Fix for iOS Safari 100vh issue */
+html {
+  height: -webkit-fill-available;
 }
 
-.header-content {
-  max-width: var(--app-max-width);
-  margin: 0 auto;
-  padding: 5px var(--app-padding);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
+/* ==================== SCROLLBAR STYLING ==================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-/* Main Content */
-.main-content {
-  max-width: var(--app-max-width);
-  margin: 0 auto;
-  padding: var(--content-padding);
+::-webkit-scrollbar-track {
+  background: #1e293b;
 }
 
-/* Tab Navigation */
-.tab-navigation {
-  display: flex;
-  gap: 4px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  scrollbar-width: none;
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Hide scrollbar on mobile for horizontal scroll containers */
+.hide-scrollbar {
   -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.tab-navigation::-webkit-scrollbar {
+.hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
+/* ==================== CSS CUSTOM PROPERTIES ==================== */
+:root {
+  /* Colors */
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-tertiary: #334155;
+  --color-accent: #10b981;
+  --color-accent-hover: #059669;
+  --color-warning: #fbbf24;
+  --color-error: #ef4444;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-border: #334155;
+  --color-youtube: #ff0000;
+  --color-spotify: #1DB954;
+
+  /* Mobile First Defaults */
+  --max-width: 100%;
+  --content-padding: 12px;
+  --header-height: 70px;
+  --nav-height: 44px;
+
+  /* Typography */
+  --font-xs: 0.6875rem;    /* 11px */
+  --font-sm: 0.75rem;      /* 12px */
+  --font-base: 0.8125rem;  /* 13px */
+  --font-md: 0.875rem;     /* 14px */
+  --font-lg: 1rem;         /* 16px */
+  --font-xl: 1.25rem;      /* 20px */
+  --font-2xl: 1.5rem;      /* 24px */
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* Grid */
+  --grid-cols-video: 2;
+  --grid-cols-news: 1;
+  --grid-gap: 12px;
+
+  /* Components */
+  --logo-width: 90px;
+  --video-thumb-height: 90px;
+  --spotify-height: 352px;
+  --button-height: 44px;
+  --tab-padding: 10px 8px;
+  --tab-font-size: var(--font-xs);
+}
+
+/* ==================== TABLET (768px+) ==================== */
 @media (min-width: 768px) {
-  .tab-navigation {
-    gap: 8px;
-    justify-content: center;
-    flex-wrap: wrap;
+  :root {
+    --max-width: 740px;
+    --content-padding: 20px;
+    --header-height: 80px;
+    --nav-height: 48px;
+
+    --font-xs: 0.75rem;      /* 12px */
+    --font-sm: 0.8125rem;    /* 13px */
+    --font-base: 0.875rem;   /* 14px */
+    --font-md: 1rem;         /* 16px */
+    --font-lg: 1.125rem;     /* 18px */
+    --font-xl: 1.5rem;       /* 24px */
+    --font-2xl: 1.875rem;    /* 30px */
+
+    --space-md: 16px;
+    --space-lg: 20px;
+    --space-xl: 24px;
+    --space-2xl: 32px;
+
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    --grid-cols-video: 3;
+    --grid-cols-news: 2;
+    --grid-gap: 16px;
+
+    --logo-width: 110px;
+    --video-thumb-height: 110px;
+    --spotify-height: 400px;
+    --tab-padding: 12px 14px;
+    --tab-font-size: var(--font-sm);
   }
 }
 
+/* ==================== DESKTOP (1024px+) ==================== */
+@media (min-width: 1024px) {
+  :root {
+    --max-width: 960px;
+    --content-padding: 24px;
+    --header-height: 90px;
+    --nav-height: 52px;
+
+    --font-xs: 0.8125rem;    /* 13px */
+    --font-sm: 0.875rem;     /* 14px */
+    --font-base: 0.9375rem;  /* 15px */
+    --font-md: 1.0625rem;    /* 17px */
+    --font-lg: 1.25rem;      /* 20px */
+    --font-xl: 1.75rem;      /* 28px */
+    --font-2xl: 2.25rem;     /* 36px */
+
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 40px;
+
+    --grid-cols-video: 4;
+    --grid-cols-news: 2;
+    --grid-gap: 20px;
+
+    --logo-width: 130px;
+    --video-thumb-height: 130px;
+    --spotify-height: 450px;
+    --tab-padding: 14px 20px;
+    --tab-font-size: var(--font-base);
+  }
+}
+
+/* ==================== LARGE DESKTOP (1280px+) ==================== */
+@media (min-width: 1280px) {
+  :root {
+    --max-width: 1180px;
+    --grid-cols-news: 3;
+    --logo-width: 140px;
+    --video-thumb-height: 140px;
+  }
+}
+
+/* ==================== ULTRA WIDE (1536px+) ==================== */
+@media (min-width: 1536px) {
+  :root {
+    --max-width: 1400px;
+    --grid-cols-video: 5;
+  }
+}
+
+/* ==================== TOUCH DEVICE OPTIMIZATIONS ==================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  button, a, input, select, textarea {
+    min-height: var(--button-height);
+  }
+
+  /* Disable hover effects */
+  .hover-effect:hover {
+    transform: none !important;
+  }
+
+  /* Better tap highlighting */
+  button, a {
+    -webkit-tap-highlight-color: rgba(16, 185, 129, 0.2);
+  }
+}
+
+/* ==================== iOS SAFE AREA ==================== */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-area-left {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .safe-area-right {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-responsive {
+  display: grid;
+  gap: var(--grid-gap);
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-base) ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp var(--transition-slow) ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ==================== COMPONENT STYLES ==================== */
+
 /* Cards */
 .card {
-  background: #1e293b;
-  border-radius: var(--border-radius);
-  border: 1px solid #334155;
-  padding: var(--card-padding);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
 }
 
-/* Video Grid */
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(var(--video-grid-columns), 1fr);
-  gap: var(--gap-md);
+@media (hover: hover) {
+  .card:hover {
+    border-color: #475569;
+    box-shadow: var(--shadow-md);
+  }
 }
 
-/* News Grid */
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(var(--news-grid-columns), 1fr);
-  gap: var(--gap-md);
+/* Video Card */
+.video-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition-base);
 }
 
-@media (min-width: 768px) {
-  .news-grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (hover: hover) {
+  .video-card:hover {
+    border-color: var(--color-youtube);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(255, 0, 0, 0.15);
   }
 }
 
 /* Buttons */
 .btn {
-  padding: 8px 16px;
-  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  min-height: var(--button-height);
   border: none;
-  cursor: pointer;
+  border-radius: var(--radius-md);
+  font-size: var(--font-base);
   font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .btn:active {
-  transform: translateY(0);
+  transform: scale(0.98);
 }
 
-/* Mobile-specific optimizations */
-@media (max-width: 767px) {
-  /* Larger touch targets */
-  button, a, input, select {
-    min-height: 44px;
-  }
-
-  /* Prevent text selection on buttons */
-  button {
-    -webkit-user-select: none;
-    user-select: none;
-  }
-
-  /* Smooth momentum scrolling on iOS */
-  .scrollable {
-    -webkit-overflow-scrolling: touch;
-  }
+.btn-primary {
+  background: var(--color-accent);
+  color: white;
 }
 
-/* iOS Safe Area (notch support) */
-@supports (padding-top: env(safe-area-inset-top)) {
-  .app-header {
-    padding-top: env(safe-area-inset-top);
-  }
-
-  .main-content {
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-}
-
-/* Desktop hover effects */
 @media (hover: hover) {
-  .card:hover {
-    border-color: #475569;
-    transform: translateY(-2px);
-    transition: all 0.2s ease;
-  }
-
-  .video-card:hover {
-    border-color: #ff0000 !important;
-    transform: scale(1.02);
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
   }
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Tab Button */
+.tab-btn {
+  flex: 1;
+  padding: var(--tab-padding);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--tab-font-size);
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
 }
 
-.fade-in {
-  animation: fadeIn 0.3s ease-out;
+.tab-btn.active {
+  color: var(--color-warning);
+  border-bottom-color: var(--color-warning);
 }
 
-/* Spotify embed responsive */
-.spotify-embed {
-  width: 100%;
-  border-radius: 12px;
-}
-
-@media (min-width: 768px) {
-  .spotify-embed {
-    height: 400px;
-  }
+.tab-btn:disabled {
+  color: #475569;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 @media (min-width: 1024px) {
-  .spotify-embed {
-    height: 450px;
+  .tab-btn {
+    flex: none;
   }
 }
 
-/* Print styles (hide unnecessary elements) */
+/* Sub-tab toggle buttons */
+.sub-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+  color: white;
+  font-size: var(--font-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.sub-tab.active-youtube {
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  border-color: transparent;
+}
+
+.sub-tab.active-spotify {
+  background: linear-gradient(135deg, #1DB954 0%, #1aa34a 100%);
+  border-color: transparent;
+}
+
+/* Filter pills */
+.filter-pill {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  font-size: var(--font-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.filter-pill.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}
+
+/* Spotify embed container */
+.spotify-container {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.spotify-container iframe {
+  display: block;
+  width: 100%;
+  height: var(--spotify-height);
+  border: none;
+  border-radius: var(--radius-lg);
+}
+
+/* Hint boxes */
+.hint-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-sm);
+}
+
+.hint-box-youtube {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  color: #ff6b6b;
+}
+
+.hint-box-spotify {
+  background: rgba(30, 215, 96, 0.1);
+  border: 1px solid rgba(30, 215, 96, 0.3);
+  color: var(--color-spotify);
+}
+
+/* ==================== PRINT STYLES ==================== */
 @media print {
-  .app-header,
-  .tab-navigation,
-  button {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print {
     display: none !important;
+  }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==================== HIGH CONTRAST ==================== */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: #64748b;
+  }
+
+  .card, .video-card {
+    border-width: 2px;
+  }
+}
+
+/* ==================== DARK MODE (default, but explicit) ==================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
   }
 }

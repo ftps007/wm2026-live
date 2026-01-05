@@ -1,112 +1,197 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 /**
- * Custom hook for responsive design detection
- * Detects device type, screen size, and provides responsive values
+ * Breakpoints matching CSS
+ */
+const BREAKPOINTS = {
+  mobile: 0,
+  tablet: 768,
+  desktop: 1024,
+  largeDesktop: 1280,
+  ultraWide: 1536,
+};
+
+/**
+ * Custom hook for responsive design
+ * Provides device info and CSS variable-based responsive values
  */
 export function useDevice() {
-  const [device, setDevice] = useState({
-    isMobile: true,
-    isTablet: false,
-    isDesktop: false,
-    isIOS: false,
-    isAndroid: false,
-    isSafari: false,
-    isChrome: false,
-    isEdge: false,
-    width: typeof window !== 'undefined' ? window.innerWidth : 375,
-    height: typeof window !== 'undefined' ? window.innerHeight : 667,
-  });
+  const getDeviceInfo = useCallback(() => {
+    if (typeof window === 'undefined') {
+      return {
+        width: 375,
+        height: 667,
+        isMobile: true,
+        isTablet: false,
+        isDesktop: false,
+        isLargeDesktop: false,
+        isTouch: true,
+        isIOS: false,
+        isAndroid: false,
+        isSafari: false,
+        isChrome: false,
+        isEdge: false,
+        isFirefox: false,
+        orientation: 'portrait',
+        pixelRatio: 1,
+      };
+    }
 
-  useEffect(() => {
-    const checkDevice = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const ua = navigator.userAgent.toLowerCase();
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const ua = navigator.userAgent.toLowerCase();
+    const platform = navigator.platform?.toLowerCase() || '';
 
-      // Device type based on width
-      const isMobile = width < 768;
-      const isTablet = width >= 768 && width < 1024;
-      const isDesktop = width >= 1024;
+    // Device size detection
+    const isMobile = width < BREAKPOINTS.tablet;
+    const isTablet = width >= BREAKPOINTS.tablet && width < BREAKPOINTS.desktop;
+    const isDesktop = width >= BREAKPOINTS.desktop && width < BREAKPOINTS.largeDesktop;
+    const isLargeDesktop = width >= BREAKPOINTS.largeDesktop;
 
-      // OS detection
-      const isIOS = /iphone|ipad|ipod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      const isAndroid = /android/.test(ua);
+    // Touch detection
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-      // Browser detection
-      const isChrome = /chrome/.test(ua) && !/edge|edg/.test(ua);
-      const isSafari = /safari/.test(ua) && !/chrome/.test(ua);
-      const isEdge = /edge|edg/.test(ua);
+    // OS detection
+    const isIOS = /iphone|ipad|ipod/.test(ua) || (platform === 'macintel' && navigator.maxTouchPoints > 1);
+    const isAndroid = /android/.test(ua);
+    const isMac = /mac/.test(platform) && !isIOS;
+    const isWindows = /win/.test(platform);
 
-      setDevice({
-        isMobile,
-        isTablet,
-        isDesktop,
-        isIOS,
-        isAndroid,
-        isSafari,
-        isChrome,
-        isEdge,
-        width,
-        height,
-      });
-    };
+    // Browser detection
+    const isChrome = /chrome/.test(ua) && !/edge|edg|opr/.test(ua);
+    const isSafari = /safari/.test(ua) && !/chrome|chromium/.test(ua);
+    const isEdge = /edge|edg/.test(ua);
+    const isFirefox = /firefox/.test(ua);
 
-    // Initial check
-    checkDevice();
+    // Orientation
+    const orientation = width > height ? 'landscape' : 'portrait';
 
-    // Listen for resize
-    window.addEventListener('resize', checkDevice);
-    window.addEventListener('orientationchange', checkDevice);
+    // Pixel ratio for retina displays
+    const pixelRatio = window.devicePixelRatio || 1;
 
-    return () => {
-      window.removeEventListener('resize', checkDevice);
-      window.removeEventListener('orientationchange', checkDevice);
+    return {
+      width,
+      height,
+      isMobile,
+      isTablet,
+      isDesktop,
+      isLargeDesktop,
+      isTouch,
+      isIOS,
+      isAndroid,
+      isMac,
+      isWindows,
+      isSafari,
+      isChrome,
+      isEdge,
+      isFirefox,
+      orientation,
+      pixelRatio,
     };
   }, []);
 
-  // Responsive values based on device
+  const [device, setDevice] = useState(getDeviceInfo);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDevice(getDeviceInfo());
+    };
+
+    // Debounced resize handler for performance
+    let timeoutId;
+    const debouncedResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleResize, 100);
+    };
+
+    window.addEventListener('resize', debouncedResize);
+    window.addEventListener('orientationchange', handleResize);
+
+    // Initial call
+    handleResize();
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', debouncedResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, [getDeviceInfo]);
+
+  // Get CSS variable value
+  const getCSSVar = useCallback((varName) => {
+    if (typeof window === 'undefined') return '';
+    return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+  }, []);
+
+  // Responsive values that read from CSS variables
   const responsive = {
     // Layout
-    maxWidth: device.isDesktop ? '1200px' : device.isTablet ? '720px' : '100%',
-    contentPadding: device.isDesktop ? '24px' : device.isTablet ? '20px' : '12px',
-    headerHeight: device.isDesktop ? '100px' : device.isTablet ? '90px' : '80px',
+    maxWidth: getCSSVar('--max-width') || (device.isMobile ? '100%' : device.isTablet ? '740px' : device.isLargeDesktop ? '1180px' : '960px'),
+    contentPadding: getCSSVar('--content-padding') || (device.isMobile ? '12px' : device.isTablet ? '20px' : '24px'),
+    headerHeight: getCSSVar('--header-height') || (device.isMobile ? '70px' : device.isTablet ? '80px' : '90px'),
+    navHeight: device.isMobile ? '44px' : device.isTablet ? '48px' : '52px',
 
-    // Typography
+    // Grid columns
+    videoColumns: device.width >= 1536 ? 5 : device.isLargeDesktop ? 4 : device.isDesktop ? 4 : device.isTablet ? 3 : 2,
+    newsColumns: device.isLargeDesktop ? 3 : device.isDesktop ? 2 : device.isTablet ? 2 : 1,
+
+    // Component sizes
+    logoWidth: device.isLargeDesktop ? '140px' : device.isDesktop ? '130px' : device.isTablet ? '110px' : '90px',
+    videoHeight: device.isLargeDesktop ? '140px' : device.isDesktop ? '130px' : device.isTablet ? '110px' : '90px',
+    spotifyHeight: device.isDesktop || device.isLargeDesktop ? 450 : device.isTablet ? 400 : 352,
+    buttonHeight: '44px',
+
+    // Typography (matching CSS)
     fontSize: {
-      xs: device.isDesktop ? '11px' : device.isTablet ? '10px' : '9px',
-      sm: device.isDesktop ? '13px' : device.isTablet ? '12px' : '11px',
-      md: device.isDesktop ? '15px' : device.isTablet ? '14px' : '13px',
+      xs: device.isDesktop ? '13px' : device.isTablet ? '12px' : '11px',
+      sm: device.isDesktop ? '14px' : device.isTablet ? '13px' : '12px',
+      base: device.isDesktop ? '15px' : device.isTablet ? '14px' : '13px',
+      md: device.isDesktop ? '17px' : device.isTablet ? '16px' : '14px',
       lg: device.isDesktop ? '20px' : device.isTablet ? '18px' : '16px',
       xl: device.isDesktop ? '28px' : device.isTablet ? '24px' : '20px',
+      '2xl': device.isDesktop ? '36px' : device.isTablet ? '30px' : '24px',
     },
 
-    // Spacing
+    // Gap/Spacing - for grid and flex gaps
     gap: {
-      sm: device.isDesktop ? '12px' : device.isTablet ? '10px' : '8px',
+      xs: '4px',
+      sm: '8px',
       md: device.isDesktop ? '20px' : device.isTablet ? '16px' : '12px',
       lg: device.isDesktop ? '24px' : device.isTablet ? '20px' : '16px',
+      xl: device.isDesktop ? '32px' : device.isTablet ? '24px' : '20px',
     },
 
-    // Grid
-    videoColumns: device.isDesktop ? 4 : device.isTablet ? 3 : 2,
-    newsColumns: device.isDesktop ? 3 : device.isTablet ? 2 : 1,
+    // Spacing (for padding/margin)
+    spacing: {
+      xs: '4px',
+      sm: '8px',
+      md: device.isDesktop ? '16px' : '12px',
+      lg: device.isDesktop ? '24px' : device.isTablet ? '20px' : '16px',
+      xl: device.isDesktop ? '32px' : device.isTablet ? '24px' : '20px',
+    },
 
-    // Card
-    cardPadding: device.isDesktop ? '20px' : device.isTablet ? '16px' : '12px',
-    borderRadius: device.isDesktop ? '14px' : device.isTablet ? '12px' : '10px',
+    // Border radius
+    borderRadius: device.isDesktop ? '12px' : '10px',
+    borderRadiusSm: '6px',
+    borderRadiusLg: device.isDesktop ? '16px' : '14px',
+    borderRadiusFull: '9999px',
 
-    // Logo
-    logoWidth: device.isDesktop ? '140px' : device.isTablet ? '130px' : '100px',
+    // Tab styling
+    tabPadding: device.isDesktop ? '14px 20px' : device.isTablet ? '12px 14px' : '10px 8px',
+    tabFontSize: device.isDesktop ? '15px' : device.isTablet ? '13px' : '11px',
 
-    // Video thumbnails
-    videoHeight: device.isDesktop ? '140px' : device.isTablet ? '120px' : '100px',
-
-    // Spotify embed height
-    spotifyHeight: device.isDesktop ? '450' : device.isTablet ? '400' : '352',
+    // Shadows
+    shadowSm: '0 1px 2px rgba(0, 0, 0, 0.3)',
+    shadowMd: '0 4px 6px rgba(0, 0, 0, 0.4)',
+    shadowLg: '0 10px 15px rgba(0, 0, 0, 0.5)',
   };
 
-  return { ...device, responsive };
+  return {
+    ...device,
+    responsive,
+    styles: responsive, // backwards compatibility
+    breakpoints: BREAKPOINTS,
+  };
 }
 
 export default useDevice;
