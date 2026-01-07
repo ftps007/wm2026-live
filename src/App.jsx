@@ -1173,7 +1173,7 @@ function AppContent() {
           {/* Stats */}
           <div style={{ marginTop: '16px', padding: '12px', background: '#0f172a', borderRadius: '8px', display: 'flex', justifyContent: 'space-around' }}>
             <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#10b981' }}>2700+</div>
+              <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#10b981' }}>3000</div>
               <div style={{ fontSize: '9px', color: '#64748b' }}>{t('triviaStatsQuestions')}</div>
             </div>
             <div style={{ textAlign: 'center' }}>
