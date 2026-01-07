@@ -371,7 +371,7 @@ const teamInfo = {
 };
 
 // ==================== TRIVIA QUESTIONS ====================
-// Trivia questions loaded from Supabase (1300+ Fragen)
+// Trivia questions loaded from Supabase (2461 Fragen)
 
 // ==================== TV BROADCAST DATA ====================
 // WM 2026 TV-Übertragungen für DACH-Region
@@ -1173,7 +1173,7 @@ function AppContent() {
           {/* Stats */}
           <div style={{ marginTop: '16px', padding: '12px', background: '#0f172a', borderRadius: '8px', display: 'flex', justifyContent: 'space-around' }}>
             <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#10b981' }}>1300+</div>
+              <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#10b981' }}>2400+</div>
               <div style={{ fontSize: '9px', color: '#64748b' }}>{t('triviaStatsQuestions')}</div>
             </div>
             <div style={{ textAlign: 'center' }}>
