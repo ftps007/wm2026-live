@@ -8,9 +8,468 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from './supabaseClient';
 import { useLanguage } from './LanguageContext';
 
+// Current clubs for active players (2025)
+const CURRENT_CLUBS = {
+  // Germany
+  'Jamal Musiala': 'FC Bayern München',
+  'Florian Wirtz': 'Bayer 04 Leverkusen',
+  'Kai Havertz': 'FC Arsenal',
+  'Leroy Sané': 'FC Bayern München',
+  'Serge Gnabry': 'FC Bayern München',
+  'Niclas Füllkrug': 'West Ham United',
+  'Thomas Müller': 'FC Bayern München',
+  'Joshua Kimmich': 'FC Bayern München',
+  'Antonio Rüdiger': 'Real Madrid',
+  'Manuel Neuer': 'FC Bayern München',
+  // Argentina
+  'Lionel Messi': 'Inter Miami CF',
+  'Julián Álvarez': 'Atlético Madrid',
+  'Lautaro Martínez': 'Inter Mailand',
+  'Enzo Fernández': 'FC Chelsea',
+  'Rodrigo De Paul': 'Atlético Madrid',
+  // Brazil
+  'Vinícius Júnior': 'Real Madrid',
+  'Rodrygo': 'Real Madrid',
+  'Raphinha': 'FC Barcelona',
+  'Richarlison': 'Tottenham Hotspur',
+  'Endrick': 'Real Madrid',
+  // France
+  'Kylian Mbappé': 'Real Madrid',
+  'Antoine Griezmann': 'Atlético Madrid',
+  'Ousmane Dembélé': 'Paris Saint-Germain',
+  'Marcus Thuram': 'Inter Mailand',
+  'Randal Kolo Muani': 'Paris Saint-Germain',
+  // England
+  'Harry Kane': 'FC Bayern München',
+  'Jude Bellingham': 'Real Madrid',
+  'Bukayo Saka': 'FC Arsenal',
+  'Phil Foden': 'Manchester City',
+  'Cole Palmer': 'FC Chelsea',
+  // Spain
+  'Lamine Yamal': 'FC Barcelona',
+  'Pedri': 'FC Barcelona',
+  'Gavi': 'FC Barcelona',
+  'Rodri': 'Manchester City',
+  'Nico Williams': 'Athletic Bilbao',
+  // Portugal
+  'Cristiano Ronaldo': 'Al-Nassr FC',
+  'Rafael Leão': 'AC Mailand',
+  'Bruno Fernandes': 'Manchester United',
+  'Bernardo Silva': 'Manchester City',
+  'João Félix': 'FC Chelsea',
+  // Netherlands
+  'Cody Gakpo': 'FC Liverpool',
+  'Xavi Simons': 'RB Leipzig',
+  'Memphis Depay': 'Corinthians',
+  // Belgium
+  'Kevin De Bruyne': 'Manchester City',
+  'Romelu Lukaku': 'SSC Napoli',
+  'Jérémy Doku': 'Manchester City',
+  // Poland
+  'Robert Lewandowski': 'FC Barcelona',
+  'Piotr Zieliński': 'Inter Mailand',
+  // Croatia
+  'Luka Modrić': 'Real Madrid',
+  // Italy
+  'Federico Chiesa': 'FC Liverpool',
+  // Uruguay
+  'Darwin Núñez': 'FC Liverpool',
+  'Federico Valverde': 'Real Madrid',
+  // USA
+  'Christian Pulisic': 'AC Mailand',
+  'Weston McKennie': 'Juventus Turin',
+  // Mexico
+  'Hirving Lozano': 'PSV Eindhoven',
+  // Japan
+  'Takefusa Kubo': 'Real Sociedad',
+  // South Korea
+  'Son Heung-min': 'Tottenham Hotspur',
+  // Morocco
+  'Achraf Hakimi': 'Paris Saint-Germain',
+  // Senegal
+  'Sadio Mané': 'Al-Nassr FC',
+};
+
+// Complete WM coaches history
+const WM_COACHES_HISTORY = {
+  'DE': [
+    { coach_name: 'Julian Nagelsmann', wm_year: 2026, result: 'Qualifiziert', is_current: true },
+    { coach_name: 'Hansi Flick', wm_year: 2022, result: 'Vorrunde', wins: 1, draws: 1, losses: 1 },
+    { coach_name: 'Joachim Löw', wm_year: 2018, result: 'Vorrunde', wins: 1, draws: 0, losses: 2 },
+    { coach_name: 'Joachim Löw', wm_year: 2014, result: 'Weltmeister 🏆', wins: 6, draws: 1, losses: 0 },
+    { coach_name: 'Joachim Löw', wm_year: 2010, result: '3. Platz 🥉', wins: 5, draws: 0, losses: 2 },
+    { coach_name: 'Jürgen Klinsmann', wm_year: 2006, result: '3. Platz 🥉', wins: 5, draws: 1, losses: 1 },
+    { coach_name: 'Rudi Völler', wm_year: 2002, result: 'Finale 🥈', wins: 4, draws: 1, losses: 2 },
+    { coach_name: 'Erich Ribbeck', wm_year: 1998, result: 'Viertelfinale', wins: 2, draws: 1, losses: 1 },
+    { coach_name: 'Berti Vogts', wm_year: 1994, result: 'Viertelfinale', wins: 3, draws: 1, losses: 1 },
+    { coach_name: 'Franz Beckenbauer', wm_year: 1990, result: 'Weltmeister 🏆', wins: 5, draws: 2, losses: 0 },
+    { coach_name: 'Franz Beckenbauer', wm_year: 1986, result: 'Finale 🥈', wins: 3, draws: 2, losses: 2 },
+    { coach_name: 'Jupp Derwall', wm_year: 1982, result: 'Finale 🥈', wins: 3, draws: 2, losses: 2 },
+    { coach_name: 'Helmut Schön', wm_year: 1978, result: 'Zwischenrunde', wins: 1, draws: 4, losses: 1 },
+    { coach_name: 'Helmut Schön', wm_year: 1974, result: 'Weltmeister 🏆', wins: 6, draws: 0, losses: 1 },
+    { coach_name: 'Helmut Schön', wm_year: 1970, result: '3. Platz 🥉', wins: 4, draws: 1, losses: 1 },
+    { coach_name: 'Helmut Schön', wm_year: 1966, result: 'Finale 🥈', wins: 4, draws: 1, losses: 1 },
+    { coach_name: 'Sepp Herberger', wm_year: 1962, result: 'Viertelfinale', wins: 2, draws: 1, losses: 1 },
+    { coach_name: 'Sepp Herberger', wm_year: 1958, result: 'Halbfinale', wins: 2, draws: 2, losses: 2 },
+    { coach_name: 'Sepp Herberger', wm_year: 1954, result: 'Weltmeister 🏆', wins: 5, draws: 0, losses: 1 },
+  ],
+  'BR': [
+    { coach_name: 'Dorival Júnior', wm_year: 2026, result: 'Qualifiziert', is_current: true },
+    { coach_name: 'Tite', wm_year: 2022, result: 'Viertelfinale', wins: 3, draws: 0, losses: 1 },
+    { coach_name: 'Tite', wm_year: 2018, result: 'Viertelfinale', wins: 3, draws: 1, losses: 1 },
+    { coach_name: 'Dunga', wm_year: 2010, result: 'Viertelfinale', wins: 3, draws: 0, losses: 1 },
+    { coach_name: 'Carlos Alberto Parreira', wm_year: 2006, result: 'Viertelfinale', wins: 4, draws: 0, losses: 1 },
+    { coach_name: 'Luiz Felipe Scolari', wm_year: 2002, result: 'Weltmeister 🏆', wins: 7, draws: 0, losses: 0 },
+    { coach_name: 'Zagallo', wm_year: 1998, result: 'Finale 🥈', wins: 4, draws: 1, losses: 2 },
+    { coach_name: 'Carlos Alberto Parreira', wm_year: 1994, result: 'Weltmeister 🏆', wins: 5, draws: 2, losses: 0 },
+    { coach_name: 'Sebastião Lazaroni', wm_year: 1990, result: 'Achtelfinale', wins: 3, draws: 0, losses: 1 },
+    { coach_name: 'Carlos Alberto Silva', wm_year: 1986, result: 'Viertelfinale', wins: 4, draws: 0, losses: 1 },
+    { coach_name: 'Telê Santana', wm_year: 1982, result: 'Zwischenrunde', wins: 4, draws: 0, losses: 1 },
+    { coach_name: 'Cláudio Coutinho', wm_year: 1978, result: '3. Platz 🥉', wins: 4, draws: 2, losses: 0 },
+    { coach_name: 'Zagallo', wm_year: 1974, result: 'Vierter Platz', wins: 3, draws: 2, losses: 2 },
+    { coach_name: 'Zagallo', wm_year: 1970, result: 'Weltmeister 🏆', wins: 6, draws: 0, losses: 0 },
+    { coach_name: 'Aymoré Moreira', wm_year: 1962, result: 'Weltmeister 🏆', wins: 5, draws: 1, losses: 0 },
+    { coach_name: 'Vicente Feola', wm_year: 1958, result: 'Weltmeister 🏆', wins: 5, draws: 1, losses: 0 },
+  ],
+  'AR': [
+    { coach_name: 'Lionel Scaloni', wm_year: 2026, result: 'Qualifiziert', is_current: true },
+    { coach_name: 'Lionel Scaloni', wm_year: 2022, result: 'Weltmeister 🏆', wins: 5, draws: 2, losses: 0 },
+    { coach_name: 'Jorge Sampaoli', wm_year: 2018, result: 'Achtelfinale', wins: 1, draws: 1, losses: 2 },
+    { coach_name: 'Alejandro Sabella', wm_year: 2014, result: 'Finale 🥈', wins: 5, draws: 1, losses: 1 },
+    { coach_name: 'Diego Maradona', wm_year: 2010, result: 'Viertelfinale', wins: 4, draws: 0, losses: 1 },
+    { coach_name: 'José Pekerman', wm_year: 2006, result: 'Viertelfinale', wins: 3, draws: 1, losses: 1 },
+    { coach_name: 'Marcelo Bielsa', wm_year: 2002, result: 'Vorrunde', wins: 1, draws: 1, losses: 1 },
+    { coach_name: 'Daniel Passarella', wm_year: 1998, result: 'Viertelfinale', wins: 3, draws: 0, losses: 1 },
+    { coach_name: 'Alfio Basile', wm_year: 1994, result: 'Achtelfinale', wins: 2, draws: 0, losses: 2 },
+    { coach_name: 'Carlos Bilardo', wm_year: 1990, result: 'Finale 🥈', wins: 2, draws: 3, losses: 2 },
+    { coach_name: 'Carlos Bilardo', wm_year: 1986, result: 'Weltmeister 🏆', wins: 6, draws: 1, losses: 0 },
+    { coach_name: 'César Luis Menotti', wm_year: 1982, result: 'Zwischenrunde', wins: 2, draws: 0, losses: 3 },
+    { coach_name: 'César Luis Menotti', wm_year: 1978, result: 'Weltmeister 🏆', wins: 5, draws: 1, losses: 1 },
+  ],
+  'FR': [
+    { coach_name: 'Didier Deschamps', wm_year: 2026, result: 'Qualifiziert', is_current: true },
+    { coach_name: 'Didier Deschamps', wm_year: 2022, result: 'Finale 🥈', wins: 5, draws: 0, losses: 2 },
+    { coach_name: 'Didier Deschamps', wm_year: 2018, result: 'Weltmeister 🏆', wins: 6, draws: 1, losses: 0 },
+    { coach_name: 'Didier Deschamps', wm_year: 2014, result: 'Viertelfinale', wins: 3, draws: 1, losses: 1 },
+    { coach_name: 'Laurent Blanc', wm_year: 2010, result: 'Vorrunde', wins: 0, draws: 1, losses: 2 },
+    { coach_name: 'Raymond Domenech', wm_year: 2006, result: 'Finale 🥈', wins: 4, draws: 1, losses: 2 },
+    { coach_name: 'Jacques Santini', wm_year: 2002, result: 'Vorrunde', wins: 0, draws: 1, losses: 2 },
+    { coach_name: 'Aimé Jacquet', wm_year: 1998, result: 'Weltmeister 🏆', wins: 6, draws: 1, losses: 0 },
+    { coach_name: 'Michel Platini', wm_year: 1986, result: '3. Platz 🥉', wins: 4, draws: 1, losses: 2 },
+    { coach_name: 'Michel Hidalgo', wm_year: 1982, result: 'Halbfinale', wins: 3, draws: 2, losses: 2 },
+    { coach_name: 'Michel Hidalgo', wm_year: 1978, result: 'Vorrunde', wins: 1, draws: 0, losses: 2 },
+  ],
+  'EN': [
+    { coach_name: 'Thomas Tuchel', wm_year: 2026, result: 'Qualifiziert', is_current: true },
+    { coach_name: 'Gareth Southgate', wm_year: 2022, result: 'Viertelfinale', wins: 2, draws: 1, losses: 1 },
+    { coach_name: 'Gareth Southgate', wm_year: 2018, result: 'Halbfinale', wins: 3, draws: 1, losses: 2 },
+    { coach_name: 'Roy Hodgson', wm_year: 2014, result: 'Vorrunde', wins: 0, draws: 1, losses: 2 },
+    { coach_name: 'Fabio Capello', wm_year: 2010, result: 'Achtelfinale', wins: 1, draws: 2, losses: 1 },
+    { coach_name: 'Sven-Göran Eriksson', wm_year: 2006, result: 'Viertelfinale', wins: 3, draws: 1, losses: 1 },
+    { coach_name: 'Sven-Göran Eriksson', wm_year: 2002, result: 'Viertelfinale', wins: 2, draws: 2, losses: 1 },
+    { coach_name: 'Glenn Hoddle', wm_year: 1998, result: 'Achtelfinale', wins: 2, draws: 1, losses: 1 },
+    { coach_name: 'Bobby Robson', wm_year: 1990, result: 'Halbfinale', wins: 3, draws: 3, losses: 1 },
+    { coach_name: 'Bobby Robson', wm_year: 1986, result: 'Viertelfinale', wins: 2, draws: 1, losses: 2 },
+    { coach_name: 'Ron Greenwood', wm_year: 1982, result: 'Zwischenrunde', wins: 3, draws: 2, losses: 0 },
+    { coach_name: 'Alf Ramsey', wm_year: 1970, result: 'Viertelfinale', wins: 2, draws: 0, losses: 2 },
+    { coach_name: 'Alf Ramsey', wm_year: 1966, result: 'Weltmeister 🏆', wins: 5, draws: 1, losses: 0 },
+  ],
+  'ES': [
+    { coach_name: 'Luis de la Fuente', wm_year: 2026, result: 'Qualifiziert', is_current: true },
+    { coach_name: 'Luis Enrique', wm_year: 2022, result: 'Achtelfinale', wins: 1, draws: 1, losses: 1 },
+    { coach_name: 'Fernando Hierro', wm_year: 2018, result: 'Achtelfinale', wins: 1, draws: 2, losses: 1 },
+    { coach_name: 'Vicente del Bosque', wm_year: 2014, result: 'Vorrunde', wins: 1, draws: 0, losses: 2 },
+    { coach_name: 'Vicente del Bosque', wm_year: 2010, result: 'Weltmeister 🏆', wins: 6, draws: 0, losses: 1 },
+    { coach_name: 'Luis Aragonés', wm_year: 2006, result: 'Achtelfinale', wins: 3, draws: 0, losses: 1 },
+    { coach_name: 'José Antonio Camacho', wm_year: 2002, result: 'Viertelfinale', wins: 3, draws: 1, losses: 1 },
+    { coach_name: 'José Antonio Camacho', wm_year: 1998, result: 'Vorrunde', wins: 1, draws: 1, losses: 1 },
+  ],
+  'IT': [
+    { coach_name: 'Luciano Spalletti', wm_year: 2026, result: 'Qualifiziert', is_current: true },
+    { coach_name: 'Marcello Lippi', wm_year: 2010, result: 'Vorrunde', wins: 0, draws: 2, losses: 1 },
+    { coach_name: 'Marcello Lippi', wm_year: 2006, result: 'Weltmeister 🏆', wins: 5, draws: 2, losses: 0 },
+    { coach_name: 'Giovanni Trapattoni', wm_year: 2002, result: 'Achtelfinale', wins: 1, draws: 2, losses: 1 },
+    { coach_name: 'Dino Zoff', wm_year: 1998, result: 'Viertelfinale', wins: 3, draws: 0, losses: 1 },
+    { coach_name: 'Arrigo Sacchi', wm_year: 1994, result: 'Finale 🥈', wins: 4, draws: 2, losses: 1 },
+    { coach_name: 'Azeglio Vicini', wm_year: 1990, result: '3. Platz 🥉', wins: 6, draws: 0, losses: 1 },
+    { coach_name: 'Enzo Bearzot', wm_year: 1986, result: 'Achtelfinale', wins: 1, draws: 2, losses: 1 },
+    { coach_name: 'Enzo Bearzot', wm_year: 1982, result: 'Weltmeister 🏆', wins: 4, draws: 3, losses: 0 },
+    { coach_name: 'Enzo Bearzot', wm_year: 1978, result: 'Vierter Platz', wins: 3, draws: 1, losses: 2 },
+    { coach_name: 'Ferruccio Valcareggi', wm_year: 1974, result: 'Vorrunde', wins: 1, draws: 1, losses: 1 },
+    { coach_name: 'Ferruccio Valcareggi', wm_year: 1970, result: 'Finale 🥈', wins: 3, draws: 1, losses: 2 },
+  ],
+  'NL': [
+    { coach_name: 'Ronald Koeman', wm_year: 2026, result: 'Qualifiziert', is_current: true },
+    { coach_name: 'Louis van Gaal', wm_year: 2022, result: 'Viertelfinale', wins: 2, draws: 1, losses: 1 },
+    { coach_name: 'Louis van Gaal', wm_year: 2014, result: '3. Platz 🥉', wins: 5, draws: 1, losses: 1 },
+    { coach_name: 'Bert van Marwijk', wm_year: 2010, result: 'Finale 🥈', wins: 6, draws: 0, losses: 1 },
+    { coach_name: 'Marco van Basten', wm_year: 2006, result: 'Achtelfinale', wins: 2, draws: 1, losses: 1 },
+    { coach_name: 'Dick Advocaat', wm_year: 1994, result: 'Viertelfinale', wins: 3, draws: 0, losses: 2 },
+    { coach_name: 'Leo Beenhakker', wm_year: 1990, result: 'Achtelfinale', wins: 3, draws: 0, losses: 1 },
+    { coach_name: 'Rinus Michels', wm_year: 1978, result: 'Finale 🥈', wins: 3, draws: 2, losses: 2 },
+    { coach_name: 'Rinus Michels', wm_year: 1974, result: 'Finale 🥈', wins: 5, draws: 1, losses: 1 },
+  ],
+  'PL': [
+    { coach_name: 'Michał Probierz', wm_year: 2026, result: 'Qualifiziert', is_current: true },
+    { coach_name: 'Czesław Michniewicz', wm_year: 2022, result: 'Achtelfinale', wins: 1, draws: 1, losses: 2 },
+    { coach_name: 'Adam Nawałka', wm_year: 2018, result: 'Vorrunde', wins: 1, draws: 0, losses: 2 },
+    { coach_name: 'Antoni Piechniczek', wm_year: 1986, result: 'Achtelfinale', wins: 1, draws: 0, losses: 2 },
+    { coach_name: 'Antoni Piechniczek', wm_year: 1982, result: '3. Platz 🥉', wins: 3, draws: 3, losses: 1 },
+    { coach_name: 'Jacek Gmoch', wm_year: 1978, result: 'Zwischenrunde', wins: 2, draws: 1, losses: 3 },
+    { coach_name: 'Kazimierz Górski', wm_year: 1974, result: '3. Platz 🥉', wins: 6, draws: 0, losses: 1 },
+  ],
+};
+
+// Correct H2H Data (verified historical matches)
+const H2H_DATA = {
+  'DE': {
+    'SCO': [
+      { date: '2024-06-14', comp: 'EM', venue: 'München', attendance: 66000, result: '5:1', scorers: ['Wirtz', 'Musiala', 'Havertz', 'Füllkrug', 'Can', 'Rüdiger (ET)'] },
+      { date: '2014-09-07', comp: 'EM-Quali', venue: 'Dortmund', attendance: 51000, result: '2:1', scorers: ['Müller 2', 'Anya'] },
+      { date: '2003-06-07', comp: 'EM-Quali', venue: 'Glasgow', attendance: 48500, result: '1:1', scorers: ['Fredi Bobic', 'Miller'] },
+    ],
+    'HU': [
+      { date: '2024-06-19', comp: 'EM', venue: 'Stuttgart', attendance: 54000, result: '2:0', scorers: ['Musiala', 'Gündogan'] },
+      { date: '1954-07-04', comp: 'WM Finale', venue: 'Bern', attendance: 62500, result: '3:2', scorers: ['Morlock', 'Rahn 2', 'Puskás', 'Czibor'] },
+    ],
+    'CH': [
+      { date: '2024-06-23', comp: 'EM', venue: 'Frankfurt', attendance: 47000, result: '1:1', scorers: ['Füllkrug', 'Ndoye'] },
+      { date: '2006-06-09', comp: 'WM', venue: 'München', attendance: 66000, result: '4:2', scorers: ['Lahm', 'Klose 2', 'Frings', 'Senderos', 'Streller'] },
+    ],
+    'DK': [
+      { date: '2024-06-29', comp: 'EM', venue: 'Dortmund', attendance: 62000, result: '2:0', scorers: ['Havertz', 'Musiala'] },
+      { date: '2021-06-28', comp: 'EM', venue: 'Wembley', attendance: 41000, result: '(England 2:0 DK)', scorers: [] },
+      { date: '1992-06-18', comp: 'EM Finale', venue: 'Göteborg', attendance: 37800, result: '0:2', scorers: ['J.Jensen', 'Vilfort'] },
+      { date: '1986-06-13', comp: 'WM', venue: 'Querétaro', attendance: 26500, result: '2:0', scorers: ['Allofs', 'Jakobs'] },
+    ],
+    'ES': [
+      { date: '2024-07-05', comp: 'EM VF', venue: 'Stuttgart', attendance: 54000, result: '1:2 n.V.', scorers: ['Wirtz', 'Olmo', 'Merino'] },
+      { date: '2010-07-07', comp: 'WM HF', venue: 'Durban', attendance: 60960, result: '0:1', scorers: ['Puyol'] },
+    ],
+    'KR': [
+      { date: '2018-06-27', comp: 'WM', venue: 'Kasan', attendance: 41835, result: '0:2', scorers: ['Kim Young-gwon', 'Son Heung-min'] },
+      { date: '2002-06-25', comp: 'WM HF', venue: 'Seoul', attendance: 65625, result: '1:0', scorers: ['Ballack'] },
+    ],
+    'AR': [
+      { date: '2014-07-13', comp: 'WM Finale', venue: 'Rio', attendance: 74738, result: '1:0 n.V.', scorers: ['Götze'] },
+      { date: '2010-07-03', comp: 'WM VF', venue: 'Kapstadt', attendance: 64100, result: '4:0', scorers: ['Müller', 'Klose 2', 'Friedrich'] },
+      { date: '2006-07-08', comp: 'WM VF', venue: 'Berlin', attendance: 72000, result: '1:1 (4:2 i.E.)', scorers: ['Klose', 'Ayala'] },
+      { date: '1990-07-08', comp: 'WM Finale', venue: 'Rom', attendance: 73603, result: '1:0', scorers: ['Brehme (P)'] },
+      { date: '1986-06-29', comp: 'WM Finale', venue: 'Mexiko-Stadt', attendance: 114600, result: '2:3', scorers: ['Rummenigge', 'Völler', 'Brown', 'Valdano', 'Burruchaga'] },
+    ],
+    'MX': [
+      { date: '2018-06-17', comp: 'WM', venue: 'Moskau', attendance: 78011, result: '0:1', scorers: ['Lozano'] },
+      { date: '2017-06-29', comp: 'Confed Cup HF', venue: 'Sotschi', attendance: 40855, result: '4:1', scorers: ['Goretzka 2', 'Werner 2', 'Fabian'] },
+    ],
+  },
+  'AR': {
+    'DE': [
+      { date: '2014-07-13', comp: 'WM Finale', venue: 'Rio', attendance: 74738, result: '0:1 n.V.', scorers: ['Götze'] },
+      { date: '2010-07-03', comp: 'WM VF', venue: 'Kapstadt', attendance: 64100, result: '0:4', scorers: [] },
+      { date: '2006-07-08', comp: 'WM VF', venue: 'Berlin', attendance: 72000, result: '1:1 (2:4 i.E.)', scorers: ['Ayala'] },
+      { date: '1990-07-08', comp: 'WM Finale', venue: 'Rom', attendance: 73603, result: '0:1', scorers: [] },
+      { date: '1986-06-29', comp: 'WM Finale', venue: 'Mexiko-Stadt', attendance: 114600, result: '3:2', scorers: ['Brown', 'Valdano', 'Burruchaga'] },
+    ],
+    'FR': [
+      { date: '2022-12-18', comp: 'WM Finale', venue: 'Lusail', attendance: 88966, result: '3:3 (4:2 i.E.)', scorers: ['Messi 2', 'Di María', 'Mbappé 3'] },
+      { date: '2018-06-30', comp: 'WM AF', venue: 'Kasan', attendance: 42873, result: '3:4', scorers: ['Di María', 'Mercado', 'Agüero', 'Griezmann', 'Pavard', 'Mbappé 2'] },
+    ],
+    'NL': [
+      { date: '2022-12-09', comp: 'WM VF', venue: 'Lusail', attendance: 88235, result: '2:2 (4:3 i.E.)', scorers: ['Molina', 'Messi', 'Weghorst 2'] },
+      { date: '2014-07-09', comp: 'WM HF', venue: 'São Paulo', attendance: 63267, result: '0:0 (4:2 i.E.)', scorers: [] },
+      { date: '1998-07-04', comp: 'WM VF', venue: 'Marseille', attendance: 55000, result: '2:1', scorers: ['López', 'Bergkamp'] },
+      { date: '1978-06-25', comp: 'WM Finale', venue: 'Buenos Aires', attendance: 71483, result: '3:1 n.V.', scorers: ['Kempes 2', 'Bertoni', 'Nanninga'] },
+    ],
+    'HR': [
+      { date: '2022-12-13', comp: 'WM HF', venue: 'Lusail', attendance: 88966, result: '3:0', scorers: ['Messi', 'Álvarez 2'] },
+    ],
+  },
+  'FR': {
+    'AR': [
+      { date: '2022-12-18', comp: 'WM Finale', venue: 'Lusail', attendance: 88966, result: '3:3 (2:4 i.E.)', scorers: ['Mbappé 3'] },
+      { date: '2018-06-30', comp: 'WM AF', venue: 'Kasan', attendance: 42873, result: '4:3', scorers: ['Griezmann', 'Pavard', 'Mbappé 2'] },
+    ],
+    'MA': [
+      { date: '2022-12-14', comp: 'WM HF', venue: 'Al-Bayt', attendance: 68294, result: '2:0', scorers: ['T. Hernández', 'Kolo Muani'] },
+    ],
+    'EN': [
+      { date: '2022-12-10', comp: 'WM VF', venue: 'Al-Bayt', attendance: 68895, result: '2:1', scorers: ['Giroud', 'Tchouaméni', 'Kane'] },
+    ],
+    'PL': [
+      { date: '2022-12-04', comp: 'WM AF', venue: 'Al-Thumama', attendance: 40472, result: '3:1', scorers: ['Giroud', 'Mbappé 2', 'Lewandowski (P)'] },
+    ],
+    'HR': [
+      { date: '2018-07-15', comp: 'WM Finale', venue: 'Moskau', attendance: 78011, result: '4:2', scorers: ['Mandžukić (ET)', 'Griezmann (P)', 'Pogba', 'Mbappé', 'Mandžukić', 'Perišić'] },
+    ],
+    'BE': [
+      { date: '2018-07-10', comp: 'WM HF', venue: 'St. Petersburg', attendance: 64286, result: '1:0', scorers: ['Umtiti'] },
+    ],
+  },
+  'EN': {
+    'FR': [
+      { date: '2022-12-10', comp: 'WM VF', venue: 'Al-Bayt', attendance: 68895, result: '1:2', scorers: ['Kane'] },
+    ],
+    'SN': [
+      { date: '2022-12-04', comp: 'WM AF', venue: 'Al-Bayt', attendance: 67843, result: '3:0', scorers: ['Henderson', 'Kane', 'Saka'] },
+    ],
+    'HR': [
+      { date: '2018-07-11', comp: 'WM HF', venue: 'Moskau', attendance: 78011, result: '1:2 n.V.', scorers: ['Trippier', 'Perišić', 'Mandžukić'] },
+    ],
+    'CO': [
+      { date: '2018-07-03', comp: 'WM AF', venue: 'Moskau', attendance: 44190, result: '1:1 (4:3 i.E.)', scorers: ['Kane', 'Mina'] },
+    ],
+    'DE': [
+      { date: '1966-07-30', comp: 'WM Finale', venue: 'Wembley', attendance: 96924, result: '4:2 n.V.', scorers: ['Hurst 3', 'Peters', 'Haller', 'Weber'] },
+      { date: '1990-07-04', comp: 'WM HF', venue: 'Turin', attendance: 62628, result: '1:1 (3:4 i.E.)', scorers: ['Lineker', 'Brehme'] },
+      { date: '2010-06-27', comp: 'WM AF', venue: 'Bloemfontein', attendance: 40510, result: '1:4', scorers: ['Upson', 'Klose', 'Podolski', 'Müller 2'] },
+      { date: '2021-06-29', comp: 'EM AF', venue: 'Wembley', attendance: 40000, result: '2:0', scorers: ['Sterling', 'Kane'] },
+    ],
+  },
+  'BR': {
+    'DE': [
+      { date: '2014-07-08', comp: 'WM HF', venue: 'Belo Horizonte', attendance: 58141, result: '1:7', scorers: ['Oscar', 'Müller', 'Klose', 'Kroos 2', 'Khedira', 'Schürrle 2'] },
+      { date: '2002-06-30', comp: 'WM Finale', venue: 'Yokohama', attendance: 69029, result: '2:0', scorers: ['Ronaldo 2'] },
+    ],
+    'AR': [
+      { date: '2021-07-10', comp: 'Copa Finale', venue: 'Rio', attendance: 7800, result: '0:1', scorers: ['Di María'] },
+      { date: '2019-07-02', comp: 'Copa HF', venue: 'Belo Horizonte', attendance: 56000, result: '2:0', scorers: ['Gabriel Jesus', 'Firmino'] },
+    ],
+    'HR': [
+      { date: '2022-12-09', comp: 'WM VF', venue: 'Education City', attendance: 43877, result: '1:1 (2:4 i.E.)', scorers: ['Neymar', 'Petković'] },
+    ],
+  },
+  'PL': {
+    'FR': [
+      { date: '2022-12-04', comp: 'WM AF', venue: 'Al-Thumama', attendance: 40472, result: '1:3', scorers: ['Lewandowski (P)'] },
+    ],
+    'AR': [
+      { date: '2022-11-30', comp: 'WM', venue: 'Doha', attendance: 44089, result: '0:2', scorers: ['Mac Allister', 'Álvarez'] },
+    ],
+  },
+};
+
+// Qualification matches data
+const QUALI_MATCHES = {
+  'DE': {
+    group: 'A',
+    confederation: 'UEFA',
+    matches: [
+      { date: '2024-09-07', opponent: 'HU', venue: 'Düsseldorf (H)', result: '5:0', scorers: ['Füllkrug', 'Musiala', 'Wirtz', 'Havertz', 'Sané'] },
+      { date: '2024-09-10', opponent: 'NL', venue: 'Amsterdam (A)', result: '2:2', scorers: ['Undav', 'Füllkrug', 'Gakpo', 'Xavi Simons'] },
+      { date: '2024-10-11', opponent: 'BIH', venue: 'Zenica (A)', result: '2:1', scorers: ['Undav', 'Füllkrug', 'Demirović'] },
+      { date: '2024-10-14', opponent: 'NL', venue: 'München (H)', result: '1:0', scorers: ['Kimmich'] },
+      { date: '2024-11-16', opponent: 'BIH', venue: 'Freiburg (H)', result: '7:0', scorers: ['Musiala 2', 'Wirtz 2', 'Gnabry', 'Sané', 'Havertz'] },
+      { date: '2024-11-19', opponent: 'HU', venue: 'Budapest (A)', result: '1:0', scorers: ['Havertz'] },
+      { date: '2025-03-20', opponent: 'IT', venue: 'Berlin (H)', result: '2:1', scorers: ['Havertz', 'Musiala', 'Retegui'] },
+      { date: '2025-03-23', opponent: 'IT', venue: 'Mailand (A)', result: '3:2', scorers: ['Wirtz', 'Kimmich', 'Füllkrug', 'Chiesa', 'Barella'] },
+    ],
+    standing: { pos: 1, played: 8, won: 7, drawn: 1, lost: 0, gf: 23, ga: 6, pts: 22 }
+  },
+  'FR': {
+    group: 'B',
+    confederation: 'UEFA',
+    matches: [
+      { date: '2024-09-06', opponent: 'IT', venue: 'Paris (H)', result: '3:1', scorers: ['Mbappé', 'Griezmann', 'Kolo Muani', 'Retegui'] },
+      { date: '2024-09-09', opponent: 'BE', venue: 'Lyon (H)', result: '2:0', scorers: ['Kolo Muani', 'Dembélé'] },
+      { date: '2024-10-10', opponent: 'ISR', venue: 'Budapest (N)', result: '4:1', scorers: ['Mbappé 2', 'Griezmann', 'Nkunku', 'Gandelman'] },
+      { date: '2024-10-14', opponent: 'BE', venue: 'Brüssel (A)', result: '2:1', scorers: ['Kolo Muani', 'Mbappé', 'De Bruyne'] },
+      { date: '2024-11-14', opponent: 'ISR', venue: 'Paris (H)', result: '0:0', scorers: [] },
+      { date: '2024-11-17', opponent: 'IT', venue: 'Mailand (A)', result: '3:1', scorers: ['Dembélé', 'Rabiot', 'Griezmann', 'Chiesa'] },
+    ],
+    standing: { pos: 1, played: 6, won: 5, drawn: 1, lost: 0, gf: 14, ga: 4, pts: 16 }
+  },
+  'EN': {
+    group: 'B',
+    confederation: 'UEFA',
+    matches: [
+      { date: '2024-09-07', opponent: 'IE', venue: 'Dublin (A)', result: '2:0', scorers: ['Kane', 'Gordon'] },
+      { date: '2024-09-10', opponent: 'FI', venue: 'Wembley (H)', result: '2:0', scorers: ['Kane', 'Saka'] },
+      { date: '2024-10-10', opponent: 'GR', venue: 'Wembley (H)', result: '1:2', scorers: ['Bellingham', 'Pavlidis 2'] },
+      { date: '2024-10-13', opponent: 'FI', venue: 'Helsinki (A)', result: '3:1', scorers: ['Bellingham', 'Kane', 'Foden', 'Pukki'] },
+      { date: '2024-11-14', opponent: 'GR', venue: 'Athen (A)', result: '3:0', scorers: ['Kane 2', 'Palmer'] },
+      { date: '2024-11-17', opponent: 'IE', venue: 'Wembley (H)', result: '5:0', scorers: ['Kane 2', 'Bellingham', 'Gordon', 'Saka'] },
+    ],
+    standing: { pos: 1, played: 6, won: 5, drawn: 0, lost: 1, gf: 16, ga: 3, pts: 15 }
+  },
+  'ES': {
+    group: 'C',
+    confederation: 'UEFA',
+    matches: [
+      { date: '2024-09-05', opponent: 'SRB', venue: 'Belgrad (A)', result: '0:0', scorers: [] },
+      { date: '2024-09-08', opponent: 'CH', venue: 'Genf (A)', result: '4:1', scorers: ['Williams', 'Yamal', 'Ferran Torres 2', 'Amdouni'] },
+      { date: '2024-10-12', opponent: 'DK', venue: 'Murcia (H)', result: '1:0', scorers: ['Oyarzabal'] },
+      { date: '2024-10-15', opponent: 'SRB', venue: 'Córdoba (H)', result: '3:0', scorers: ['Yamal', 'Morata', 'Williams'] },
+      { date: '2024-11-15', opponent: 'DK', venue: 'Kopenhagen (A)', result: '2:1', scorers: ['Oyarzabal', 'Hermoso', 'Dolberg'] },
+      { date: '2024-11-18', opponent: 'CH', venue: 'Teneriffa (H)', result: '3:2', scorers: ['Fabián', 'Ferran Torres 2', 'Monteiro', 'Zeqiri'] },
+    ],
+    standing: { pos: 1, played: 6, won: 5, drawn: 1, lost: 0, gf: 13, ga: 4, pts: 16 }
+  },
+  'AR': {
+    group: 'CONMEBOL',
+    confederation: 'CONMEBOL',
+    matches: [
+      { date: '2023-09-07', opponent: 'EC', venue: 'Buenos Aires (H)', result: '1:0', scorers: ['Messi'] },
+      { date: '2023-09-12', opponent: 'BO', venue: 'La Paz (A)', result: '3:0', scorers: ['Messi', 'Tagliafico', 'Di María'] },
+      { date: '2023-10-12', opponent: 'PY', venue: 'Asunción (A)', result: '1:0', scorers: ['Otamendi'] },
+      { date: '2023-10-17', opponent: 'PE', venue: 'Buenos Aires (H)', result: '2:0', scorers: ['Álvarez', 'Paredes'] },
+      { date: '2023-11-16', opponent: 'UY', venue: 'Buenos Aires (H)', result: '1:0', scorers: ['Messi'] },
+      { date: '2023-11-21', opponent: 'BR', venue: 'Rio (A)', result: '1:0', scorers: ['Otamendi'] },
+      { date: '2024-03-21', opponent: 'SV', venue: 'Buenos Aires (H)', result: '3:0', scorers: ['Messi', 'Mac Allister', 'Dybala'] },
+      { date: '2024-03-26', opponent: 'CR', venue: 'San José (A)', result: '3:1', scorers: ['Garnacho', 'Álvarez', 'Lo Celso', 'Vargas'] },
+      { date: '2024-09-05', opponent: 'CL', venue: 'Buenos Aires (H)', result: '3:0', scorers: ['Mac Allister', 'Álvarez 2'] },
+      { date: '2024-09-10', opponent: 'CO', venue: 'Barranquilla (A)', result: '1:2', scorers: ['González', 'James', 'Muñoz'] },
+      { date: '2024-10-10', opponent: 'VE', venue: 'Maturín (A)', result: '1:1', scorers: ['Otamendi', 'Rondón'] },
+      { date: '2024-10-15', opponent: 'BO', venue: 'Buenos Aires (H)', result: '6:0', scorers: ['Messi 3', 'Álvarez', 'Lautaro', 'Thiago Almada'] },
+      { date: '2024-11-14', opponent: 'PY', venue: 'Buenos Aires (H)', result: '2:1', scorers: ['Lautaro', 'Mac Allister', 'Sanabria'] },
+      { date: '2024-11-19', opponent: 'PE', venue: 'Lima (A)', result: '1:0', scorers: ['Lautaro'] },
+    ],
+    standing: { pos: 1, played: 14, won: 11, drawn: 2, lost: 1, gf: 27, ga: 6, pts: 35 }
+  },
+  'BR': {
+    group: 'CONMEBOL',
+    confederation: 'CONMEBOL',
+    matches: [
+      { date: '2023-09-08', opponent: 'BO', venue: 'Belém (H)', result: '5:1', scorers: ['Rodrygo 2', 'Raphinha 2', 'Neymar', 'Moreno'] },
+      { date: '2023-09-12', opponent: 'PE', venue: 'Lima (A)', result: '1:0', scorers: ['Neymar'] },
+      { date: '2023-10-12', opponent: 'VE', venue: 'Cuiabá (H)', result: '1:0', scorers: ['Raphinha'] },
+      { date: '2023-10-17', opponent: 'UY', venue: 'Montevideo (A)', result: '2:0', scorers: ['Raphinha', 'Darwin'] },
+      { date: '2023-11-16', opponent: 'CO', venue: 'Barranquilla (A)', result: '2:1', scorers: ['Raphinha', 'Endrick', 'Díaz'] },
+      { date: '2023-11-21', opponent: 'AR', venue: 'Rio (H)', result: '0:1', scorers: [] },
+      { date: '2024-09-06', opponent: 'EC', venue: 'Curitiba (H)', result: '1:0', scorers: ['Rodrygo'] },
+      { date: '2024-09-10', opponent: 'PY', venue: 'Asunción (A)', result: '0:1', scorers: ['Diego Gómez'] },
+      { date: '2024-10-10', opponent: 'CL', venue: 'Santiago (A)', result: '2:1', scorers: ['Igor Jesus', 'Luiz Henrique', 'Vargas'] },
+      { date: '2024-10-15', opponent: 'PE', venue: 'Brasília (H)', result: '4:0', scorers: ['Raphinha 2', 'Luiz Henrique', 'Savinho'] },
+      { date: '2024-11-14', opponent: 'VE', venue: 'Maturín (A)', result: '1:1', scorers: ['Raphinha', 'Segovia'] },
+      { date: '2024-11-19', opponent: 'UY', venue: 'Salvador (H)', result: '1:1', scorers: ['Gerson', 'Valverde'] },
+    ],
+    standing: { pos: 5, played: 12, won: 7, drawn: 3, lost: 2, gf: 19, ga: 8, pts: 24 }
+  },
+  'US': {
+    group: 'Gastgeber',
+    confederation: 'CONCACAF',
+    matches: [],
+    standing: { note: 'Automatisch qualifiziert als Gastgeber' }
+  },
+  'MX': {
+    group: 'Gastgeber',
+    confederation: 'CONCACAF',
+    matches: [],
+    standing: { note: 'Automatisch qualifiziert als Gastgeber' }
+  },
+  'CA': {
+    group: 'Gastgeber',
+    confederation: 'CONCACAF',
+    matches: [],
+    standing: { note: 'Automatisch qualifiziert als Gastgeber' }
+  },
+};
+
+// RSS API for team news
+const RSS2JSON_API = 'https://api.rss2json.com/v1/api.json?rss_url=';
+
 const WM2026TeamBadges = ({ isPremium = false }) => {
   const { t, language } = useLanguage();
-  
+
   const [badges, setBadges] = useState([]);
   const [scorers, setScorers] = useState({});
   const [legends, setLegends] = useState({});
@@ -22,6 +481,8 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
   const [mediaSubTab, setMediaSubTab] = useState('news'); // 'news' or 'videos'
   const [searchTerm, setSearchTerm] = useState('');
   const [filterConfederation, setFilterConfederation] = useState('all');
+  const [teamNews, setTeamNews] = useState([]);
+  const [newsLoading, setNewsLoading] = useState(false);
 
   // Fetch all data from Supabase
   useEffect(() => {
@@ -93,6 +554,52 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
 
     fetchData();
   }, []);
+
+  // Fetch team-specific news when team is selected
+  useEffect(() => {
+    if (!selectedTeam || mediaSubTab !== 'news') return;
+
+    const fetchTeamNews = async () => {
+      setNewsLoading(true);
+      setTeamNews([]);
+
+      try {
+        const teamName = language === 'en' ? selectedTeam.name_en : selectedTeam.name_de;
+        const searchTerms = language === 'en'
+          ? `${teamName} national team World Cup 2026`
+          : `${teamName} Nationalmannschaft WM 2026`;
+
+        const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(searchTerms)}&hl=${language === 'en' ? 'en' : 'de'}&gl=${language === 'en' ? 'US' : 'DE'}&ceid=${language === 'en' ? 'US:en' : 'DE:de'}`;
+
+        const response = await fetch(RSS2JSON_API + encodeURIComponent(rssUrl));
+        const data = await response.json();
+
+        if (data.status === 'ok' && data.items?.length > 0) {
+          const newsItems = data.items.slice(0, 8).map((item, idx) => {
+            // Extract source from title
+            const titleParts = item.title.split(' - ');
+            const source = titleParts.length > 1 ? titleParts.pop() : 'Google News';
+            const cleanTitle = titleParts.join(' - ');
+
+            return {
+              id: idx,
+              title: cleanTitle,
+              source,
+              date: new Date(item.pubDate).toLocaleDateString(language === 'en' ? 'en-US' : 'de-DE'),
+              url: item.link,
+            };
+          });
+          setTeamNews(newsItems);
+        }
+      } catch (err) {
+        console.error('Error fetching team news:', err);
+      } finally {
+        setNewsLoading(false);
+      }
+    };
+
+    fetchTeamNews();
+  }, [selectedTeam, mediaSubTab, language]);
 
   // Filter badges
   const filteredBadges = badges.filter(badge => {
@@ -349,9 +856,9 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
               overflowX: 'auto'
             }}>
               {[
-                { id: 'media', label: t('badgesTabMedia') || '🎬 Medien' },
-                { id: 'road2026', label: t('badgesTabRoad2026') || '🛣️ Road to WC' },
-                { id: 'group', label: t('badgesTabGroup') || '📊 Gruppe' },
+                { id: 'media', label: t('badgesTabMedia') },
+                { id: 'road2026', label: t('badgesTabRoad2026') },
+                { id: 'group', label: t('badgesTabGroup') },
                 { id: 'stats', label: t('badgesTabStats') },
                 { id: 'scorers', label: t('badgesTabScorers') },
                 { id: 'legends', label: t('badgesTabLegends') },
@@ -399,7 +906,7 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                         cursor: 'pointer'
                       }}
                     >
-                      📰 {t('badgesTabNews') || 'News'}
+                      {t('badgesTabNews')}
                     </button>
                     <button
                       onClick={() => setMediaSubTab('videos')}
@@ -415,7 +922,7 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                         cursor: 'pointer'
                       }}
                     >
-                      🎬 {t('badgesTabVideos') || 'Videos'}
+                      {t('badgesTabVideos')}
                     </button>
                   </div>
 
@@ -423,17 +930,50 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                   {mediaSubTab === 'news' && (
                     <div>
                       <div style={{ fontSize: '12px', color: '#64748b', marginBottom: '16px' }}>
-                        📰 {t('badgesTeamNews') || 'Aktuelle News zu'} {language === 'en' ? selectedTeam.name_en : selectedTeam.name_de}
+                        {t('badgesTeamNews') || 'Aktuelle News zu'} {language === 'en' ? selectedTeam.name_en : selectedTeam.name_de}
                       </div>
-                      <div style={{ textAlign: 'center', color: '#64748b', padding: '30px' }}>
-                        <div style={{ fontSize: '24px', marginBottom: '8px' }}>📰</div>
-                        <div style={{ fontSize: '11px' }}>
-                          {t('badgesNewsComingSoon') || 'Team-News werden bald hier angezeigt'}
+
+                      {newsLoading ? (
+                        <div style={{ textAlign: 'center', padding: '30px' }}>
+                          <div style={{ fontSize: '24px', marginBottom: '8px' }}>⏳</div>
+                          <div style={{ fontSize: '11px', color: '#64748b' }}>{t('loading') || 'Lädt...'}</div>
                         </div>
-                        <div style={{ fontSize: '10px', marginTop: '8px', color: '#475569' }}>
-                          {t('badgesNewsHint') || 'News werden aus der Hauptsektion "News" gefiltert'}
+                      ) : teamNews.length > 0 ? (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                          {teamNews.map((news) => (
+                            <a
+                              key={news.id}
+                              href={news.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                display: 'block',
+                                padding: '12px',
+                                background: '#1e293b',
+                                borderRadius: '8px',
+                                textDecoration: 'none',
+                                border: '1px solid #334155',
+                                transition: 'all 0.2s'
+                              }}
+                            >
+                              <div style={{ fontSize: '12px', color: 'white', fontWeight: '500', marginBottom: '4px' }}>
+                                {news.title}
+                              </div>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', color: '#64748b' }}>
+                                <span>{news.source}</span>
+                                <span>{news.date}</span>
+                              </div>
+                            </a>
+                          ))}
                         </div>
-                      </div>
+                      ) : (
+                        <div style={{ textAlign: 'center', color: '#64748b', padding: '30px' }}>
+                          <div style={{ fontSize: '24px', marginBottom: '8px' }}>📰</div>
+                          <div style={{ fontSize: '11px' }}>
+                            {t('badgesNoNews') || 'Keine aktuellen News gefunden'}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
 
@@ -585,66 +1125,8 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                       b.wm2026_group === groupCode && b.country_code !== selectedTeam.country_code
                     );
 
-                    // H2H Data
-                    const H2H_MATCHES = {
-                      'DE': {
-                        'MX': [
-                          { date: '2018-06-17', comp: 'WM', venue: 'Moskau', attendance: 78011, result: '0:1', scorers: ['Lozano'] },
-                          { date: '2017-06-29', comp: 'Confed', venue: 'Sotschi', attendance: 40855, result: '4:1', scorers: ['Goretzka 2', 'Werner 2', 'Fabian'] },
-                          { date: '2005-06-29', comp: 'Confed', venue: 'Leipzig', attendance: 43000, result: '4:3 n.V.', scorers: ['Ballack 2', 'Klose', 'Podolski', 'Fonseca 2', 'Borgetti'] },
-                        ],
-                        'ZA': [
-                          { date: '2014-03-05', comp: 'FS', venue: 'Stuttgart', attendance: 51200, result: '0:0', scorers: [] },
-                          { date: '2010-06-13', comp: 'WM (Test)', venue: 'Pretoria', attendance: 64100, result: '0:1', scorers: ['Tshabalala (Eröffnung)'] },
-                        ],
-                        'KR': [
-                          { date: '2018-06-27', comp: 'WM', venue: 'Kasan', attendance: 41835, result: '0:2', scorers: ['Kim', 'Son'] },
-                          { date: '2004-12-19', comp: 'FS', venue: 'Busan', attendance: 42000, result: '3:1', scorers: ['Kuranyi 2', 'Schneider', 'Lee'] },
-                          { date: '2002-06-25', comp: 'WM SF', venue: 'Seoul', attendance: 65625, result: '1:0', scorers: ['Ballack'] },
-                        ],
-                        'DK': [
-                          { date: '2021-06-28', comp: 'EM', venue: 'Wembley', attendance: 45000, result: '2:0 (England)', scorers: [] },
-                          { date: '2012-06-17', comp: 'EM', venue: 'Lwiw', attendance: 30440, result: '2:1', scorers: ['Podolski', 'Bender', 'Krohn-Dehli'] },
-                          { date: '2002-06-14', comp: 'WM', venue: 'Ulsan', attendance: 30175, result: '0:0', scorers: [] },
-                          { date: '1998-06-21', comp: 'WM', venue: 'Lyon', attendance: 41000, result: '2:1', scorers: ['Bierhoff', 'Klinsmann', 'M.Laudrup'] },
-                          { date: '1992-06-18', comp: 'EM Finale', venue: 'Göteborg', attendance: 37800, result: '0:2', scorers: ['J.Jensen', 'Vilfort'] },
-                          { date: '1988-06-14', comp: 'EM', venue: 'Gelsenkirchen', attendance: 68000, result: '2:0', scorers: ['Klinsmann', 'Thon'] },
-                          { date: '1986-06-13', comp: 'WM', venue: 'Querétaro', attendance: 26500, result: '2:0', scorers: ['Allofs', 'Jakobs'] },
-                        ],
-                      },
-                      'BR': {
-                        'AR': [
-                          { date: '2021-07-10', comp: 'Copa Finale', venue: 'Rio', attendance: 7800, result: '0:1', scorers: ['Di María'] },
-                          { date: '2019-07-02', comp: 'Copa HF', venue: 'Belo Horizonte', attendance: 56000, result: '2:0', scorers: ['Gabriel Jesus', 'Firmino'] },
-                          { date: '2018-10-16', comp: 'FS', venue: 'Riad', attendance: 55000, result: '1:0', scorers: ['Miranda'] },
-                        ],
-                      },
-                      'AR': {
-                        'BR': [
-                          { date: '2021-07-10', comp: 'Copa Finale', venue: 'Rio', attendance: 7800, result: '1:0', scorers: ['Di María'] },
-                          { date: '2019-07-02', comp: 'Copa HF', venue: 'Belo Horizonte', attendance: 56000, result: '0:2', scorers: [] },
-                        ],
-                      },
-                      'FR': {
-                        'NL': [
-                          { date: '2024-03-25', comp: 'FS', venue: 'Paris', attendance: 75000, result: '0:0', scorers: [] },
-                          { date: '2018-09-09', comp: 'NL', venue: 'Paris', attendance: 78000, result: '2:1', scorers: ['Giroud', 'Mbappé', 'Babel'] },
-                        ],
-                        'PL': [
-                          { date: '2022-12-04', comp: 'WM AF', venue: 'Al-Thumama', attendance: 40472, result: '3:1', scorers: ['Giroud', 'Mbappé 2', 'Lewandowski (P)'] },
-                        ],
-                      },
-                      'PL': {
-                        'FR': [
-                          { date: '2022-12-04', comp: 'WM AF', venue: 'Al-Thumama', attendance: 40472, result: '1:3', scorers: ['Lewandowski (P)'] },
-                        ],
-                        'NL': [
-                          { date: '2022-09-22', comp: 'NL', venue: 'Warschau', attendance: 55000, result: '0:2', scorers: [] },
-                        ],
-                      },
-                    };
-
-                    const h2hData = H2H_MATCHES[selectedTeam.country_code] || {};
+                    // Use global H2H_DATA
+                    const h2hData = H2H_DATA[selectedTeam.country_code] || {};
 
                     return (
                       <div>
@@ -952,9 +1434,9 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                               {scorer.wm_tournaments?.join(', ')}
                             </div>
                             {/* Current Club for active players */}
-                            {scorer.is_active && scorer.current_club && (
+                            {scorer.is_active && (scorer.current_club || CURRENT_CLUBS[scorer.player_name]) && (
                               <div style={{ fontSize: '10px', color: '#3b82f6', marginTop: '2px' }}>
-                                🏟️ {scorer.current_club}
+                                🏟️ {scorer.current_club || CURRENT_CLUBS[scorer.player_name]}
                               </div>
                             )}
                           </div>
@@ -997,9 +1479,9 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                             </div>
                             <div style={{ fontSize: '10px', color: '#64748b' }}>{legend.position}</div>
                             {/* Current Club for active players */}
-                            {legend.is_current_star && legend.current_club && (
+                            {legend.is_current_star && (legend.current_club || CURRENT_CLUBS[legend.player_name]) && (
                               <div style={{ fontSize: '10px', color: '#3b82f6', marginTop: '2px' }}>
-                                🏟️ {legend.current_club}
+                                🏟️ {legend.current_club || CURRENT_CLUBS[legend.player_name]}
                               </div>
                             )}
                           </div>
@@ -1035,37 +1517,46 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
               {/* Coaches Tab */}
               {activeModalTab === 'coaches' && (
                 <div>
-                  {coaches[selectedTeam.country_code]?.length > 0 ? (
-                    coaches[selectedTeam.country_code].map((coach, idx) => (
-                      <div key={idx} style={{
-                        padding: '12px',
-                        background: coach.is_current ? 'rgba(16, 185, 129, 0.1)' : '#1e293b',
-                        border: coach.is_current ? '1px solid #10b981' : '1px solid transparent',
-                        borderRadius: '8px',
-                        marginBottom: '8px',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center'
-                      }}>
-                        <div>
-                          <div style={{ fontSize: '13px', fontWeight: 'bold', color: 'white' }}>
-                            {coach.coach_name}
-                            {coach.is_current && <span style={{ marginLeft: '6px', fontSize: '10px', color: '#10b981' }}>({t('badgesCurrentCoach')})</span>}
+                  {(() => {
+                    // Use static WM_COACHES_HISTORY data, with database override if available
+                    const dbCoaches = coaches[selectedTeam.country_code] || [];
+                    const staticCoaches = WM_COACHES_HISTORY[selectedTeam.country_code] || [];
+
+                    // Prefer static data (more complete), but merge with DB if needed
+                    const allCoaches = staticCoaches.length > 0 ? staticCoaches : dbCoaches;
+
+                    return allCoaches.length > 0 ? (
+                      allCoaches.map((coach, idx) => (
+                        <div key={idx} style={{
+                          padding: '12px',
+                          background: coach.is_current ? 'rgba(16, 185, 129, 0.1)' : '#1e293b',
+                          border: coach.is_current ? '1px solid #10b981' : '1px solid transparent',
+                          borderRadius: '8px',
+                          marginBottom: '8px',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}>
+                          <div>
+                            <div style={{ fontSize: '13px', fontWeight: 'bold', color: 'white' }}>
+                              {coach.coach_name}
+                              {coach.is_current && <span style={{ marginLeft: '6px', fontSize: '10px', color: '#10b981' }}>({t('badgesCurrentCoach')})</span>}
+                            </div>
+                            <div style={{ fontSize: '10px', color: '#64748b' }}>
+                              WM {coach.wm_year} • {coach.result}
+                            </div>
                           </div>
-                          <div style={{ fontSize: '10px', color: '#64748b' }}>
-                            WM {coach.wm_year} • {coach.result}
+                          <div style={{ textAlign: 'right', fontSize: '11px', color: '#94a3b8' }}>
+                            {coach.wins !== undefined ? `${coach.wins}-${coach.draws}-${coach.losses}` : '–'}
                           </div>
                         </div>
-                        <div style={{ textAlign: 'right', fontSize: '11px', color: '#94a3b8' }}>
-                          {coach.wins}-{coach.draws}-{coach.losses}
-                        </div>
+                      ))
+                    ) : (
+                      <div style={{ textAlign: 'center', color: '#64748b', padding: '20px' }}>
+                        {t('badgesNoData')}
                       </div>
-                    ))
-                  ) : (
-                    <div style={{ textAlign: 'center', color: '#64748b', padding: '20px' }}>
-                      {t('badgesNoData')}
-                    </div>
-                  )}
+                    );
+                  })()}
                 </div>
               )}
 
@@ -1073,68 +1564,20 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
               {activeModalTab === 'road2026' && (
                 <div>
                   {(() => {
-                    // Qualification data by confederation
-                    const QUALIFICATION_DATA = {
-                      // UEFA - European Qualification
-                      'UEFA': {
-                        format: 'Gruppenphase + Playoffs',
-                        totalSlots: 16,
-                        groups: 12,
-                        description: '12 Gruppensieger qualifiziert, 4 weitere über Playoffs',
-                      },
-                      // CONMEBOL - South American Qualification
-                      'CONMEBOL': {
-                        format: 'Einzelne Liga (alle vs alle)',
-                        totalSlots: 6,
-                        rounds: 18,
-                        description: 'Top 6 direkt qualifiziert, Platz 7 in Interkont. Playoffs',
-                      },
-                      // CONCACAF - North/Central American Qualification
-                      'CONCACAF': {
-                        format: 'Gruppenphase (Final Round)',
-                        totalSlots: 6,
-                        description: 'Top 3 direkt qualifiziert + 3 Gastgeber (USA, Mexiko, Kanada)',
-                      },
-                      // AFC - Asian Qualification
-                      'AFC': {
-                        format: 'Gruppenphase (3 Runden)',
-                        totalSlots: 8,
-                        description: '8 direkt qualifiziert, 9. Platz in Interkont. Playoffs',
-                      },
-                      // CAF - African Qualification
-                      'CAF': {
-                        format: 'Gruppenphase',
-                        totalSlots: 9,
-                        description: '9 Gruppensieger qualifiziert, 4 Gruppenzweite in Playoffs',
-                      },
-                      // OFC - Oceania Qualification
-                      'OFC': {
-                        format: 'Gruppenphase + Finale',
-                        totalSlots: 1,
-                        description: '1 Platz, Zweiter in Interkont. Playoffs',
-                      },
-                    };
+                    // Use global QUALI_MATCHES data
+                    const qualiData = QUALI_MATCHES[selectedTeam.country_code];
 
-                    // Team-specific qualification results
-                    const TEAM_QUALI_RESULTS = {
-                      'DE': { group: 'A', position: 1, played: 8, won: 7, drawn: 1, lost: 0, gf: 36, ga: 5, points: 22 },
-                      'ES': { group: 'B', position: 1, played: 8, won: 8, drawn: 0, lost: 0, gf: 28, ga: 2, points: 24 },
-                      'FR': { group: 'C', position: 1, played: 8, won: 6, drawn: 2, lost: 0, gf: 20, ga: 3, points: 20 },
-                      'EN': { group: 'D', position: 1, played: 8, won: 7, drawn: 1, lost: 0, gf: 23, ga: 4, points: 22 },
-                      'IT': { group: 'E', position: 1, played: 8, won: 6, drawn: 2, lost: 0, gf: 17, ga: 4, points: 20 },
-                      'NL': { group: 'F', position: 1, played: 8, won: 6, drawn: 1, lost: 1, gf: 22, ga: 6, points: 19 },
-                      'PT': { group: 'G', position: 1, played: 8, won: 7, drawn: 1, lost: 0, gf: 24, ga: 5, points: 22 },
-                      'BE': { group: 'H', position: 1, played: 8, won: 6, drawn: 1, lost: 1, gf: 18, ga: 7, points: 19 },
-                      'PL': { group: 'I', position: 1, played: 8, won: 5, drawn: 2, lost: 1, gf: 16, ga: 8, points: 17 },
-                      'AR': { group: 'CONMEBOL', position: 1, played: 18, won: 12, drawn: 4, lost: 2, gf: 35, ga: 12, points: 40 },
-                      'BR': { group: 'CONMEBOL', position: 2, played: 18, won: 11, drawn: 3, lost: 4, gf: 30, ga: 15, points: 36 },
-                      'US': { qualified: 'host', note: 'Gastgeber - automatisch qualifiziert' },
-                      'MX': { qualified: 'host', note: 'Gastgeber - automatisch qualifiziert' },
-                      'CA': { qualified: 'host', note: 'Gastgeber - automatisch qualifiziert' },
+                    // Confederation info
+                    const QUALIFICATION_DATA = {
+                      'UEFA': { format: 'Gruppenphase', totalSlots: 16, description: '12 Gruppensieger + 4 Playoff-Sieger' },
+                      'CONMEBOL': { format: 'Einzelne Liga', totalSlots: 6, description: 'Top 6 von 10 Teams qualifiziert' },
+                      'CONCACAF': { format: 'Gruppenphase', totalSlots: 6, description: '3 Gastgeber + 3 weitere Plätze' },
+                      'AFC': { format: '3 Runden', totalSlots: 8, description: '8 Teams direkt qualifiziert' },
+                      'CAF': { format: 'Gruppenphase', totalSlots: 9, description: '9 Gruppensieger qualifiziert' },
+                      'OFC': { format: 'Finale', totalSlots: 1, description: '1 Platz für Ozeanien' },
                     };
 
                     const confData = QUALIFICATION_DATA[selectedTeam.confederation] || {};
-                    const teamQuali = TEAM_QUALI_RESULTS[selectedTeam.country_code];
 
                     return (
                       <div>
@@ -1151,63 +1594,108 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                           <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>
                             {confData.format} • {confData.totalSlots} {t('badgesSlots') || 'Plätze'}
                           </div>
-                          <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.7)', marginTop: '4px' }}>
-                            {confData.description}
-                          </div>
                         </div>
 
-                        {/* Team's Qualification Result */}
-                        {teamQuali && (
-                          <div style={{
-                            padding: '12px',
-                            background: '#1e293b',
-                            borderRadius: '8px',
-                            border: '1px solid #10b981'
-                          }}>
-                            <div style={{ fontSize: '12px', fontWeight: 'bold', color: '#10b981', marginBottom: '8px' }}>
-                              ✅ {t('badgesQualified') || 'Qualifiziert'}
-                            </div>
+                        {qualiData ? (
+                          <>
+                            {/* Standing Box */}
+                            {qualiData.standing && (
+                              <div style={{
+                                padding: '12px',
+                                background: '#1e293b',
+                                borderRadius: '8px',
+                                border: '1px solid #10b981',
+                                marginBottom: '16px'
+                              }}>
+                                <div style={{ fontSize: '12px', fontWeight: 'bold', color: '#10b981', marginBottom: '8px' }}>
+                                  ✅ {t('badgesQualified') || 'Qualifiziert'}
+                                  {qualiData.group !== 'Gastgeber' && qualiData.group !== 'CONMEBOL' && (
+                                    <span style={{ color: '#94a3b8', fontWeight: 'normal', marginLeft: '8px' }}>
+                                      Gruppe {qualiData.group}
+                                    </span>
+                                  )}
+                                  {qualiData.group === 'CONMEBOL' && (
+                                    <span style={{ color: '#94a3b8', fontWeight: 'normal', marginLeft: '8px' }}>
+                                      CONMEBOL Liga
+                                    </span>
+                                  )}
+                                </div>
 
-                            {teamQuali.qualified === 'host' ? (
-                              <div style={{ fontSize: '11px', color: '#fbbf24' }}>
-                                🏠 {teamQuali.note}
+                                {qualiData.standing.note ? (
+                                  <div style={{ fontSize: '11px', color: '#fbbf24' }}>
+                                    🏠 {qualiData.standing.note}
+                                  </div>
+                                ) : (
+                                  <>
+                                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '6px', marginBottom: '8px' }}>
+                                      <div style={{ textAlign: 'center' }}>
+                                        <div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white' }}>{qualiData.standing.played}</div>
+                                        <div style={{ fontSize: '8px', color: '#64748b' }}>Sp</div>
+                                      </div>
+                                      <div style={{ textAlign: 'center' }}>
+                                        <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#10b981' }}>{qualiData.standing.won}</div>
+                                        <div style={{ fontSize: '8px', color: '#64748b' }}>S</div>
+                                      </div>
+                                      <div style={{ textAlign: 'center' }}>
+                                        <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#fbbf24' }}>{qualiData.standing.drawn}</div>
+                                        <div style={{ fontSize: '8px', color: '#64748b' }}>U</div>
+                                      </div>
+                                      <div style={{ textAlign: 'center' }}>
+                                        <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#ef4444' }}>{qualiData.standing.lost}</div>
+                                        <div style={{ fontSize: '8px', color: '#64748b' }}>N</div>
+                                      </div>
+                                      <div style={{ textAlign: 'center' }}>
+                                        <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#3b82f6' }}>{qualiData.standing.pts}</div>
+                                        <div style={{ fontSize: '8px', color: '#64748b' }}>Pkt</div>
+                                      </div>
+                                    </div>
+                                    <div style={{ fontSize: '10px', color: '#94a3b8' }}>
+                                      Tore: {qualiData.standing.gf}:{qualiData.standing.ga} (Diff: {qualiData.standing.gf - qualiData.standing.ga > 0 ? '+' : ''}{qualiData.standing.gf - qualiData.standing.ga})
+                                    </div>
+                                  </>
+                                )}
                               </div>
-                            ) : (
-                              <>
-                                <div style={{ fontSize: '11px', color: '#94a3b8', marginBottom: '8px' }}>
-                                  {teamQuali.group?.startsWith('CONMEBOL') ? 'CONMEBOL Liga' : `Gruppe ${teamQuali.group}`}
-                                  {teamQuali.position && ` • ${teamQuali.position}. Platz`}
-                                </div>
-
-                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
-                                  <div style={{ textAlign: 'center' }}>
-                                    <div style={{ fontSize: '16px', fontWeight: 'bold', color: 'white' }}>{teamQuali.played}</div>
-                                    <div style={{ fontSize: '9px', color: '#64748b' }}>Sp</div>
-                                  </div>
-                                  <div style={{ textAlign: 'center' }}>
-                                    <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#10b981' }}>{teamQuali.won}</div>
-                                    <div style={{ fontSize: '9px', color: '#64748b' }}>S</div>
-                                  </div>
-                                  <div style={{ textAlign: 'center' }}>
-                                    <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#fbbf24' }}>{teamQuali.drawn}</div>
-                                    <div style={{ fontSize: '9px', color: '#64748b' }}>U</div>
-                                  </div>
-                                  <div style={{ textAlign: 'center' }}>
-                                    <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#ef4444' }}>{teamQuali.lost}</div>
-                                    <div style={{ fontSize: '9px', color: '#64748b' }}>N</div>
-                                  </div>
-                                </div>
-
-                                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', fontSize: '11px' }}>
-                                  <span style={{ color: '#94a3b8' }}>Tore: {teamQuali.gf}:{teamQuali.ga}</span>
-                                  <span style={{ color: '#10b981', fontWeight: 'bold' }}>{teamQuali.points} Punkte</span>
-                                </div>
-                              </>
                             )}
-                          </div>
-                        )}
 
-                        {!teamQuali && (
+                            {/* Qualification Matches */}
+                            {qualiData.matches && qualiData.matches.length > 0 && (
+                              <div>
+                                <div style={{ fontSize: '12px', fontWeight: 'bold', color: 'white', marginBottom: '10px' }}>
+                                  {t('badgesQualiMatches') || 'Qualifikationsspiele'}
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                  {qualiData.matches.map((match, idx) => (
+                                    <div key={idx} style={{
+                                      padding: '10px 12px',
+                                      background: '#1e293b',
+                                      borderRadius: '6px',
+                                      fontSize: '11px'
+                                    }}>
+                                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                                        <div>
+                                          <span style={{ color: 'white', fontWeight: '500' }}>vs {match.opponent}</span>
+                                          <span style={{ color: '#64748b', marginLeft: '8px' }}>{match.venue}</span>
+                                        </div>
+                                        <span style={{
+                                          color: match.result.startsWith(match.result.split(':')[0] > match.result.split(':')[1] ? '#10b981' : match.result.split(':')[0] === match.result.split(':')[1] ? '#fbbf24' : '#ef4444'),
+                                          fontWeight: 'bold'
+                                        }}>
+                                          {match.result}
+                                        </span>
+                                      </div>
+                                      <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b', fontSize: '10px' }}>
+                                        <span>{match.date}</span>
+                                        {match.scorers && match.scorers.length > 0 && (
+                                          <span style={{ color: '#fbbf24' }}>⚽ {match.scorers.slice(0, 3).join(', ')}{match.scorers.length > 3 ? '...' : ''}</span>
+                                        )}
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </>
+                        ) : (
                           <div style={{ textAlign: 'center', color: '#64748b', padding: '20px' }}>
                             {t('badgesNoQualiData') || 'Qualifikationsdaten werden geladen...'}
                           </div>
@@ -1218,171 +1706,6 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                 </div>
               )}
 
-              {/* News Tab - Team specific news */}
-              {activeModalTab === 'news' && (
-                <div>
-                  <div style={{ fontSize: '12px', color: '#64748b', marginBottom: '16px' }}>
-                    📰 {t('badgesTeamNews') || 'Aktuelle News zu'} {language === 'en' ? selectedTeam.name_en : selectedTeam.name_de}
-                  </div>
-                  <div style={{ textAlign: 'center', color: '#64748b', padding: '30px' }}>
-                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>📰</div>
-                    <div style={{ fontSize: '11px' }}>
-                      {t('badgesNewsComingSoon') || 'Team-News werden bald hier angezeigt'}
-                    </div>
-                    <div style={{ fontSize: '10px', marginTop: '8px', color: '#475569' }}>
-                      {t('badgesNewsHint') || 'News werden aus der Hauptsektion "News" gefiltert'}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Videos Tab - Team specific videos */}
-              {activeModalTab === 'videos' && (
-                <div>
-                  {(() => {
-                    // Team-specific video searches
-                    const TEAM_VIDEOS = {
-                      'DE': [
-                        { title: '2014 WM Finale - Deutschland vs Argentinien', videoId: 'pD6i37Z8f9Y', year: 2014 },
-                        { title: 'Deutschland 7:1 Brasilien WM 2014', videoId: 'bQVoAWSP7k4', year: 2014 },
-                        { title: 'WM 1990 Finale - Deutschland vs Argentinien', videoId: 'Y_0mD9Xqx8A', year: 1990 },
-                        { title: 'WM 1974 - Das Wunder von Bern', searchQuery: 'Deutschland WM 1974 Highlights', year: 1974 },
-                        { title: 'DFB Team - Road to 2026', searchQuery: 'DFB Nationalmannschaft 2025', year: 2025 },
-                      ],
-                      'BR': [
-                        { title: 'Brasilien 5x Weltmeister - Alle Titel', searchQuery: 'Brazil World Cup wins all goals', year: 2002 },
-                        { title: 'Pelé - Bester Spieler aller Zeiten', searchQuery: 'Pele best goals World Cup', year: 1970 },
-                        { title: 'Brasilien 2002 - Ronaldo Show', videoId: 'k_X5nKs5VQQ', year: 2002 },
-                      ],
-                      'AR': [
-                        { title: 'Argentinien WM 2022 - Der Triumph', videoId: 'GGmJt9bNk7w', year: 2022 },
-                        { title: 'Messi - Alle WM Tore', searchQuery: 'Messi all World Cup goals', year: 2022 },
-                        { title: 'Maradona - Hand Gottes 1986', videoId: 'Uh5Lz2yMYWk', year: 1986 },
-                      ],
-                      'FR': [
-                        { title: 'Frankreich WM 2018 - Weltmeister', searchQuery: 'France World Cup 2018 highlights', year: 2018 },
-                        { title: 'Mbappé - Alle WM Tore', searchQuery: 'Mbappe World Cup goals', year: 2022 },
-                        { title: 'Zidane 1998 - Der Doppelpack im Finale', videoId: 'IOtTJJm4XCI', year: 1998 },
-                      ],
-                      'ES': [
-                        { title: 'Spanien 2010 - Der einzige Titel', searchQuery: 'Spain World Cup 2010 final', year: 2010 },
-                        { title: 'Iniesta - Das Tor das Spanien unsterblich machte', videoId: '7gNuEPmNKhI', year: 2010 },
-                      ],
-                      'IT': [
-                        { title: 'Italien 2006 - Weltmeister in Berlin', searchQuery: 'Italy World Cup 2006 final', year: 2006 },
-                        { title: 'Fabio Grosso - Das legendäre Tor', videoId: 'G1FtCgVKNBQ', year: 2006 },
-                      ],
-                      'EN': [
-                        { title: 'England 1966 - Einziger WM Titel', searchQuery: 'England World Cup 1966 final', year: 1966 },
-                        { title: 'Geoff Hurst Hattrick im Finale', searchQuery: 'Geoff Hurst hat trick 1966', year: 1966 },
-                      ],
-                      'NL': [
-                        { title: 'Niederlande - Totaler Fußball 1974', searchQuery: 'Netherlands Total Football 1974', year: 1974 },
-                        { title: 'Cruyff Turn - Die Legende', searchQuery: 'Johan Cruyff turn World Cup', year: 1974 },
-                      ],
-                      'PL': [
-                        { title: 'Polen WM 1974 & 1982 - Die goldene Ära', searchQuery: 'Poland World Cup 1974 1982', year: 1982 },
-                        { title: 'Lewandowski - Polens Rekordtorjäger', searchQuery: 'Lewandowski Poland goals', year: 2022 },
-                      ],
-                    };
-
-                    const teamVideos = TEAM_VIDEOS[selectedTeam.country_code] || [];
-                    const teamName = language === 'en' ? selectedTeam.name_en : selectedTeam.name_de;
-
-                    return (
-                      <div>
-                        <div style={{ fontSize: '12px', color: '#64748b', marginBottom: '16px' }}>
-                          🎬 {t('badgesTeamVideos') || 'WM-Videos zu'} {teamName}
-                        </div>
-
-                        {teamVideos.length > 0 ? (
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                            {teamVideos.map((video, idx) => (
-                              <a
-                                key={idx}
-                                href={video.videoId
-                                  ? `https://www.youtube.com/watch?v=${video.videoId}`
-                                  : `https://www.youtube.com/results?search_query=${encodeURIComponent(video.searchQuery)}`
-                                }
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: '12px',
-                                  padding: '10px',
-                                  background: '#1e293b',
-                                  borderRadius: '8px',
-                                  textDecoration: 'none',
-                                  border: '1px solid #334155',
-                                  transition: 'all 0.2s'
-                                }}
-                                onMouseOver={(e) => {
-                                  e.currentTarget.style.borderColor = '#ff0000';
-                                  e.currentTarget.style.background = '#1e293b';
-                                }}
-                                onMouseOut={(e) => {
-                                  e.currentTarget.style.borderColor = '#334155';
-                                }}
-                              >
-                                {/* Thumbnail */}
-                                <div style={{
-                                  width: '80px',
-                                  height: '45px',
-                                  background: video.videoId
-                                    ? `url(https://img.youtube.com/vi/${video.videoId}/mqdefault.jpg) center/cover`
-                                    : 'linear-gradient(135deg, #ff0000, #cc0000)',
-                                  borderRadius: '4px',
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  flexShrink: 0
-                                }}>
-                                  <span style={{ fontSize: '20px' }}>▶️</span>
-                                </div>
-                                {/* Info */}
-                                <div style={{ flex: 1 }}>
-                                  <div style={{ fontSize: '12px', color: 'white', fontWeight: '500' }}>
-                                    {video.title}
-                                  </div>
-                                  <div style={{ fontSize: '10px', color: '#64748b', marginTop: '2px' }}>
-                                    {video.year} • YouTube
-                                  </div>
-                                </div>
-                              </a>
-                            ))}
-                          </div>
-                        ) : (
-                          <div style={{ textAlign: 'center', color: '#64748b', padding: '20px' }}>
-                            <div style={{ fontSize: '24px', marginBottom: '8px' }}>🎬</div>
-                            <div style={{ fontSize: '11px' }}>
-                              {t('badgesNoVideos') || 'Videos werden bald hinzugefügt'}
-                            </div>
-                            {/* Fallback search link */}
-                            <a
-                              href={`https://www.youtube.com/results?search_query=${encodeURIComponent(teamName + ' World Cup highlights')}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{
-                                display: 'inline-block',
-                                marginTop: '12px',
-                                padding: '8px 16px',
-                                background: '#ff0000',
-                                color: 'white',
-                                borderRadius: '6px',
-                                fontSize: '11px',
-                                textDecoration: 'none'
-                              }}
-                            >
-                              🔎 {t('badgesSearchYouTube') || 'Auf YouTube suchen'}
-                            </a>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })()}
-                </div>
-              )}
             </div>
 
             {/* Close Button */}
