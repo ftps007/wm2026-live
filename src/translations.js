@@ -22,7 +22,6 @@ export const translations = {
     tabRankings: '📺 Ranglisten',
     tabTrivia: '🧠  Trivia',
     tabGuide: '📺 Guide',
-    tabSentiment: '📊 Stimmung',
 
     // Countdown
     days: 'Tage',
@@ -58,13 +57,7 @@ export const translations = {
     triviaVeryGood: 'Sehr gut! 🥈',
     triviaWellPlayed: 'Gut gespielt! 🥉',
     triviaKeepPracticing: 'Weiter üben! 💪',
-    
-    // Sentiment Features
-    sentimentFanMood: 'Fan-Stimmungs-Tracker',
-    sentimentSocialPulse: 'Social Media Puls',
-    sentimentGlobalSupport: 'Weltweite Team-Unterstützung',
-    sentimentWeeklyAnalysis: 'Wochen-Analyse',
-    
+
     // Trivia Language Notice (empty for German - native language)
     triviaLanguageNotice: '',
 
@@ -355,19 +348,6 @@ export const translations = {
     guideLockedTitle: 'Guide kommt bald',
     guideLockedDescription: 'Der komplette Fan-Guide zur WM 2026 mit Reisetipps, Stadion-Infos und mehr wird in Kürze freigeschaltet.',
 
-    // Sentiment Section
-    sentimentTitle: 'Wöchentliches Stimmungsbarometer',
-    sentimentComingSoon: 'Bald verfügbar!',
-    sentimentDescription: 'Bald siehst du hier wöchentliche Stimmungsanalysen aller Teams basierend auf Social Media, News und Fan-Umfragen.',
-    sentimentFeature1: 'Fan-Stimmungs-Tracker',
-    sentimentFeature2: 'Social Media Puls',
-    sentimentFeature3: 'Weltweiter Team-Support',
-    sentimentFeature4: 'Wochenanalyse',
-    
-    // Sentiment Barometer
-    wcMood: 'WM-Stimmung',
-    articlesAnalyzed: 'Artikel analysiert',
-
     // Auth Modal
     loginTitle: 'Anmelden',
     registerTitle: 'Registrieren',
@@ -444,7 +424,10 @@ export const translations = {
     badgesTabScorers: 'Torschützen',
     badgesTabLegends: 'Legenden',
     badgesTabCoaches: 'Trainer',
-    badgesTabH2H: '🔒 H2H',
+    badgesTabH2H: '⚔️ H2H',
+    badgesTabRoad2026: '🛣️ Road 2026',
+    badgesTabNews: '📰 News',
+    badgesTabVideos: '🎬 Videos',
     badgesAppearances: 'WM-Teilnahmen',
     badgesRecord: 'Bilanz (S-U-N)',
     badgesGoals: 'Tore (erzielt:kassiert)',
@@ -463,6 +446,19 @@ export const translations = {
     badgesNoData: 'Keine Daten verfügbar',
     badgesPremiumOnly: '🔒 Premium',
     badgesPremiumDesc: 'Head-to-Head Vergleiche sind Premium-Features',
+    badgesH2HDesc: 'Head-to-Head gegen Gruppengegner (Pflicht- & Freundschaftsspiele)',
+    badgesMatches: 'Spiele',
+    badgesNoH2HData: 'Keine H2H-Daten verfügbar',
+    badgesNoGroup: 'Gruppe noch nicht festgelegt',
+    badgesQualiPath: 'Qualifikation',
+    badgesSlots: 'Plätze',
+    badgesNoQualiData: 'Qualifikationsdaten werden geladen...',
+    badgesTeamNews: 'Aktuelle News zu',
+    badgesNewsComingSoon: 'Team-News werden bald hier angezeigt',
+    badgesNewsHint: 'News werden aus der Hauptsektion "News" gefiltert',
+    badgesTeamVideos: 'WM-Videos zu',
+    badgesNoVideos: 'Videos werden bald hinzugefügt',
+    badgesSearchYouTube: 'Auf YouTube suchen',
     group: 'Gruppe',
     loading: 'Lade...',
     error: 'Fehler',
@@ -557,7 +553,6 @@ export const translations = {
     tabRankings: '📺 Rankings',
     tabTrivia: '🧠  Trivia',
     tabGuide: '📺 Guide',
-    tabSentiment: '📊 Sentiment',
 
     // Countdown
     days: 'Days',
@@ -593,13 +588,7 @@ export const translations = {
     triviaVeryGood: 'Very good! 🥈',
     triviaWellPlayed: 'Well played! 🥉',
     triviaKeepPracticing: 'Keep practicing! 💪',
-    
-    // Sentiment Features
-    sentimentFanMood: 'Fan Mood Tracker',
-    sentimentSocialPulse: 'Social Media Pulse',
-    sentimentGlobalSupport: 'Global Team Support',
-    sentimentWeeklyAnalysis: 'Weekly Analysis',
-    
+
     // Trivia Language Notice
     triviaLanguageNotice: '',
 
@@ -890,19 +879,6 @@ export const translations = {
     guideLockedTitle: 'Guide coming soon',
     guideLockedDescription: 'The complete fan guide for World Cup 2026 with travel tips, stadium info and more will be available soon.',
 
-    // Sentiment Section
-    sentimentTitle: 'Weekly Sentiment Barometer',
-    sentimentComingSoon: 'Coming soon!',
-    sentimentDescription: 'Soon you\'ll see weekly sentiment analyses of all teams based on social media, news and fan surveys.',
-    sentimentFeature1: 'Fan Mood Tracker',
-    sentimentFeature2: 'Social Media Pulse',
-    sentimentFeature3: 'Worldwide Team Support',
-    sentimentFeature4: 'Weekly Analysis',
-    
-    // Sentiment Barometer
-    wcMood: 'Tournament Sentiment',
-    articlesAnalyzed: 'articles analyzed',
-
     // Auth Modal
     loginTitle: 'Login',
     registerTitle: 'Register',
@@ -979,7 +955,10 @@ export const translations = {
     badgesTabScorers: 'Top Scorers',
     badgesTabLegends: 'Legends',
     badgesTabCoaches: 'Coaches',
-    badgesTabH2H: '🔒 H2H',
+    badgesTabH2H: '⚔️ H2H',
+    badgesTabRoad2026: '🛣️ Road 2026',
+    badgesTabNews: '📰 News',
+    badgesTabVideos: '🎬 Videos',
     badgesAppearances: 'WC Appearances',
     badgesRecord: 'Record (W-D-L)',
     badgesGoals: 'Goals (scored:conceded)',
@@ -998,6 +977,19 @@ export const translations = {
     badgesNoData: 'No data available',
     badgesPremiumOnly: '🔒 Premium',
     badgesPremiumDesc: 'Head-to-Head comparisons are premium features',
+    badgesH2HDesc: 'Head-to-Head against group opponents (Competitive & Friendly matches)',
+    badgesMatches: 'Matches',
+    badgesNoH2HData: 'No H2H data available',
+    badgesNoGroup: 'Group not yet assigned',
+    badgesQualiPath: 'Qualification',
+    badgesSlots: 'Slots',
+    badgesNoQualiData: 'Qualification data loading...',
+    badgesTeamNews: 'Latest news about',
+    badgesNewsComingSoon: 'Team news coming soon',
+    badgesNewsHint: 'News filtered from main "News" section',
+    badgesTeamVideos: 'WC Videos about',
+    badgesNoVideos: 'Videos coming soon',
+    badgesSearchYouTube: 'Search on YouTube',
     group: 'Group',
     loading: 'Loading...',
     error: 'Error',
@@ -1092,7 +1084,6 @@ export const translations = {
     tabRankings: '📺 Rankingi',
     tabTrivia: '🧠  Trivia',
     tabGuide: '📺 Przewodnik',
-    tabSentiment: '📊 Nastroje',
 
     // Countdown
     days: 'Dni',
@@ -1128,13 +1119,7 @@ export const translations = {
     triviaVeryGood: 'Bardzo dobrze! 🥈',
     triviaWellPlayed: 'Dobrze zagrane! 🥉',
     triviaKeepPracticing: 'ćwicz dalej! 💪',
-    
-    // Sentiment Features
-    sentimentFanMood: 'Nastrój kibiców',
-    sentimentSocialPulse: 'Puls mediów społecznościowych',
-    sentimentGlobalSupport: 'Globalne wsparcie drużyn',
-    sentimentWeeklyAnalysis: 'Analiza tygodniowa',
-    
+
     // Trivia Language Notice
     triviaLanguageNotice: 'ℹ️ Pytania są wyświetlane po angielsku. Tłumaczenie na polski wkrótce.',
 
@@ -1425,19 +1410,6 @@ export const translations = {
     guideLockedTitle: 'Przewodnik wkrótce',
     guideLockedDescription: 'Kompletny przewodnik kibica na MŚ 2026 z poradami podróżniczymi, informacjami o stadionach i nie tylko zostanie wkrótce udostępniony.',
 
-    // Sentiment Section
-    sentimentTitle: 'Tygodniowy barometr nastrojów',
-    sentimentComingSoon: 'Wkrótce!',
-    sentimentDescription: 'Wkrótce zobaczysz cotygodniowe analizy nastrojów wokół wszystkich reprezentacji na podstawie mediów społecznościowych, wiadomości i ankiet kibiców.',
-    sentimentFeature1: 'Barometr nastrojów kibiców',
-    sentimentFeature2: 'Puls mediów społecznościowych',
-    sentimentFeature3: 'Wsparcie dla drużyn na świecie',
-    sentimentFeature4: 'Analiza tygodniowa',
-    
-    // Sentiment Barometer
-    wcMood: 'Nastrój MŚ',
-    articlesAnalyzed: 'artykułów przeanalizowanych',
-
     // Auth Modal
     loginTitle: 'Logowanie',
     registerTitle: 'Rejestracja',
@@ -1514,7 +1486,10 @@ export const translations = {
     badgesTabScorers: 'Strzelcy',
     badgesTabLegends: 'Legendy',
     badgesTabCoaches: 'Trenerzy',
-    badgesTabH2H: '🔒 H2H',
+    badgesTabH2H: '⚔️ H2H',
+    badgesTabRoad2026: '🛣️ Road 2026',
+    badgesTabNews: '📰 News',
+    badgesTabVideos: '🎬 Filmy',
     badgesAppearances: 'Udziały w MŚ',
     badgesRecord: 'Bilans (Z-R-P)',
     badgesGoals: 'Bramki (strzelone:stracone)',
@@ -1533,6 +1508,19 @@ export const translations = {
     badgesNoData: 'Brak danych',
     badgesPremiumOnly: '🔒 Premium',
     badgesPremiumDesc: 'Porównania H2H są funkcjami premium',
+    badgesH2HDesc: 'Head-to-Head przeciwko rywalom z grupy (mecze oficjalne i towarzyskie)',
+    badgesMatches: 'Mecze',
+    badgesNoH2HData: 'Brak danych H2H',
+    badgesNoGroup: 'Grupa jeszcze nieprzydzielona',
+    badgesQualiPath: 'Kwalifikacje',
+    badgesSlots: 'Miejsca',
+    badgesNoQualiData: 'Ładowanie danych kwalifikacyjnych...',
+    badgesTeamNews: 'Najnowsze wiadomości o',
+    badgesNewsComingSoon: 'Wiadomości drużynowe wkrótce',
+    badgesNewsHint: 'Wiadomości filtrowane z głównej sekcji "News"',
+    badgesTeamVideos: 'Filmy MŚ o',
+    badgesNoVideos: 'Filmy wkrótce',
+    badgesSearchYouTube: 'Szukaj na YouTube',
     group: 'Grupa',
     loading: 'Ładowanie...',
     error: 'Błąd',

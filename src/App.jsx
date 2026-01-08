@@ -7,8 +7,6 @@ import WM2026Poll from './WM2026Poll';
 import SpieleSection from './SpieleSection';
 import RanglistenSection from './RanglistenSection';
 import { LanguageProvider, useLanguage, LanguageSelector } from './LanguageContext';
-import SentimentBarometer from './SentimentBarometer';
-import SentimentDashboard from './SentimentDashboardPremium';
 import WM2026TeamBadges from './WM2026TeamBadges';
 import { useDevice } from './useDevice';
 
@@ -807,7 +805,6 @@ function AppContent() {
     { id: 'leagues', label: t('tabRankings') }, 
     { id: 'trivia', label: t('tabTrivia') },
     { id: 'teams', label: '🏅 Teams' },
-    { id: 'sentiment', label: t('tabSentiment') },
     { id: 'guide', label: t('tabGuide'), locked: true }
   ];
 
@@ -1096,7 +1093,7 @@ function AppContent() {
                   background: triviaRound[triviaIndex].difficulty === 'easy' ? 'rgba(16,185,129,0.2)' : triviaRound[triviaIndex].difficulty === 'medium' ? 'rgba(251,191,36,0.2)' : 'rgba(239,68,68,0.2)',
                   color: triviaRound[triviaIndex].difficulty === 'easy' ? '#10b981' : triviaRound[triviaIndex].difficulty === 'medium' ? '#fbbf24' : '#ef4444'
                 }}>
-                  {triviaRound[triviaIndex].difficulty === 'easy' ? `⭐ ${t('easy')}` : triviaRound[triviaIndex].difficulty === 'medium' ? `⭐⭐ ${t('medium')}` : `⭐⭐⭐ ${t('hard')}`}
+                  {triviaRound[triviaIndex].difficulty === 'easy' ? '\u2605 ' + t('easy') : triviaRound[triviaIndex].difficulty === 'medium' ? '\u2605\u2605 ' + t('medium') : '\u2605\u2605\u2605 ' + t('hard')}
                 </span>
               </div>
               
@@ -1187,14 +1184,10 @@ function AppContent() {
           </div>
         </div>)}
 
-        {/* SENTIMENT - FULL DASHBOARD */}
         {activeTab === 'teams' && (
           <WM2026TeamBadges />
         )}
 
-        {activeTab === 'sentiment' && (
-          <SentimentDashboard language={language} user={user} />
-        )}
 
         {/* GUIDE - LOCKED */}
         {activeTab === 'guide' && (
