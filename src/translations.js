@@ -35,7 +35,7 @@ export const translations = {
     newsUpdating: 'Aktualisiere...',
     newsLive: 'Live-News • Auto-Update',
     newsLoading: 'Lade aktuelle News...',
-    newsReadArticle: 'Artikel lesen →',
+    newsReadArticle: 'Artikel lesen',
     newsError: 'Live-News konnten nicht geladen werden.',
     newsCountryFlags: '🇩🇪 🇦🇹 🇨🇭',
     
@@ -570,7 +570,7 @@ export const translations = {
     newsUpdating: 'Updating...',
     newsLive: 'Live News • Auto-Update',
     newsLoading: 'Loading latest news...',
-    newsReadArticle: 'Read article →',
+    newsReadArticle: 'Read article',
     newsError: 'Failed to load live news.',
     newsCountryFlags: '🇺🇸 🇬🇧',
     
@@ -1105,7 +1105,7 @@ export const translations = {
     newsUpdating: 'Aktualizowanie...',
     newsLive: 'Na żywo • Auto-aktualizacja',
     newsLoading: 'Ładowanie wiadomości...',
-    newsReadArticle: 'Czytaj artykuł →',
+    newsReadArticle: 'Czytaj artykul',
     newsError: 'Nie udało się załadować wiadomości.',
     newsCountryFlags: '🇵🇱',
     
