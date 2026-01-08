@@ -324,17 +324,51 @@ export default function RanglistenSection({
         {/* Header */}
         <div style={{ fontSize: 14, fontWeight: 'bold', color: 'white', marginBottom: 12 }}>{tt('rankingsTitle')}</div>
 
-        {/* WM Poll Results for everyone */}
-        <div style={{ background: 'linear-gradient(135deg, #fbbf24, #f59e0b)', borderRadius: 12, padding: 20, marginBottom: 16, textAlign: 'center' }}>
-          <div style={{ fontSize: 40, marginBottom: 8 }}>🏆</div>
-          <div style={{ fontSize: 18, fontWeight: 'bold', color: '#0f172a' }}>{tt('pollTitle')}</div>
-          <div style={{ fontSize: 12, color: 'rgba(0,0,0,0.6)', marginTop: 4 }}>
-            {wmPollResults?.reduce((sum, r) => sum + r.votes, 0) || 0} {tt('votesSubmitted')}
+        {/* WM Poll Results Header with Stats */}
+        <div style={{
+          background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #ea580c 100%)',
+          borderRadius: 16,
+          padding: 24,
+          marginBottom: 20,
+          textAlign: 'center',
+          boxShadow: '0 8px 32px rgba(251,191,36,0.3)'
+        }}>
+          <div style={{ fontSize: 48, marginBottom: 8, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))' }}>🏆</div>
+          <div style={{ fontSize: 20, fontWeight: 'bold', color: '#0f172a', textShadow: '0 1px 2px rgba(255,255,255,0.3)' }}>{tt('pollTitle')}</div>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: 24,
+            marginTop: 16,
+            background: 'rgba(0,0,0,0.15)',
+            borderRadius: 12,
+            padding: '12px 20px'
+          }}>
+            <div>
+              <div style={{ fontSize: 24, fontWeight: 'bold', color: '#0f172a' }}>
+                {wmPollResults?.reduce((sum, r) => sum + r.votes, 0) || 0}
+              </div>
+              <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.7)', fontWeight: '600' }}>{tt('votesSubmitted')}</div>
+            </div>
+            <div style={{ width: 1, background: 'rgba(0,0,0,0.2)' }} />
+            <div>
+              <div style={{ fontSize: 24, fontWeight: 'bold', color: '#0f172a' }}>
+                {wmPollResults?.length || 0}
+              </div>
+              <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.7)', fontWeight: '600' }}>{tt('teamsVoted')}</div>
+            </div>
           </div>
         </div>
 
-        {/* Poll Results */}
-        <div style={{ background: '#1e293b', borderRadius: 10, overflow: 'hidden', border: '1px solid #334155', marginBottom: 16 }}>
+        {/* Poll Results with enhanced design */}
+        <div style={{
+          background: '#1e293b',
+          borderRadius: 16,
+          overflow: 'hidden',
+          border: '1px solid #334155',
+          marginBottom: 16,
+          boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
+        }}>
           {!wmPollResults || wmPollResults.length === 0 ? (
             <div style={{ padding: 40, textAlign: 'center', color: '#64748b' }}>
               <div style={{ fontSize: 32, marginBottom: 8 }}>📊</div>
@@ -345,41 +379,86 @@ export default function RanglistenSection({
               const totalVotes = wmPollResults.reduce((sum, r) => sum + r.votes, 0);
               const percentage = totalVotes > 0 ? (result.votes / totalVotes * 100).toFixed(1) : 0;
               const isTop3 = idx < 3;
-              
+              const barColors = [
+                'linear-gradient(90deg, #fbbf24, #f59e0b)',
+                'linear-gradient(90deg, #94a3b8, #64748b)',
+                'linear-gradient(90deg, #cd7f32, #a65f1a)',
+              ];
+
               return (
-                <div 
-                  key={result.team} 
-                  style={{ 
-                    padding: '12px 16px', 
+                <div
+                  key={result.team}
+                  style={{
+                    padding: '14px 16px',
                     borderBottom: '1px solid #334155',
-                    background: isTop3 ? `rgba(251,191,36,${0.15 - idx * 0.04})` : 'transparent'
+                    background: isTop3 ? `rgba(251,191,36,${0.08 - idx * 0.02})` : 'transparent'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
-                    <div style={{ 
-                      width: 28, 
-                      fontWeight: 'bold', 
-                      fontSize: 14,
-                      color: idx === 0 ? '#fbbf24' : idx === 1 ? '#94a3b8' : idx === 2 ? '#cd7f32' : '#64748b'
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+                    {/* Rank Badge */}
+                    <div style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: '50%',
+                      background: idx === 0 ? 'linear-gradient(135deg, #fbbf24, #f59e0b)' :
+                                 idx === 1 ? 'linear-gradient(135deg, #94a3b8, #64748b)' :
+                                 idx === 2 ? 'linear-gradient(135deg, #cd7f32, #a65f1a)' : '#334155',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 'bold',
+                      fontSize: isTop3 ? 14 : 11,
+                      color: isTop3 ? '#0f172a' : '#94a3b8',
+                      boxShadow: isTop3 ? '0 2px 8px rgba(0,0,0,0.3)' : 'none'
                     }}>
-                      {idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `${idx + 1}.`}
+                      {idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : idx + 1}
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, flex: 1 }}>
-                      <span style={{ fontSize: 20 }}>{TEAM_FLAGS[result.team] || '🏳️'}</span>
-                      <span style={{ fontSize: 12, color: 'white', fontWeight: isTop3 ? 'bold' : 'normal' }}>
+
+                    {/* Flag & Team */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1 }}>
+                      <span style={{ fontSize: 24 }}>{TEAM_FLAGS[result.team] || '🏳️'}</span>
+                      <span style={{ fontSize: 13, color: 'white', fontWeight: isTop3 ? 'bold' : 'normal' }}>
                         {tTeam(result.team)}
                       </span>
                     </div>
-                    <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: 14, fontWeight: 'bold', color: '#fbbf24' }}>{percentage}%</div>
+
+                    {/* Votes & Percentage */}
+                    <div style={{
+                      textAlign: 'right',
+                      background: isTop3 ? 'rgba(0,0,0,0.2)' : 'rgba(0,0,0,0.1)',
+                      borderRadius: 8,
+                      padding: '6px 12px',
+                      minWidth: 80
+                    }}>
+                      <div style={{
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                        color: idx === 0 ? '#fbbf24' : idx === 1 ? '#e2e8f0' : idx === 2 ? '#fcd34d' : '#10b981'
+                      }}>
+                        {percentage}%
+                      </div>
+                      <div style={{ fontSize: 10, color: '#94a3b8', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 3 }}>
+                        <span style={{ color: '#64748b' }}>👥</span>
+                        <span style={{ fontWeight: '600' }}>{result.votes}</span>
+                      </div>
                     </div>
                   </div>
-                  <div style={{ background: '#0f172a', borderRadius: 4, height: 6, marginLeft: 40 }}>
-                    <div style={{ 
-                      background: idx === 0 ? '#fbbf24' : idx === 1 ? '#94a3b8' : idx === 2 ? '#cd7f32' : '#10b981',
-                      height: '100%', 
-                      borderRadius: 4, 
-                      width: `${percentage}%`
+
+                  {/* Progress Bar */}
+                  <div style={{
+                    background: '#0f172a',
+                    borderRadius: 6,
+                    height: 8,
+                    marginLeft: 44,
+                    overflow: 'hidden',
+                    boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.3)'
+                  }}>
+                    <div style={{
+                      background: isTop3 ? barColors[idx] : 'linear-gradient(90deg, #10b981, #059669)',
+                      height: '100%',
+                      borderRadius: 6,
+                      width: `${percentage}%`,
+                      transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
                     }} />
                   </div>
                 </div>
@@ -460,17 +539,162 @@ export default function RanglistenSection({
       {/* ========== WM POLL RESULTS ========== */}
       {activeRankingTab === 'poll' && (
         <div>
-          {/* Header */}
-          <div style={{ background: 'linear-gradient(135deg, #fbbf24, #f59e0b)', borderRadius: 12, padding: 20, marginBottom: 16, textAlign: 'center' }}>
-            <div style={{ fontSize: 40, marginBottom: 8 }}>🏆</div>
-            <div style={{ fontSize: 18, fontWeight: 'bold', color: '#0f172a' }}>{tt('pollTitle')}</div>
-            <div style={{ fontSize: 12, color: 'rgba(0,0,0,0.6)', marginTop: 4 }}>
-              {wmPollResults?.reduce((sum, r) => sum + r.votes, 0) || 0} {tt('votesSubmitted')}
+          {/* Header with Stats */}
+          <div style={{
+            background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #ea580c 100%)',
+            borderRadius: 16,
+            padding: 24,
+            marginBottom: 20,
+            textAlign: 'center',
+            boxShadow: '0 8px 32px rgba(251,191,36,0.3)'
+          }}>
+            <div style={{ fontSize: 48, marginBottom: 8, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))' }}>🏆</div>
+            <div style={{ fontSize: 20, fontWeight: 'bold', color: '#0f172a', textShadow: '0 1px 2px rgba(255,255,255,0.3)' }}>{tt('pollTitle')}</div>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 24,
+              marginTop: 16,
+              background: 'rgba(0,0,0,0.15)',
+              borderRadius: 12,
+              padding: '12px 20px'
+            }}>
+              <div>
+                <div style={{ fontSize: 24, fontWeight: 'bold', color: '#0f172a' }}>
+                  {wmPollResults?.reduce((sum, r) => sum + r.votes, 0) || 0}
+                </div>
+                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.7)', fontWeight: '600' }}>{tt('votesSubmitted')}</div>
+              </div>
+              <div style={{ width: 1, background: 'rgba(0,0,0,0.2)' }} />
+              <div>
+                <div style={{ fontSize: 24, fontWeight: 'bold', color: '#0f172a' }}>
+                  {wmPollResults?.length || 0}
+                </div>
+                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.7)', fontWeight: '600' }}>{tt('teamsVoted')}</div>
+              </div>
             </div>
           </div>
 
-          {/* Results */}
-          <div style={{ background: '#1e293b', borderRadius: 10, overflow: 'hidden', border: '1px solid #334155' }}>
+          {/* Podium Top 3 */}
+          {wmPollResults && wmPollResults.length >= 3 && (
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'flex-end',
+              gap: 8,
+              marginBottom: 20,
+              padding: '0 10px'
+            }}>
+              {/* 2nd Place */}
+              <div style={{
+                flex: 1,
+                maxWidth: 110,
+                background: 'linear-gradient(180deg, #64748b 0%, #475569 100%)',
+                borderRadius: '12px 12px 0 0',
+                padding: '16px 8px',
+                textAlign: 'center',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.3)'
+              }}>
+                <div style={{ fontSize: 28 }}>{TEAM_FLAGS[wmPollResults[1]?.team] || '🏳️'}</div>
+                <div style={{ fontSize: 10, color: 'white', fontWeight: 'bold', marginTop: 4, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {tTeam(wmPollResults[1]?.team)}
+                </div>
+                <div style={{ fontSize: 20, marginTop: 4 }}>🥈</div>
+                <div style={{
+                  background: 'rgba(0,0,0,0.3)',
+                  borderRadius: 8,
+                  padding: '6px 4px',
+                  marginTop: 8
+                }}>
+                  <div style={{ fontSize: 14, fontWeight: 'bold', color: '#e2e8f0' }}>
+                    {((wmPollResults[1]?.votes / wmPollResults.reduce((s,r) => s + r.votes, 0)) * 100).toFixed(1)}%
+                  </div>
+                  <div style={{ fontSize: 9, color: '#94a3b8' }}>{wmPollResults[1]?.votes} {tt('votes')}</div>
+                </div>
+              </div>
+
+              {/* 1st Place */}
+              <div style={{
+                flex: 1,
+                maxWidth: 130,
+                background: 'linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%)',
+                borderRadius: '12px 12px 0 0',
+                padding: '20px 8px',
+                textAlign: 'center',
+                boxShadow: '0 8px 24px rgba(251,191,36,0.4)',
+                transform: 'translateY(-12px)'
+              }}>
+                <div style={{ fontSize: 36 }}>{TEAM_FLAGS[wmPollResults[0]?.team] || '🏳️'}</div>
+                <div style={{ fontSize: 11, color: '#0f172a', fontWeight: 'bold', marginTop: 4 }}>
+                  {tTeam(wmPollResults[0]?.team)}
+                </div>
+                {WM_STARS[wmPollResults[0]?.team] > 0 && (
+                  <div style={{ fontSize: 8, marginTop: 2 }}>{'⭐'.repeat(WM_STARS[wmPollResults[0]?.team])}</div>
+                )}
+                <div style={{ fontSize: 24, marginTop: 6 }}>🥇</div>
+                <div style={{
+                  background: 'rgba(0,0,0,0.15)',
+                  borderRadius: 8,
+                  padding: '8px 4px',
+                  marginTop: 8
+                }}>
+                  <div style={{ fontSize: 18, fontWeight: 'bold', color: '#0f172a' }}>
+                    {((wmPollResults[0]?.votes / wmPollResults.reduce((s,r) => s + r.votes, 0)) * 100).toFixed(1)}%
+                  </div>
+                  <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.7)', fontWeight: '600' }}>{wmPollResults[0]?.votes} {tt('votes')}</div>
+                </div>
+              </div>
+
+              {/* 3rd Place */}
+              <div style={{
+                flex: 1,
+                maxWidth: 110,
+                background: 'linear-gradient(180deg, #cd7f32 0%, #a65f1a 100%)',
+                borderRadius: '12px 12px 0 0',
+                padding: '14px 8px',
+                textAlign: 'center',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.3)'
+              }}>
+                <div style={{ fontSize: 26 }}>{TEAM_FLAGS[wmPollResults[2]?.team] || '🏳️'}</div>
+                <div style={{ fontSize: 10, color: 'white', fontWeight: 'bold', marginTop: 4, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {tTeam(wmPollResults[2]?.team)}
+                </div>
+                <div style={{ fontSize: 18, marginTop: 4 }}>🥉</div>
+                <div style={{
+                  background: 'rgba(0,0,0,0.3)',
+                  borderRadius: 8,
+                  padding: '6px 4px',
+                  marginTop: 8
+                }}>
+                  <div style={{ fontSize: 13, fontWeight: 'bold', color: '#fef3c7' }}>
+                    {((wmPollResults[2]?.votes / wmPollResults.reduce((s,r) => s + r.votes, 0)) * 100).toFixed(1)}%
+                  </div>
+                  <div style={{ fontSize: 9, color: '#fde68a' }}>{wmPollResults[2]?.votes} {tt('votes')}</div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Full Results List */}
+          <div style={{
+            background: '#1e293b',
+            borderRadius: 16,
+            overflow: 'hidden',
+            border: '1px solid #334155',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
+          }}>
+            <div style={{
+              background: 'linear-gradient(90deg, #0f172a, #1e293b)',
+              padding: '12px 16px',
+              borderBottom: '1px solid #334155',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}>
+              <span style={{ fontSize: 11, color: '#64748b', fontWeight: '600' }}>📊 {tt('allTeamsRanking')}</span>
+              <span style={{ fontSize: 10, color: '#475569' }}>{wmPollResults?.length || 0} {tt('teams')}</span>
+            </div>
+
             {!wmPollResults || wmPollResults.length === 0 ? (
               <div style={{ padding: 40, textAlign: 'center', color: '#64748b' }}>
                 <div style={{ fontSize: 32, marginBottom: 8 }}>📊</div>
@@ -482,55 +706,106 @@ export default function RanglistenSection({
                 const totalVotes = wmPollResults.reduce((sum, r) => sum + r.votes, 0);
                 const percentage = totalVotes > 0 ? (result.votes / totalVotes * 100).toFixed(1) : 0;
                 const isTop3 = idx < 3;
-                
+                const barColors = [
+                  'linear-gradient(90deg, #fbbf24, #f59e0b)',
+                  'linear-gradient(90deg, #94a3b8, #64748b)',
+                  'linear-gradient(90deg, #cd7f32, #a65f1a)',
+                ];
+
                 return (
-                  <div 
-                    key={result.team} 
-                    style={{ 
-                      padding: '12px 16px', 
+                  <div
+                    key={result.team}
+                    style={{
+                      padding: '14px 16px',
                       borderBottom: '1px solid #334155',
-                      background: isTop3 ? `rgba(251,191,36,${0.15 - idx * 0.04})` : 'transparent'
+                      background: isTop3 ? `rgba(251,191,36,${0.08 - idx * 0.02})` : 'transparent',
+                      transition: 'background 0.2s ease'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
-                      {/* Rank */}
-                      <div style={{ 
-                        width: 28, 
-                        fontWeight: 'bold', 
-                        fontSize: 14,
-                        color: idx === 0 ? '#fbbf24' : idx === 1 ? '#94a3b8' : idx === 2 ? '#cd7f32' : '#64748b'
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+                      {/* Rank Badge */}
+                      <div style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: '50%',
+                        background: idx === 0 ? 'linear-gradient(135deg, #fbbf24, #f59e0b)' :
+                                   idx === 1 ? 'linear-gradient(135deg, #94a3b8, #64748b)' :
+                                   idx === 2 ? 'linear-gradient(135deg, #cd7f32, #a65f1a)' : '#334155',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: 'bold',
+                        fontSize: isTop3 ? 14 : 11,
+                        color: isTop3 ? '#0f172a' : '#94a3b8',
+                        boxShadow: isTop3 ? '0 2px 8px rgba(0,0,0,0.3)' : 'none'
                       }}>
-                        {idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `${idx + 1}.`}
+                        {idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : idx + 1}
                       </div>
-                      
+
                       {/* Flag & Team */}
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flex: 1 }}>
-                        <span style={{ fontSize: 20 }}>{TEAM_FLAGS[result.team] || '🏳️'}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1 }}>
+                        <span style={{ fontSize: 24, filter: isTop3 ? 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' : 'none' }}>
+                          {TEAM_FLAGS[result.team] || '🏳️'}
+                        </span>
                         <div>
-                          <span style={{ fontSize: 12, color: 'white', fontWeight: isTop3 ? 'bold' : 'normal' }}>
+                          <div style={{
+                            fontSize: 13,
+                            color: 'white',
+                            fontWeight: isTop3 ? 'bold' : 'normal'
+                          }}>
                             {tTeam(result.team)}
-                          </span>
+                          </div>
                           {WM_STARS[result.team] > 0 && (
-                            <span style={{ marginLeft: 6, fontSize: 8 }}>{'⭐'.repeat(WM_STARS[result.team])}</span>
+                            <div style={{ fontSize: 8, marginTop: 2 }}>{'⭐'.repeat(WM_STARS[result.team])}</div>
                           )}
                         </div>
                       </div>
-                      
-                      {/* Votes & Percentage */}
-                      <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontSize: 14, fontWeight: 'bold', color: '#fbbf24' }}>{percentage}%</div>
-                        <div style={{ fontSize: 9, color: '#64748b' }}>{result.votes} {tt('votes')}</div>
+
+                      {/* Votes & Percentage - Enhanced */}
+                      <div style={{
+                        textAlign: 'right',
+                        background: isTop3 ? 'rgba(0,0,0,0.2)' : 'rgba(0,0,0,0.1)',
+                        borderRadius: 8,
+                        padding: '6px 12px',
+                        minWidth: 80
+                      }}>
+                        <div style={{
+                          fontSize: 16,
+                          fontWeight: 'bold',
+                          color: idx === 0 ? '#fbbf24' : idx === 1 ? '#e2e8f0' : idx === 2 ? '#fcd34d' : '#10b981'
+                        }}>
+                          {percentage}%
+                        </div>
+                        <div style={{
+                          fontSize: 10,
+                          color: '#94a3b8',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'flex-end',
+                          gap: 3
+                        }}>
+                          <span style={{ color: '#64748b' }}>👥</span>
+                          <span style={{ fontWeight: '600' }}>{result.votes}</span>
+                        </div>
                       </div>
                     </div>
-                    
-                    {/* Progress Bar */}
-                    <div style={{ background: '#0f172a', borderRadius: 4, height: 6, marginLeft: 40 }}>
-                      <div style={{ 
-                        background: idx === 0 ? '#fbbf24' : idx === 1 ? '#94a3b8' : idx === 2 ? '#cd7f32' : '#10b981',
-                        height: '100%', 
-                        borderRadius: 4, 
+
+                    {/* Enhanced Progress Bar */}
+                    <div style={{
+                      background: '#0f172a',
+                      borderRadius: 6,
+                      height: 8,
+                      marginLeft: 44,
+                      overflow: 'hidden',
+                      boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.3)'
+                    }}>
+                      <div style={{
+                        background: isTop3 ? barColors[idx] : 'linear-gradient(90deg, #10b981, #059669)',
+                        height: '100%',
+                        borderRadius: 6,
                         width: `${percentage}%`,
-                        transition: 'width 0.5s ease'
+                        transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                        boxShadow: isTop3 ? '0 0 8px rgba(251,191,36,0.5)' : 'none'
                       }} />
                     </div>
                   </div>
