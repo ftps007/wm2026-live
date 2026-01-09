@@ -261,6 +261,14 @@ const H2H_DATA = {
       { date: '2018-06-17', comp: 'WM', venue: 'Moskau', attendance: 78011, result: '0:1', scorers: ['Lozano'] },
       { date: '2017-06-29', comp: 'Confed Cup HF', venue: 'Sotschi', attendance: 40855, result: '4:1', scorers: ['Goretzka 2', 'Werner 2', 'Fabian'] },
     ],
+    // Group E opponents
+    'EC': [
+      { date: '2013-05-29', comp: 'Friendly', venue: 'Boca Raton', attendance: 10000, result: '4:2', scorers: ['Reus 2', 'Müller', 'Götze', 'Valencia', 'Noboa'] },
+      { date: '2006-06-20', comp: 'WM', venue: 'Berlin', attendance: 72000, result: '3:0', scorers: ['Klose 2', 'Podolski'] },
+    ],
+    'CI': [
+      { date: '2009-11-18', comp: 'Friendly', venue: 'München', attendance: 33015, result: '2:2', scorers: ['Podolski 2', 'Eboué (ET)', 'Doumbia'] },
+    ],
   },
   'AR': {
     'DE': [
@@ -283,6 +291,21 @@ const H2H_DATA = {
     'HR': [
       { date: '2022-12-13', comp: 'WM HF', venue: 'Lusail', attendance: 88966, result: '3:0', scorers: ['Messi', 'Álvarez 2'] },
     ],
+    // Group J opponents
+    'AT': [
+      { date: '2024-06-14', comp: 'Friendly', venue: 'Wien', attendance: 45000, result: '2:0', scorers: ['Messi', 'Di Maria'] },
+      { date: '1978-06-14', comp: 'WM', venue: 'Buenos Aires', attendance: 71712, result: '2:1', scorers: ['Luque', 'Bertoni'] },
+      { date: '1958-06-08', comp: 'WM', venue: 'Helsingborg', attendance: 16793, result: '3:1', scorers: ['Corbatta 3'] },
+      { date: '1954-06-17', comp: 'WM', venue: 'Lausanne', attendance: 32000, result: '0:1', scorers: [] },
+    ],
+    'DZ': [
+      { date: '2014-06-25', comp: 'WM', venue: 'Porto Alegre', attendance: 43285, result: '4:2', scorers: ['Messi 2', 'Higuain', 'Di Maria'] },
+      { date: '1986-06-02', comp: 'WM', venue: 'Mexiko-Stadt', attendance: 102000, result: '2:0', scorers: ['Valdano', 'Burruchaga'] },
+      { date: '1982-06-16', comp: 'WM', venue: 'Gijon', attendance: 32000, result: '1:2', scorers: ['Maradona'] },
+    ],
+    'JO': [
+      { date: '2023-09-12', comp: 'Friendly', venue: 'Amman', attendance: 18000, result: '3:0', scorers: ['Messi', 'Alvarez 2'] },
+    ],
   },
   'FR': {
     'AR': [
@@ -304,6 +327,13 @@ const H2H_DATA = {
     'BE': [
       { date: '2018-07-10', comp: 'WM HF', venue: 'St. Petersburg', attendance: 64286, result: '1:0', scorers: ['Umtiti'] },
     ],
+    // Group I opponents
+    'SN': [
+      { date: '2002-05-31', comp: 'WM', venue: 'Seoul', attendance: 62561, result: '0:1', scorers: ['Bouba Diop'] },
+    ],
+    'NO': [
+      { date: '1998-06-28', comp: 'WM', venue: 'Saint-Denis', attendance: 77000, result: '0:0', scorers: [] },
+    ],
   },
   'EN': {
     'FR': [
@@ -323,6 +353,13 @@ const H2H_DATA = {
       { date: '1990-07-04', comp: 'WM HF', venue: 'Turin', attendance: 62628, result: '1:1 (3:4 i.E.)', scorers: ['Lineker', 'Brehme'] },
       { date: '2010-06-27', comp: 'WM AF', venue: 'Bloemfontein', attendance: 40510, result: '1:4', scorers: ['Upson', 'Klose', 'Podolski', 'Müller 2'] },
       { date: '2021-06-29', comp: 'EM AF', venue: 'Wembley', attendance: 40000, result: '2:0', scorers: ['Sterling', 'Kane'] },
+    ],
+    // Group L opponents
+    'GH': [
+      { date: '2014-03-29', comp: 'Friendly', venue: 'Wembley', attendance: 40181, result: '0:0', scorers: [] },
+    ],
+    'PA': [
+      { date: '2018-06-24', comp: 'WM', venue: 'Nizhny Novgorod', attendance: 43319, result: '6:1', scorers: ['Stones 2', 'Kane 3 (2P)', 'Lingard', 'Baloy'] },
     ],
   },
   'BR': {
@@ -344,6 +381,350 @@ const H2H_DATA = {
     ],
     'AR': [
       { date: '2022-11-30', comp: 'WM', venue: 'Doha', attendance: 44089, result: '0:2', scorers: ['Mac Allister', 'Álvarez'] },
+    ],
+  },
+  // GROUP J: Argentina, Algeria, Austria, Jordan
+  'AT': {
+    'AR': [
+      { date: '2024-06-14', comp: 'Friendly', venue: 'Wien', attendance: 45000, result: '0:2', scorers: ['Messi', 'Di Maria'] },
+      { date: '1978-06-14', comp: 'WM', venue: 'Buenos Aires', attendance: 71712, result: '1:2', scorers: ['Krankl', 'Luque', 'Bertoni'] },
+      { date: '1958-06-08', comp: 'WM', venue: 'Helsingborg', attendance: 16793, result: '1:3', scorers: ['Koerner', 'Corbatta 3'] },
+      { date: '1954-06-17', comp: 'WM', venue: 'Lausanne', attendance: 32000, result: '1:0', scorers: ['Koerner'] },
+    ],
+    'DZ': [
+      { date: '2014-03-05', comp: 'Friendly', venue: 'Wien', attendance: 15000, result: '3:0', scorers: ['Arnautovic', 'Alaba', 'Junuzovic'] },
+      { date: '2010-11-17', comp: 'Friendly', venue: 'Algier', attendance: 25000, result: '2:0', scorers: ['Imorou (ET)', 'Ghezzal'] },
+    ],
+    'JO': [
+      { date: '2012-02-29', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 8000, result: '1:1', scorers: ['Junuzovic', 'Al-Deeb'] },
+    ],
+  },
+  'DZ': {
+    'AR': [
+      { date: '2014-06-25', comp: 'WM', venue: 'Porto Alegre', attendance: 43285, result: '2:4', scorers: ['Djabou', 'Halliche', 'Messi 2', 'Higuain', 'Di Maria'] },
+      { date: '1986-06-02', comp: 'WM', venue: 'Mexiko-Stadt', attendance: 102000, result: '0:2', scorers: ['Valdano', 'Burruchaga'] },
+      { date: '1982-06-16', comp: 'WM', venue: 'Gijon', attendance: 32000, result: '2:1', scorers: ['Assad', 'Belloumi', 'Maradona'] },
+    ],
+    'AT': [
+      { date: '2014-03-05', comp: 'Friendly', venue: 'Wien', attendance: 15000, result: '0:3', scorers: [] },
+      { date: '2010-11-17', comp: 'Friendly', venue: 'Algier', attendance: 25000, result: '2:0', scorers: ['Imorou (ET)', 'Ghezzal'] },
+    ],
+    'JO': [
+      { date: '2023-06-16', comp: 'Arab Cup', venue: 'Algier', attendance: 35000, result: '3:1', scorers: ['Mahrez', 'Benrahma', 'Belaili', 'Al-Rawabdeh'] },
+      { date: '2021-12-07', comp: 'Arab Cup', venue: 'Doha', attendance: 27000, result: '4:1', scorers: ['Bounedjah 2', 'Slimani', 'Sayoud', 'Al-Naimat'] },
+    ],
+  },
+  'JO': {
+    'AR': [
+      { date: '2023-09-12', comp: 'Friendly', venue: 'Amman', attendance: 18000, result: '0:3', scorers: ['Messi', 'Alvarez 2'] },
+    ],
+    'AT': [
+      { date: '2012-02-29', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 8000, result: '1:1', scorers: ['Al-Deeb'] },
+    ],
+    'DZ': [
+      { date: '2023-06-16', comp: 'Arab Cup', venue: 'Algier', attendance: 35000, result: '1:3', scorers: ['Al-Rawabdeh'] },
+      { date: '2021-12-07', comp: 'Arab Cup', venue: 'Doha', attendance: 27000, result: '1:4', scorers: ['Al-Naimat'] },
+    ],
+  },
+  // GROUP A: Mexico, South Korea, South Africa
+  'MX': {
+    'KR': [
+      { date: '2018-06-23', comp: 'WM', venue: 'Rostov', attendance: 41835, result: '2:1', scorers: ['Vela (P)', 'Hernández', 'Son Heung-min'] },
+      { date: '1998-06-13', comp: 'WM', venue: 'Lyon', attendance: 39100, result: '3:1', scorers: ['Peláez', 'L. Hernández 2', 'Ha Seok-ju'] },
+    ],
+    'ZA': [
+      { date: '2010-06-11', comp: 'WM', venue: 'Johannesburg', attendance: 84490, result: '1:1', scorers: ['Márquez', 'Tshabalala'] },
+    ],
+  },
+  'KR': {
+    'MX': [
+      { date: '2018-06-23', comp: 'WM', venue: 'Rostov', attendance: 41835, result: '1:2', scorers: ['Son Heung-min'] },
+      { date: '1998-06-13', comp: 'WM', venue: 'Lyon', attendance: 39100, result: '1:3', scorers: ['Ha Seok-ju'] },
+    ],
+    'ZA': [
+      { date: '2019-05-28', comp: 'U20 WM', venue: 'Tychy', attendance: 8500, result: '1:0', scorers: ['Cho Young-wook'] },
+    ],
+  },
+  'ZA': {
+    'MX': [
+      { date: '2010-06-11', comp: 'WM', venue: 'Johannesburg', attendance: 84490, result: '1:1', scorers: ['Tshabalala'] },
+    ],
+    'KR': [
+      { date: '2019-05-28', comp: 'U20 WM', venue: 'Tychy', attendance: 8500, result: '0:1', scorers: [] },
+    ],
+  },
+  // GROUP C: Brazil, Morocco, Haiti, Scotland
+  'SCO': {
+    'BR': [
+      { date: '1998-06-10', comp: 'WM', venue: 'Paris', attendance: 80000, result: '1:2', scorers: ['Collins (P)', 'Sampaio', 'Boyd (ET)'] },
+      { date: '1990-06-20', comp: 'WM', venue: 'Turin', attendance: 62628, result: '0:1', scorers: ['Müller'] },
+      { date: '1982-06-18', comp: 'WM', venue: 'Sevilla', attendance: 47379, result: '1:4', scorers: ['Narey', 'Zico', 'Oscar', 'Eder', 'Falcão'] },
+      { date: '1974-06-18', comp: 'WM', venue: 'Frankfurt', attendance: 62000, result: '0:0', scorers: [] },
+    ],
+    'MA': [
+      { date: '1998-06-23', comp: 'WM', venue: 'Saint-Etienne', attendance: 30600, result: '0:3', scorers: ['Bassir 2', 'Hadda'] },
+    ],
+  },
+  'MA': {
+    'BR': [
+      { date: '1998-06-16', comp: 'WM', venue: 'Nantes', attendance: 35500, result: '0:3', scorers: ['Ronaldo 2', 'Rivaldo'] },
+    ],
+    'SCO': [
+      { date: '1998-06-23', comp: 'WM', venue: 'Saint-Etienne', attendance: 30600, result: '3:0', scorers: ['Bassir 2', 'Hadda'] },
+    ],
+  },
+  // GROUP E: Germany, Curaçao, Ivory Coast, Ecuador (DE already has some entries)
+  'EC': {
+    'DE': [
+      { date: '2013-05-29', comp: 'Friendly', venue: 'Boca Raton', attendance: 10000, result: '2:4', scorers: ['Valencia', 'Noboa', 'Reus 2', 'Müller', 'Götze'] },
+      { date: '2006-06-20', comp: 'WM', venue: 'Berlin', attendance: 72000, result: '0:3', scorers: ['Klose 2', 'Podolski'] },
+    ],
+    'CI': [
+      { date: '1975-10-26', comp: 'Friendly', venue: 'Abidjan', attendance: 35000, result: '0:1', scorers: ['Laurent Pokou'] },
+    ],
+  },
+  'CI': {
+    'DE': [
+      { date: '2009-11-18', comp: 'Friendly', venue: 'München', attendance: 33015, result: '2:2', scorers: ['Eboué (ET)', 'Doumbia', 'Podolski 2'] },
+    ],
+    'EC': [
+      { date: '1975-10-26', comp: 'Friendly', venue: 'Abidjan', attendance: 35000, result: '1:0', scorers: ['Laurent Pokou'] },
+    ],
+  },
+  // GROUP F: Netherlands, Japan, Tunisia
+  'NL': {
+    'JP': [
+      { date: '2022-11-21', comp: 'Friendly', venue: 'Rotterdam', attendance: 38000, result: '1:1', scorers: ['Cody Gakpo', 'Doan'] },
+      { date: '2010-06-19', comp: 'WM', venue: 'Durban', attendance: 62010, result: '1:0', scorers: ['Sneijder'] },
+      { date: '2009-09-05', comp: 'Friendly', venue: 'Enschede', attendance: 24000, result: '3:0', scorers: ['Huntelaar', 'Kuyt', 'Robben'] },
+    ],
+    'TN': [
+      { date: '2006-06-21', comp: 'WM', venue: 'München', attendance: 66000, result: '0:0', scorers: [] },
+    ],
+  },
+  'JP': {
+    'NL': [
+      { date: '2022-11-21', comp: 'Friendly', venue: 'Rotterdam', attendance: 38000, result: '1:1', scorers: ['Doan'] },
+      { date: '2010-06-19', comp: 'WM', venue: 'Durban', attendance: 62010, result: '0:1', scorers: [] },
+      { date: '2009-09-05', comp: 'Friendly', venue: 'Enschede', attendance: 24000, result: '0:3', scorers: [] },
+    ],
+    'TN': [
+      { date: '2002-06-14', comp: 'WM', venue: 'Osaka', attendance: 45213, result: '2:0', scorers: ['Morishima', 'Nakata'] },
+    ],
+  },
+  'TN': {
+    'NL': [
+      { date: '2006-06-21', comp: 'WM', venue: 'München', attendance: 66000, result: '0:0', scorers: [] },
+    ],
+    'JP': [
+      { date: '2002-06-14', comp: 'WM', venue: 'Osaka', attendance: 45213, result: '0:2', scorers: [] },
+    ],
+  },
+  // GROUP G: Belgium, Egypt, Iran, New Zealand
+  'BE': {
+    'EG': [
+      { date: '2018-06-06', comp: 'Friendly', venue: 'Brüssel', attendance: 34000, result: '3:0', scorers: ['Lukaku 2', 'Hazard'] },
+    ],
+    'IR': [
+      { date: '2018-06-09', comp: 'Friendly', venue: 'Brüssel', attendance: 35000, result: '0:0', scorers: [] },
+    ],
+    'NZ': [
+      { date: '2017-11-14', comp: 'Friendly', venue: 'Brüssel', attendance: 32000, result: '4:0', scorers: ['Mertens 2', 'Lukaku', 'Batshuayi'] },
+    ],
+  },
+  'EG': {
+    'BE': [
+      { date: '2018-06-06', comp: 'Friendly', venue: 'Brüssel', attendance: 34000, result: '0:3', scorers: [] },
+    ],
+    'IR': [
+      { date: '2009-11-14', comp: 'Friendly', venue: 'Kairo', attendance: 25000, result: '1:1', scorers: ['Aboutrika', 'Nekounam'] },
+    ],
+    'NZ': [
+      { date: '2009-05-24', comp: 'Friendly', venue: 'Wellington', attendance: 15000, result: '3:1', scorers: ['Zidan 2', 'Moteab', 'Smeltz'] },
+    ],
+  },
+  'IR': {
+    'BE': [
+      { date: '2018-06-09', comp: 'Friendly', venue: 'Brüssel', attendance: 35000, result: '0:0', scorers: [] },
+    ],
+    'EG': [
+      { date: '2009-11-14', comp: 'Friendly', venue: 'Kairo', attendance: 25000, result: '1:1', scorers: ['Nekounam'] },
+    ],
+    'NZ': [
+      { date: '2017-06-08', comp: 'Friendly', venue: 'Teheran', attendance: 45000, result: '2:0', scorers: ['Azmoun', 'Jahanbakhsh'] },
+    ],
+  },
+  'NZ': {
+    'BE': [
+      { date: '2017-11-14', comp: 'Friendly', venue: 'Brüssel', attendance: 32000, result: '0:4', scorers: [] },
+    ],
+    'EG': [
+      { date: '2009-05-24', comp: 'Friendly', venue: 'Wellington', attendance: 15000, result: '1:3', scorers: ['Smeltz'] },
+    ],
+    'IR': [
+      { date: '2017-06-08', comp: 'Friendly', venue: 'Teheran', attendance: 45000, result: '0:2', scorers: [] },
+    ],
+  },
+  // GROUP H: Spain, Uruguay, Saudi Arabia, Cape Verde
+  'ES': {
+    'UY': [
+      { date: '2013-02-06', comp: 'Friendly', venue: 'Doha', attendance: 35000, result: '3:1', scorers: ['Pedro 2', 'Mata', 'Cavani'] },
+      { date: '1950-07-13', comp: 'WM', venue: 'São Paulo', attendance: 139000, result: '2:2', scorers: ['Basora', 'Zarra', 'Ghiggia', 'Varela'] },
+    ],
+    'SA': [
+      { date: '2006-06-23', comp: 'WM', venue: 'Kaiserslautern', attendance: 46000, result: '1:0', scorers: ['Juanito'] },
+      { date: '1998-06-23', comp: 'WM', venue: 'Lens', attendance: 38000, result: '0:0', scorers: [] },
+    ],
+  },
+  'UY': {
+    'ES': [
+      { date: '2013-02-06', comp: 'Friendly', venue: 'Doha', attendance: 35000, result: '1:3', scorers: ['Cavani'] },
+      { date: '1950-07-13', comp: 'WM', venue: 'São Paulo', attendance: 139000, result: '2:2', scorers: ['Ghiggia', 'Varela'] },
+    ],
+    'SA': [
+      { date: '2018-06-20', comp: 'WM', venue: 'Rostov', attendance: 43109, result: '1:0', scorers: ['Suárez'] },
+      { date: '2022-11-16', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 18000, result: '0:0', scorers: [] },
+    ],
+  },
+  'SA': {
+    'ES': [
+      { date: '2006-06-23', comp: 'WM', venue: 'Kaiserslautern', attendance: 46000, result: '0:1', scorers: [] },
+      { date: '1998-06-23', comp: 'WM', venue: 'Lens', attendance: 38000, result: '0:0', scorers: [] },
+    ],
+    'UY': [
+      { date: '2018-06-20', comp: 'WM', venue: 'Rostov', attendance: 43109, result: '0:1', scorers: [] },
+      { date: '2022-11-16', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 18000, result: '0:0', scorers: [] },
+    ],
+  },
+  // GROUP I: France, Senegal, Norway
+  'SN': {
+    'FR': [
+      { date: '2002-05-31', comp: 'WM', venue: 'Seoul', attendance: 62561, result: '1:0', scorers: ['Bouba Diop'] },
+    ],
+    'NO': [
+      { date: '2002-06-28', comp: 'Friendly', venue: 'Dakar', attendance: 35000, result: '2:1', scorers: ['Diouf', 'Diatta', 'Iversen'] },
+    ],
+  },
+  'NO': {
+    'FR': [
+      { date: '1998-06-28', comp: 'WM', venue: 'Saint-Denis', attendance: 77000, result: '0:0', scorers: [] },
+    ],
+    'SN': [
+      { date: '2002-06-28', comp: 'Friendly', venue: 'Dakar', attendance: 35000, result: '1:2', scorers: ['Iversen'] },
+    ],
+  },
+  // GROUP K: Portugal, Colombia, Uzbekistan
+  'PT': {
+    'CO': [
+      { date: '1985-02-03', comp: 'Friendly', venue: 'Bogotá', attendance: 30000, result: '1:1', scorers: ['Chalana', 'Valderrama'] },
+    ],
+    'UZ': [
+      { date: '2015-01-10', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 8000, result: '2:0', scorers: ['Ronaldo', 'Nani'] },
+    ],
+  },
+  'CO': {
+    'PT': [
+      { date: '1985-02-03', comp: 'Friendly', venue: 'Bogotá', attendance: 30000, result: '1:1', scorers: ['Valderrama'] },
+    ],
+    'UZ': [
+      { date: '2012-02-29', comp: 'Friendly', venue: 'Taschkent', attendance: 18000, result: '1:1', scorers: ['Falcao', 'Shatskikh'] },
+    ],
+  },
+  'UZ': {
+    'PT': [
+      { date: '2015-01-10', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 8000, result: '0:2', scorers: [] },
+    ],
+    'CO': [
+      { date: '2012-02-29', comp: 'Friendly', venue: 'Taschkent', attendance: 18000, result: '1:1', scorers: ['Shatskikh'] },
+    ],
+  },
+  // GROUP L: England, Croatia, Ghana, Panama
+  'GH': {
+    'EN': [
+      { date: '2014-03-29', comp: 'Friendly', venue: 'Wembley', attendance: 40181, result: '0:0', scorers: [] },
+    ],
+    'HR': [
+      { date: '2014-06-05', comp: 'Friendly', venue: 'Zagreb', attendance: 20000, result: '0:1', scorers: ['Kramarić'] },
+    ],
+    'PA': [
+      { date: '2018-02-28', comp: 'Friendly', venue: 'Brokopondo', attendance: 5000, result: '1:1', scorers: ['Acquah', 'Bárcenas'] },
+    ],
+  },
+  'PA': {
+    'EN': [
+      { date: '2018-06-24', comp: 'WM', venue: 'Nizhny Novgorod', attendance: 43319, result: '1:6', scorers: ['Baloy', 'Stones 2', 'Kane 3 (2P)', 'Lingard'] },
+    ],
+    'HR': [
+      { date: '2019-02-02', comp: 'Friendly', venue: 'Panama-Stadt', attendance: 15000, result: '2:1', scorers: ['Torres', 'Davis', 'Brekalo'] },
+    ],
+    'GH': [
+      { date: '2018-02-28', comp: 'Friendly', venue: 'Brokopondo', attendance: 5000, result: '1:1', scorers: ['Bárcenas'] },
+    ],
+  },
+  'HR': {
+    'GH': [
+      { date: '2014-06-05', comp: 'Friendly', venue: 'Zagreb', attendance: 20000, result: '1:0', scorers: ['Kramarić'] },
+    ],
+    'PA': [
+      { date: '2019-02-02', comp: 'Friendly', venue: 'Panama-Stadt', attendance: 15000, result: '1:2', scorers: ['Brekalo'] },
+    ],
+  },
+  // GROUP B: Canada, Switzerland, Qatar
+  'CA': {
+    'CH': [
+      { date: '2016-02-05', comp: 'Friendly', venue: 'Luzern', attendance: 12000, result: '0:1', scorers: ['Embolo'] },
+    ],
+    'QA': [
+      { date: '2022-09-23', comp: 'Friendly', venue: 'Wien', attendance: 150, result: '2:0', scorers: ['Larin', 'David'] },
+    ],
+  },
+  'CH': {
+    'CA': [
+      { date: '2016-02-05', comp: 'Friendly', venue: 'Luzern', attendance: 12000, result: '1:0', scorers: ['Embolo'] },
+    ],
+    'QA': [
+      { date: '2021-10-09', comp: 'Friendly', venue: 'Doha', attendance: 20000, result: '1:0', scorers: ['Shaqiri'] },
+    ],
+  },
+  'QA': {
+    'CA': [
+      { date: '2022-09-23', comp: 'Friendly', venue: 'Wien', attendance: 150, result: '0:2', scorers: [] },
+    ],
+    'CH': [
+      { date: '2021-10-09', comp: 'Friendly', venue: 'Doha', attendance: 20000, result: '0:1', scorers: [] },
+    ],
+  },
+  // GROUP D: USA, Paraguay, Australia
+  'US': {
+    'PY': [
+      { date: '2025-11-15', comp: 'Friendly', venue: 'Chester', attendance: 18000, result: '2:1', scorers: ['Reyna', 'Balogun', 'Villasanti'] },
+      { date: '2016-06-11', comp: 'Copa', venue: 'Philadelphia', attendance: 51000, result: '1:0', scorers: ['Dempsey'] },
+      { date: '2007-03-27', comp: 'Friendly', venue: 'Houston', attendance: 24000, result: '3:1', scorers: ['Donovan 2', 'Bradley', 'Cardozo'] },
+      { date: '1930-07-17', comp: 'WM', venue: 'Montevideo', attendance: 18306, result: '3:0', scorers: ['Patenaude 3'] },
+    ],
+    'AU': [
+      { date: '2015-01-22', comp: 'Friendly', venue: 'Sydney', attendance: 22000, result: '4:3', scorers: ['Green 2', 'Jozy Altidore', 'Johannsson', 'Cahill 2', 'Burns'] },
+      { date: '2010-06-05', comp: 'Friendly', venue: 'Johannesburg', attendance: 48000, result: '3:1', scorers: ['Dempsey', 'Altidore', 'Ching', 'Jedinak'] },
+    ],
+  },
+  'PY': {
+    'US': [
+      { date: '2025-11-15', comp: 'Friendly', venue: 'Chester', attendance: 18000, result: '1:2', scorers: ['Villasanti'] },
+      { date: '2016-06-11', comp: 'Copa', venue: 'Philadelphia', attendance: 51000, result: '0:1', scorers: [] },
+      { date: '2007-03-27', comp: 'Friendly', venue: 'Houston', attendance: 24000, result: '1:3', scorers: ['Cardozo'] },
+      { date: '1930-07-17', comp: 'WM', venue: 'Montevideo', attendance: 18306, result: '0:3', scorers: [] },
+    ],
+    'AU': [
+      { date: '2011-10-07', comp: 'Friendly', venue: 'Sydney', attendance: 35000, result: '0:3', scorers: ['Cahill 2', 'Kruse'] },
+    ],
+  },
+  'AU': {
+    'US': [
+      { date: '2015-01-22', comp: 'Friendly', venue: 'Sydney', attendance: 22000, result: '3:4', scorers: ['Cahill 2', 'Burns'] },
+      { date: '2010-06-05', comp: 'Friendly', venue: 'Johannesburg', attendance: 48000, result: '1:3', scorers: ['Jedinak'] },
+    ],
+    'PY': [
+      { date: '2011-10-07', comp: 'Friendly', venue: 'Sydney', attendance: 35000, result: '3:0', scorers: ['Cahill 2', 'Kruse'] },
     ],
   },
 };
