@@ -220,6 +220,37 @@ const WM_COACHES_HISTORY = {
   ],
 };
 
+// WM 2026 Official Group Assignments (FIFA Draw December 2025)
+const WM2026_GROUPS = {
+  'A': ['MX', 'KR', 'ZA'], // Mexico, South Korea, South Africa + UEFA Playoff D
+  'B': ['CA', 'CH', 'QA'], // Canada, Switzerland, Qatar + UEFA Playoff A
+  'C': ['BR', 'MA', 'HT', 'SCO'], // Brazil, Morocco, Haiti, Scotland
+  'D': ['US', 'PY', 'AU'], // USA, Paraguay, Australia + UEFA Playoff C
+  'E': ['DE', 'CW', 'CI', 'EC'], // Germany, Curaçao, Ivory Coast, Ecuador
+  'F': ['NL', 'JP', 'TN'], // Netherlands, Japan, Tunisia + UEFA Playoff B
+  'G': ['BE', 'EG', 'IR', 'NZ'], // Belgium, Egypt, Iran, New Zealand
+  'H': ['ES', 'UY', 'SA', 'CV'], // Spain, Uruguay, Saudi Arabia, Cape Verde
+  'I': ['FR', 'SN', 'NO'], // France, Senegal, Norway + Intercontinental Playoff 2
+  'J': ['AR', 'DZ', 'AT', 'JO'], // Argentina, Algeria, Austria, Jordan
+  'K': ['PT', 'CO', 'UZ'], // Portugal, Colombia, Uzbekistan + Intercontinental Playoff 1
+  'L': ['EN', 'HR', 'GH', 'PA'], // England, Croatia, Ghana, Panama
+};
+
+// Helper to get group for a country code
+const getGroupForCountry = (countryCode) => {
+  for (const [group, teams] of Object.entries(WM2026_GROUPS)) {
+    if (teams.includes(countryCode)) return group;
+  }
+  return null;
+};
+
+// Helper to get group opponents for a country code
+const getGroupOpponents = (countryCode) => {
+  const group = getGroupForCountry(countryCode);
+  if (!group) return [];
+  return WM2026_GROUPS[group].filter(code => code !== countryCode);
+};
+
 // Correct H2H Data (verified historical matches)
 const H2H_DATA = {
   'DE': {
@@ -1278,7 +1309,7 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                     </div>
                   )}
                   <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>
-                    {selectedTeam.confederation} • {selectedTeam.wm2026_group ? `${t('group')} ${selectedTeam.wm2026_group}` : t('badgesQualified')}
+                    {selectedTeam.confederation} • {getGroupForCountry(selectedTeam.country_code) ? `${t('group')} ${getGroupForCountry(selectedTeam.country_code)}` : t('badgesQualified')}
                   </div>
                 </div>
               </div>
@@ -1555,9 +1586,11 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
               {activeModalTab === 'group' && (
                 <div>
                   {(() => {
-                    const groupCode = selectedTeam.wm2026_group;
+                    // Use hardcoded WM2026_GROUPS for correct group assignment
+                    const groupCode = getGroupForCountry(selectedTeam.country_code);
+                    const opponentCodes = getGroupOpponents(selectedTeam.country_code);
                     const groupOpponents = badges.filter(b =>
-                      b.wm2026_group === groupCode && b.country_code !== selectedTeam.country_code
+                      opponentCodes.includes(b.country_code)
                     );
 
                     // Use global H2H_DATA
@@ -1579,6 +1612,7 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
                             <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>
                               {t('badgesGroupOpponents') || 'Gruppengegner'}:
                               {groupOpponents.map(opp => ` ${opp.flag_emoji}`).join('')}
+                              {opponentCodes.length > groupOpponents.length && ' + Playoff-Sieger'}
                             </div>
                           </div>
                         ) : (
