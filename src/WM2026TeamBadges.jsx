@@ -294,7 +294,7 @@ export const H2H_DATA = {
     ],
     // Group E opponents
     'EC': [
-      { date: '2013-05-29', comp: 'Friendly', venue: 'Boca Raton', attendance: 10000, result: '4:2', scorers: ['Reus 2', 'Müller', 'Götze', 'Valencia', 'Noboa'] },
+      { date: '2013-05-29', comp: 'Friendly', venue: 'Boca Raton', attendance: 9000, result: '4:2', scorers: ['Podolski 2', 'Lars Bender 2', 'Valencia', 'Ayoví'], source: 'espn.com' },
       { date: '2006-06-20', comp: 'WM', venue: 'Berlin', attendance: 72000, result: '3:0', scorers: ['Klose 2', 'Podolski'] },
     ],
     'CI': [
@@ -357,7 +357,7 @@ export const H2H_DATA = {
       { date: '2002-05-31', comp: 'WM', venue: 'Seoul', attendance: 62561, result: '0:1', scorers: ['Bouba Diop'] },
     ],
     'NO': [
-      { date: '1998-06-28', comp: 'WM', venue: 'Saint-Denis', attendance: 77000, result: '0:0', scorers: [] },
+      { date: '2014-05-27', comp: 'Friendly', venue: 'Saint-Denis', attendance: 79000, result: '4:0', scorers: ['Pogba', 'Giroud 2', 'Rémy'], source: 'espn.com' },
     ],
   },
   'EN': {
@@ -411,7 +411,7 @@ export const H2H_DATA = {
     ],
     // Group C opponents
     'MA': [
-      { date: '2023-03-25', comp: 'Friendly', venue: 'Tanger', attendance: 45000, result: '1:2', scorers: ['Casemiro', 'Sabiri', 'Abde'], source: 'fifa.com' },
+      { date: '2023-03-25', comp: 'Friendly', venue: 'Tanger', attendance: 63500, result: '1:2', scorers: ['Casemiro', 'Sabiri', 'Boufal'], source: 'fifa.com' },
       { date: '1998-06-16', comp: 'WM', venue: 'Nantes', attendance: 35500, result: '3:0', scorers: ['Ronaldo 2', 'Rivaldo'], source: 'fifa.com' },
     ],
     'HT': [
@@ -426,7 +426,7 @@ export const H2H_DATA = {
       { date: '1982-06-18', comp: 'WM', venue: 'Sevilla', attendance: 47379, result: '4:1', scorers: ['Zico', 'Oscar', 'Eder', 'Falcão', 'Narey'], source: 'fifa.com' },
       { date: '1977-06-23', comp: 'Friendly', venue: 'Rio (Maracanã)', attendance: 69763, result: '2:0', scorers: ['Zico', 'Cerezo'], source: 'eu-football.info' },
       { date: '1974-06-18', comp: 'WM', venue: 'Frankfurt', attendance: 62000, result: '0:0', scorers: [], source: 'fifa.com' },
-      { date: '1973-06-30', comp: 'Friendly', venue: 'Glasgow (Hampden)', attendance: 78181, result: '1:0', scorers: ['Jairzinho'], source: 'scottishfa.co.uk' },
+      { date: '1973-06-30', comp: 'Friendly', venue: 'Glasgow (Hampden)', attendance: 78181, result: '1:0', scorers: ['Johnstone (OG)'], source: 'scottishfa.co.uk' },
       { date: '1972-07-05', comp: 'Independence Cup', venue: 'Rio (Maracanã)', attendance: 130000, result: '1:0', scorers: ['Jairzinho'], source: 'rsssf.org' },
       { date: '1966-06-25', comp: 'Friendly', venue: 'Glasgow (Hampden)', attendance: 74933, result: '1:1', scorers: ['Servílio', 'Chalmers'], source: 'scottishfa.co.uk' },
     ],
@@ -507,7 +507,7 @@ export const H2H_DATA = {
       { date: '1982-06-18', comp: 'WM', venue: 'Sevilla', attendance: 47379, result: '1:4', scorers: ['Narey', 'Zico', 'Oscar', 'Eder', 'Falcão'], source: 'fifa.com' },
       { date: '1977-06-23', comp: 'Friendly', venue: 'Rio (Maracanã)', attendance: 69763, result: '0:2', scorers: ['Zico', 'Cerezo'], source: 'eu-football.info' },
       { date: '1974-06-18', comp: 'WM', venue: 'Frankfurt', attendance: 62000, result: '0:0', scorers: [], source: 'fifa.com' },
-      { date: '1973-06-30', comp: 'Friendly', venue: 'Glasgow (Hampden)', attendance: 78181, result: '0:1', scorers: ['Jairzinho'], source: 'scottishfa.co.uk' },
+      { date: '1973-06-30', comp: 'Friendly', venue: 'Glasgow (Hampden)', attendance: 78181, result: '0:1', scorers: ['Johnstone (OG)'], source: 'scottishfa.co.uk' },
       { date: '1972-07-05', comp: 'Independence Cup', venue: 'Rio (Maracanã)', attendance: 130000, result: '0:1', scorers: ['Jairzinho'], source: 'rsssf.org' },
       { date: '1966-06-25', comp: 'Friendly', venue: 'Glasgow (Hampden)', attendance: 74933, result: '1:1', scorers: ['Chalmers', 'Servílio'], source: 'scottishfa.co.uk' },
     ],
@@ -518,7 +518,7 @@ export const H2H_DATA = {
   },
   'MA': {
     'BR': [
-      { date: '2023-03-25', comp: 'Friendly', venue: 'Tanger', attendance: 45000, result: '2:1', scorers: ['Sabiri', 'Abde', 'Casemiro'], source: 'fifa.com' },
+      { date: '2023-03-25', comp: 'Friendly', venue: 'Tanger', attendance: 63500, result: '2:1', scorers: ['Sabiri', 'Boufal', 'Casemiro'], source: 'fifa.com' },
       { date: '1998-06-16', comp: 'WM', venue: 'Nantes', attendance: 35500, result: '0:3', scorers: [], source: 'fifa.com' },
     ],
     'SCO': [
@@ -529,39 +529,33 @@ export const H2H_DATA = {
   // GROUP E: Germany, Curaçao, Ivory Coast, Ecuador (DE already has some entries)
   'EC': {
     'DE': [
-      { date: '2013-05-29', comp: 'Friendly', venue: 'Boca Raton', attendance: 10000, result: '2:4', scorers: ['Valencia', 'Noboa', 'Reus 2', 'Müller', 'Götze'] },
+      { date: '2013-05-29', comp: 'Friendly', venue: 'Boca Raton', attendance: 9000, result: '2:4', scorers: ['Valencia', 'Ayoví', 'Podolski 2', 'Lars Bender 2'], source: 'espn.com' },
       { date: '2006-06-20', comp: 'WM', venue: 'Berlin', attendance: 72000, result: '0:3', scorers: ['Klose 2', 'Podolski'] },
     ],
-    'CI': [
-      { date: '1975-10-26', comp: 'Friendly', venue: 'Abidjan', attendance: 35000, result: '0:1', scorers: ['Laurent Pokou'] },
-    ],
-    'CW': [
-      { date: '2019-06-16', comp: 'Gold Cup', venue: 'Los Angeles', attendance: 18000, result: '1:1', scorers: ['Mena', 'Bacuna'] },
-    ],
+    'CI': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
+    'CW': [], // Erstes Aufeinandertreffen bei WM 2026 - Ecuador spielt nicht im Gold Cup
   },
   'CI': {
     'DE': [
       { date: '2009-11-18', comp: 'Friendly', venue: 'München', attendance: 33015, result: '2:2', scorers: ['Eboué (ET)', 'Doumbia', 'Podolski 2'] },
     ],
-    'EC': [
-      { date: '1975-10-26', comp: 'Friendly', venue: 'Abidjan', attendance: 35000, result: '1:0', scorers: ['Laurent Pokou'] },
-    ],
+    'EC': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
     'CW': [], // Erstes Aufeinandertreffen bei WM 2026
   },
   // GROUP F: Netherlands, Japan, Tunisia
   'NL': {
     'JP': [
-      { date: '2022-11-21', comp: 'Friendly', venue: 'Rotterdam', attendance: 38000, result: '1:1', scorers: ['Cody Gakpo', 'Doan'] },
+      { date: '2013-11-16', comp: 'Friendly', venue: 'Genk', attendance: 18000, result: '2:2', scorers: ['Van der Vaart', 'Robben', 'Osako', 'Honda'], source: 'espn.com' },
       { date: '2010-06-19', comp: 'WM', venue: 'Durban', attendance: 62010, result: '1:0', scorers: ['Sneijder'] },
-      { date: '2009-09-05', comp: 'Friendly', venue: 'Enschede', attendance: 24000, result: '3:0', scorers: ['Huntelaar', 'Kuyt', 'Robben'] },
+      { date: '2009-09-05', comp: 'Friendly', venue: 'Enschede', attendance: 24000, result: '3:0', scorers: ['Van Persie', 'Sneijder', 'Huntelaar'], source: 'espn.com' },
     ],
     'TN': [
-      { date: '2006-06-21', comp: 'WM', venue: 'München', attendance: 66000, result: '0:0', scorers: [] },
+      { date: '2009-02-11', comp: 'Friendly', venue: 'Rades', attendance: 17000, result: '1:1', scorers: ['Huntelaar', 'Saihi'], source: 'dutchnews.nl' },
     ],
   },
   'JP': {
     'NL': [
-      { date: '2022-11-21', comp: 'Friendly', venue: 'Rotterdam', attendance: 38000, result: '1:1', scorers: ['Doan'] },
+      { date: '2013-11-16', comp: 'Friendly', venue: 'Genk', attendance: 18000, result: '2:2', scorers: ['Osako', 'Honda', 'Van der Vaart', 'Robben'], source: 'espn.com' },
       { date: '2010-06-19', comp: 'WM', venue: 'Durban', attendance: 62010, result: '0:1', scorers: [] },
       { date: '2009-09-05', comp: 'Friendly', venue: 'Enschede', attendance: 24000, result: '0:3', scorers: [] },
     ],
@@ -571,7 +565,7 @@ export const H2H_DATA = {
   },
   'TN': {
     'NL': [
-      { date: '2006-06-21', comp: 'WM', venue: 'München', attendance: 66000, result: '0:0', scorers: [] },
+      { date: '2009-02-11', comp: 'Friendly', venue: 'Rades', attendance: 17000, result: '1:1', scorers: ['Saihi', 'Huntelaar'], source: 'dutchnews.nl' },
     ],
     'JP': [
       { date: '2002-06-14', comp: 'WM', venue: 'Osaka', attendance: 45213, result: '0:2', scorers: [] },
@@ -580,81 +574,59 @@ export const H2H_DATA = {
   // GROUP G: Belgium, Egypt, Iran, New Zealand
   'BE': {
     'EG': [
-      { date: '2018-06-06', comp: 'Friendly', venue: 'Brüssel', attendance: 34000, result: '3:0', scorers: ['Lukaku 2', 'Hazard'] },
+      { date: '2018-06-06', comp: 'Friendly', venue: 'Brüssel', attendance: 27724, result: '3:0', scorers: ['Lukaku', 'Hazard', 'Fellaini'], source: 'espn.com' },
     ],
-    'IR': [
-      { date: '2018-06-09', comp: 'Friendly', venue: 'Brüssel', attendance: 35000, result: '0:0', scorers: [] },
-    ],
-    'NZ': [
-      { date: '2017-11-14', comp: 'Friendly', venue: 'Brüssel', attendance: 32000, result: '4:0', scorers: ['Mertens 2', 'Lukaku', 'Batshuayi'] },
-    ],
+    'IR': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
+    'NZ': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele (nur Olympia 2008)
   },
   'EG': {
     'BE': [
-      { date: '2018-06-06', comp: 'Friendly', venue: 'Brüssel', attendance: 34000, result: '0:3', scorers: [] },
+      { date: '2018-06-06', comp: 'Friendly', venue: 'Brüssel', attendance: 27724, result: '0:3', scorers: [], source: 'espn.com' },
     ],
     'IR': [
-      { date: '2009-11-14', comp: 'Friendly', venue: 'Kairo', attendance: 25000, result: '1:1', scorers: ['Aboutrika', 'Nekounam'] },
+      { date: '2000-06-07', comp: 'LG Cup', venue: 'Teheran (Azadi)', attendance: 80000, result: '1:1 (8:7 i.E.)', scorers: ['Hossam Hassan', 'Ali Daei'], source: 'national-football-teams.com' },
     ],
-    'NZ': [
-      { date: '2009-05-24', comp: 'Friendly', venue: 'Wellington', attendance: 15000, result: '3:1', scorers: ['Zidan 2', 'Moteab', 'Smeltz'] },
-    ],
+    'NZ': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
   },
   'IR': {
-    'BE': [
-      { date: '2018-06-09', comp: 'Friendly', venue: 'Brüssel', attendance: 35000, result: '0:0', scorers: [] },
-    ],
+    'BE': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
     'EG': [
-      { date: '2009-11-14', comp: 'Friendly', venue: 'Kairo', attendance: 25000, result: '1:1', scorers: ['Nekounam'] },
+      { date: '2000-06-07', comp: 'LG Cup', venue: 'Teheran (Azadi)', attendance: 80000, result: '1:1 (7:8 i.E.)', scorers: ['Ali Daei', 'Hossam Hassan'], source: 'national-football-teams.com' },
     ],
-    'NZ': [
-      { date: '2017-06-08', comp: 'Friendly', venue: 'Teheran', attendance: 45000, result: '2:0', scorers: ['Azmoun', 'Jahanbakhsh'] },
-    ],
+    'NZ': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
   },
   'NZ': {
-    'BE': [
-      { date: '2017-11-14', comp: 'Friendly', venue: 'Brüssel', attendance: 32000, result: '0:4', scorers: [] },
-    ],
-    'EG': [
-      { date: '2009-05-24', comp: 'Friendly', venue: 'Wellington', attendance: 15000, result: '1:3', scorers: ['Smeltz'] },
-    ],
-    'IR': [
-      { date: '2017-06-08', comp: 'Friendly', venue: 'Teheran', attendance: 45000, result: '0:2', scorers: [] },
-    ],
+    'BE': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele (nur Olympia 2008)
+    'EG': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
+    'IR': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
   },
   // GROUP H: Spain, Uruguay, Saudi Arabia, Cape Verde
   'ES': {
     'UY': [
-      { date: '2013-02-06', comp: 'Friendly', venue: 'Doha', attendance: 35000, result: '3:1', scorers: ['Pedro 2', 'Mata', 'Cavani'] },
-      { date: '1950-07-13', comp: 'WM', venue: 'São Paulo', attendance: 139000, result: '2:2', scorers: ['Basora', 'Zarra', 'Ghiggia', 'Varela'] },
+      { date: '2013-02-06', comp: 'Friendly', venue: 'Doha', attendance: 48000, result: '3:1', scorers: ['Pedro 2', 'Fàbregas', 'Cristian Rodríguez'], source: 'espn.com' },
+      { date: '1950-07-09', comp: 'WM', venue: 'São Paulo (Pacaembu)', attendance: 74000, result: '2:2', scorers: ['Basora 2', 'Ghiggia', 'Varela'], source: 'fifa.com' },
     ],
     'SA': [
       { date: '2006-06-23', comp: 'WM', venue: 'Kaiserslautern', attendance: 46000, result: '1:0', scorers: ['Juanito'] },
-      { date: '1998-06-23', comp: 'WM', venue: 'Lens', attendance: 38000, result: '0:0', scorers: [] },
     ],
     'CV': [], // Erstes Aufeinandertreffen bei WM 2026
   },
   'UY': {
     'ES': [
-      { date: '2013-02-06', comp: 'Friendly', venue: 'Doha', attendance: 35000, result: '1:3', scorers: ['Cavani'] },
-      { date: '1950-07-13', comp: 'WM', venue: 'São Paulo', attendance: 139000, result: '2:2', scorers: ['Ghiggia', 'Varela'] },
+      { date: '2013-02-06', comp: 'Friendly', venue: 'Doha', attendance: 48000, result: '1:3', scorers: ['Cristian Rodríguez'], source: 'espn.com' },
+      { date: '1950-07-09', comp: 'WM', venue: 'São Paulo (Pacaembu)', attendance: 74000, result: '2:2', scorers: ['Ghiggia', 'Varela'], source: 'fifa.com' },
     ],
     'SA': [
-      { date: '2018-06-20', comp: 'WM', venue: 'Rostov', attendance: 43109, result: '1:0', scorers: ['Suárez'] },
-      { date: '2022-11-16', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 18000, result: '0:0', scorers: [] },
+      { date: '2018-06-20', comp: 'WM', venue: 'Rostov', attendance: 42678, result: '1:0', scorers: ['Suárez'], source: 'espn.com' },
     ],
-    'CV': [
-      { date: '2019-11-18', comp: 'Friendly', venue: 'Praia', attendance: 8000, result: '1:1', scorers: ['Cavani', 'Garry Rodrigues'] },
-    ],
+    'CV': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
   },
   'SA': {
     'ES': [
       { date: '2006-06-23', comp: 'WM', venue: 'Kaiserslautern', attendance: 46000, result: '0:1', scorers: [] },
-      { date: '1998-06-23', comp: 'WM', venue: 'Lens', attendance: 38000, result: '0:0', scorers: [] },
     ],
     'UY': [
-      { date: '2018-06-20', comp: 'WM', venue: 'Rostov', attendance: 43109, result: '0:1', scorers: [] },
-      { date: '2022-11-16', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 18000, result: '0:0', scorers: [] },
+      { date: '2018-06-20', comp: 'WM', venue: 'Rostov', attendance: 42678, result: '0:1', scorers: [], source: 'espn.com' },
     ],
     'CV': [], // Erstes Aufeinandertreffen bei WM 2026
   },
@@ -664,64 +636,48 @@ export const H2H_DATA = {
       { date: '2002-05-31', comp: 'WM', venue: 'Seoul', attendance: 62561, result: '1:0', scorers: ['Bouba Diop'] },
     ],
     'NO': [
-      { date: '2002-06-28', comp: 'Friendly', venue: 'Dakar', attendance: 35000, result: '2:1', scorers: ['Diouf', 'Diatta', 'Iversen'] },
+      { date: '2006-03-01', comp: 'Friendly', venue: 'Dakar (Léopold Sédar Senghor)', attendance: 35000, result: '2:1', scorers: ['Moussa Ndiaye', 'Babacar Gueye', 'Erik Hagen'], source: 'eu-football.info' },
     ],
   },
   'NO': {
     'FR': [
-      { date: '1998-06-28', comp: 'WM', venue: 'Saint-Denis', attendance: 77000, result: '0:0', scorers: [] },
+      { date: '2014-05-27', comp: 'Friendly', venue: 'Saint-Denis', attendance: 79000, result: '0:4', scorers: ['Pogba', 'Giroud 2', 'Rémy'], source: 'espn.com' },
     ],
     'SN': [
-      { date: '2002-06-28', comp: 'Friendly', venue: 'Dakar', attendance: 35000, result: '1:2', scorers: ['Iversen'] },
+      { date: '2006-03-01', comp: 'Friendly', venue: 'Dakar (Léopold Sédar Senghor)', attendance: 35000, result: '1:2', scorers: ['Erik Hagen'], source: 'eu-football.info' },
     ],
   },
   // GROUP K: Portugal, Colombia, Uzbekistan
   'PT': {
     'CO': [
-      { date: '1985-02-03', comp: 'Friendly', venue: 'Bogotá', attendance: 30000, result: '1:1', scorers: ['Chalana', 'Valderrama'] },
+      { date: '2014-06-06', comp: 'Friendly', venue: 'Genf', attendance: 20000, result: '1:0', scorers: ['Bruno Alves'], source: '11v11.com' },
     ],
-    'UZ': [
-      { date: '2015-01-10', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 8000, result: '2:0', scorers: ['Ronaldo', 'Nani'] },
-    ],
+    'UZ': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
   },
   'CO': {
     'PT': [
-      { date: '1985-02-03', comp: 'Friendly', venue: 'Bogotá', attendance: 30000, result: '1:1', scorers: ['Valderrama'] },
+      { date: '2014-06-06', comp: 'Friendly', venue: 'Genf', attendance: 20000, result: '0:1', scorers: [], source: '11v11.com' },
     ],
-    'UZ': [
-      { date: '2012-02-29', comp: 'Friendly', venue: 'Taschkent', attendance: 18000, result: '1:1', scorers: ['Falcao', 'Shatskikh'] },
-    ],
+    'UZ': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
   },
   'UZ': {
-    'PT': [
-      { date: '2015-01-10', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 8000, result: '0:2', scorers: [] },
-    ],
-    'CO': [
-      { date: '2012-02-29', comp: 'Friendly', venue: 'Taschkent', attendance: 18000, result: '1:1', scorers: ['Shatskikh'] },
-    ],
+    'PT': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
+    'CO': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
   },
   // GROUP L: England, Croatia, Ghana, Panama
   'GH': {
     'EN': [
       { date: '2011-03-29', comp: 'Friendly', venue: 'Wembley', attendance: 80102, result: '1:1', scorers: ['Gyan', 'Carroll'], source: '11v11.com' },
     ],
-    'HR': [
-      { date: '2014-06-05', comp: 'Friendly', venue: 'Zagreb', attendance: 20000, result: '0:1', scorers: ['Kramarić'] },
-    ],
-    'PA': [
-      { date: '2018-02-28', comp: 'Friendly', venue: 'Brokopondo', attendance: 5000, result: '1:1', scorers: ['Acquah', 'Bárcenas'] },
-    ],
+    'HR': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
+    'PA': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
   },
   'PA': {
     'EN': [
       { date: '2018-06-24', comp: 'WM', venue: 'Nizhny Novgorod', attendance: 43319, result: '1:6', scorers: ['Baloy', 'Stones 2', 'Kane 3 (2P)', 'Lingard'] },
     ],
-    'HR': [
-      { date: '2019-02-02', comp: 'Friendly', venue: 'Panama-Stadt', attendance: 15000, result: '2:1', scorers: ['Torres', 'Davis', 'Brekalo'] },
-    ],
-    'GH': [
-      { date: '2018-02-28', comp: 'Friendly', venue: 'Brokopondo', attendance: 5000, result: '1:1', scorers: ['Bárcenas'] },
-    ],
+    'HR': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
+    'GH': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
   },
   'HR': {
     'EN': [
@@ -737,17 +693,13 @@ export const H2H_DATA = {
       { date: '2003-08-20', comp: 'Friendly', venue: 'Ipswich', attendance: 29000, result: '1:3', scorers: ['Šimić', 'Owen', 'Rooney', 'Lampard'], source: '11v11.com' },
       { date: '1996-04-24', comp: 'Friendly', venue: 'Wembley', attendance: 34400, result: '0:0', scorers: [], source: '11v11.com' },
     ],
-    'GH': [
-      { date: '2014-06-05', comp: 'Friendly', venue: 'Zagreb', attendance: 20000, result: '1:0', scorers: ['Kramarić'] },
-    ],
-    'PA': [
-      { date: '2019-02-02', comp: 'Friendly', venue: 'Panama-Stadt', attendance: 15000, result: '1:2', scorers: ['Brekalo'] },
-    ],
+    'GH': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
+    'PA': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
   },
   // GROUP B: Canada, Switzerland, Qatar
   'CA': {
     'CH': [
-      { date: '2016-02-05', comp: 'Friendly', venue: 'Luzern', attendance: 12000, result: '0:1', scorers: ['Embolo'] },
+      { date: '2002-05-15', comp: 'Friendly', venue: 'St. Gallen', attendance: 8000, result: '3:1', scorers: ['Radzinski 2', 'Stalteri', "N'Kufo"], source: '11v11.com' },
     ],
     'QA': [
       { date: '2022-09-23', comp: 'Friendly', venue: 'Wien', attendance: 150, result: '2:0', scorers: ['Larin', 'David'] },
@@ -755,10 +707,10 @@ export const H2H_DATA = {
   },
   'CH': {
     'CA': [
-      { date: '2016-02-05', comp: 'Friendly', venue: 'Luzern', attendance: 12000, result: '1:0', scorers: ['Embolo'] },
+      { date: '2002-05-15', comp: 'Friendly', venue: 'St. Gallen', attendance: 8000, result: '1:3', scorers: ["N'Kufo"], source: '11v11.com' },
     ],
     'QA': [
-      { date: '2021-10-09', comp: 'Friendly', venue: 'Doha', attendance: 20000, result: '1:0', scorers: ['Shaqiri'] },
+      { date: '2018-11-14', comp: 'Friendly', venue: 'Lugano', attendance: 4170, result: '0:1', scorers: ['Akram Afif'], source: 'skysports.com' },
     ],
   },
   'QA': {
@@ -766,7 +718,7 @@ export const H2H_DATA = {
       { date: '2022-09-23', comp: 'Friendly', venue: 'Wien', attendance: 150, result: '0:2', scorers: [] },
     ],
     'CH': [
-      { date: '2021-10-09', comp: 'Friendly', venue: 'Doha', attendance: 20000, result: '0:1', scorers: [] },
+      { date: '2018-11-14', comp: 'Friendly', venue: 'Lugano', attendance: 4170, result: '1:0', scorers: ['Akram Afif'], source: 'skysports.com' },
     ],
   },
   // GROUP D: USA, Paraguay, Australia
@@ -774,32 +726,28 @@ export const H2H_DATA = {
     'PY': [
       { date: '2025-11-15', comp: 'Friendly', venue: 'Chester', attendance: 18000, result: '2:1', scorers: ['Reyna', 'Balogun', 'Villasanti'] },
       { date: '2016-06-11', comp: 'Copa', venue: 'Philadelphia', attendance: 51000, result: '1:0', scorers: ['Dempsey'] },
-      { date: '2007-03-27', comp: 'Friendly', venue: 'Houston', attendance: 24000, result: '3:1', scorers: ['Donovan 2', 'Bradley', 'Cardozo'] },
       { date: '1930-07-17', comp: 'WM', venue: 'Montevideo', attendance: 18306, result: '3:0', scorers: ['Patenaude 3'] },
     ],
     'AU': [
-      { date: '2015-01-22', comp: 'Friendly', venue: 'Sydney', attendance: 22000, result: '4:3', scorers: ['Green 2', 'Jozy Altidore', 'Johannsson', 'Cahill 2', 'Burns'] },
-      { date: '2010-06-05', comp: 'Friendly', venue: 'Johannesburg', attendance: 48000, result: '3:1', scorers: ['Dempsey', 'Altidore', 'Ching', 'Jedinak'] },
+      { date: '2010-06-05', comp: 'Friendly', venue: 'Roodepoort', attendance: 6000, result: '3:1', scorers: ['Buddle 2', 'Gomez', 'Cahill'], source: 'espn.com' },
     ],
   },
   'PY': {
     'US': [
       { date: '2025-11-15', comp: 'Friendly', venue: 'Chester', attendance: 18000, result: '1:2', scorers: ['Villasanti'] },
       { date: '2016-06-11', comp: 'Copa', venue: 'Philadelphia', attendance: 51000, result: '0:1', scorers: [] },
-      { date: '2007-03-27', comp: 'Friendly', venue: 'Houston', attendance: 24000, result: '1:3', scorers: ['Cardozo'] },
       { date: '1930-07-17', comp: 'WM', venue: 'Montevideo', attendance: 18306, result: '0:3', scorers: [] },
     ],
     'AU': [
-      { date: '2011-10-07', comp: 'Friendly', venue: 'Sydney', attendance: 35000, result: '0:3', scorers: ['Cahill 2', 'Kruse'] },
+      { date: '2006-10-07', comp: 'Friendly', venue: 'Brisbane', attendance: 47609, result: '1:1', scorers: ['Beauchamp (OG)', 'Popovic'], source: '11v11.com' },
     ],
   },
   'AU': {
     'US': [
-      { date: '2015-01-22', comp: 'Friendly', venue: 'Sydney', attendance: 22000, result: '3:4', scorers: ['Cahill 2', 'Burns'] },
-      { date: '2010-06-05', comp: 'Friendly', venue: 'Johannesburg', attendance: 48000, result: '1:3', scorers: ['Jedinak'] },
+      { date: '2010-06-05', comp: 'Friendly', venue: 'Roodepoort', attendance: 6000, result: '1:3', scorers: ['Cahill'], source: 'espn.com' },
     ],
     'PY': [
-      { date: '2011-10-07', comp: 'Friendly', venue: 'Sydney', attendance: 35000, result: '3:0', scorers: ['Cahill 2', 'Kruse'] },
+      { date: '2006-10-07', comp: 'Friendly', venue: 'Brisbane', attendance: 47609, result: '1:1', scorers: ['Popovic', 'Beauchamp (OG)'], source: '11v11.com' },
     ],
   },
   // GROUP C: Haiti entries
@@ -814,18 +762,14 @@ export const H2H_DATA = {
   // GROUP H: Cape Verde entries
   'CV': {
     'ES': [], // Erstes Aufeinandertreffen bei WM 2026
-    'UY': [
-      { date: '2019-11-18', comp: 'Friendly', venue: 'Praia', attendance: 8000, result: '1:1', scorers: ['Garry Rodrigues', 'Cavani'] },
-    ],
+    'UY': [], // Erstes Aufeinandertreffen bei WM 2026 - keine historischen Spiele
     'SA': [], // Erstes Aufeinandertreffen bei WM 2026
   },
   // GROUP E: Curaçao entries
   'CW': {
     'DE': [], // Erstes Aufeinandertreffen bei WM 2026
     'CI': [], // Erstes Aufeinandertreffen bei WM 2026
-    'EC': [
-      { date: '2019-06-16', comp: 'Gold Cup', venue: 'Los Angeles', attendance: 18000, result: '1:1', scorers: ['Bacuna', 'Mena'] },
-    ],
+    'EC': [], // Erstes Aufeinandertreffen bei WM 2026 - Ecuador spielt nicht im Gold Cup
   },
 };
 
