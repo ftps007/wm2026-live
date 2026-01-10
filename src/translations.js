@@ -416,8 +416,8 @@ export const translations = {
     cancel: 'Abbrechen',
     close: 'Schließen',
 
-    // Badges Section
-    badgesTitle: '🏅 Team-Badges',
+    // Teams Section
+    badgesTitle: '🏅 Teams',
     badgesSubtitle: 'Alle 48 WM-Teams im Überblick',
     badgesSearch: 'Team suchen...',
     badgesTabStats: 'Statistiken',
@@ -949,8 +949,8 @@ export const translations = {
     cancel: 'Cancel',
     close: 'Close',
 
-    // Badges Section
-    badgesTitle: '🏅 Team Badges',
+    // Teams Section
+    badgesTitle: '🏅 Teams',
     badgesSubtitle: 'All 48 World Cup Teams at a Glance',
     badgesSearch: 'Search team...',
     badgesTabStats: 'Statistics',
@@ -1482,9 +1482,9 @@ export const translations = {
     cancel: 'Anuluj',
     close: 'Zamknij',
 
-    // Badges Section
-    badgesTitle: '🏅 Odznaki Drużyn',
-    badgesSubtitle: 'Wszystkie 48 drużyn MŚ w skrócie',
+    // Teams Section
+    badgesTitle: '🏅 Druzyny',
+    badgesSubtitle: 'Wszystkie 48 druzyn MS w skrocie',
     badgesSearch: 'Szukaj drużyny...',
     badgesTabStats: 'Statystyki',
     badgesTabScorers: 'Strzelcy',
