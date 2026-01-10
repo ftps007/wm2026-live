@@ -477,8 +477,8 @@ export const H2H_DATA = {
     'ZA': [
       { date: '2010-06-11', comp: 'WM', venue: 'Johannesburg (Soccer City)', attendance: 84490, result: '1:1', scorers: ['Márquez', 'Tshabalala'], source: 'fifa.com' },
       { date: '2005-07-08', comp: 'CONCACAF Gold Cup', venue: 'Carson (CA)', attendance: 19205, result: '1:2', scorers: ['Maza', 'P. Evans', 'Van Heerden'], source: 'espn.com' },
-      { date: '2000-06-07', comp: 'Friendly', venue: 'Dallas (Cotton Bowl)', attendance: 30000, result: '4:2', scorers: [], source: 'national-football-teams.com' },
-      { date: '1993-10-06', comp: 'Friendly', venue: 'Los Angeles (Memorial Coliseum)', attendance: 37000, result: '4:0', scorers: [], source: 'national-football-teams.com' },
+      { date: '2000-06-07', comp: 'Friendly', venue: 'Dallas (Cotton Bowl)', attendance: 30000, result: '4:2', scorers: ['Borgetti 2', 'Arellano', 'Abundis', 'Mokoena', 'Bartlett'], source: 'national-football-teams.com' },
+      { date: '1993-10-06', comp: 'Friendly', venue: 'Los Angeles (Memorial Coliseum)', attendance: 37000, result: '4:0', scorers: ['García Aspe', 'Luis García', 'Ambríz', 'Campos'], source: 'national-football-teams.com' },
     ],
   },
   'KR': {
@@ -492,8 +492,8 @@ export const H2H_DATA = {
     'MX': [
       { date: '2010-06-11', comp: 'WM', venue: 'Johannesburg (Soccer City)', attendance: 84490, result: '1:1', scorers: ['Tshabalala', 'Márquez'], source: 'fifa.com' },
       { date: '2005-07-08', comp: 'CONCACAF Gold Cup', venue: 'Carson (CA)', attendance: 19205, result: '2:1', scorers: ['P. Evans', 'Van Heerden', 'Maza'], source: 'espn.com' },
-      { date: '2000-06-07', comp: 'Friendly', venue: 'Dallas (Cotton Bowl)', attendance: 30000, result: '2:4', scorers: [], source: 'national-football-teams.com' },
-      { date: '1993-10-06', comp: 'Friendly', venue: 'Los Angeles (Memorial Coliseum)', attendance: 37000, result: '0:4', scorers: [], source: 'national-football-teams.com' },
+      { date: '2000-06-07', comp: 'Friendly', venue: 'Dallas (Cotton Bowl)', attendance: 30000, result: '2:4', scorers: ['Mokoena', 'Bartlett', 'Borgetti 2', 'Arellano', 'Abundis'], source: 'national-football-teams.com' },
+      { date: '1993-10-06', comp: 'Friendly', venue: 'Los Angeles (Memorial Coliseum)', attendance: 37000, result: '0:4', scorers: ['García Aspe', 'Luis García', 'Ambríz', 'Campos'], source: 'national-football-teams.com' },
     ],
     'KR': [], // Never played (senior) - first meeting at WM 2026
   },
