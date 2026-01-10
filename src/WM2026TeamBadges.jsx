@@ -374,7 +374,17 @@ const H2H_DATA = {
       { date: '2022-12-04', comp: 'WM AF', venue: 'Al-Bayt', attendance: 67843, result: '3:0', scorers: ['Henderson', 'Kane', 'Saka'] },
     ],
     'HR': [
-      { date: '2018-07-11', comp: 'WM HF', venue: 'Moskau', attendance: 78011, result: '1:2 n.V.', scorers: ['Trippier', 'Perišić', 'Mandžukić'] },
+      { date: '2021-06-13', comp: 'EM', venue: 'Wembley', attendance: 22500, result: '1:0', scorers: ['Sterling'], source: 'uefa.com' },
+      { date: '2018-11-18', comp: 'Nations League', venue: 'Wembley', attendance: 78000, result: '2:1', scorers: ['Lingard', 'Kane', 'Kramarić'], source: 'uefa.com' },
+      { date: '2018-10-12', comp: 'Nations League', venue: 'Rijeka', attendance: 8200, result: '0:0', scorers: [], source: 'uefa.com' },
+      { date: '2018-07-11', comp: 'WM HF', venue: 'Moskau', attendance: 78011, result: '1:2 n.V.', scorers: ['Trippier', 'Perišić', 'Mandžukić'], source: 'fifa.com' },
+      { date: '2009-09-09', comp: 'WM-Quali', venue: 'Wembley', attendance: 85512, result: '5:1', scorers: ['Lampard 2', 'Gerrard', 'Rooney', 'Crouch', 'Eduardo'], source: '11v11.com' },
+      { date: '2008-09-10', comp: 'WM-Quali', venue: 'Zagreb', attendance: 35000, result: '4:1', scorers: ['Walcott 3', 'Rooney', 'Klasnić'], source: '11v11.com' },
+      { date: '2007-11-21', comp: 'EM-Quali', venue: 'Wembley', attendance: 88091, result: '2:3', scorers: ['Lampard (P)', 'Crouch', 'Kranjčar', 'Eduardo', 'Petric'], source: 'englandstats.com' },
+      { date: '2006-10-11', comp: 'EM-Quali', venue: 'Zagreb', attendance: 38000, result: '0:2', scorers: ['Eduardo', 'Neville (ET)'], source: 'englandstats.com' },
+      { date: '2004-06-21', comp: 'EM', venue: 'Lissabon', attendance: 63000, result: '4:2', scorers: ['Scholes', 'Rooney 2', 'Lampard', 'Kovač', 'Tudor'], source: 'uefa.com' },
+      { date: '2003-08-20', comp: 'Friendly', venue: 'Ipswich', attendance: 29000, result: '3:1', scorers: ['Owen', 'Rooney', 'Lampard', 'Šimić'], source: '11v11.com' },
+      { date: '1996-04-24', comp: 'Friendly', venue: 'Wembley', attendance: 34400, result: '0:0', scorers: [], source: '11v11.com' },
     ],
     'CO': [
       { date: '2018-07-03', comp: 'WM AF', venue: 'Moskau', attendance: 44190, result: '1:1 (4:3 i.E.)', scorers: ['Kane', 'Mina'] },
@@ -387,7 +397,7 @@ const H2H_DATA = {
     ],
     // Group L opponents
     'GH': [
-      { date: '2014-03-29', comp: 'Friendly', venue: 'Wembley', attendance: 40181, result: '0:0', scorers: [] },
+      { date: '2011-03-29', comp: 'Friendly', venue: 'Wembley', attendance: 80102, result: '1:1', scorers: ['Carroll', 'Gyan'], source: '11v11.com' },
     ],
     'PA': [
       { date: '2018-06-24', comp: 'WM', venue: 'Nizhny Novgorod', attendance: 43319, result: '6:1', scorers: ['Stones 2', 'Kane 3 (2P)', 'Lingard', 'Baloy'] },
@@ -407,16 +417,24 @@ const H2H_DATA = {
     ],
     // Group C opponents
     'MA': [
-      { date: '1998-06-16', comp: 'WM', venue: 'Nantes', attendance: 35500, result: '3:0', scorers: ['Ronaldo 2', 'Rivaldo'] },
+      { date: '2023-03-25', comp: 'Friendly', venue: 'Tanger', attendance: 45000, result: '1:2', scorers: ['Casemiro', 'Sabiri', 'Abde'], source: 'fifa.com' },
+      { date: '1998-06-16', comp: 'WM', venue: 'Nantes', attendance: 35500, result: '3:0', scorers: ['Ronaldo 2', 'Rivaldo'], source: 'fifa.com' },
     ],
     'HT': [
       { date: '2016-06-08', comp: 'Copa America', venue: 'Orlando', attendance: 28241, result: '7:1', scorers: ['Coutinho 3', 'Renato Augusto 2', 'Gabriel Barbosa', 'Lucas Lima', 'Marcelin'] },
       { date: '2004-08-18', comp: 'Friendly', venue: 'Port-au-Prince', attendance: 15000, result: '6:0', scorers: ['Adriano 2', 'Kaká 2', 'Robinho', 'Ronaldinho'] },
     ],
     'SCO': [
-      { date: '1998-06-10', comp: 'WM', venue: 'Paris', attendance: 80000, result: '2:1', scorers: ['Sampaio', 'Boyd (ET)', 'Collins (P)'] },
-      { date: '1982-06-18', comp: 'WM', venue: 'Sevilla', attendance: 47379, result: '4:1', scorers: ['Zico', 'Oscar', 'Eder', 'Falcão', 'Narey'] },
-      { date: '1974-06-18', comp: 'WM', venue: 'Frankfurt', attendance: 62000, result: '0:0', scorers: [] },
+      { date: '2011-03-27', comp: 'Friendly', venue: 'London (Emirates)', attendance: 53087, result: '2:0', scorers: ['Neymar 2'], source: '11v11.com, arsenal.com' },
+      { date: '1998-06-10', comp: 'WM', venue: 'Paris (Stade de France)', attendance: 80000, result: '2:1', scorers: ['César Sampaio', 'Boyd (ET)', 'Collins (P)'], source: 'fifa.com' },
+      { date: '1990-06-20', comp: 'WM', venue: 'Turin', attendance: 62628, result: '1:0', scorers: ['Müller'], source: 'fifa.com' },
+      { date: '1987-05-26', comp: 'Rous Cup', venue: 'Glasgow (Hampden)', attendance: 41384, result: '2:0', scorers: ['Valdo', 'Raí'], source: 'rsssf.org' },
+      { date: '1982-06-18', comp: 'WM', venue: 'Sevilla', attendance: 47379, result: '4:1', scorers: ['Zico', 'Oscar', 'Eder', 'Falcão', 'Narey'], source: 'fifa.com' },
+      { date: '1977-06-23', comp: 'Friendly', venue: 'Rio (Maracanã)', attendance: 69763, result: '2:0', scorers: ['Zico', 'Cerezo'], source: 'eu-football.info' },
+      { date: '1974-06-18', comp: 'WM', venue: 'Frankfurt', attendance: 62000, result: '0:0', scorers: [], source: 'fifa.com' },
+      { date: '1973-06-30', comp: 'Friendly', venue: 'Glasgow (Hampden)', attendance: 78181, result: '1:0', scorers: ['Jairzinho'], source: 'scottishfa.co.uk' },
+      { date: '1972-07-05', comp: 'Independence Cup', venue: 'Rio (Maracanã)', attendance: 130000, result: '1:0', scorers: ['Jairzinho'], source: 'rsssf.org' },
+      { date: '1966-06-25', comp: 'Friendly', venue: 'Glasgow (Hampden)', attendance: 74933, result: '1:1', scorers: ['Servílio', 'Chalmers'], source: 'scottishfa.co.uk' },
     ],
   },
   'PL': {
@@ -500,19 +518,26 @@ const H2H_DATA = {
   // GROUP C: Brazil, Morocco, Haiti, Scotland
   'SCO': {
     'BR': [
-      { date: '1998-06-10', comp: 'WM', venue: 'Paris', attendance: 80000, result: '1:2', scorers: ['Collins (P)', 'Sampaio', 'Boyd (ET)'] },
-      { date: '1990-06-20', comp: 'WM', venue: 'Turin', attendance: 62628, result: '0:1', scorers: ['Müller'] },
-      { date: '1982-06-18', comp: 'WM', venue: 'Sevilla', attendance: 47379, result: '1:4', scorers: ['Narey', 'Zico', 'Oscar', 'Eder', 'Falcão'] },
-      { date: '1974-06-18', comp: 'WM', venue: 'Frankfurt', attendance: 62000, result: '0:0', scorers: [] },
+      { date: '2011-03-27', comp: 'Friendly', venue: 'London (Emirates)', attendance: 53087, result: '0:2', scorers: ['Neymar 2'], source: '11v11.com, arsenal.com' },
+      { date: '1998-06-10', comp: 'WM', venue: 'Paris (Stade de France)', attendance: 80000, result: '1:2', scorers: ['Collins (P)', 'César Sampaio', 'Boyd (ET)'], source: 'fifa.com' },
+      { date: '1990-06-20', comp: 'WM', venue: 'Turin', attendance: 62628, result: '0:1', scorers: ['Müller'], source: 'fifa.com' },
+      { date: '1987-05-26', comp: 'Rous Cup', venue: 'Glasgow (Hampden)', attendance: 41384, result: '0:2', scorers: ['Valdo', 'Raí'], source: 'rsssf.org' },
+      { date: '1982-06-18', comp: 'WM', venue: 'Sevilla', attendance: 47379, result: '1:4', scorers: ['Narey', 'Zico', 'Oscar', 'Eder', 'Falcão'], source: 'fifa.com' },
+      { date: '1977-06-23', comp: 'Friendly', venue: 'Rio (Maracanã)', attendance: 69763, result: '0:2', scorers: ['Zico', 'Cerezo'], source: 'eu-football.info' },
+      { date: '1974-06-18', comp: 'WM', venue: 'Frankfurt', attendance: 62000, result: '0:0', scorers: [], source: 'fifa.com' },
+      { date: '1973-06-30', comp: 'Friendly', venue: 'Glasgow (Hampden)', attendance: 78181, result: '0:1', scorers: ['Jairzinho'], source: 'scottishfa.co.uk' },
+      { date: '1972-07-05', comp: 'Independence Cup', venue: 'Rio (Maracanã)', attendance: 130000, result: '0:1', scorers: ['Jairzinho'], source: 'rsssf.org' },
+      { date: '1966-06-25', comp: 'Friendly', venue: 'Glasgow (Hampden)', attendance: 74933, result: '1:1', scorers: ['Chalmers', 'Servílio'], source: 'scottishfa.co.uk' },
     ],
     'MA': [
-      { date: '1998-06-23', comp: 'WM', venue: 'Saint-Etienne', attendance: 30600, result: '0:3', scorers: ['Bassir 2', 'Hadda'] },
+      { date: '1998-06-23', comp: 'WM', venue: 'Saint-Etienne', attendance: 30600, result: '0:3', scorers: ['Bassir 2', 'Hadda'], source: 'fifa.com' },
     ],
     'HT': [], // Erstes Aufeinandertreffen bei WM 2026
   },
   'MA': {
     'BR': [
-      { date: '1998-06-16', comp: 'WM', venue: 'Nantes', attendance: 35500, result: '0:3', scorers: ['Ronaldo 2', 'Rivaldo'] },
+      { date: '2023-03-25', comp: 'Friendly', venue: 'Tanger', attendance: 45000, result: '2:1', scorers: ['Sabiri', 'Abde', 'Casemiro'], source: 'fifa.com' },
+      { date: '1998-06-16', comp: 'WM', venue: 'Nantes', attendance: 35500, result: '0:3', scorers: [], source: 'fifa.com' },
     ],
     'SCO': [
       { date: '1998-06-23', comp: 'WM', venue: 'Saint-Etienne', attendance: 30600, result: '3:0', scorers: ['Bassir 2', 'Hadda'] },
@@ -696,7 +721,7 @@ const H2H_DATA = {
   // GROUP L: England, Croatia, Ghana, Panama
   'GH': {
     'EN': [
-      { date: '2014-03-29', comp: 'Friendly', venue: 'Wembley', attendance: 40181, result: '0:0', scorers: [] },
+      { date: '2011-03-29', comp: 'Friendly', venue: 'Wembley', attendance: 80102, result: '1:1', scorers: ['Gyan', 'Carroll'], source: '11v11.com' },
     ],
     'HR': [
       { date: '2014-06-05', comp: 'Friendly', venue: 'Zagreb', attendance: 20000, result: '0:1', scorers: ['Kramarić'] },
@@ -718,9 +743,17 @@ const H2H_DATA = {
   },
   'HR': {
     'EN': [
-      { date: '2018-07-11', comp: 'WM HF', venue: 'Moskau', attendance: 78011, result: '2:1 n.V.', scorers: ['Perišić', 'Mandžukić', 'Trippier'] },
-      { date: '2018-11-18', comp: 'Nations League', venue: 'Wembley', attendance: 78000, result: '0:2', scorers: ['Lingard', 'Kane'] },
-      { date: '2021-06-13', comp: 'EM', venue: 'Wembley', attendance: 22500, result: '0:1', scorers: ['Sterling'] },
+      { date: '2021-06-13', comp: 'EM', venue: 'Wembley', attendance: 22500, result: '0:1', scorers: ['Sterling'], source: 'uefa.com' },
+      { date: '2018-11-18', comp: 'Nations League', venue: 'Wembley', attendance: 78000, result: '1:2', scorers: ['Kramarić', 'Lingard', 'Kane'], source: 'uefa.com' },
+      { date: '2018-10-12', comp: 'Nations League', venue: 'Rijeka', attendance: 8200, result: '0:0', scorers: [], source: 'uefa.com' },
+      { date: '2018-07-11', comp: 'WM HF', venue: 'Moskau', attendance: 78011, result: '2:1 n.V.', scorers: ['Perišić', 'Mandžukić', 'Trippier'], source: 'fifa.com' },
+      { date: '2009-09-09', comp: 'WM-Quali', venue: 'Wembley', attendance: 85512, result: '1:5', scorers: ['Eduardo', 'Lampard 2', 'Gerrard', 'Rooney', 'Crouch'], source: '11v11.com' },
+      { date: '2008-09-10', comp: 'WM-Quali', venue: 'Zagreb', attendance: 35000, result: '1:4', scorers: ['Klasnić', 'Walcott 3', 'Rooney'], source: '11v11.com' },
+      { date: '2007-11-21', comp: 'EM-Quali', venue: 'Wembley', attendance: 88091, result: '3:2', scorers: ['Kranjčar', 'Eduardo', 'Petric', 'Lampard (P)', 'Crouch'], source: 'englandstats.com' },
+      { date: '2006-10-11', comp: 'EM-Quali', venue: 'Zagreb', attendance: 38000, result: '2:0', scorers: ['Eduardo', 'Neville (ET)'], source: 'englandstats.com' },
+      { date: '2004-06-21', comp: 'EM', venue: 'Lissabon', attendance: 63000, result: '2:4', scorers: ['Kovač', 'Tudor', 'Scholes', 'Rooney 2', 'Lampard'], source: 'uefa.com' },
+      { date: '2003-08-20', comp: 'Friendly', venue: 'Ipswich', attendance: 29000, result: '1:3', scorers: ['Šimić', 'Owen', 'Rooney', 'Lampard'], source: '11v11.com' },
+      { date: '1996-04-24', comp: 'Friendly', venue: 'Wembley', attendance: 34400, result: '0:0', scorers: [], source: '11v11.com' },
     ],
     'GH': [
       { date: '2014-06-05', comp: 'Friendly', venue: 'Zagreb', attendance: 20000, result: '1:0', scorers: ['Kramarić'] },
