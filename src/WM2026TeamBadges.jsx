@@ -252,7 +252,7 @@ const getGroupOpponents = (countryCode) => {
 };
 
 // Correct H2H Data (verified historical matches)
-const H2H_DATA = {
+export const H2H_DATA = {
   'DE': {
     'SCO': [
       { date: '2024-06-14', comp: 'EM', venue: 'München', attendance: 66000, result: '5:1', scorers: ['Wirtz', 'Musiala', 'Havertz', 'Füllkrug', 'Can', 'Rüdiger (ET)'] },

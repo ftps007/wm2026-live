@@ -4,6 +4,53 @@
 
 import React, { useState, useMemo } from 'react';
 import { t, translateTeam, translatePhase, translatePlayoffType } from './translations';
+import { H2H_DATA } from './WM2026TeamBadges';
+
+// ==================== TEAM NAME TO CODE MAPPING ====================
+const TEAM_NAME_TO_CODE = {
+  'Deutschland': 'DE', 'Frankreich': 'FR', 'England': 'EN', 'Spanien': 'ES',
+  'Brasilien': 'BR', 'Argentinien': 'AR', 'Portugal': 'PT', 'Niederlande': 'NL',
+  'Belgien': 'BE', 'Kroatien': 'HR', 'Uruguay': 'UY', 'Kolumbien': 'CO',
+  'Mexiko': 'MX', 'USA': 'US', 'Kanada': 'CA', 'Japan': 'JP',
+  'Republik Korea': 'KR', 'Australien': 'AU', 'Schweiz': 'CH', 'Österreich': 'AT',
+  'Schottland': 'SCO', 'Marokko': 'MA', 'Senegal': 'SN', 'Ghana': 'GH',
+  'Elfenbeinküste': 'CI', 'Algerien': 'DZ', 'Ägypten': 'EG', 'Tunesien': 'TN',
+  'Kamerun': 'CM', 'Nigeria': 'NG', 'Südafrika': 'ZA', 'Katar': 'QA',
+  'Saudi-Arabien': 'SA', 'Iran': 'IR', 'Ecuador': 'EC', 'Paraguay': 'PY',
+  'Chile': 'CL', 'Peru': 'PE', 'Venezuela': 'VE', 'Bolivien': 'BO',
+  'Polen': 'PL', 'Ukraine': 'UA', 'Norwegen': 'NO', 'Schweden': 'SE',
+  'Dänemark': 'DK', 'Ungarn': 'HU', 'Serbien': 'RS', 'Tschechien': 'CZ',
+  'Slowakei': 'SK', 'Rumänien': 'RO', 'Bulgarien': 'BG', 'Griechenland': 'GR',
+  'Türkei': 'TR', 'Irland': 'IE', 'Wales': 'WAL', 'Nordirland': 'NIR',
+  'Panama': 'PA', 'Costa Rica': 'CR', 'Honduras': 'HN', 'El Salvador': 'SV',
+  'Jamaika': 'JM', 'Haiti': 'HT', 'Curaçao': 'CW', 'Kap Verde': 'CV',
+  'Neuseeland': 'NZ', 'Usbekistan': 'UZ', 'Jordanien': 'JO',
+  'Bosnien-Herzegowina': 'BIH', 'Nordmazedonien': 'MKD', 'Albanien': 'ALB',
+  'Kosovo': 'XKX', 'DR Kongo': 'COD', 'Neukaledonien': 'NCL', 'Irak': 'IRQ',
+  'Suriname': 'SUR'
+};
+
+// Get H2H matches for a pairing (last 5)
+const getH2HMatches = (team1Name, team2Name) => {
+  const code1 = TEAM_NAME_TO_CODE[team1Name];
+  const code2 = TEAM_NAME_TO_CODE[team2Name];
+  if (!code1 || !code2) return [];
+
+  const matches = H2H_DATA[code1]?.[code2] || [];
+  return matches.slice(0, 5); // Return last 5 matches
+};
+
+// Calculate H2H summary (wins-draws-losses from team1 perspective)
+const getH2HSummary = (matches) => {
+  let wins = 0, draws = 0, losses = 0;
+  matches.forEach(m => {
+    const [home, away] = m.result.split(':').map(s => parseInt(s));
+    if (home > away) wins++;
+    else if (home < away) losses++;
+    else draws++;
+  });
+  return { wins, draws, losses, total: matches.length };
+};
 
 // ==================== PLAY-OFF INFO ====================
 const PLAYOFF_INFO = {
@@ -436,6 +483,7 @@ export default function SpieleSection({ user, predictions, savePrediction, match
   const [selectedGroup, setSelectedGroup] = useState('A');
   const [hoveredStadium, setHoveredStadium] = useState(null);
   const [localPredictions, setLocalPredictions] = useState({});
+  const [expandedH2H, setExpandedH2H] = useState({});
 
   const NORDVPN_AFFILIATE_URL = nordvpnUrl || 'https://www.kqzyfj.com/click-101616485-13756265';
 
@@ -653,6 +701,90 @@ export default function SpieleSection({ user, predictions, savePrediction, match
             >🤖 {tt('ai')}</button>
           </div>
         )}
+
+        {/* H2H History - Compact & Expandable */}
+        {(() => {
+          const h2hMatches = getH2HMatches(match.team1, match.team2);
+          if (h2hMatches.length === 0) return null;
+
+          const summary = getH2HSummary(h2hMatches);
+          const isExpanded = expandedH2H[match.id];
+
+          return (
+            <div style={{
+              background: '#0f172a',
+              borderRadius: 6,
+              marginBottom: 8,
+              border: '1px solid #1e3a5f',
+              overflow: 'hidden'
+            }}>
+              {/* H2H Header - Always visible */}
+              <div
+                onClick={() => setExpandedH2H(prev => ({ ...prev, [match.id]: !prev[match.id] }))}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '6px 10px',
+                  cursor: 'pointer',
+                  background: isExpanded ? '#1e3a5f' : 'transparent'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <span style={{ fontSize: 9, color: '#64748b' }}>📊 H2H</span>
+                  <div style={{ display: 'flex', gap: 3, fontSize: 9 }}>
+                    <span style={{ color: '#10b981', fontWeight: 'bold' }}>{summary.wins}</span>
+                    <span style={{ color: '#64748b' }}>-</span>
+                    <span style={{ color: '#fbbf24', fontWeight: 'bold' }}>{summary.draws}</span>
+                    <span style={{ color: '#64748b' }}>-</span>
+                    <span style={{ color: '#ef4444', fontWeight: 'bold' }}>{summary.losses}</span>
+                  </div>
+                  <span style={{ fontSize: 8, color: '#475569' }}>({summary.total} {language === 'en' ? 'games' : 'Spiele'})</span>
+                </div>
+                <span style={{ fontSize: 10, color: '#64748b', transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>▼</span>
+              </div>
+
+              {/* H2H Details - Expandable */}
+              {isExpanded && (
+                <div style={{ padding: '0 10px 8px 10px' }}>
+                  {h2hMatches.map((m, idx) => {
+                    const [home, away] = m.result.split(':').map(s => parseInt(s));
+                    const isWin = home > away;
+                    const isDraw = home === away;
+                    return (
+                      <div key={idx} style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '4px 0',
+                        borderTop: idx > 0 ? '1px solid #1e293b' : 'none',
+                        fontSize: 9
+                      }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                          <span style={{
+                            width: 6, height: 6, borderRadius: '50%',
+                            background: isWin ? '#10b981' : isDraw ? '#fbbf24' : '#ef4444'
+                          }}/>
+                          <span style={{ color: '#64748b', minWidth: 60 }}>{m.date.split('-').reverse().slice(0, 2).join('.')}</span>
+                          <span style={{
+                            color: isWin ? '#10b981' : isDraw ? '#fbbf24' : '#ef4444',
+                            fontWeight: 'bold',
+                            minWidth: 28
+                          }}>{m.result}</span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                          <span style={{ color: '#475569', fontSize: 8 }}>{m.comp}</span>
+                          <span style={{ color: '#334155', fontSize: 8 }}>•</span>
+                          <span style={{ color: '#475569', fontSize: 8, maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{m.venue}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          );
+        })()}
 
         {/* Stadium with Tooltip */}
         <div 
