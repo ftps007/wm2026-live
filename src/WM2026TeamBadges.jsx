@@ -324,10 +324,8 @@ export const H2H_DATA = {
     ],
     // Group J opponents
     'AT': [
-      { date: '2024-06-14', comp: 'Friendly', venue: 'Wien', attendance: 45000, result: '2:0', scorers: ['Messi', 'Di Maria'] },
-      { date: '1978-06-14', comp: 'WM', venue: 'Buenos Aires', attendance: 71712, result: '2:1', scorers: ['Luque', 'Bertoni'] },
-      { date: '1958-06-08', comp: 'WM', venue: 'Helsingborg', attendance: 16793, result: '3:1', scorers: ['Corbatta 3'] },
-      { date: '1954-06-17', comp: 'WM', venue: 'Lausanne', attendance: 32000, result: '0:1', scorers: [] },
+      { date: '1990-05-03', comp: 'Friendly', venue: 'Wien (Prater)', attendance: 15000, result: '1:1', scorers: [], source: '11v11.com' },
+      { date: '1980-05-21', comp: 'Friendly', venue: 'Wien (Prater)', attendance: 20000, result: '5:1', scorers: ['Maradona', 'Díaz 2', 'Ramón Díaz', 'Passarella'], source: '11v11.com' },
     ],
     'DZ': [
       { date: '2014-06-25', comp: 'WM', venue: 'Porto Alegre', attendance: 43285, result: '4:2', scorers: ['Messi 2', 'Higuain', 'Di Maria'] },
@@ -448,10 +446,8 @@ export const H2H_DATA = {
   // GROUP J: Argentina, Algeria, Austria, Jordan
   'AT': {
     'AR': [
-      { date: '2024-06-14', comp: 'Friendly', venue: 'Wien', attendance: 45000, result: '0:2', scorers: ['Messi', 'Di Maria'] },
-      { date: '1978-06-14', comp: 'WM', venue: 'Buenos Aires', attendance: 71712, result: '1:2', scorers: ['Krankl', 'Luque', 'Bertoni'] },
-      { date: '1958-06-08', comp: 'WM', venue: 'Helsingborg', attendance: 16793, result: '1:3', scorers: ['Koerner', 'Corbatta 3'] },
-      { date: '1954-06-17', comp: 'WM', venue: 'Lausanne', attendance: 32000, result: '1:0', scorers: ['Koerner'] },
+      { date: '1990-05-03', comp: 'Friendly', venue: 'Wien (Prater)', attendance: 15000, result: '1:1', scorers: [], source: '11v11.com' },
+      { date: '1980-05-21', comp: 'Friendly', venue: 'Wien (Prater)', attendance: 20000, result: '1:5', scorers: [], source: '11v11.com' },
     ],
     'DZ': [
       { date: '2014-03-05', comp: 'Friendly', venue: 'Wien', attendance: 15000, result: '3:0', scorers: ['Arnautovic', 'Alaba', 'Junuzovic'] },
