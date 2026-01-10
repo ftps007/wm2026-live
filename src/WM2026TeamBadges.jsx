@@ -449,9 +449,7 @@ export const H2H_DATA = {
       { date: '2014-03-05', comp: 'Friendly', venue: 'Wien', attendance: 15000, result: '3:0', scorers: ['Arnautovic', 'Alaba', 'Junuzovic'] },
       { date: '2010-11-17', comp: 'Friendly', venue: 'Algier', attendance: 25000, result: '2:0', scorers: ['Imorou (ET)', 'Ghezzal'] },
     ],
-    'JO': [
-      { date: '2012-02-29', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 8000, result: '1:1', scorers: ['Junuzovic', 'Al-Deeb'] },
-    ],
+    'JO': [], // Never played - first meeting at WM 2026
   },
   'DZ': {
     'AR': [
@@ -468,9 +466,7 @@ export const H2H_DATA = {
   },
   'JO': {
     'AR': [], // Never played - first meeting at WM 2026
-    'AT': [
-      { date: '2012-02-29', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 8000, result: '1:1', scorers: ['Al-Deeb'] },
-    ],
+    'AT': [], // Never played - first meeting at WM 2026
     'DZ': [
       { date: '2023-06-16', comp: 'Arab Cup', venue: 'Algier', attendance: 35000, result: '1:3', scorers: ['Al-Rawabdeh'] },
       { date: '2021-12-07', comp: 'Arab Cup', venue: 'Doha', attendance: 27000, result: '1:4', scorers: ['Al-Naimat'] },
