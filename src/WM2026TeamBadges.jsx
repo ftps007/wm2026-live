@@ -458,16 +458,14 @@ export const H2H_DATA = {
       { date: '1982-06-21', comp: 'WM', venue: 'Oviedo (Carlos Tartiere)', attendance: 22000, result: '0:2', scorers: ['Schachner', 'Krankl'], source: 'espn.com, fifa.com' },
     ],
     'JO': [
-      { date: '2023-06-16', comp: 'Arab Cup', venue: 'Algier', attendance: 35000, result: '3:1', scorers: ['Mahrez', 'Benrahma', 'Belaili', 'Al-Rawabdeh'] },
-      { date: '2021-12-07', comp: 'Arab Cup', venue: 'Doha', attendance: 27000, result: '4:1', scorers: ['Bounedjah 2', 'Slimani', 'Sayoud', 'Al-Naimat'] },
+      { date: '2004-05-30', comp: 'Friendly', venue: 'Algier', attendance: 5000, result: '1:1', scorers: ['Cherrad'], source: 'footballdatabase.eu' },
     ],
   },
   'JO': {
     'AR': [], // Never played - first meeting at WM 2026
     'AT': [], // Never played - first meeting at WM 2026
     'DZ': [
-      { date: '2023-06-16', comp: 'Arab Cup', venue: 'Algier', attendance: 35000, result: '1:3', scorers: ['Al-Rawabdeh'] },
-      { date: '2021-12-07', comp: 'Arab Cup', venue: 'Doha', attendance: 27000, result: '1:4', scorers: ['Al-Naimat'] },
+      { date: '2004-05-30', comp: 'Friendly', venue: 'Algier', attendance: 5000, result: '1:1', scorers: [], source: 'footballdatabase.eu' },
     ],
   },
   // GROUP A: Mexico, South Korea, South Africa
