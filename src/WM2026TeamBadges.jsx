@@ -374,6 +374,19 @@ const H2H_DATA = {
     'HR': [
       { date: '2022-12-09', comp: 'WM VF', venue: 'Education City', attendance: 43877, result: '1:1 (2:4 i.E.)', scorers: ['Neymar', 'Petković'] },
     ],
+    // Group C opponents
+    'MA': [
+      { date: '1998-06-16', comp: 'WM', venue: 'Nantes', attendance: 35500, result: '3:0', scorers: ['Ronaldo 2', 'Rivaldo'] },
+    ],
+    'HT': [
+      { date: '2016-06-08', comp: 'Copa America', venue: 'Orlando', attendance: 28241, result: '7:1', scorers: ['Coutinho 3', 'Renato Augusto 2', 'Gabriel Barbosa', 'Lucas Lima', 'Marcelin'] },
+      { date: '2004-08-18', comp: 'Friendly', venue: 'Port-au-Prince', attendance: 15000, result: '6:0', scorers: ['Adriano 2', 'Kaká 2', 'Robinho', 'Ronaldinho'] },
+    ],
+    'SCO': [
+      { date: '1998-06-10', comp: 'WM', venue: 'Paris', attendance: 80000, result: '2:1', scorers: ['Sampaio', 'Boyd (ET)', 'Collins (P)'] },
+      { date: '1982-06-18', comp: 'WM', venue: 'Sevilla', attendance: 47379, result: '4:1', scorers: ['Zico', 'Oscar', 'Eder', 'Falcão', 'Narey'] },
+      { date: '1974-06-18', comp: 'WM', venue: 'Frankfurt', attendance: 62000, result: '0:0', scorers: [] },
+    ],
   },
   'PL': {
     'FR': [
@@ -464,6 +477,7 @@ const H2H_DATA = {
     'MA': [
       { date: '1998-06-23', comp: 'WM', venue: 'Saint-Etienne', attendance: 30600, result: '0:3', scorers: ['Bassir 2', 'Hadda'] },
     ],
+    'HT': [], // Erstes Aufeinandertreffen bei WM 2026
   },
   'MA': {
     'BR': [
@@ -472,6 +486,7 @@ const H2H_DATA = {
     'SCO': [
       { date: '1998-06-23', comp: 'WM', venue: 'Saint-Etienne', attendance: 30600, result: '3:0', scorers: ['Bassir 2', 'Hadda'] },
     ],
+    'HT': [], // Erstes Aufeinandertreffen bei WM 2026
   },
   // GROUP E: Germany, Curaçao, Ivory Coast, Ecuador (DE already has some entries)
   'EC': {
@@ -482,6 +497,9 @@ const H2H_DATA = {
     'CI': [
       { date: '1975-10-26', comp: 'Friendly', venue: 'Abidjan', attendance: 35000, result: '0:1', scorers: ['Laurent Pokou'] },
     ],
+    'CW': [
+      { date: '2019-06-16', comp: 'Gold Cup', venue: 'Los Angeles', attendance: 18000, result: '1:1', scorers: ['Mena', 'Bacuna'] },
+    ],
   },
   'CI': {
     'DE': [
@@ -490,6 +508,7 @@ const H2H_DATA = {
     'EC': [
       { date: '1975-10-26', comp: 'Friendly', venue: 'Abidjan', attendance: 35000, result: '1:0', scorers: ['Laurent Pokou'] },
     ],
+    'CW': [], // Erstes Aufeinandertreffen bei WM 2026
   },
   // GROUP F: Netherlands, Japan, Tunisia
   'NL': {
@@ -575,6 +594,7 @@ const H2H_DATA = {
       { date: '2006-06-23', comp: 'WM', venue: 'Kaiserslautern', attendance: 46000, result: '1:0', scorers: ['Juanito'] },
       { date: '1998-06-23', comp: 'WM', venue: 'Lens', attendance: 38000, result: '0:0', scorers: [] },
     ],
+    'CV': [], // Erstes Aufeinandertreffen bei WM 2026
   },
   'UY': {
     'ES': [
@@ -584,6 +604,9 @@ const H2H_DATA = {
     'SA': [
       { date: '2018-06-20', comp: 'WM', venue: 'Rostov', attendance: 43109, result: '1:0', scorers: ['Suárez'] },
       { date: '2022-11-16', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 18000, result: '0:0', scorers: [] },
+    ],
+    'CV': [
+      { date: '2019-11-18', comp: 'Friendly', venue: 'Praia', attendance: 8000, result: '1:1', scorers: ['Cavani', 'Garry Rodrigues'] },
     ],
   },
   'SA': {
@@ -595,6 +618,7 @@ const H2H_DATA = {
       { date: '2018-06-20', comp: 'WM', venue: 'Rostov', attendance: 43109, result: '0:1', scorers: [] },
       { date: '2022-11-16', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 18000, result: '0:0', scorers: [] },
     ],
+    'CV': [], // Erstes Aufeinandertreffen bei WM 2026
   },
   // GROUP I: France, Senegal, Norway
   'SN': {
@@ -662,6 +686,11 @@ const H2H_DATA = {
     ],
   },
   'HR': {
+    'EN': [
+      { date: '2018-07-11', comp: 'WM HF', venue: 'Moskau', attendance: 78011, result: '2:1 n.V.', scorers: ['Perišić', 'Mandžukić', 'Trippier'] },
+      { date: '2018-11-18', comp: 'Nations League', venue: 'Wembley', attendance: 78000, result: '0:2', scorers: ['Lingard', 'Kane'] },
+      { date: '2021-06-13', comp: 'EM', venue: 'Wembley', attendance: 22500, result: '0:1', scorers: ['Sterling'] },
+    ],
     'GH': [
       { date: '2014-06-05', comp: 'Friendly', venue: 'Zagreb', attendance: 20000, result: '1:0', scorers: ['Kramarić'] },
     ],
@@ -725,6 +754,31 @@ const H2H_DATA = {
     ],
     'PY': [
       { date: '2011-10-07', comp: 'Friendly', venue: 'Sydney', attendance: 35000, result: '3:0', scorers: ['Cahill 2', 'Kruse'] },
+    ],
+  },
+  // GROUP C: Haiti entries
+  'HT': {
+    'BR': [
+      { date: '2016-06-08', comp: 'Copa America', venue: 'Orlando', attendance: 28241, result: '1:7', scorers: ['Marcelin'] },
+      { date: '2004-08-18', comp: 'Friendly', venue: 'Port-au-Prince', attendance: 15000, result: '0:6', scorers: [] },
+    ],
+    'MA': [], // Erstes Aufeinandertreffen bei WM 2026
+    'SCO': [], // Erstes Aufeinandertreffen bei WM 2026
+  },
+  // GROUP H: Cape Verde entries
+  'CV': {
+    'ES': [], // Erstes Aufeinandertreffen bei WM 2026
+    'UY': [
+      { date: '2019-11-18', comp: 'Friendly', venue: 'Praia', attendance: 8000, result: '1:1', scorers: ['Garry Rodrigues', 'Cavani'] },
+    ],
+    'SA': [], // Erstes Aufeinandertreffen bei WM 2026
+  },
+  // GROUP E: Curaçao entries
+  'CW': {
+    'DE': [], // Erstes Aufeinandertreffen bei WM 2026
+    'CI': [], // Erstes Aufeinandertreffen bei WM 2026
+    'EC': [
+      { date: '2019-06-16', comp: 'Gold Cup', venue: 'Los Angeles', attendance: 18000, result: '1:1', scorers: ['Bacuna', 'Mena'] },
     ],
   },
 };
