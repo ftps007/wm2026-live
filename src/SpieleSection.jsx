@@ -752,30 +752,34 @@ export default function SpieleSection({ user, predictions, savePrediction, match
                     const isDraw = home === away;
                     return (
                       <div key={idx} style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
                         padding: '4px 0',
                         borderTop: idx > 0 ? '1px solid #1e293b' : 'none',
                         fontSize: 9
                       }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <span style={{
-                            width: 6, height: 6, borderRadius: '50%',
-                            background: isWin ? '#10b981' : isDraw ? '#fbbf24' : '#ef4444'
-                          }}/>
-                          <span style={{ color: '#64748b', minWidth: 70 }}>{m.date.split('-').reverse().join('.')}</span>
-                          <span style={{
-                            color: isWin ? '#10b981' : isDraw ? '#fbbf24' : '#ef4444',
-                            fontWeight: 'bold',
-                            minWidth: 28
-                          }}>{m.result}</span>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <span style={{
+                              width: 6, height: 6, borderRadius: '50%',
+                              background: isWin ? '#10b981' : isDraw ? '#fbbf24' : '#ef4444'
+                            }}/>
+                            <span style={{ color: '#64748b', minWidth: 70 }}>{m.date.split('-').reverse().join('.')}</span>
+                            <span style={{
+                              color: isWin ? '#10b981' : isDraw ? '#fbbf24' : '#ef4444',
+                              fontWeight: 'bold',
+                              minWidth: 28
+                            }}>{m.result}</span>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <span style={{ color: '#475569', fontSize: 8 }}>{m.comp}</span>
+                            <span style={{ color: '#334155', fontSize: 8 }}>•</span>
+                            <span style={{ color: '#475569', fontSize: 8, maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{m.venue}</span>
+                          </div>
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <span style={{ color: '#475569', fontSize: 8 }}>{m.comp}</span>
-                          <span style={{ color: '#334155', fontSize: 8 }}>•</span>
-                          <span style={{ color: '#475569', fontSize: 8, maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{m.venue}</span>
-                        </div>
+                        {m.scorers && m.scorers.length > 0 && (
+                          <div style={{ marginLeft: 12, marginTop: 2, color: '#fbbf24', fontSize: 8 }}>
+                            ⚽ {m.scorers.join(', ')}
+                          </div>
+                        )}
                       </div>
                     );
                   })}
