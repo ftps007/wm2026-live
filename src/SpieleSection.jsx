@@ -699,13 +699,14 @@ export default function SpieleSection({ user, predictions, savePrediction, match
           </div>
         )}
 
-        {/* H2H History - Compact & Expandable */}
+        {/* H2H History - Expanded by default, collapsible */}
         {(() => {
           const h2hMatches = getH2HMatches(match.team1, match.team2);
           if (h2hMatches.length === 0) return null;
 
           const summary = getH2HSummary(h2hMatches);
-          const isExpanded = expandedH2H[match.id];
+          // Default to expanded (true), only collapse if explicitly set to false
+          const isExpanded = expandedH2H[match.id] !== false;
           const team1Code = TEAM_NAME_TO_CODE[match.team1];
 
           return (
@@ -716,21 +717,20 @@ export default function SpieleSection({ user, predictions, savePrediction, match
               border: '1px solid #1e3a5f',
               overflow: 'hidden'
             }}>
-              {/* H2H Header - Always visible */}
+              {/* H2H Header - Clickable to collapse/expand */}
               <div
+                onClick={() => setExpandedH2H(prev => ({ ...prev, [match.id]: !isExpanded }))}
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   padding: '6px 10px',
-                  background: isExpanded ? '#1e3a5f' : 'transparent'
+                  cursor: 'pointer',
+                  background: '#1e3a5f'
                 }}
               >
-                <div
-                  onClick={() => setExpandedH2H(prev => ({ ...prev, [match.id]: !prev[match.id] }))}
-                  style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer', flex: 1 }}
-                >
-                  <span style={{ fontSize: 9, color: '#64748b' }}>📊 H2H</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <span style={{ fontSize: 9, color: '#94a3b8' }}>📊 H2H</span>
                   <div style={{ display: 'flex', gap: 3, fontSize: 9 }}>
                     <span style={{ color: '#10b981', fontWeight: 'bold' }}>{summary.wins}</span>
                     <span style={{ color: '#64748b' }}>-</span>
@@ -738,37 +738,14 @@ export default function SpieleSection({ user, predictions, savePrediction, match
                     <span style={{ color: '#64748b' }}>-</span>
                     <span style={{ color: '#ef4444', fontWeight: 'bold' }}>{summary.losses}</span>
                   </div>
-                  <span style={{ fontSize: 8, color: '#475569' }}>({summary.total} {language === 'en' ? 'games' : 'Spiele'})</span>
-                  <span style={{ fontSize: 10, color: '#64748b', transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>▼</span>
+                  <span style={{ fontSize: 8, color: '#64748b' }}>({summary.total} {language === 'en' ? 'games' : 'Spiele'})</span>
                 </div>
-                {onNavigateToTeam && team1Code && (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onNavigateToTeam(team1Code);
-                    }}
-                    style={{
-                      background: '#3b82f6',
-                      border: 'none',
-                      borderRadius: 4,
-                      padding: '3px 6px',
-                      cursor: 'pointer',
-                      fontSize: 8,
-                      color: 'white',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 3
-                    }}
-                    title={language === 'en' ? 'View full H2H in Teams' : 'Vollständiges H2H in Teams'}
-                  >
-                    ↗ {language === 'en' ? 'More' : 'Mehr'}
-                  </button>
-                )}
+                <span style={{ fontSize: 10, color: '#64748b', transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>▼</span>
               </div>
 
-              {/* H2H Details - Expandable */}
+              {/* H2H Match List - Visible by default */}
               {isExpanded && (
-                <div style={{ padding: '0 10px 8px 10px' }}>
+                <div style={{ padding: '6px 10px 8px 10px' }}>
                   {h2hMatches.map((m, idx) => {
                     const [home, away] = m.result.split(':').map(s => parseInt(s));
                     const isWin = home > away;
@@ -802,6 +779,26 @@ export default function SpieleSection({ user, predictions, savePrediction, match
                       </div>
                     );
                   })}
+                  {/* Link to full H2H in Teams section */}
+                  {onNavigateToTeam && team1Code && (
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onNavigateToTeam(team1Code);
+                      }}
+                      style={{
+                        marginTop: 6,
+                        paddingTop: 6,
+                        borderTop: '1px solid #1e293b',
+                        textAlign: 'center',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <span style={{ fontSize: 8, color: '#3b82f6' }}>
+                        ↗ {language === 'en' ? 'View complete H2H in Teams' : 'Komplettes H2H in Teams ansehen'}
+                      </span>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
