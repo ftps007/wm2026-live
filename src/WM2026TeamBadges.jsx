@@ -446,8 +446,7 @@ export const H2H_DATA = {
       { date: '1980-05-21', comp: 'Friendly', venue: 'Wien (Prater)', attendance: 20000, result: '1:5', scorers: [], source: '11v11.com' },
     ],
     'DZ': [
-      { date: '2014-03-05', comp: 'Friendly', venue: 'Wien', attendance: 15000, result: '3:0', scorers: ['Arnautovic', 'Alaba', 'Junuzovic'] },
-      { date: '2010-11-17', comp: 'Friendly', venue: 'Algier', attendance: 25000, result: '2:0', scorers: ['Imorou (ET)', 'Ghezzal'] },
+      { date: '1982-06-21', comp: 'WM', venue: 'Oviedo (Carlos Tartiere)', attendance: 22000, result: '2:0', scorers: ['Schachner', 'Krankl'], source: 'espn.com, fifa.com' },
     ],
     'JO': [], // Never played - first meeting at WM 2026
   },
@@ -456,8 +455,7 @@ export const H2H_DATA = {
       { date: '2007-06-05', comp: 'Friendly', venue: 'Barcelona (Mini Estadi)', attendance: 5000, result: '3:4', scorers: ['Belhadj 2', 'Yahia', 'Messi', 'Messi (P)', 'Cambiasso', 'Tévez (P)'], source: 'espn.com' },
     ],
     'AT': [
-      { date: '2014-03-05', comp: 'Friendly', venue: 'Wien', attendance: 15000, result: '0:3', scorers: [] },
-      { date: '2010-11-17', comp: 'Friendly', venue: 'Algier', attendance: 25000, result: '2:0', scorers: ['Imorou (ET)', 'Ghezzal'] },
+      { date: '1982-06-21', comp: 'WM', venue: 'Oviedo (Carlos Tartiere)', attendance: 22000, result: '0:2', scorers: ['Schachner', 'Krankl'], source: 'espn.com, fifa.com' },
     ],
     'JO': [
       { date: '2023-06-16', comp: 'Arab Cup', venue: 'Algier', attendance: 35000, result: '3:1', scorers: ['Mahrez', 'Benrahma', 'Belaili', 'Al-Rawabdeh'] },
