@@ -607,7 +607,6 @@ export default function SpieleSection({ user, predictions, savePrediction, match
   const MatchCard = ({ match, showDate = true, compact = false }) => {
     const pred = allPredictions?.[match.id] || {};
     const locked = isMatchLocked(match);
-    const freeTv = isFreeTVMatch(match);
     const stadium = STADIUMS[match.city];
     const t1 = getTeamInfo(match.team1);
     const t2 = getTeamInfo(match.team2);
@@ -765,7 +764,7 @@ export default function SpieleSection({ user, predictions, savePrediction, match
                             width: 6, height: 6, borderRadius: '50%',
                             background: isWin ? '#10b981' : isDraw ? '#fbbf24' : '#ef4444'
                           }}/>
-                          <span style={{ color: '#64748b', minWidth: 60 }}>{m.date.split('-').reverse().slice(0, 2).join('.')}</span>
+                          <span style={{ color: '#64748b', minWidth: 70 }}>{m.date.split('-').reverse().join('.')}</span>
                           <span style={{
                             color: isWin ? '#10b981' : isDraw ? '#fbbf24' : '#ef4444',
                             fontWeight: 'bold',
@@ -814,19 +813,6 @@ export default function SpieleSection({ user, predictions, savePrediction, match
               ))}
             </div>
           )}
-        </div>
-
-        {/* TV Info */}
-        <div style={{ background: '#0f172a', borderRadius: 6, padding: 6, marginBottom: 6 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 3 }}>
-            <span style={{ fontSize: 9, color: '#64748b' }}>📺</span>
-            {freeTv && <span style={{ background: '#22c55e', color: 'white', padding: '1px 5px', borderRadius: 3, fontSize: 8, fontWeight: 'bold' }}>FREE TV</span>}
-          </div>
-          <div style={{ display: 'flex', gap: 6, fontSize: 8, color: '#94a3b8' }}>
-            <span>🇩🇪 {freeTv ? 'ARD/ZDF' : 'MagentaTV'}</span>
-            <span>🇦🇹 {freeTv ? 'ORF' : 'ServusTV'}</span>
-            <span>🇨🇭 {freeTv ? 'SRF' : 'blue'}</span>
-          </div>
         </div>
 
         {/* NordVPN */}
