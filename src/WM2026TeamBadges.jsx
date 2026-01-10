@@ -328,9 +328,7 @@ export const H2H_DATA = {
       { date: '1980-05-21', comp: 'Friendly', venue: 'Wien (Prater)', attendance: 20000, result: '5:1', scorers: ['Maradona', 'Díaz 2', 'Ramón Díaz', 'Passarella'], source: '11v11.com' },
     ],
     'DZ': [
-      { date: '2014-06-25', comp: 'WM', venue: 'Porto Alegre', attendance: 43285, result: '4:2', scorers: ['Messi 2', 'Higuain', 'Di Maria'] },
-      { date: '1986-06-02', comp: 'WM', venue: 'Mexiko-Stadt', attendance: 102000, result: '2:0', scorers: ['Valdano', 'Burruchaga'] },
-      { date: '1982-06-16', comp: 'WM', venue: 'Gijon', attendance: 32000, result: '1:2', scorers: ['Maradona'] },
+      { date: '2007-06-05', comp: 'Friendly', venue: 'Barcelona (Mini Estadi)', attendance: 5000, result: '4:3', scorers: ['Messi', 'Messi (P)', 'Cambiasso', 'Tévez (P)', 'Belhadj 2', 'Yahia'], source: 'espn.com' },
     ],
     'JO': [
       { date: '2023-09-12', comp: 'Friendly', venue: 'Amman', attendance: 18000, result: '3:0', scorers: ['Messi', 'Alvarez 2'] },
@@ -459,9 +457,7 @@ export const H2H_DATA = {
   },
   'DZ': {
     'AR': [
-      { date: '2014-06-25', comp: 'WM', venue: 'Porto Alegre', attendance: 43285, result: '2:4', scorers: ['Djabou', 'Halliche', 'Messi 2', 'Higuain', 'Di Maria'] },
-      { date: '1986-06-02', comp: 'WM', venue: 'Mexiko-Stadt', attendance: 102000, result: '0:2', scorers: ['Valdano', 'Burruchaga'] },
-      { date: '1982-06-16', comp: 'WM', venue: 'Gijon', attendance: 32000, result: '2:1', scorers: ['Assad', 'Belloumi', 'Maradona'] },
+      { date: '2007-06-05', comp: 'Friendly', venue: 'Barcelona (Mini Estadi)', attendance: 5000, result: '3:4', scorers: ['Belhadj 2', 'Yahia', 'Messi', 'Messi (P)', 'Cambiasso', 'Tévez (P)'], source: 'espn.com' },
     ],
     'AT': [
       { date: '2014-03-05', comp: 'Friendly', venue: 'Wien', attendance: 15000, result: '0:3', scorers: [] },
