@@ -486,9 +486,7 @@ export const H2H_DATA = {
       { date: '2018-06-23', comp: 'WM', venue: 'Rostov', attendance: 41835, result: '1:2', scorers: ['Son Heung-min'] },
       { date: '1998-06-13', comp: 'WM', venue: 'Lyon', attendance: 39100, result: '1:3', scorers: ['Ha Seok-ju'] },
     ],
-    'ZA': [
-      { date: '2019-05-28', comp: 'U20 WM', venue: 'Tychy', attendance: 8500, result: '1:0', scorers: ['Cho Young-wook'] },
-    ],
+    'ZA': [], // Never played (senior) - first meeting at WM 2026
   },
   'ZA': {
     'MX': [
@@ -497,9 +495,7 @@ export const H2H_DATA = {
       { date: '2000-06-07', comp: 'Friendly', venue: 'Dallas (Cotton Bowl)', attendance: 30000, result: '2:4', scorers: [], source: 'national-football-teams.com' },
       { date: '1993-10-06', comp: 'Friendly', venue: 'Los Angeles (Memorial Coliseum)', attendance: 37000, result: '0:4', scorers: [], source: 'national-football-teams.com' },
     ],
-    'KR': [
-      { date: '2019-05-28', comp: 'U20 WM', venue: 'Tychy', attendance: 8500, result: '0:1', scorers: [] },
-    ],
+    'KR': [], // Never played (senior) - first meeting at WM 2026
   },
   // GROUP C: Brazil, Morocco, Haiti, Scotland
   'SCO': {
