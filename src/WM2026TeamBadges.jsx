@@ -330,9 +330,7 @@ export const H2H_DATA = {
     'DZ': [
       { date: '2007-06-05', comp: 'Friendly', venue: 'Barcelona (Mini Estadi)', attendance: 5000, result: '4:3', scorers: ['Messi', 'Messi (P)', 'Cambiasso', 'Tévez (P)', 'Belhadj 2', 'Yahia'], source: 'espn.com' },
     ],
-    'JO': [
-      { date: '2023-09-12', comp: 'Friendly', venue: 'Amman', attendance: 18000, result: '3:0', scorers: ['Messi', 'Alvarez 2'] },
-    ],
+    'JO': [], // Never played - first meeting at WM 2026
   },
   'FR': {
     'AR': [
@@ -469,9 +467,7 @@ export const H2H_DATA = {
     ],
   },
   'JO': {
-    'AR': [
-      { date: '2023-09-12', comp: 'Friendly', venue: 'Amman', attendance: 18000, result: '0:3', scorers: ['Messi', 'Alvarez 2'] },
-    ],
+    'AR': [], // Never played - first meeting at WM 2026
     'AT': [
       { date: '2012-02-29', comp: 'Friendly', venue: 'Abu Dhabi', attendance: 8000, result: '1:1', scorers: ['Al-Deeb'] },
     ],
