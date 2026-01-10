@@ -83,7 +83,7 @@ CREATE POLICY "Public read country_facts" ON public.wm2026_country_facts FOR SEL
 -- =====================================================
 
 -- Fix update_updated_at
-DROP FUNCTION IF EXISTS public.update_updated_at();
+DROP FUNCTION IF EXISTS public.update_updated_at() CASCADE;
 CREATE OR REPLACE FUNCTION public.update_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -93,7 +93,7 @@ END;
 $$ LANGUAGE plpgsql SET search_path = '';
 
 -- Fix update_modified_column
-DROP FUNCTION IF EXISTS public.update_modified_column();
+DROP FUNCTION IF EXISTS public.update_modified_column() CASCADE;
 CREATE OR REPLACE FUNCTION public.update_modified_column()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -148,7 +148,7 @@ END;
 $$ LANGUAGE plpgsql SET search_path = '';
 
 -- Fix create_email_preferences_for_new_user
-DROP FUNCTION IF EXISTS public.create_email_preferences_for_new_user();
+DROP FUNCTION IF EXISTS public.create_email_preferences_for_new_user() CASCADE;
 CREATE OR REPLACE FUNCTION public.create_email_preferences_for_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -232,7 +232,7 @@ END;
 $$ LANGUAGE plpgsql SET search_path = '';
 
 -- Fix handle_new_user
-DROP FUNCTION IF EXISTS public.handle_new_user();
+DROP FUNCTION IF EXISTS public.handle_new_user() CASCADE;
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -247,13 +247,29 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = '';
 
 -- =====================================================
--- STEP 7: FIX scheduled_reminders (missing policy)
+-- STEP 7: RECREATE TRIGGERS (dropped by CASCADE)
+-- =====================================================
+
+-- Recreate trigger for wm2026_articles
+DROP TRIGGER IF EXISTS articles_updated_at ON public.wm2026_articles;
+CREATE TRIGGER articles_updated_at
+  BEFORE UPDATE ON public.wm2026_articles
+  FOR EACH ROW EXECUTE FUNCTION public.update_updated_at();
+
+-- Recreate trigger for auth.users -> handle_new_user
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+
+-- =====================================================
+-- STEP 8: FIX scheduled_reminders (missing policy)
 -- =====================================================
 DROP POLICY IF EXISTS "Public read scheduled_reminders" ON public.scheduled_reminders;
 CREATE POLICY "Public read scheduled_reminders" ON public.scheduled_reminders FOR SELECT USING (true);
 
 -- =====================================================
--- STEP 8: FIX PERMISSIVE RLS POLICIES
+-- STEP 9: FIX PERMISSIVE RLS POLICIES
 -- Make INSERT policies more restrictive where needed
 -- =====================================================
 
@@ -280,7 +296,7 @@ CREATE POLICY "Service write log" ON public.wm2026_processing_log
   WITH CHECK (auth.role() = 'service_role');
 
 -- =====================================================
--- STEP 9: MOVE EXTENSIONS TO 'extensions' SCHEMA
+-- STEP 10: MOVE EXTENSIONS TO 'extensions' SCHEMA
 -- (Optional - Supabase recommends this)
 -- =====================================================
 -- Note: This may require superuser privileges
