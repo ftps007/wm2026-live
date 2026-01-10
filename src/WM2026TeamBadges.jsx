@@ -966,7 +966,7 @@ const QUALI_MATCHES = {
 // RSS API for team news
 const RSS2JSON_API = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
-const WM2026TeamBadges = ({ isPremium = false }) => {
+const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTeamSelected = null }) => {
   const { t, language } = useLanguage();
 
   const [badges, setBadges] = useState([]);
@@ -982,6 +982,18 @@ const WM2026TeamBadges = ({ isPremium = false }) => {
   const [filterConfederation, setFilterConfederation] = useState('all');
   const [teamNews, setTeamNews] = useState([]);
   const [newsLoading, setNewsLoading] = useState(false);
+
+  // Handle preselected team from deep link (e.g., from Spiele H2H)
+  useEffect(() => {
+    if (preselectedTeamCode && badges.length > 0) {
+      const team = badges.find(b => b.country_code === preselectedTeamCode);
+      if (team) {
+        setSelectedTeam(team);
+        setActiveModalTab('h2h'); // Switch directly to H2H tab
+        if (onTeamSelected) onTeamSelected();
+      }
+    }
+  }, [preselectedTeamCode, badges]);
 
   // Fetch all data from Supabase
   useEffect(() => {

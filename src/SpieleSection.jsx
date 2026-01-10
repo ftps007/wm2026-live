@@ -475,7 +475,7 @@ const getGroupColor = (group) => {
 };
 
 // ==================== MAIN COMPONENT ====================
-export default function SpieleSection({ user, predictions, savePrediction, matchResults, nordvpnUrl, language = 'de' }) {
+export default function SpieleSection({ user, predictions, savePrediction, matchResults, language = 'de', onNavigateToTeam }) {
   // Use language for translations
   const tt = (key) => t(key, language);
   const tTeam = (name) => translateTeam(name, language);
@@ -484,8 +484,6 @@ export default function SpieleSection({ user, predictions, savePrediction, match
   const [hoveredStadium, setHoveredStadium] = useState(null);
   const [localPredictions, setLocalPredictions] = useState({});
   const [expandedH2H, setExpandedH2H] = useState({});
-
-  const NORDVPN_AFFILIATE_URL = nordvpnUrl || 'https://www.kqzyfj.com/click-101616485-13756265';
 
   // Merge props predictions with local state
   const allPredictions = useMemo(() => ({ ...predictions, ...localPredictions }), [predictions, localPredictions]);
@@ -708,6 +706,7 @@ export default function SpieleSection({ user, predictions, savePrediction, match
 
           const summary = getH2HSummary(h2hMatches);
           const isExpanded = expandedH2H[match.id];
+          const team1Code = TEAM_NAME_TO_CODE[match.team1];
 
           return (
             <div style={{
@@ -719,17 +718,18 @@ export default function SpieleSection({ user, predictions, savePrediction, match
             }}>
               {/* H2H Header - Always visible */}
               <div
-                onClick={() => setExpandedH2H(prev => ({ ...prev, [match.id]: !prev[match.id] }))}
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   padding: '6px 10px',
-                  cursor: 'pointer',
                   background: isExpanded ? '#1e3a5f' : 'transparent'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <div
+                  onClick={() => setExpandedH2H(prev => ({ ...prev, [match.id]: !prev[match.id] }))}
+                  style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer', flex: 1 }}
+                >
                   <span style={{ fontSize: 9, color: '#64748b' }}>📊 H2H</span>
                   <div style={{ display: 'flex', gap: 3, fontSize: 9 }}>
                     <span style={{ color: '#10b981', fontWeight: 'bold' }}>{summary.wins}</span>
@@ -739,8 +739,31 @@ export default function SpieleSection({ user, predictions, savePrediction, match
                     <span style={{ color: '#ef4444', fontWeight: 'bold' }}>{summary.losses}</span>
                   </div>
                   <span style={{ fontSize: 8, color: '#475569' }}>({summary.total} {language === 'en' ? 'games' : 'Spiele'})</span>
+                  <span style={{ fontSize: 10, color: '#64748b', transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>▼</span>
                 </div>
-                <span style={{ fontSize: 10, color: '#64748b', transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>▼</span>
+                {onNavigateToTeam && team1Code && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onNavigateToTeam(team1Code);
+                    }}
+                    style={{
+                      background: '#3b82f6',
+                      border: 'none',
+                      borderRadius: 4,
+                      padding: '3px 6px',
+                      cursor: 'pointer',
+                      fontSize: 8,
+                      color: 'white',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 3
+                    }}
+                    title={language === 'en' ? 'View full H2H in Teams' : 'Vollständiges H2H in Teams'}
+                  >
+                    ↗ {language === 'en' ? 'More' : 'Mehr'}
+                  </button>
+                )}
               </div>
 
               {/* H2H Details - Expandable */}
@@ -814,12 +837,6 @@ export default function SpieleSection({ user, predictions, savePrediction, match
             </div>
           )}
         </div>
-
-        {/* NordVPN */}
-        <a href={NORDVPN_AFFILIATE_URL} target="_blank" rel="noopener noreferrer" 
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, background: 'linear-gradient(135deg, #4158D0, #0070C9)', borderRadius: 6, padding: '6px 10px', textDecoration: 'none', color: 'white', fontSize: 9 }}>
-          🌍 {tt('abroad')} <strong>NordVPN -68%</strong>
-        </a>
       </div>
     );
   };

@@ -579,6 +579,7 @@ function AppContent() {
   const [hoveredStadium, setHoveredStadium] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [showGroupStandings, setShowGroupStandings] = useState(false);
+  const [preselectedTeamCode, setPreselectedTeamCode] = useState(null); // For H2H deep linking
   
   // Landing Poll State - always show poll/results on page load
   const [showLandingPoll, setShowLandingPoll] = useState(true);
@@ -1003,13 +1004,16 @@ function AppContent() {
 
         {/* MATCHES */}
         {activeTab === 'matches' && (
-          <SpieleSection 
+          <SpieleSection
             user={user}
             predictions={predictions}
             savePrediction={savePrediction}
             matchResults={{}}
-            nordvpnUrl={NORDVPN_AFFILIATE_URL}
             language={language}
+            onNavigateToTeam={(teamCode) => {
+              setPreselectedTeamCode(teamCode);
+              setActiveTab('teams');
+            }}
           />
         )}
 
@@ -1185,7 +1189,10 @@ function AppContent() {
         </div>)}
 
         {activeTab === 'teams' && (
-          <WM2026TeamBadges />
+          <WM2026TeamBadges
+            preselectedTeamCode={preselectedTeamCode}
+            onTeamSelected={() => setPreselectedTeamCode(null)}
+          />
         )}
 
 
