@@ -265,10 +265,10 @@ export default function SentimentReportSection({ language = 'de' }) {
         <div style={{ fontSize: '12px', fontWeight: '600', color: colors.blue, letterSpacing: '1px', marginBottom: '8px' }}>
           SENTIMENT INTELLIGENCE
         </div>
-        <h2 style={{ fontSize: '24px', fontWeight: '700', color: colors.black, margin: '0 0 8px', lineHeight: '1.2' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: '700', color: 'white', margin: '0 0 8px', lineHeight: '1.2' }}>
           {t('sentimentSubtitle')}
         </h2>
-        <div style={{ fontSize: '13px', color: colors.grey }}>
+        <div style={{ fontSize: '13px', color: '#9ca3af' }}>
           {t('sentimentAnalysisDate')} • 22,889 {t('sentimentArticlesAnalyzed')}
         </div>
       </div>
