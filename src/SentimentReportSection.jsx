@@ -207,7 +207,7 @@ export default function SentimentReportSection({ language = 'de' }) {
           SENTIMENT INTELLIGENCE
         </div>
         <h2 style={{ fontSize: '24px', fontWeight: '700', color: colors.black, margin: '0 0 8px', lineHeight: '1.2' }}>
-          {t('sentimentSubtitle') || 'Beneath the Political Noise, World Cup 2026 Tells a Positive Story'}
+          {t('sentimentSubtitle')}
         </h2>
         <div style={{ fontSize: '13px', color: colors.grey }}>
           {t('sentimentAnalysisDate')} • 22,889 {t('sentimentArticlesAnalyzed')}

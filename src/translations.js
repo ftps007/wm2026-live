@@ -69,6 +69,7 @@ export const translations = {
     sentimentEngland: 'Hohe Erwartungen, hoher Druck. Tuchel Optimismus. "Coming Home" Narrativ. Englische Medien härteste Kritiker.',
 
     // Sentiment Analysis - UI Labels
+    sentimentSubtitle: 'Hinter dem politischen Rauschen erzählt die WM 2026 eine positive Geschichte',
     sentimentOverall: 'Gesamt-Sentiment',
     sentimentPureSports: 'Reines Sport-Sentiment',
     sentimentCoverage: 'Berichterstattung',
@@ -664,6 +665,7 @@ export const translations = {
     sentimentEngland: 'High expectations, high pressure. Tuchel optimism. "Coming Home" narrative. English media harshest critics of own team.',
 
     // Sentiment Analysis - UI Labels
+    sentimentSubtitle: 'Beneath the Political Noise, World Cup 2026 Tells a Positive Story',
     sentimentOverall: 'Overall Sentiment',
     sentimentPureSports: 'Pure Sports Sentiment',
     sentimentCoverage: 'Coverage Breakdown',
@@ -1259,6 +1261,7 @@ export const translations = {
     sentimentEngland: 'Wysokie oczekiwania, wysoka presja. Optymizm Tuchela. Narracja "Coming Home". Angielskie media najsurowszymi krytykami.',
 
     // Sentiment Analysis - UI Labels
+    sentimentSubtitle: 'Za politycznym szumem MŚ 2026 opowiada pozytywną historię',
     sentimentOverall: 'Ogólny Sentyment',
     sentimentPureSports: 'Czysty Sentyment Sportowy',
     sentimentCoverage: 'Podział Relacji',
