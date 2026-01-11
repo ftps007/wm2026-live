@@ -256,7 +256,7 @@ export const H2H_DATA = {
   'DE': {
     'SCO': [
       { date: '2024-06-14', comp: 'EM', venue: 'München', attendance: 66000, result: '5:1', scorers: ['Wirtz', 'Musiala', 'Havertz', 'Füllkrug', 'Can', 'Rüdiger (ET)'] },
-      { date: '2014-09-07', comp: 'EM-Quali', venue: 'Dortmund', attendance: 51000, result: '2:1', scorers: ['Müller 2', 'Anya'] },
+      { date: '2014-09-07', comp: 'EM-Quali', venue: 'Dortmund', attendance: 51000, result: '2:1', scorers: ['T. Müller 2', 'Anya'] },
       { date: '2003-06-07', comp: 'EM-Quali', venue: 'Glasgow', attendance: 48500, result: '1:1', scorers: ['Fredi Bobic', 'Miller'] },
     ],
     'HU': [
@@ -283,7 +283,7 @@ export const H2H_DATA = {
     ],
     'AR': [
       { date: '2014-07-13', comp: 'WM Finale', venue: 'Rio', attendance: 74738, result: '1:0 n.V.', scorers: ['Götze'] },
-      { date: '2010-07-03', comp: 'WM VF', venue: 'Kapstadt', attendance: 64100, result: '4:0', scorers: ['Müller', 'Klose 2', 'Friedrich'] },
+      { date: '2010-07-03', comp: 'WM VF', venue: 'Kapstadt', attendance: 64100, result: '4:0', scorers: ['T. Müller', 'Klose 2', 'Friedrich'] },
       { date: '2006-07-08', comp: 'WM VF', venue: 'Berlin', attendance: 72000, result: '1:1 (4:2 i.E.)', scorers: ['Klose', 'Ayala'] },
       { date: '1990-07-08', comp: 'WM Finale', venue: 'Rom', attendance: 73603, result: '1:0', scorers: ['Brehme (P)'] },
       { date: '1986-06-29', comp: 'WM Finale', venue: 'Mexiko-Stadt', attendance: 114600, result: '2:3', scorers: ['Rummenigge', 'Völler', 'Brown', 'Valdano', 'Burruchaga'] },
@@ -304,7 +304,7 @@ export const H2H_DATA = {
   'AR': {
     'DE': [
       { date: '2014-07-13', comp: 'WM Finale', venue: 'Rio', attendance: 74738, result: '0:1 n.V.', scorers: ['Götze'] },
-      { date: '2010-07-03', comp: 'WM VF', venue: 'Kapstadt', attendance: 64100, result: '0:4', scorers: ['Müller', 'Klose 2', 'Friedrich'] },
+      { date: '2010-07-03', comp: 'WM VF', venue: 'Kapstadt', attendance: 64100, result: '0:4', scorers: ['T. Müller', 'Klose 2', 'Friedrich'] },
       { date: '2006-07-08', comp: 'WM VF', venue: 'Berlin', attendance: 72000, result: '1:1 (2:4 i.E.)', scorers: ['Ayala'] },
       { date: '1990-07-08', comp: 'WM Finale', venue: 'Rom', attendance: 73603, result: '0:1', scorers: ['Brehme (P)'] },
       { date: '1986-06-29', comp: 'WM Finale', venue: 'Mexiko-Stadt', attendance: 114600, result: '3:2', scorers: ['Brown', 'Valdano', 'Burruchaga'] },
@@ -386,7 +386,7 @@ export const H2H_DATA = {
     'DE': [
       { date: '1966-07-30', comp: 'WM Finale', venue: 'Wembley', attendance: 96924, result: '4:2 n.V.', scorers: ['Hurst 3', 'Peters', 'Haller', 'Weber'] },
       { date: '1990-07-04', comp: 'WM HF', venue: 'Turin', attendance: 62628, result: '1:1 (3:4 i.E.)', scorers: ['Lineker', 'Brehme'] },
-      { date: '2010-06-27', comp: 'WM AF', venue: 'Bloemfontein', attendance: 40510, result: '1:4', scorers: ['Upson', 'Klose', 'Podolski', 'Müller 2'] },
+      { date: '2010-06-27', comp: 'WM AF', venue: 'Bloemfontein', attendance: 40510, result: '1:4', scorers: ['Upson', 'Klose', 'Podolski', 'T. Müller 2'] },
       { date: '2021-06-29', comp: 'EM AF', venue: 'Wembley', attendance: 40000, result: '2:0', scorers: ['Sterling', 'Kane'] },
     ],
     // Group L opponents
@@ -399,7 +399,7 @@ export const H2H_DATA = {
   },
   'BR': {
     'DE': [
-      { date: '2014-07-08', comp: 'WM HF', venue: 'Belo Horizonte', attendance: 58141, result: '1:7', scorers: ['Oscar', 'Müller', 'Klose', 'Kroos 2', 'Khedira', 'Schürrle 2'] },
+      { date: '2014-07-08', comp: 'WM HF', venue: 'Belo Horizonte', attendance: 58141, result: '1:7', scorers: ['Oscar', 'T. Müller', 'Klose', 'Kroos 2', 'Khedira', 'Schürrle 2'] },
       { date: '2002-06-30', comp: 'WM Finale', venue: 'Yokohama', attendance: 69029, result: '2:0', scorers: ['Ronaldo 2'] },
     ],
     'AR': [
