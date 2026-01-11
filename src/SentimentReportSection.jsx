@@ -200,7 +200,7 @@ export default function SentimentReportSection({ language = 'de' }) {
   };
 
   return (
-    <div style={{ background: colors.salmon, borderRadius: '16px', padding: '24px', marginTop: '16px' }}>
+    <div style={{ borderRadius: '16px', padding: '24px', marginTop: '16px' }}>
       {/* Header */}
       <div style={{ marginBottom: '24px' }}>
         <div style={{ fontSize: '12px', fontWeight: '600', color: colors.blue, letterSpacing: '1px', marginBottom: '8px' }}>
