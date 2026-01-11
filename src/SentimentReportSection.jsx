@@ -172,7 +172,7 @@ const SentimentGauge = ({ value, label, subtitle, isHighlighted, colors }) => {
           textAlign: 'center',
         }}>
           <div style={{
-            fontSize: '36px',
+            fontSize: '26px',
             fontWeight: '800',
             color: numValue >= 0 ? colors.green : colors.red,
             lineHeight: '1',
@@ -181,18 +181,6 @@ const SentimentGauge = ({ value, label, subtitle, isHighlighted, colors }) => {
             {value}
           </div>
         </div>
-      </div>
-
-      {/* Scale labels */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginTop: '8px',
-        padding: '0 5px',
-      }}>
-        <span style={{ fontSize: '10px', color: colors.red, fontWeight: '600' }}>-1</span>
-        <span style={{ fontSize: '10px', color: colors.grey }}>0</span>
-        <span style={{ fontSize: '10px', color: colors.green, fontWeight: '600' }}>+1</span>
       </div>
 
       <div style={{
