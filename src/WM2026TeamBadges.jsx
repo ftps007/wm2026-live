@@ -992,6 +992,13 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
     fetchData();
   }, []);
 
+  // Helper to decode HTML entities
+  const decodeHtmlEntities = (text) => {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = text;
+    return textarea.value;
+  };
+
   // Fetch team-specific news when team is selected
   useEffect(() => {
     if (!selectedTeam || mediaSubTab !== 'news') return;
@@ -1001,27 +1008,70 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
       setTeamNews([]);
 
       try {
-        const teamName = language === 'en' ? selectedTeam.name_en : selectedTeam.name_de;
-        const searchTerms = language === 'en'
-          ? `${teamName} national team World Cup 2026`
-          : `${teamName} Nationalmannschaft WM 2026`;
+        // Use English name for search (more reliable results)
+        const teamNameEn = selectedTeam.name_en;
+        const teamNameDe = selectedTeam.name_de;
 
-        const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(searchTerms)}&hl=${language === 'en' ? 'en' : 'de'}&gl=${language === 'en' ? 'US' : 'DE'}&ceid=${language === 'en' ? 'US:en' : 'DE:de'}`;
+        // Create search queries for both languages
+        const searchTermsEn = `"${teamNameEn}" national team World Cup 2026 OR football`;
+        const searchTermsDe = `"${teamNameDe}" Nationalmannschaft WM 2026 OR Fußball`;
 
-        const response = await fetch(RSS2JSON_API + encodeURIComponent(rssUrl));
-        const data = await response.json();
+        // Fetch English news
+        const rssUrlEn = `https://news.google.com/rss/search?q=${encodeURIComponent(searchTermsEn)}&hl=en&gl=US&ceid=US:en`;
 
-        if (data.status === 'ok' && data.items?.length > 0) {
-          const newsItems = data.items.slice(0, 8).map((item, idx) => {
-            // Extract source from title
-            const titleParts = item.title.split(' - ');
+        // Fetch news in selected language (if not English)
+        const rssUrlLocal = language !== 'en'
+          ? `https://news.google.com/rss/search?q=${encodeURIComponent(searchTermsDe)}&hl=de&gl=DE&ceid=DE:de}`
+          : null;
+
+        const fetchRss = async (url) => {
+          const response = await fetch(RSS2JSON_API + encodeURIComponent(url));
+          const data = await response.json();
+          return data.status === 'ok' ? data.items || [] : [];
+        };
+
+        // Fetch both sources in parallel
+        const [itemsEn, itemsLocal] = await Promise.all([
+          fetchRss(rssUrlEn),
+          rssUrlLocal ? fetchRss(rssUrlLocal) : Promise.resolve([])
+        ]);
+
+        // Combine and deduplicate by URL
+        const allItems = [...itemsLocal, ...itemsEn];
+        const seenUrls = new Set();
+        const uniqueItems = allItems.filter(item => {
+          if (seenUrls.has(item.link)) return false;
+          seenUrls.add(item.link);
+          return true;
+        });
+
+        // Filter to ensure news is actually about the team
+        const teamKeywords = [
+          teamNameEn.toLowerCase(),
+          teamNameDe.toLowerCase(),
+          selectedTeam.code?.toLowerCase()
+        ].filter(Boolean);
+
+        const relevantItems = uniqueItems.filter(item => {
+          const titleLower = item.title.toLowerCase();
+          return teamKeywords.some(keyword => titleLower.includes(keyword));
+        });
+
+        // Use relevant items if found, otherwise use all unique items
+        const finalItems = relevantItems.length > 0 ? relevantItems : uniqueItems;
+
+        if (finalItems.length > 0) {
+          const newsItems = finalItems.slice(0, 10).map((item, idx) => {
+            // Extract source from title and decode HTML entities
+            const decodedTitle = decodeHtmlEntities(item.title);
+            const titleParts = decodedTitle.split(' - ');
             const source = titleParts.length > 1 ? titleParts.pop() : 'Google News';
             const cleanTitle = titleParts.join(' - ');
 
             return {
               id: idx,
               title: cleanTitle,
-              source,
+              source: decodeHtmlEntities(source),
               date: new Date(item.pubDate).toLocaleDateString(language === 'en' ? 'en-US' : 'de-DE'),
               url: item.link,
             };
