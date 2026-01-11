@@ -68,6 +68,15 @@ export const translations = {
     sentimentPanama: 'News positiv, Social Media negativ. Trump Kanal-Kommentare schaffen politisches Rauschen unabhängig vom Team.',
     sentimentEngland: 'Hohe Erwartungen, hoher Druck. Tuchel Optimismus. "Coming Home" Narrativ. Englische Medien härteste Kritiker.',
 
+    // Sentiment Analysis - UI Labels
+    sentimentOverall: 'Gesamt-Sentiment',
+    sentimentPureSports: 'Reines Sport-Sentiment',
+    sentimentCoverage: 'Berichterstattung',
+    sentimentAnalysisDate: 'Analysezeitraum: 8. Dez 2025 – 9. Jan 2026',
+    sentimentArticlesAnalyzed: 'Artikel analysiert',
+    sentimentWithAllData: 'Mit allen Daten',
+    sentimentExclPolitical: 'Exkl. politisches Rauschen',
+
     // Sentiment Analysis - Sponsor Descriptions
     sentimentDiageo: 'HÖCHSTES SENTIMENT — Erster FIFA Spirituosen-Sponsor überhaupt. Premium-Positionierung. Null negative Berichterstattung.',
     sentimentLenovo: 'FIFA Edition Yoga Tab. CES Vegas Sphere Dominanz. Produkt-Tie-ins funktionieren effektiv.',
@@ -654,6 +663,15 @@ export const translations = {
     sentimentPanama: 'News positive, social media negative. Trump canal comments create political noise unrelated to team performance.',
     sentimentEngland: 'High expectations, high pressure. Tuchel optimism. "Coming Home" narrative. English media harshest critics of own team.',
 
+    // Sentiment Analysis - UI Labels
+    sentimentOverall: 'Overall Sentiment',
+    sentimentPureSports: 'Pure Sports Sentiment',
+    sentimentCoverage: 'Coverage Breakdown',
+    sentimentAnalysisDate: 'Analysis Period: Dec 8, 2025 – Jan 9, 2026',
+    sentimentArticlesAnalyzed: 'articles analyzed',
+    sentimentWithAllData: 'With all data',
+    sentimentExclPolitical: 'Excl. political noise',
+
     // Sentiment Analysis - Sponsor Descriptions
     sentimentDiageo: 'HIGHEST SENTIMENT — First-ever FIFA spirits sponsor. Premium positioning. Zero negative coverage.',
     sentimentLenovo: 'FIFA Edition Yoga Tab. CES Vegas Sphere dominance. Product tie-ins work effectively.',
@@ -1239,6 +1257,15 @@ export const translations = {
     sentimentCroatia: 'Finaliści 2018, trzeci 2022. Narracja dziedzictwa Modrića. Szacunek złotej generacji.',
     sentimentPanama: 'Wiadomości pozytywne, media społecznościowe negatywne. Komentarze Trumpa o kanale tworzą szum polityczny.',
     sentimentEngland: 'Wysokie oczekiwania, wysoka presja. Optymizm Tuchela. Narracja "Coming Home". Angielskie media najsurowszymi krytykami.',
+
+    // Sentiment Analysis - UI Labels
+    sentimentOverall: 'Ogólny Sentyment',
+    sentimentPureSports: 'Czysty Sentyment Sportowy',
+    sentimentCoverage: 'Podział Relacji',
+    sentimentAnalysisDate: 'Okres analizy: 8 gru 2025 – 9 sty 2026',
+    sentimentArticlesAnalyzed: 'artykułów przeanalizowano',
+    sentimentWithAllData: 'Ze wszystkimi danymi',
+    sentimentExclPolitical: 'Bez szumu politycznego',
 
     // Sentiment Analysis - Sponsor Descriptions
     sentimentDiageo: 'NAJWYŻSZY SENTYMENT — Pierwszy w historii sponsor alkoholi FIFA. Pozycjonowanie premium. Zero negatywnych relacji.',

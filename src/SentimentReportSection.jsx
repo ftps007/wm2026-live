@@ -210,7 +210,7 @@ export default function SentimentReportSection({ language = 'de' }) {
           {t('sentimentSubtitle') || 'Beneath the Political Noise, World Cup 2026 Tells a Positive Story'}
         </h2>
         <div style={{ fontSize: '13px', color: colors.grey }}>
-          {t('sentimentAnalysisDate') || (language === 'de' ? 'Analysezeitraum: 8. Dez 2025 – 9. Jan 2026' : 'Analysis Period: Dec 8, 2025 – Jan 9, 2026')} • 22,889 {t('sentimentArticlesAnalyzed') || (language === 'de' ? 'Artikel analysiert' : 'articles analyzed')}
+          {t('sentimentAnalysisDate')} • 22,889 {t('sentimentArticlesAnalyzed')}
         </div>
       </div>
 
@@ -218,15 +218,15 @@ export default function SentimentReportSection({ language = 'de' }) {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         <SentimentGauge
           value="+0.130"
-          label={t('sentimentOverall') || (language === 'de' ? 'Gesamt-Sentiment' : 'Overall Sentiment')}
-          subtitle={t('sentimentWithAllData') || (language === 'de' ? 'Mit allen Daten' : 'With all data')}
+          label={t('sentimentOverall')}
+          subtitle={t('sentimentWithAllData')}
           isHighlighted={false}
           colors={colors}
         />
         <SentimentGauge
           value="+0.153"
-          label={t('sentimentPureSports') || (language === 'de' ? 'Reines Sport-Sentiment' : 'Pure Sports Sentiment')}
-          subtitle={<>{t('sentimentExclPolitical') || (language === 'de' ? 'Exkl. politisches Rauschen' : 'Excl. political noise')} <strong style={{ color: colors.green }}>(+18%)</strong></>}
+          label={t('sentimentPureSports')}
+          subtitle={<>{t('sentimentExclPolitical')} <strong style={{ color: colors.green }}>(+18%)</strong></>}
           isHighlighted={true}
           colors={colors}
         />
@@ -234,7 +234,7 @@ export default function SentimentReportSection({ language = 'de' }) {
         {/* Coverage Breakdown */}
         <div style={{ background: 'white', borderRadius: '12px', padding: '20px' }}>
           <div style={{ fontSize: '11px', fontWeight: '600', color: colors.grey, textTransform: 'uppercase', marginBottom: '16px' }}>
-            {t('sentimentCoverage') || (language === 'de' ? 'Berichterstattung' : 'Coverage Breakdown')}
+            {t('sentimentCoverage')}
           </div>
           {[
             { label: language === 'de' ? 'Positiv' : language === 'pl' ? 'Pozytywne' : 'Positive', value: '45.5%', color: colors.green },
