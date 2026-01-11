@@ -88,50 +88,121 @@ const SPONSORS = [
   { name: 'Aramco', translationKey: 'sentimentAramco', score: '-0.073', negPercent: '33%', width: '30%', positive: false },
 ];
 
-// Improved Sentiment Gauge Component
+// Modern Sentiment Gauge Component
 const SentimentGauge = ({ value, label, subtitle, isHighlighted, colors }) => {
-  const normalizedValue = (parseFloat(value) + 1) / 2;
-  const angle = 180 - (normalizedValue * 180);
-  const radians = (angle * Math.PI) / 180;
-  const needleX = 80 + 55 * Math.cos(radians);
-  const needleY = 80 - 55 * Math.sin(radians);
+  const numValue = parseFloat(value);
+  const percentage = ((numValue + 1) / 2) * 100;
 
   return (
     <div style={{
-      background: 'white',
-      borderRadius: '12px',
-      padding: '20px',
+      background: isHighlighted ? 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)' : 'white',
+      borderRadius: '16px',
+      padding: '24px',
       textAlign: 'center',
-      border: isHighlighted ? `2px solid ${colors.green}` : 'none',
+      border: isHighlighted ? `2px solid ${colors.green}` : '1px solid #e5e7eb',
+      boxShadow: isHighlighted ? '0 4px 12px rgba(0, 109, 78, 0.15)' : '0 2px 8px rgba(0,0,0,0.04)',
+      position: 'relative',
+      overflow: 'hidden',
     }}>
+      {isHighlighted && (
+        <div style={{
+          position: 'absolute',
+          top: '12px',
+          right: '12px',
+          background: colors.green,
+          color: 'white',
+          fontSize: '9px',
+          fontWeight: '700',
+          padding: '3px 8px',
+          borderRadius: '10px',
+          textTransform: 'uppercase',
+          letterSpacing: '0.5px',
+        }}>
+          +18%
+        </div>
+      )}
+
       <div style={{
         fontSize: '11px',
-        fontWeight: '600',
+        fontWeight: '700',
         color: isHighlighted ? colors.green : colors.grey,
         textTransform: 'uppercase',
-        marginBottom: '12px'
+        letterSpacing: '0.5px',
+        marginBottom: '20px'
       }}>
         {label}
       </div>
 
-      <svg width="160" height="100" viewBox="0 0 160 100" style={{ margin: '0 auto' }}>
-        <path d="M 15 80 A 65 65 0 0 1 145 80" fill="none" stroke="#f0f0f0" strokeWidth="14" strokeLinecap="round"/>
-        <path d="M 15 80 A 65 65 0 0 1 48 25" fill="none" stroke={colors.red} strokeWidth="14" strokeLinecap="round"/>
-        <path d="M 52 23 A 65 65 0 0 1 108 23" fill="none" stroke={colors.lightGrey} strokeWidth="14" strokeLinecap="round"/>
-        <path d="M 112 25 A 65 65 0 0 1 145 80" fill="none" stroke={colors.green} strokeWidth="14" strokeLinecap="round"/>
-        <text x="10" y="95" fontSize="9" fill={colors.grey}>-1</text>
-        <text x="76" y="12" fontSize="9" fill={colors.grey}>0</text>
-        <text x="145" y="95" fontSize="9" fill={colors.grey}>+1</text>
-        <line x1="80" y1="80" x2={needleX} y2={needleY} stroke={colors.black} strokeWidth="3" strokeLinecap="round"/>
-        <circle cx="80" cy="80" r="6" fill={colors.black}/>
-        <circle cx={needleX} cy={needleY} r={isHighlighted ? "8" : "6"} fill={isHighlighted ? colors.green : colors.black}/>
-        {isHighlighted && <circle cx={needleX} cy={needleY} r="12" fill="none" stroke={colors.green} strokeWidth="2" opacity="0.4"/>}
-      </svg>
+      {/* Circular Progress */}
+      <div style={{ position: 'relative', width: '140px', height: '70px', margin: '0 auto', overflow: 'hidden' }}>
+        <svg width="140" height="80" viewBox="0 0 140 80" style={{ position: 'absolute', top: 0, left: 0 }}>
+          <defs>
+            <linearGradient id={`gauge-gradient-${isHighlighted ? 'highlight' : 'normal'}`} x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor={colors.red} />
+              <stop offset="35%" stopColor="#fbbf24" />
+              <stop offset="65%" stopColor="#a3e635" />
+              <stop offset="100%" stopColor={colors.green} />
+            </linearGradient>
+          </defs>
+          {/* Background arc */}
+          <path
+            d="M 10 70 A 60 60 0 0 1 130 70"
+            fill="none"
+            stroke="#e5e7eb"
+            strokeWidth="12"
+            strokeLinecap="round"
+          />
+          {/* Colored arc based on value */}
+          <path
+            d="M 10 70 A 60 60 0 0 1 130 70"
+            fill="none"
+            stroke={`url(#gauge-gradient-${isHighlighted ? 'highlight' : 'normal'})`}
+            strokeWidth="12"
+            strokeLinecap="round"
+            strokeDasharray={`${percentage * 1.88} 188`}
+          />
+        </svg>
 
-      <div style={{ fontSize: '32px', fontWeight: '700', color: parseFloat(value) >= 0 ? colors.green : colors.red, marginTop: '8px' }}>
-        {value}
+        {/* Value display in center */}
+        <div style={{
+          position: 'absolute',
+          bottom: '0',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          textAlign: 'center',
+        }}>
+          <div style={{
+            fontSize: '36px',
+            fontWeight: '800',
+            color: numValue >= 0 ? colors.green : colors.red,
+            lineHeight: '1',
+            fontFamily: 'system-ui, -apple-system, sans-serif',
+          }}>
+            {value}
+          </div>
+        </div>
       </div>
-      <div style={{ fontSize: '11px', color: colors.grey, marginTop: '4px' }}>{subtitle}</div>
+
+      {/* Scale labels */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginTop: '8px',
+        padding: '0 5px',
+      }}>
+        <span style={{ fontSize: '10px', color: colors.red, fontWeight: '600' }}>-1</span>
+        <span style={{ fontSize: '10px', color: colors.grey }}>0</span>
+        <span style={{ fontSize: '10px', color: colors.green, fontWeight: '600' }}>+1</span>
+      </div>
+
+      <div style={{
+        fontSize: '12px',
+        color: colors.grey,
+        marginTop: '12px',
+        lineHeight: '1.4',
+      }}>
+        {subtitle}
+      </div>
     </div>
   );
 };
@@ -226,7 +297,7 @@ export default function SentimentReportSection({ language = 'de' }) {
         <SentimentGauge
           value="+0.153"
           label={t('sentimentPureSports')}
-          subtitle={<>{t('sentimentExclPolitical')} <strong style={{ color: colors.green }}>(+18%)</strong></>}
+          subtitle={t('sentimentExclPolitical')}
           isHighlighted={true}
           colors={colors}
         />
