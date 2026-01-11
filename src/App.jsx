@@ -8,6 +8,7 @@ import SpieleSection from './SpieleSection';
 import RanglistenSection from './RanglistenSection';
 import { LanguageProvider, useLanguage, LanguageSelector } from './LanguageContext';
 import WM2026TeamBadges from './WM2026TeamBadges';
+import SentimentReportSection from './SentimentReportSection';
 import { useDevice } from './useDevice';
 
 // ==================== NEWS RSS FEED CONFIG ====================
@@ -802,10 +803,11 @@ function AppContent() {
   const tabs = [
     { id: 'news', label: t('tabNews') },
     { id: 'media', label: t('tabMedia') },
-    { id: 'matches', label: t('tabMatches') }, 
-    { id: 'leagues', label: t('tabRankings') }, 
+    { id: 'matches', label: t('tabMatches') },
+    { id: 'leagues', label: t('tabRankings') },
     { id: 'trivia', label: t('tabTrivia') },
     { id: 'teams', label: '🏅 Teams' },
+    { id: 'sentiment', label: t('tabSentiment') },
     { id: 'guide', label: t('tabGuide'), locked: true }
   ];
 
@@ -1195,6 +1197,9 @@ function AppContent() {
           />
         )}
 
+        {activeTab === 'sentiment' && (
+          <SentimentReportSection language={language} />
+        )}
 
         {/* GUIDE - LOCKED */}
         {activeTab === 'guide' && (

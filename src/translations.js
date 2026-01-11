@@ -21,6 +21,7 @@ export const translations = {
     tabMatches: '⚽ Spiele',
     tabRankings: '📺 Ranglisten',
     tabTrivia: '🧠  Trivia',
+    tabSentiment: '📊 Sentiment',
     tabGuide: '📺 Guide',
 
     // Countdown
@@ -554,6 +555,7 @@ export const translations = {
     tabMatches: '⚽ Matches',
     tabRankings: '📺 Rankings',
     tabTrivia: '🧠  Trivia',
+    tabSentiment: '📊 Sentiment',
     tabGuide: '📺 Guide',
 
     // Countdown
@@ -1087,6 +1089,7 @@ export const translations = {
     tabMatches: '⚽ Mecze',
     tabRankings: '📺 Rankingi',
     tabTrivia: '🧠  Trivia',
+    tabSentiment: '📊 Sentyment',
     tabGuide: '📺 Przewodnik',
 
     // Countdown
