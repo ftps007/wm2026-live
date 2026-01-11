@@ -284,7 +284,7 @@ export default function SentimentReportSection({ language = 'de' }) {
         {NEGATIVE_DRIVERS.map((driver, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'center', padding: '12px 0', borderBottom: i < NEGATIVE_DRIVERS.length - 1 ? '1px solid #f0f0f0' : 'none', flexWrap: 'wrap', gap: '8px' }}>
             <div style={{ width: '120px', fontSize: '13px', fontWeight: '600', color: colors.black }}>
-              {driver.key === 'trumpVisa' ? (language === 'de' ? 'Trump/Visa-Politik' : language === 'pl' ? 'Polityka Trump/Wizy' : 'Trump/Visa Policy') :
+              {driver.key === 'trumpVisa' ? (language === 'de' ? 'US-Visa-Politik' : language === 'pl' ? 'Polityka wizowa USA' : 'US Visa Policy') :
                driver.key === 'venezuelaCrisis' ? (language === 'de' ? 'Venezuela-Krise' : language === 'pl' ? 'Kryzys Wenezueli' : 'Venezuela Crisis') :
                driver.key === 'ticketPrices' ? (language === 'de' ? 'Ticketpreise' : language === 'pl' ? 'Ceny Biletów' : 'Ticket Prices') :
                (language === 'de' ? 'Iran-Kontroverse' : language === 'pl' ? 'Kontrowersja Iranu' : 'Iran Controversy')}
@@ -433,7 +433,7 @@ export default function SentimentReportSection({ language = 'de' }) {
             },
             {
               title: language === 'de' ? 'Politisches Overlay ist separat' : language === 'pl' ? 'Nakładka polityczna jest oddzielna' : 'Political overlay is separate',
-              text: language === 'de' ? 'Trump/Visa stieg um 455%. Diese beeinflussen Werte, aber spiegeln keine Ablehnung der WM wider.' : language === 'pl' ? 'Trump/wizy wzrosły o 455%. Wpływają na wyniki, ale nie odzwierciedlają odrzucenia Mundialu.' : 'Trump/visa surged 455%. These affect scores but don\'t reflect rejection of the World Cup.',
+              text: language === 'de' ? 'US-Visa-Thema stieg um 455%. Dies beeinflusst Werte, spiegelt aber keine Ablehnung der WM wider.' : language === 'pl' ? 'Temat wiz USA wzrósł o 455%. Wpływa na wyniki, ale nie odzwierciedla odrzucenia Mundialu.' : 'US visa topic surged 455%. This affects scores but doesn\'t reflect rejection of the World Cup.',
               color: '#b8860b', icon: '⚡'
             },
             {
