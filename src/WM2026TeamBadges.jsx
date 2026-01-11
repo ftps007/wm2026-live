@@ -421,7 +421,7 @@ export const H2H_DATA = {
     'SCO': [
       { date: '2011-03-27', comp: 'Friendly', venue: 'London (Emirates)', attendance: 53087, result: '2:0', scorers: ['Neymar 2'], source: '11v11.com, arsenal.com' },
       { date: '1998-06-10', comp: 'WM', venue: 'Paris (Stade de France)', attendance: 80000, result: '2:1', scorers: ['César Sampaio', 'Boyd (ET)', 'Collins (P)'], source: 'fifa.com' },
-      { date: '1990-06-20', comp: 'WM', venue: 'Turin', attendance: 62628, result: '1:0', scorers: ['Müller'], source: 'fifa.com' },
+      { date: '1990-06-20', comp: 'WM', venue: 'Turin', attendance: 62628, result: '1:0', scorers: ['Müller (BR)'], source: 'fifa.com' },
       { date: '1987-05-26', comp: 'Rous Cup', venue: 'Glasgow (Hampden)', attendance: 41384, result: '2:0', scorers: ['Valdo', 'Raí'], source: 'rsssf.org' },
       { date: '1982-06-18', comp: 'WM', venue: 'Sevilla', attendance: 47379, result: '4:1', scorers: ['Zico', 'Oscar', 'Eder', 'Falcão', 'Narey'], source: 'fifa.com' },
       { date: '1977-06-23', comp: 'Friendly', venue: 'Rio (Maracanã)', attendance: 69763, result: '2:0', scorers: ['Zico', 'Cerezo'], source: 'eu-football.info' },
@@ -502,7 +502,7 @@ export const H2H_DATA = {
     'BR': [
       { date: '2011-03-27', comp: 'Friendly', venue: 'London (Emirates)', attendance: 53087, result: '0:2', scorers: ['Neymar 2'], source: '11v11.com, arsenal.com' },
       { date: '1998-06-10', comp: 'WM', venue: 'Paris (Stade de France)', attendance: 80000, result: '1:2', scorers: ['Collins (P)', 'César Sampaio', 'Boyd (ET)'], source: 'fifa.com' },
-      { date: '1990-06-20', comp: 'WM', venue: 'Turin', attendance: 62628, result: '0:1', scorers: ['Müller'], source: 'fifa.com' },
+      { date: '1990-06-20', comp: 'WM', venue: 'Turin', attendance: 62628, result: '0:1', scorers: ['Müller (BR)'], source: 'fifa.com' },
       { date: '1987-05-26', comp: 'Rous Cup', venue: 'Glasgow (Hampden)', attendance: 41384, result: '0:2', scorers: ['Valdo', 'Raí'], source: 'rsssf.org' },
       { date: '1982-06-18', comp: 'WM', venue: 'Sevilla', attendance: 47379, result: '1:4', scorers: ['Narey', 'Zico', 'Oscar', 'Eder', 'Falcão'], source: 'fifa.com' },
       { date: '1977-06-23', comp: 'Friendly', venue: 'Rio (Maracanã)', attendance: 69763, result: '0:2', scorers: ['Zico', 'Cerezo'], source: 'eu-football.info' },
