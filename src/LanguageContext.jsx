@@ -1,13 +1,13 @@
 // =============================================
 // WM 2026 Tippspiel - Language Context
-// Supports: German (de), English (en), Polish (pl)
+// Supports: German (de), English (en), Polish (pl), Spanish (es), Portuguese (pt)
 // =============================================
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { translations, teamTranslations, dayNames, monthNames, triviaCategories } from './translations';
 
 const LanguageContext = createContext();
-const SUPPORTED_LANGUAGES = ['de', 'en', 'pl'];
+const SUPPORTED_LANGUAGES = ['de', 'en', 'pl', 'es', 'pt'];
 
 export const LanguageProvider = ({ children }) => {
   const getInitialLanguage = () => {
@@ -26,6 +26,8 @@ export const LanguageProvider = ({ children }) => {
     const browserLang = navigator.language?.substring(0, 2);
     if (browserLang === 'en') return 'en';
     if (browserLang === 'pl') return 'pl';
+    if (browserLang === 'es') return 'es';
+    if (browserLang === 'pt') return 'pt';
     return 'de';
   };
 
@@ -57,9 +59,13 @@ export const LanguageProvider = ({ children }) => {
   const translateTeam = (teamName) => {
     if (language === 'de') return teamName;
     if (teamName?.includes('Gruppe')) {
-      const replacements = language === 'pl'
-        ? { 'Sieger': 'Zwycięzca', 'Verlierer': 'Przegrany', 'Gruppe': 'Grupy' }
-        : { 'Sieger': 'Winner', 'Verlierer': 'Loser', 'Gruppe': 'Group' };
+      const replacementsByLang = {
+        en: { 'Sieger': 'Winner', 'Verlierer': 'Loser', 'Gruppe': 'Group' },
+        pl: { 'Sieger': 'Zwycięzca', 'Verlierer': 'Przegrany', 'Gruppe': 'Grupy' },
+        es: { 'Sieger': 'Ganador', 'Verlierer': 'Perdedor', 'Gruppe': 'Grupo' },
+        pt: { 'Sieger': 'Vencedor', 'Verlierer': 'Perdedor', 'Gruppe': 'Grupo' },
+      };
+      const replacements = replacementsByLang[language] || replacementsByLang.en;
       return Object.entries(replacements).reduce((str, [de, tr]) => str.replace(de, tr), teamName);
     }
     return teamTranslations[language]?.[teamName] || teamTranslations.en?.[teamName] || teamName;
@@ -79,6 +85,8 @@ export const LanguageProvider = ({ children }) => {
     
     if (language === 'en') return `${day}, ${month} ${dayNum}, ${year}`;
     if (language === 'pl') return `${day}, ${dayNum} ${month} ${year}`;
+    if (language === 'es') return `${day}, ${dayNum} de ${month} ${year}`;
+    if (language === 'pt') return `${day}, ${dayNum} de ${month} ${year}`;
     return `${day}, ${dayNum}. ${month} ${year}`;
   };
 
@@ -88,7 +96,8 @@ export const LanguageProvider = ({ children }) => {
       const h = parseInt(hours);
       return `${h % 12 || 12}:${minutes} ${h >= 12 ? 'PM' : 'AM'}`;
     }
-    return language === 'pl' ? time24 : `${time24} Uhr`;
+    if (language === 'pl' || language === 'es' || language === 'pt') return time24;
+    return `${time24} Uhr`;
   };
 
   const translateCategory = (category) => triviaCategories?.[language]?.[category] || category;
@@ -105,6 +114,8 @@ export const LanguageProvider = ({ children }) => {
     isEnglish: language === 'en',
     isGerman: language === 'de',
     isPolish: language === 'pl',
+    isSpanish: language === 'es',
+    isPortuguese: language === 'pt',
   };
 
   return (
@@ -126,6 +137,8 @@ export const LanguageSelector = ({ style = {} }) => {
   const languages = [
     { code: 'de', flag: '🇩🇪', label: 'DE' },
     { code: 'en', flag: '🇬🇧', label: 'EN' },
+    { code: 'es', flag: '🇪🇸', label: 'ES' },
+    { code: 'pt', flag: '🇧🇷', label: 'PT' },
     { code: 'pl', flag: '🇵🇱', label: 'PL' },
   ];
 

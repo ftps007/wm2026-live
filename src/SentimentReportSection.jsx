@@ -523,7 +523,7 @@ export default function SentimentReportSection({ language = 'de' }) {
       </div>
 
       {/* Footer */}
-      <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '12px', color: colors.grey }}>
+      <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '12px', color: '#9ca3af' }}>
         wm26.live • {language === 'de' ? 'Nächster Report' : language === 'pl' ? 'Następny raport' : 'Next Report'}: January 17, 2026 (KW3)
       </div>
     </div>
