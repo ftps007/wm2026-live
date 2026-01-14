@@ -138,7 +138,7 @@ export const LanguageSelector = ({ style = {} }) => {
     { code: 'de', flag: '🇩🇪', label: 'DE' },
     { code: 'en', flag: '🇬🇧', label: 'EN' },
     { code: 'es', flag: '🇪🇸', label: 'ES' },
-    { code: 'pt', flag: '🇧🇷', label: 'PT' },
+    { code: 'pt', flag: '🇧🇷🇵🇹', label: 'PT' },
     { code: 'pl', flag: '🇵🇱', label: 'PL' },
   ];
 
