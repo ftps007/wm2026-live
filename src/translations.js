@@ -1791,110 +1791,7 @@ export const translations = {
     guideDfbShop: 'Sklep kibica',
     guideFifaStore: 'Sklep FIFA',
     guideAffiliateHint: '* Linki afiliacyjne - otrzymujemy małą prowizję za zakupy',
-  }
-};
-
-// Trivia category translations
-export const triviaCategories = {
-  de: {
-    'alle': 'Alle',
-    'WM Geschichte': 'WM Geschichte',
-    'Spieler': 'Spieler',
-    'WM 2026': 'WM 2026',
-    'Rekorde': 'Rekorde',
-    'Nationen': 'Nationen',
-    'Stadien': 'Stadien',
-    'Kurioses': 'Kurioses',
-    'Regeln': 'Regeln'
   },
-  en: {
-    'alle': 'All',
-    'WM Geschichte': 'WC History',
-    'Spieler': 'Players',
-    'WM 2026': 'WC 2026',
-    'Rekorde': 'Records',
-    'Nationen': 'Nations',
-    'Stadien': 'Stadiums',
-    'Kurioses': 'Fun Facts',
-    'Regeln': 'Rules'
-  },
-  pl: {
-    'alle': 'Wszystkie',
-    'WM Geschichte': 'Historia MŚ',
-    'Spieler': 'Piłkarze',
-    'WM 2026': 'MŚ 2026',
-    'Rekorde': 'Rekordy',
-    'Nationen': 'Reprezentacje',
-    'Stadien': 'Stadiony',
-    'Kurioses': 'Ciekawostki',
-    'Regeln': 'Przepisy'
-  }
-};
-
-// Team name translations
-export const teamTranslations = {
-  en: {
-    'Mexiko': 'Mexico', 'Südafrika': 'South Africa', 'Südkorea': 'South Korea',
-    'Republik Korea': 'South Korea', 'Kanada': 'Canada', 'Katar': 'Qatar', 
-    'Schweiz': 'Switzerland', 'Brasilien': 'Brazil', 'Marokko': 'Morocco', 
-    'Schottland': 'Scotland', 'Australien': 'Australia', 'Deutschland': 'Germany', 
-    'Elfenbeinküste': 'Ivory Coast', 'Niederlande': 'Netherlands', 'Tunesien': 'Tunisia', 
-    'Belgien': 'Belgium', 'Ägypten': 'Egypt', 'Neuseeland': 'New Zealand', 
-    'Spanien': 'Spain', 'Saudi-Arabien': 'Saudi Arabia', 'Frankreich': 'France', 
-    'Norwegen': 'Norway', 'Argentinien': 'Argentina', 'Algerien': 'Algeria', 
-    'Österreich': 'Austria', 'Jordanien': 'Jordan', 'Usbekistan': 'Uzbekistan', 
-    'Kolumbien': 'Colombia', 'Kroatien': 'Croatia', 'Senegal': 'Senegal', 
-    'Ghana': 'Ghana', 'Panama': 'Panama', 'England': 'England', 
-    'Portugal': 'Portugal', 'Japan': 'Japan', 'Iran': 'Iran', 
-    'Uruguay': 'Uruguay', 'USA': 'USA', 'Paraguay': 'Paraguay', 
-    'Haiti': 'Haiti', 'Ecuador': 'Ecuador', 'Curaçao': 'Curaçao', 
-    'Kap Verde': 'Cape Verde', 'Nigeria': 'Nigeria', 'Kamerun': 'Cameroon', 
-    'Indonesien': 'Indonesia', 'Costa Rica': 'Costa Rica', 'Serbien': 'Serbia', 
-    'Polen': 'Poland', 'Dänemark': 'Denmark', 'Italien': 'Italy', 
-    'Türkei': 'Turkey', 'Ukraine': 'Ukraine', 'Wales': 'Wales',
-    'Tschechien': 'Czech Republic', 'Irland': 'Ireland', 'Nordmazedonien': 'North Macedonia',
-    'Bosnien-Herzegowina': 'Bosnia-Herzegovina', 'Nordirland': 'Northern Ireland',
-    'Rumänien': 'Romania', 'Slowakei': 'Slovakia', 'Kosovo': 'Kosovo',
-    'Schweden': 'Sweden', 'Albanien': 'Albania', 'DR Kongo': 'DR Congo',
-    'Jamaika': 'Jamaica', 'Neukaledonien': 'New Caledonia', 'Irak': 'Iraq',
-    'Bolivien': 'Bolivia', 'Suriname': 'Suriname',
-    // Playoff teams
-    'Play-off D': 'Play-off D', 'Play-off A': 'Play-off A', 
-    'Play-off B': 'Play-off B', 'Play-off C': 'Play-off C',
-    'FIFA Play-off 1': 'FIFA Play-off 1', 'FIFA Play-off 2': 'FIFA Play-off 2',
-  },
-  pl: {
-    'Mexiko': 'Meksyk', 'Südafrika': 'RPA', 'Südkorea': 'Korea Pśd.',
-    'Republik Korea': 'Korea Pśd.', 'Kanada': 'Kanada', 'Katar': 'Katar', 
-    'Schweiz': 'Szwajcaria', 'Brasilien': 'Brazylia', 'Marokko': 'Maroko', 
-    'Schottland': 'Szkocja', 'Australien': 'Australia', 'Deutschland': 'Niemcy', 
-    'Elfenbeinküste': 'Wybrzeże Końci Sśoniowej', 'Niederlande': 'Holandia', 
-    'Tunesien': 'Tunezja', 'Belgien': 'Belgia', 'Ägypten': 'Egipt', 
-    'Neuseeland': 'Nowa Zelandia', 'Spanien': 'Hiszpania', 
-    'Saudi-Arabien': 'Arabia Saudyjska', 'Frankreich': 'Francja', 
-    'Norwegen': 'Norwegia', 'Argentinien': 'Argentyna', 'Algerien': 'Algieria', 
-    'Österreich': 'Austria', 'Jordanien': 'Jordania', 'Usbekistan': 'Uzbekistan', 
-    'Kolumbien': 'Kolumbia', 'Kroatien': 'Chorwacja', 'Senegal': 'Senegal', 
-    'Ghana': 'Ghana', 'Panama': 'Panama', 'England': 'Anglia', 
-    'Portugal': 'Portugalia', 'Japan': 'Japonia', 'Iran': 'Iran', 
-    'Uruguay': 'Urugwaj', 'USA': 'USA', 'Paraguay': 'Paragwaj', 
-    'Haiti': 'Haiti', 'Ecuador': 'Ekwador', 'Curaçao': 'Curaçao', 
-    'Kap Verde': 'Republika Zielonego Przylędka', 'Nigeria': 'Nigeria', 
-    'Kamerun': 'Kamerun', 'Indonesien': 'Indonezja', 'Costa Rica': 'Kostaryka', 
-    'Serbien': 'Serbia', 'Polen': 'Polska', 'Dänemark': 'Dania', 
-    'Italien': 'Wśochy', 'Türkei': 'Turcja', 'Ukraine': 'Ukraina', 
-    'Wales': 'Walia', 'Tschechien': 'Czechy', 'Irland': 'Irlandia', 
-    'Nordmazedonien': 'Macedonia Pśn.', 'Bosnien-Herzegowina': 'Bońnia i Hercegowina',
-    'Nordirland': 'Irlandia Pśn.', 'Rumänien': 'Rumunia', 'Slowakei': 'Sśowacja',
-    'Kosovo': 'Kosowo', 'Schweden': 'Szwecja', 'Albanien': 'Albania',
-    'DR Kongo': 'DR Konga', 'Jamaika': 'Jamajka', 'Neukaledonien': 'Nowa Kaledonia',
-    'Irak': 'Irak', 'Bolivien': 'Boliwia', 'Suriname': 'Surinam',
-    // Playoff teams
-    'Play-off D': 'Baraż D', 'Play-off A': 'Baraż A', 
-    'Play-off B': 'Baraż B', 'Play-off C': 'Baraż C',
-    'FIFA Play-off 1': 'Baraż FIFA 1', 'FIFA Play-off 2': 'Baraż FIFA 2',
-  },
-
 
   // ==================== SPANISH ====================
   es: {
@@ -2937,6 +2834,110 @@ export const teamTranslations = {
     yourScore: 'Sua pontuação',
     yourVote: 'Seu voto',
   },
+};
+
+
+// Trivia category translations
+export const triviaCategories = {
+  de: {
+    'alle': 'Alle',
+    'WM Geschichte': 'WM Geschichte',
+    'Spieler': 'Spieler',
+    'WM 2026': 'WM 2026',
+    'Rekorde': 'Rekorde',
+    'Nationen': 'Nationen',
+    'Stadien': 'Stadien',
+    'Kurioses': 'Kurioses',
+    'Regeln': 'Regeln'
+  },
+  en: {
+    'alle': 'All',
+    'WM Geschichte': 'WC History',
+    'Spieler': 'Players',
+    'WM 2026': 'WC 2026',
+    'Rekorde': 'Records',
+    'Nationen': 'Nations',
+    'Stadien': 'Stadiums',
+    'Kurioses': 'Fun Facts',
+    'Regeln': 'Rules'
+  },
+  pl: {
+    'alle': 'Wszystkie',
+    'WM Geschichte': 'Historia MŚ',
+    'Spieler': 'Piłkarze',
+    'WM 2026': 'MŚ 2026',
+    'Rekorde': 'Rekordy',
+    'Nationen': 'Reprezentacje',
+    'Stadien': 'Stadiony',
+    'Kurioses': 'Ciekawostki',
+    'Regeln': 'Przepisy'
+  }
+};
+
+// Team name translations
+export const teamTranslations = {
+  en: {
+    'Mexiko': 'Mexico', 'Südafrika': 'South Africa', 'Südkorea': 'South Korea',
+    'Republik Korea': 'South Korea', 'Kanada': 'Canada', 'Katar': 'Qatar', 
+    'Schweiz': 'Switzerland', 'Brasilien': 'Brazil', 'Marokko': 'Morocco', 
+    'Schottland': 'Scotland', 'Australien': 'Australia', 'Deutschland': 'Germany', 
+    'Elfenbeinküste': 'Ivory Coast', 'Niederlande': 'Netherlands', 'Tunesien': 'Tunisia', 
+    'Belgien': 'Belgium', 'Ägypten': 'Egypt', 'Neuseeland': 'New Zealand', 
+    'Spanien': 'Spain', 'Saudi-Arabien': 'Saudi Arabia', 'Frankreich': 'France', 
+    'Norwegen': 'Norway', 'Argentinien': 'Argentina', 'Algerien': 'Algeria', 
+    'Österreich': 'Austria', 'Jordanien': 'Jordan', 'Usbekistan': 'Uzbekistan', 
+    'Kolumbien': 'Colombia', 'Kroatien': 'Croatia', 'Senegal': 'Senegal', 
+    'Ghana': 'Ghana', 'Panama': 'Panama', 'England': 'England', 
+    'Portugal': 'Portugal', 'Japan': 'Japan', 'Iran': 'Iran', 
+    'Uruguay': 'Uruguay', 'USA': 'USA', 'Paraguay': 'Paraguay', 
+    'Haiti': 'Haiti', 'Ecuador': 'Ecuador', 'Curaçao': 'Curaçao', 
+    'Kap Verde': 'Cape Verde', 'Nigeria': 'Nigeria', 'Kamerun': 'Cameroon', 
+    'Indonesien': 'Indonesia', 'Costa Rica': 'Costa Rica', 'Serbien': 'Serbia', 
+    'Polen': 'Poland', 'Dänemark': 'Denmark', 'Italien': 'Italy', 
+    'Türkei': 'Turkey', 'Ukraine': 'Ukraine', 'Wales': 'Wales',
+    'Tschechien': 'Czech Republic', 'Irland': 'Ireland', 'Nordmazedonien': 'North Macedonia',
+    'Bosnien-Herzegowina': 'Bosnia-Herzegovina', 'Nordirland': 'Northern Ireland',
+    'Rumänien': 'Romania', 'Slowakei': 'Slovakia', 'Kosovo': 'Kosovo',
+    'Schweden': 'Sweden', 'Albanien': 'Albania', 'DR Kongo': 'DR Congo',
+    'Jamaika': 'Jamaica', 'Neukaledonien': 'New Caledonia', 'Irak': 'Iraq',
+    'Bolivien': 'Bolivia', 'Suriname': 'Suriname',
+    // Playoff teams
+    'Play-off D': 'Play-off D', 'Play-off A': 'Play-off A', 
+    'Play-off B': 'Play-off B', 'Play-off C': 'Play-off C',
+    'FIFA Play-off 1': 'FIFA Play-off 1', 'FIFA Play-off 2': 'FIFA Play-off 2',
+  },
+  pl: {
+    'Mexiko': 'Meksyk', 'Südafrika': 'RPA', 'Südkorea': 'Korea Pśd.',
+    'Republik Korea': 'Korea Pśd.', 'Kanada': 'Kanada', 'Katar': 'Katar', 
+    'Schweiz': 'Szwajcaria', 'Brasilien': 'Brazylia', 'Marokko': 'Maroko', 
+    'Schottland': 'Szkocja', 'Australien': 'Australia', 'Deutschland': 'Niemcy', 
+    'Elfenbeinküste': 'Wybrzeże Końci Sśoniowej', 'Niederlande': 'Holandia', 
+    'Tunesien': 'Tunezja', 'Belgien': 'Belgia', 'Ägypten': 'Egipt', 
+    'Neuseeland': 'Nowa Zelandia', 'Spanien': 'Hiszpania', 
+    'Saudi-Arabien': 'Arabia Saudyjska', 'Frankreich': 'Francja', 
+    'Norwegen': 'Norwegia', 'Argentinien': 'Argentyna', 'Algerien': 'Algieria', 
+    'Österreich': 'Austria', 'Jordanien': 'Jordania', 'Usbekistan': 'Uzbekistan', 
+    'Kolumbien': 'Kolumbia', 'Kroatien': 'Chorwacja', 'Senegal': 'Senegal', 
+    'Ghana': 'Ghana', 'Panama': 'Panama', 'England': 'Anglia', 
+    'Portugal': 'Portugalia', 'Japan': 'Japonia', 'Iran': 'Iran', 
+    'Uruguay': 'Urugwaj', 'USA': 'USA', 'Paraguay': 'Paragwaj', 
+    'Haiti': 'Haiti', 'Ecuador': 'Ekwador', 'Curaçao': 'Curaçao', 
+    'Kap Verde': 'Republika Zielonego Przylędka', 'Nigeria': 'Nigeria', 
+    'Kamerun': 'Kamerun', 'Indonesien': 'Indonezja', 'Costa Rica': 'Kostaryka', 
+    'Serbien': 'Serbia', 'Polen': 'Polska', 'Dänemark': 'Dania', 
+    'Italien': 'Wśochy', 'Türkei': 'Turcja', 'Ukraine': 'Ukraina', 
+    'Wales': 'Walia', 'Tschechien': 'Czechy', 'Irland': 'Irlandia', 
+    'Nordmazedonien': 'Macedonia Pśn.', 'Bosnien-Herzegowina': 'Bońnia i Hercegowina',
+    'Nordirland': 'Irlandia Pśn.', 'Rumänien': 'Rumunia', 'Slowakei': 'Sśowacja',
+    'Kosovo': 'Kosowo', 'Schweden': 'Szwecja', 'Albanien': 'Albania',
+    'DR Kongo': 'DR Konga', 'Jamaika': 'Jamajka', 'Neukaledonien': 'Nowa Kaledonia',
+    'Irak': 'Irak', 'Bolivien': 'Boliwia', 'Suriname': 'Surinam',
+    // Playoff teams
+    'Play-off D': 'Baraż D', 'Play-off A': 'Baraż A', 
+    'Play-off B': 'Baraż B', 'Play-off C': 'Baraż C',
+    'FIFA Play-off 1': 'Baraż FIFA 1', 'FIFA Play-off 2': 'Baraż FIFA 2',
+  },
+
 };
 
 // Day/Month names
