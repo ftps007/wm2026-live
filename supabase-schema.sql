@@ -55,6 +55,15 @@ CREATE TABLE match_results (
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- 6. TRIVIA STATS TABLE (User trivia performance)
+CREATE TABLE trivia_stats (
+  user_id UUID REFERENCES auth.users(id) PRIMARY KEY,
+  questions_answered INTEGER DEFAULT 0,
+  correct_answers INTEGER DEFAULT 0,
+  total_points INTEGER DEFAULT 0,
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
 -- =====================================================
 -- ROW LEVEL SECURITY (RLS)
 -- =====================================================
@@ -64,6 +73,7 @@ ALTER TABLE predictions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE leagues ENABLE ROW LEVEL SECURITY;
 ALTER TABLE league_members ENABLE ROW LEVEL SECURITY;
 ALTER TABLE match_results ENABLE ROW LEVEL SECURITY;
+ALTER TABLE trivia_stats ENABLE ROW LEVEL SECURITY;
 
 -- PROFILES: Everyone can read, users can update own
 CREATE POLICY "Profiles viewable by everyone" ON profiles FOR SELECT USING (true);
@@ -86,6 +96,11 @@ CREATE POLICY "Users can leave leagues" ON league_members FOR DELETE USING (auth
 
 -- MATCH RESULTS: Everyone can read (admin writes via dashboard)
 CREATE POLICY "Match results viewable by everyone" ON match_results FOR SELECT USING (true);
+
+-- TRIVIA STATS: Everyone can read, users can manage own
+CREATE POLICY "Trivia stats viewable by everyone" ON trivia_stats FOR SELECT USING (true);
+CREATE POLICY "Users can insert own trivia stats" ON trivia_stats FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Users can update own trivia stats" ON trivia_stats FOR UPDATE USING (auth.uid() = user_id);
 
 -- =====================================================
 -- FUNCTIONS
@@ -172,3 +187,4 @@ CREATE INDEX IF NOT EXISTS idx_predictions_match_id ON predictions(match_id);
 CREATE INDEX IF NOT EXISTS idx_league_members_league_id ON league_members(league_id);
 CREATE INDEX IF NOT EXISTS idx_league_members_user_id ON league_members(user_id);
 CREATE INDEX IF NOT EXISTS idx_leagues_code ON leagues(code);
+CREATE INDEX IF NOT EXISTS idx_trivia_stats_points ON trivia_stats(total_points DESC);

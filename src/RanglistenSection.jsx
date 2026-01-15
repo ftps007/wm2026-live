@@ -25,6 +25,7 @@ export default function RanglistenSection({
   const tTeam = (name) => translateTeam(name, language);
   const [activeRankingTab, setActiveRankingTab] = useState('poll');
   const [globalRanking, setGlobalRanking] = useState([]);
+  const [triviaRanking, setTriviaRanking] = useState([]);
   const [selectedLeague, setSelectedLeague] = useState(null);
   const [leagueMembers, setLeagueMembers] = useState([]);
   const [showQRModal, setShowQRModal] = useState(false);
@@ -52,9 +53,10 @@ export default function RanglistenSection({
     'Brasilien': 5, 'Deutschland': 4, 'Argentinien': 3, 'Frankreich': 2, 'Uruguay': 2, 'England': 1, 'Spanien': 1
   };
 
-  // Load global ranking
+  // Load global ranking and trivia ranking
   useEffect(() => {
     loadGlobalRanking();
+    loadTriviaRanking();
   }, []);
 
   const loadGlobalRanking = async () => {
@@ -74,6 +76,31 @@ export default function RanglistenSection({
       console.error('Error loading ranking:', error);
     }
     setLoading(false);
+  };
+
+  // Load trivia ranking
+  const loadTriviaRanking = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('trivia_stats')
+        .select('user_id, questions_answered, correct_answers, total_points, profiles(username)')
+        .order('total_points', { ascending: false })
+        .limit(100);
+
+      if (data) {
+        const ranking = data.map(d => ({
+          id: d.user_id,
+          username: d.profiles?.username || 'Unknown',
+          questions: d.questions_answered,
+          correct: d.correct_answers,
+          points: d.total_points,
+          accuracy: d.questions_answered > 0 ? Math.round((d.correct_answers / d.questions_answered) * 100) : 0
+        }));
+        setTriviaRanking(ranking);
+      }
+    } catch (error) {
+      console.error('Error loading trivia ranking:', error);
+    }
   };
 
   // Load league members when selecting a league
@@ -519,20 +546,35 @@ export default function RanglistenSection({
         >
           🌍 {tt('globalRanking')}
         </button>
-        <button 
+        <button
           onClick={() => setActiveRankingTab('private')}
-          style={{ 
-            padding: '8px 16px', 
-            background: activeRankingTab === 'private' ? '#10b981' : '#1e293b', 
-            border: '1px solid #334155', 
-            borderRadius: 8, 
-            color: 'white', 
-            fontSize: 11, 
+          style={{
+            padding: '8px 16px',
+            background: activeRankingTab === 'private' ? '#10b981' : '#1e293b',
+            border: '1px solid #334155',
+            borderRadius: 8,
+            color: 'white',
+            fontSize: 11,
             fontWeight: activeRankingTab === 'private' ? 'bold' : 'normal',
             cursor: 'pointer'
           }}
         >
           🔒 {tt('privateRankings')} ({leagues?.length || 0})
+        </button>
+        <button
+          onClick={() => { setActiveRankingTab('trivia'); setSelectedLeague(null); loadTriviaRanking(); }}
+          style={{
+            padding: '8px 16px',
+            background: activeRankingTab === 'trivia' ? '#8b5cf6' : '#1e293b',
+            border: '1px solid #334155',
+            borderRadius: 8,
+            color: 'white',
+            fontSize: 11,
+            fontWeight: activeRankingTab === 'trivia' ? 'bold' : 'normal',
+            cursor: 'pointer'
+          }}
+        >
+          🧠 {tt('triviaRanking')}
         </button>
       </div>
 
@@ -1023,6 +1065,136 @@ export default function RanglistenSection({
                   player={player} 
                   isCurrentUser={player.id === user?.id}
                 />
+              ))
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ========== TRIVIA RANKING ========== */}
+      {activeRankingTab === 'trivia' && (
+        <div>
+          {/* Info */}
+          <div style={{ background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.3)', borderRadius: 10, padding: 12, marginBottom: 16 }}>
+            <div style={{ fontSize: 11, color: '#94a3b8' }}>
+              <strong style={{ color: '#8b5cf6' }}>🧠 {tt('triviaRanking')}:</strong> {tt('triviaRankingDesc')}
+            </div>
+          </div>
+
+          {/* Your Position */}
+          {user && triviaRanking.some(r => r.id === user.id) && (
+            <div style={{ background: '#1e293b', borderRadius: 10, padding: 14, marginBottom: 16, border: '2px solid #8b5cf6' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                  <div style={{ fontSize: 10, color: '#64748b', marginBottom: 4 }}>{tt('yourPosition')}</div>
+                  <div style={{ fontSize: 24, fontWeight: 'bold', color: '#8b5cf6' }}>
+                    #{triviaRanking.findIndex(r => r.id === user.id) + 1}
+                  </div>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: 10, color: '#64748b', marginBottom: 4 }}>{tt('questionsAnswered')}</div>
+                  <div style={{ fontSize: 18, fontWeight: 'bold', color: 'white' }}>
+                    {triviaRanking.find(r => r.id === user.id)?.questions || 0}
+                  </div>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: 10, color: '#64748b', marginBottom: 4 }}>{tt('accuracy')}</div>
+                  <div style={{ fontSize: 18, fontWeight: 'bold', color: '#10b981' }}>
+                    {triviaRanking.find(r => r.id === user.id)?.accuracy || 0}%
+                  </div>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: 10, color: '#64748b', marginBottom: 4 }}>{tt('points')}</div>
+                  <div style={{ fontSize: 24, fontWeight: 'bold', color: '#fbbf24' }}>
+                    {triviaRanking.find(r => r.id === user.id)?.points || 0}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Ranking Table */}
+          <div style={{ background: '#1e293b', borderRadius: 10, overflow: 'hidden', border: '1px solid #334155' }}>
+            <div style={{ background: '#0f172a', padding: '10px 14px', borderBottom: '1px solid #334155' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '40px 1fr 60px 70px 60px', fontSize: 10, color: '#64748b', gap: 8 }}>
+                <span>{tt('rank')}</span>
+                <span>{tt('player')}</span>
+                <span style={{ textAlign: 'center' }}>{tt('questionsShort')}</span>
+                <span style={{ textAlign: 'center' }}>{tt('points')}</span>
+                <span style={{ textAlign: 'right' }}>{tt('accuracyShort')}</span>
+              </div>
+            </div>
+
+            {loading ? (
+              <div style={{ padding: 40, textAlign: 'center', color: '#64748b' }}>
+                <div style={{ fontSize: 24, marginBottom: 8 }}>⏳</div>
+                {tt('loading')}
+              </div>
+            ) : triviaRanking.length === 0 ? (
+              <div style={{ padding: 40, textAlign: 'center', color: '#64748b' }}>
+                <div style={{ fontSize: 24, marginBottom: 8 }}>🧠</div>
+                {tt('noTriviaPlayersYet')}
+              </div>
+            ) : (
+              triviaRanking.map((player, idx) => (
+                <div
+                  key={player.id}
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: '40px 1fr 60px 70px 60px',
+                    padding: '12px 14px',
+                    background: player.id === user?.id ? 'rgba(139,92,246,0.15)' : (idx < 3 ? 'rgba(251,191,36,0.05)' : 'transparent'),
+                    borderBottom: '1px solid #334155',
+                    alignItems: 'center',
+                    gap: 8
+                  }}
+                >
+                  <div style={{
+                    fontWeight: 'bold',
+                    fontSize: 14,
+                    color: idx === 0 ? '#fbbf24' : idx === 1 ? '#94a3b8' : idx === 2 ? '#cd7f32' : '#64748b'
+                  }}>
+                    {idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `${idx + 1}.`}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <div style={{
+                      width: 28,
+                      height: 28,
+                      borderRadius: '50%',
+                      background: player.id === user?.id ? '#8b5cf6' : '#334155',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 12,
+                      color: 'white',
+                      fontWeight: 'bold'
+                    }}>
+                      {player.username?.charAt(0).toUpperCase() || '?'}
+                    </div>
+                    <span style={{ fontSize: 13, color: 'white', fontWeight: player.id === user?.id ? 'bold' : 'normal' }}>
+                      {player.username}
+                      {player.id === user?.id && (
+                        <span style={{ marginLeft: 6, fontSize: 9, background: '#8b5cf6', padding: '2px 6px', borderRadius: 4 }}>
+                          {tt('youLabel')}
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                  <div style={{ textAlign: 'center', fontSize: 12, color: '#94a3b8' }}>
+                    {player.questions}
+                  </div>
+                  <div style={{ textAlign: 'center', fontSize: 13, fontWeight: 'bold', color: '#fbbf24' }}>
+                    {player.points}
+                  </div>
+                  <div style={{
+                    textAlign: 'right',
+                    fontSize: 12,
+                    fontWeight: 'bold',
+                    color: player.accuracy >= 70 ? '#10b981' : player.accuracy >= 50 ? '#fbbf24' : '#ef4444'
+                  }}>
+                    {player.accuracy}%
+                  </div>
+                </div>
               ))
             )}
           </div>

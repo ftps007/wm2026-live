@@ -704,7 +704,47 @@ function AppContent() {
     await supabase.from('predictions').upsert({ user_id: user.id, match_id: matchId, home_score: home, away_score: away }, { onConflict: 'user_id,match_id' });
   };
 
-  const handleTriviaAnswer = (i) => { if (triviaAnswered || triviaRound.length === 0) return; setTriviaSelected(i); setTriviaAnswered(true); if (i === triviaRound[triviaIndex].correctIndex) { setTriviaScore(s => s + 10); setTotalPoints(p => p + 10); } };
+  const handleTriviaAnswer = async (i) => {
+    if (triviaAnswered || triviaRound.length === 0) return;
+    setTriviaSelected(i);
+    setTriviaAnswered(true);
+    const isCorrect = i === triviaRound[triviaIndex].correctIndex;
+    if (isCorrect) {
+      setTriviaScore(s => s + 10);
+      setTotalPoints(p => p + 10);
+    }
+    // Persist trivia stats to Supabase (only for logged-in users)
+    if (user) {
+      try {
+        // First try to get existing stats
+        const { data: existing } = await supabase
+          .from('trivia_stats')
+          .select('*')
+          .eq('user_id', user.id)
+          .single();
+
+        if (existing) {
+          // Update existing record
+          await supabase.from('trivia_stats').update({
+            questions_answered: existing.questions_answered + 1,
+            correct_answers: existing.correct_answers + (isCorrect ? 1 : 0),
+            total_points: existing.total_points + (isCorrect ? 10 : 0),
+            updated_at: new Date().toISOString()
+          }).eq('user_id', user.id);
+        } else {
+          // Insert new record
+          await supabase.from('trivia_stats').insert({
+            user_id: user.id,
+            questions_answered: 1,
+            correct_answers: isCorrect ? 1 : 0,
+            total_points: isCorrect ? 10 : 0
+          });
+        }
+      } catch (err) {
+        console.error('Error saving trivia stats:', err);
+      }
+    }
+  };
   const nextQuestion = () => { if (triviaIndex < triviaRound.length - 1) { setTriviaIndex(i => i + 1); setTriviaAnswered(false); setTriviaSelected(null); } };
   const resetTrivia = () => { setTriviaIndex(0); setTriviaScore(0); setTriviaAnswered(false); setTriviaSelected(null); loadTriviaQuestions(); };
   
