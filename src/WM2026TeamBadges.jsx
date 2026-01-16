@@ -1107,6 +1107,37 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
     return '';
   };
 
+  // Translate tournament results from German to current language
+  const translateResult = (result) => {
+    if (!result) return result;
+    const resultMap = {
+      'Weltmeister 🏆': t('resultWorldChampion'),
+      'Finale 🥈': t('resultFinal'),
+      '3. Platz 🥉': t('resultThirdPlace'),
+      'Vierter Platz': t('resultFourthPlace'),
+      'Halbfinale': t('resultSemiFinal'),
+      'Viertelfinale': t('resultQuarterFinal'),
+      'Achtelfinale': t('resultRoundOf16'),
+      'Vorrunde': t('resultGroupStage'),
+      'Zwischenrunde': t('resultSecondRound'),
+      'Qualifiziert': t('resultQualified'),
+      'Gastgeber': t('resultHost'),
+    };
+    return resultMap[result] || result;
+  };
+
+  // Translate qualification format from German to current language
+  const translateQualiFormat = (format) => {
+    if (!format) return format;
+    const formatMap = {
+      'Gruppenphase': t('qualiGroupStage'),
+      'Einzelne Liga': t('qualiSingleLeague'),
+      '3 Runden': t('qualiThreeRounds'),
+      'Finale': t('qualiFinal'),
+    };
+    return formatMap[format] || format;
+  };
+
   if (loading) {
     return (
       <div style={{ textAlign: 'center', padding: '40px', color: '#94a3b8' }}>
@@ -1633,7 +1664,7 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
                             <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>
                               {t('badgesGroupOpponents') || 'Gruppengegner'}:
                               {groupOpponents.map(opp => ` ${opp.flag_emoji}`).join('')}
-                              {opponentCodes.length > groupOpponents.length && ' + Playoff-Sieger'}
+                              {opponentCodes.length > groupOpponents.length && ` + ${t('playoffWinner')}`}
                             </div>
                           </div>
                         ) : (
@@ -2033,7 +2064,7 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
                               {coach.is_current && <span style={{ marginLeft: '6px', fontSize: '10px', color: '#10b981' }}>({t('badgesCurrentCoach')})</span>}
                             </div>
                             <div style={{ fontSize: '10px', color: '#64748b' }}>
-                              WM {coach.wm_year} • {coach.result}
+                              WM {coach.wm_year} • {translateResult(coach.result)}
                             </div>
                           </div>
                           <div style={{ textAlign: 'right', fontSize: '11px', color: '#94a3b8' }}>
@@ -2082,7 +2113,7 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
                             {selectedTeam.confederation} {t('badgesQualiPath') || 'Qualifikation'}
                           </div>
                           <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>
-                            {confData.format} • {confData.totalSlots} {t('badgesSlots') || 'Plätze'}
+                            {translateQualiFormat(confData.format)} • {confData.totalSlots} {t('badgesSlots')}
                           </div>
                         </div>
 
@@ -2098,10 +2129,10 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
                                 marginBottom: '16px'
                               }}>
                                 <div style={{ fontSize: '12px', fontWeight: 'bold', color: '#10b981', marginBottom: '8px' }}>
-                                  ✅ {t('badgesQualified') || 'Qualifiziert'}
+                                  ✅ {t('badgesQualified')}
                                   {qualiData.group !== 'Gastgeber' && qualiData.group !== 'CONMEBOL' && (
                                     <span style={{ color: '#94a3b8', fontWeight: 'normal', marginLeft: '8px' }}>
-                                      Gruppe {qualiData.group}
+                                      {t('group')} {qualiData.group}
                                     </span>
                                   )}
                                   {qualiData.group === 'CONMEBOL' && (
@@ -2136,11 +2167,11 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
                                       </div>
                                       <div style={{ textAlign: 'center' }}>
                                         <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#3b82f6' }}>{qualiData.standing.pts}</div>
-                                        <div style={{ fontSize: '8px', color: '#64748b' }}>Pkt</div>
+                                        <div style={{ fontSize: '8px', color: '#64748b' }}>{t('pts')}</div>
                                       </div>
                                     </div>
                                     <div style={{ fontSize: '10px', color: '#94a3b8' }}>
-                                      Tore: {qualiData.standing.gf}:{qualiData.standing.ga} (Diff: {qualiData.standing.gf - qualiData.standing.ga > 0 ? '+' : ''}{qualiData.standing.gf - qualiData.standing.ga})
+                                      {t('goals')}: {qualiData.standing.gf}:{qualiData.standing.ga} ({t('diff')}: {qualiData.standing.gf - qualiData.standing.ga > 0 ? '+' : ''}{qualiData.standing.gf - qualiData.standing.ga})
                                     </div>
                                   </>
                                 )}
