@@ -893,7 +893,7 @@ const QUALI_MATCHES = {
 const RSS2JSON_API = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
 const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTeamSelected = null }) => {
-  const { t, language } = useLanguage();
+  const { t, language, translateTeam } = useLanguage();
 
   const [badges, setBadges] = useState([]);
   const [scorers, setScorers] = useState({});
@@ -1090,7 +1090,7 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
 
   // Filter badges
   const filteredBadges = badges.filter(badge => {
-    const name = language === 'en' ? badge.name_en : badge.name_de;
+    const name = translateTeam(badge.name_de);
     const matchesSearch = name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesConf = filterConfederation === 'all' || badge.confederation === filterConfederation;
     return matchesSearch && matchesConf;
@@ -1252,7 +1252,7 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
             
             {/* Name */}
             <div style={{ fontSize: '12px', fontWeight: 'bold', color: 'white', marginBottom: '4px' }}>
-              {language === 'en' ? badge.name_en : badge.name_de}
+              {translateTeam(badge.name_de)}
             </div>
             
             {/* Titles */}
@@ -1353,7 +1353,7 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
                 {/* Name & Info */}
                 <div>
                   <div style={{ fontSize: '24px', fontWeight: 'bold', color: 'white' }}>
-                    {language === 'en' ? selectedTeam.name_en : selectedTeam.name_de}
+                    {translateTeam(selectedTeam.name_de)}
                   </div>
                   {selectedTeam.titles > 0 && (
                     <div style={{ fontSize: '16px', marginTop: '4px' }}>
@@ -1448,7 +1448,7 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
                   {mediaSubTab === 'news' && (
                     <div>
                       <div style={{ fontSize: '12px', color: '#64748b', marginBottom: '16px' }}>
-                        {t('badgesTeamNews') || 'Aktuelle News zu'} {language === 'en' ? selectedTeam.name_en : selectedTeam.name_de}
+                        {t('badgesTeamNews')} {translateTeam(selectedTeam.name_de)}
                       </div>
 
                       {newsLoading ? (
@@ -1545,7 +1545,7 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
                         };
 
                         const teamVideos = TEAM_VIDEOS[selectedTeam.country_code] || [];
-                        const teamName = language === 'en' ? selectedTeam.name_en : selectedTeam.name_de;
+                        const teamName = translateTeam(selectedTeam.name_de);
 
                         return (
                           <div>
@@ -1698,10 +1698,10 @@ const WM2026TeamBadges = ({ isPremium = false, preselectedTeamCode = null, onTea
                                   }}>
                                     <span style={{ fontSize: '24px' }}>{opponent.flag_emoji}</span>
                                     <span style={{ fontSize: '13px', fontWeight: 'bold', color: 'white' }}>
-                                      vs {language === 'en' ? opponent.name_en : opponent.name_de}
+                                      vs {translateTeam(opponent.name_de)}
                                     </span>
                                     <span style={{ fontSize: '10px', color: '#64748b', marginLeft: 'auto' }}>
-                                      {matches.length} {t('badgesMatches') || 'Spiele'}
+                                      {matches.length} {t('badgesMatches')}
                                     </span>
                                   </div>
 
