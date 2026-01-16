@@ -754,8 +754,8 @@ function AppContent() {
     try {
       let query = supabase.from('trivia_questions').select('*');
       
-      // Filter by language ('de' or 'en') - Polish uses English questions as fallback
-      const triviaLang = language === 'pl' ? 'en' : language;
+      // Filter by language ('de' or 'en') - Polish, French, Spanish, Portuguese use English questions as fallback
+      const triviaLang = (language === 'pl' || language === 'fr' || language === 'es' || language === 'pt') ? 'en' : language;
       query = query.eq('language', triviaLang);
       
       // Filter by category if selected
@@ -1082,8 +1082,8 @@ function AppContent() {
         {activeTab === 'trivia' && (<div>
           <div style={{ fontSize: '14px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>{t('triviaTitle')}</div>
           
-          {/* Language notice for Trivia - only shown for Polish (questions are in English) */}
-          {language === 'pl' && (
+          {/* Language notice for Trivia - shown for non-German/English users (questions displayed in English) */}
+          {['pl', 'fr', 'es', 'pt'].includes(language) && (
             <div style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)', borderRadius: '8px', padding: '10px 12px', marginBottom: '12px', fontSize: '11px', color: '#94a3b8' }}>
               {t('triviaLanguageNotice')}
             </div>
