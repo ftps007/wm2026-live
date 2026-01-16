@@ -7,7 +7,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { translations, teamTranslations, dayNames, monthNames, triviaCategories } from './translations';
 
 const LanguageContext = createContext();
-const SUPPORTED_LANGUAGES = ['de', 'en', 'pl', 'es', 'pt'];
+const SUPPORTED_LANGUAGES = ['de', 'en', 'pl', 'es', 'pt', 'fr'];
 
 export const LanguageProvider = ({ children }) => {
   const getInitialLanguage = () => {
@@ -28,6 +28,7 @@ export const LanguageProvider = ({ children }) => {
     if (browserLang === 'pl') return 'pl';
     if (browserLang === 'es') return 'es';
     if (browserLang === 'pt') return 'pt';
+    if (browserLang === 'fr') return 'fr';
     return 'de';
   };
 
@@ -64,6 +65,7 @@ export const LanguageProvider = ({ children }) => {
         pl: { 'Sieger': 'Zwycięzca', 'Verlierer': 'Przegrany', 'Gruppe': 'Grupy' },
         es: { 'Sieger': 'Ganador', 'Verlierer': 'Perdedor', 'Gruppe': 'Grupo' },
         pt: { 'Sieger': 'Vencedor', 'Verlierer': 'Perdedor', 'Gruppe': 'Grupo' },
+        fr: { 'Sieger': 'Vainqueur', 'Verlierer': 'Perdant', 'Gruppe': 'Groupe' },
       };
       const replacements = replacementsByLang[language] || replacementsByLang.en;
       return Object.entries(replacements).reduce((str, [de, tr]) => str.replace(de, tr), teamName);
@@ -87,6 +89,7 @@ export const LanguageProvider = ({ children }) => {
     if (language === 'pl') return `${day}, ${dayNum} ${month} ${year}`;
     if (language === 'es') return `${day}, ${dayNum} de ${month} ${year}`;
     if (language === 'pt') return `${day}, ${dayNum} de ${month} ${year}`;
+    if (language === 'fr') return `${day} ${dayNum} ${month} ${year}`;
     return `${day}, ${dayNum}. ${month} ${year}`;
   };
 
@@ -96,7 +99,7 @@ export const LanguageProvider = ({ children }) => {
       const h = parseInt(hours);
       return `${h % 12 || 12}:${minutes} ${h >= 12 ? 'PM' : 'AM'}`;
     }
-    if (language === 'pl' || language === 'es' || language === 'pt') return time24;
+    if (language === 'pl' || language === 'es' || language === 'pt' || language === 'fr') return time24;
     return `${time24} Uhr`;
   };
 
@@ -116,6 +119,7 @@ export const LanguageProvider = ({ children }) => {
     isPolish: language === 'pl',
     isSpanish: language === 'es',
     isPortuguese: language === 'pt',
+    isFrench: language === 'fr',
   };
 
   return (
@@ -137,6 +141,7 @@ export const LanguageSelector = ({ style = {} }) => {
   const languages = [
     { code: 'de', flag: '🇩🇪', label: 'DE' },
     { code: 'en', flag: '🇬🇧', label: 'EN' },
+    { code: 'fr', flag: '🇫🇷', label: 'FR' },
     { code: 'es', flag: '🇪🇸', label: 'ES' },
     { code: 'pt', flag: '🇧🇷🇵🇹', label: 'PT' },
     { code: 'pl', flag: '🇵🇱', label: 'PL' },
