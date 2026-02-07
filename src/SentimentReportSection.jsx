@@ -454,9 +454,37 @@ function WowArrow({ sentiment, prev }) {
 // ─── Main Component ─────────────────────────────────────────
 export default function SentimentReportSection({ language = 'de' }) {
   const [view, setView] = useState('ranked');
+  const [sortBy, setSortBy] = useState('rank');
+  const [sortDir, setSortDir] = useState('asc');
 
   const lang = L[language] ? language : 'en';
   const t = (k) => L[lang]?.[k] || L.en[k] || k;
+
+  const toggleSort = (col) => {
+    if (sortBy === col) {
+      setSortDir(d => d === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortBy(col);
+      setSortDir(col === 'rank' || col === 'team' || col === 'group' ? 'asc' : 'desc');
+    }
+  };
+
+  const sortedTeams = [...TEAMS].sort((a, b) => {
+    const dir = sortDir === 'asc' ? 1 : -1;
+    switch (sortBy) {
+      case 'rank': return (a.rank - b.rank) * dir;
+      case 'team': return teamName(a.name, lang).localeCompare(teamName(b.name, lang)) * dir;
+      case 'group': return (a.group.localeCompare(b.group) || a.rank - b.rank) * dir;
+      case 'sentiment': return ((a.sentiment ?? -999) - (b.sentiment ?? -999)) * dir;
+      case 'articles': return ((a.articles || 0) - (b.articles || 0)) * dir;
+      case 'wow': {
+        const aDiff = (a.prev !== null && a.sentiment !== null) ? a.sentiment - a.prev : -999;
+        const bDiff = (b.prev !== null && b.sentiment !== null) ? b.sentiment - b.prev : -999;
+        return (aDiff - bDiff) * dir;
+      }
+      default: return 0;
+    }
+  });
 
   const teamsByGroup = {};
   TEAMS.forEach(tm => {
@@ -518,31 +546,48 @@ export default function SentimentReportSection({ language = 'de' }) {
       {view === 'ranked' && (
         <div className="ts-fade" style={{ ...card }}>
           {/* Table header */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '28px 1fr 44px minmax(80px, 160px) 58px 36px 52px 24px',
-            gap: '6px',
-            alignItems: 'center',
-            padding: '0 4px 10px',
-            borderBottom: '1px solid rgba(255,255,255,0.08)',
-            fontSize: '10px',
-            fontWeight: '700',
-            color: '#475569',
-            textTransform: 'uppercase',
-            letterSpacing: '0.5px',
-          }}>
-            <span>{t('rank')}</span>
-            <span>{t('team')}</span>
-            <span style={{ textAlign: 'center' }}>{t('group')}</span>
-            <span style={{ textAlign: 'center' }}>{t('sentiment')}</span>
-            <span style={{ textAlign: 'right' }}>{t('sentiment')}</span>
-            <span style={{ textAlign: 'right' }}>{t('articles')}</span>
-            <span style={{ textAlign: 'center' }}>{t('emotions')}</span>
-            <span style={{ textAlign: 'center' }}>{t('wow')}</span>
-          </div>
+          {(() => {
+            const hdr = (col, label, align) => {
+              const active = sortBy === col;
+              return (
+                <span
+                  onClick={() => toggleSort(col)}
+                  style={{ textAlign: align || 'left', cursor: 'pointer', color: active ? '#06b6d4' : '#475569', transition: 'color 0.15s', userSelect: 'none' }}
+                >
+                  {label}{active ? (sortDir === 'asc' ? ' ↑' : ' ↓') : ''}
+                </span>
+              );
+            };
+            return (
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: '28px 1fr 44px minmax(80px, 160px) 58px 36px 52px 24px',
+                gap: '6px',
+                alignItems: 'center',
+                padding: '0 4px 10px',
+                borderBottom: '1px solid rgba(255,255,255,0.08)',
+                fontSize: '10px',
+                fontWeight: '700',
+                color: '#475569',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+              }}>
+                {hdr('rank', t('rank'))}
+                {hdr('team', t('team'))}
+                {hdr('group', t('group'), 'center')}
+                <span style={{ textAlign: 'center', color: sortBy === 'sentiment' ? '#06b6d4' : '#475569', cursor: 'pointer', userSelect: 'none' }} onClick={() => toggleSort('sentiment')}>
+                  {t('sentiment')}{sortBy === 'sentiment' ? (sortDir === 'asc' ? ' ↑' : ' ↓') : ''}
+                </span>
+                <span style={{ textAlign: 'right' }}></span>
+                {hdr('articles', t('articles'), 'right')}
+                <span style={{ textAlign: 'center' }}>{t('emotions')}</span>
+                {hdr('wow', t('wow'), 'center')}
+              </div>
+            );
+          })()}
 
           {/* Team rows */}
-          {TEAMS.map((tm, i) => {
+          {sortedTeams.map((tm, i) => {
             const isHost = tm.host;
             const isChamp = tm.champion;
             const isDebut = tm.debut;
