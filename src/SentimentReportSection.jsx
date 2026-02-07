@@ -231,6 +231,53 @@ const L = {
   },
 };
 
+// ─── Team Name Translations ────────────────────────────────
+const TEAM_NAMES = {
+  'Cape Verde':    { de: 'Kap Verde',       fr: 'Cap-Vert',          pl: 'Republika Zielonego Przylądka', es: 'Cabo Verde',        pt: 'Cabo Verde' },
+  'Tunisia':       { de: 'Tunesien',         fr: 'Tunisie',           pl: 'Tunezja',          es: 'Túnez',             pt: 'Tunísia' },
+  'Portugal':      { de: 'Portugal',         fr: 'Portugal',          pl: 'Portugalia',       es: 'Portugal',          pt: 'Portugal' },
+  'Spain':         { de: 'Spanien',          fr: 'Espagne',           pl: 'Hiszpania',        es: 'España',            pt: 'Espanha' },
+  'Belgium':       { de: 'Belgien',          fr: 'Belgique',          pl: 'Belgia',           es: 'Bélgica',           pt: 'Bélgica' },
+  'Ivory Coast':   { de: 'Elfenbeinküste',   fr: 'Côte d\'Ivoire',    pl: 'Wybrzeże Kości Słoniowej', es: 'Costa de Marfil', pt: 'Costa do Marfim' },
+  'Netherlands':   { de: 'Niederlande',      fr: 'Pays-Bas',          pl: 'Holandia',         es: 'Países Bajos',      pt: 'Países Baixos' },
+  'Mexico':        { de: 'Mexiko',           fr: 'Mexique',           pl: 'Meksyk',           es: 'México',            pt: 'México' },
+  'Senegal':       { de: 'Senegal',          fr: 'Sénégal',           pl: 'Senegal',          es: 'Senegal',           pt: 'Senegal' },
+  'Iran':          { de: 'Iran',             fr: 'Iran',              pl: 'Iran',             es: 'Irán',              pt: 'Irã' },
+  'Japan':         { de: 'Japan',            fr: 'Japon',             pl: 'Japonia',          es: 'Japón',             pt: 'Japão' },
+  'Algeria':       { de: 'Algerien',         fr: 'Algérie',           pl: 'Algieria',         es: 'Argelia',           pt: 'Argélia' },
+  'France':        { de: 'Frankreich',       fr: 'France',            pl: 'Francja',          es: 'Francia',           pt: 'França' },
+  'Brazil':        { de: 'Brasilien',        fr: 'Brésil',            pl: 'Brazylia',         es: 'Brasil',            pt: 'Brasil' },
+  'Norway':        { de: 'Norwegen',         fr: 'Norvège',           pl: 'Norwegia',         es: 'Noruega',           pt: 'Noruega' },
+  'Switzerland':   { de: 'Schweiz',          fr: 'Suisse',            pl: 'Szwajcaria',       es: 'Suiza',             pt: 'Suíça' },
+  'England':       { de: 'England',          fr: 'Angleterre',        pl: 'Anglia',           es: 'Inglaterra',        pt: 'Inglaterra' },
+  'Canada':        { de: 'Kanada',           fr: 'Canada',            pl: 'Kanada',           es: 'Canadá',            pt: 'Canadá' },
+  'United States': { de: 'USA',              fr: 'États-Unis',        pl: 'USA',              es: 'Estados Unidos',    pt: 'Estados Unidos' },
+  'Argentina':     { de: 'Argentinien',      fr: 'Argentine',         pl: 'Argentyna',        es: 'Argentina',         pt: 'Argentina' },
+  'Qatar':         { de: 'Katar',            fr: 'Qatar',             pl: 'Katar',            es: 'Catar',             pt: 'Catar' },
+  'Ghana':         { de: 'Ghana',            fr: 'Ghana',             pl: 'Ghana',            es: 'Ghana',             pt: 'Gana' },
+  'Austria':       { de: 'Österreich',       fr: 'Autriche',          pl: 'Austria',          es: 'Austria',           pt: 'Áustria' },
+  'Germany':       { de: 'Deutschland',      fr: 'Allemagne',         pl: 'Niemcy',           es: 'Alemania',          pt: 'Alemanha' },
+  'South Africa':  { de: 'Südafrika',        fr: 'Afrique du Sud',    pl: 'Republika Południowej Afryki', es: 'Sudáfrica', pt: 'África do Sul' },
+  'Croatia':       { de: 'Kroatien',         fr: 'Croatie',           pl: 'Chorwacja',        es: 'Croacia',           pt: 'Croácia' },
+  'South Korea':   { de: 'Südkorea',         fr: 'Corée du Sud',      pl: 'Korea Południowa', es: 'Corea del Sur',     pt: 'Coreia do Sul' },
+  'Australia':     { de: 'Australien',       fr: 'Australie',         pl: 'Australia',        es: 'Australia',         pt: 'Austrália' },
+  'New Zealand':   { de: 'Neuseeland',       fr: 'Nouvelle-Zélande',  pl: 'Nowa Zelandia',    es: 'Nueva Zelanda',     pt: 'Nova Zelândia' },
+  'Panama':        { de: 'Panama',           fr: 'Panama',            pl: 'Panama',           es: 'Panamá',            pt: 'Panamá' },
+  'Paraguay':      { de: 'Paraguay',         fr: 'Paraguay',          pl: 'Paragwaj',         es: 'Paraguay',          pt: 'Paraguai' },
+  'Morocco':       { de: 'Marokko',          fr: 'Maroc',             pl: 'Maroko',           es: 'Marruecos',         pt: 'Marrocos' },
+  'Egypt':         { de: 'Ägypten',          fr: 'Égypte',            pl: 'Egipt',            es: 'Egipto',            pt: 'Egito' },
+  'Colombia':      { de: 'Kolumbien',        fr: 'Colombie',          pl: 'Kolumbia',         es: 'Colombia',          pt: 'Colômbia' },
+  'Saudi Arabia':  { de: 'Saudi-Arabien',    fr: 'Arabie saoudite',   pl: 'Arabia Saudyjska', es: 'Arabia Saudita',    pt: 'Arábia Saudita' },
+  'Ecuador':       { de: 'Ecuador',          fr: 'Équateur',          pl: 'Ekwador',          es: 'Ecuador',           pt: 'Equador' },
+  'Jordan':        { de: 'Jordanien',        fr: 'Jordanie',          pl: 'Jordania',         es: 'Jordania',          pt: 'Jordânia' },
+  'Scotland':      { de: 'Schottland',       fr: 'Écosse',            pl: 'Szkocja',          es: 'Escocia',           pt: 'Escócia' },
+  'Haiti':         { de: 'Haiti',            fr: 'Haïti',             pl: 'Haiti',            es: 'Haití',             pt: 'Haiti' },
+  'Uruguay':       { de: 'Uruguay',          fr: 'Uruguay',           pl: 'Urugwaj',          es: 'Uruguay',           pt: 'Uruguai' },
+  'Curaçao':       { de: 'Curaçao',          fr: 'Curaçao',           pl: 'Curaçao',          es: 'Curazao',           pt: 'Curaçau' },
+  'Uzbekistan':    { de: 'Usbekistan',       fr: 'Ouzbékistan',       pl: 'Uzbekistan',       es: 'Uzbekistán',        pt: 'Uzbequistão' },
+};
+const teamName = (name, lang) => (lang === 'en' ? name : TEAM_NAMES[name]?.[lang]) || name;
+
 // ─── Complete Team Data (42 teams) ──────────────────────────
 const TEAMS = [
   { rank: 1,  flag: '🇨🇻', name: 'Cape Verde',    group: 'H', articles: 1,   sentiment: 0.874,  prev: null,   posPct: 100,  negPct: 0,    fear: 0.642, joy: 0.202, anger: 0.046, lowVol: true, debut: true },
@@ -447,9 +494,9 @@ export default function SentimentReportSection({ language = 'de' }) {
 
       {/* ═══ HIGHLIGHTS ═══ */}
       <div className="ts-fade" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', marginBottom: '20px', animationDelay: '0.05s' }}>
-        <HighlightCard title={t('mostPositive')} flag="🇵🇹" name="Portugal" value="+0.219" note={t('portugal')} accent="#10b981" delay={0.1} />
-        <HighlightCard title={t('biggestMover')} flag="🇩🇪" name="Germany" value="+0.266" note={t('germany')} accent="#06b6d4" delay={0.15} />
-        <HighlightCard title={t('mostNegative')} flag="🇺🇾" name="Uruguay" value="-0.214" note={t('uruguay')} accent="#ef4444" delay={0.2} />
+        <HighlightCard title={t('mostPositive')} flag="🇵🇹" name={teamName('Portugal', lang)} value="+0.219" note={t('portugal')} accent="#10b981" delay={0.1} />
+        <HighlightCard title={t('biggestMover')} flag="🇩🇪" name={teamName('Germany', lang)} value="+0.266" note={t('germany')} accent="#06b6d4" delay={0.15} />
+        <HighlightCard title={t('mostNegative')} flag="🇺🇾" name={teamName('Uruguay', lang)} value="-0.214" note={t('uruguay')} accent="#ef4444" delay={0.2} />
         <HighlightCard title={t('hostAvg')} flag="🇲🇽🇨🇦🇺🇸" name="+0.085 avg" value="" note={t('hosts')} accent="#f59e0b" delay={0.25} />
       </div>
 
@@ -519,7 +566,7 @@ export default function SentimentReportSection({ language = 'de' }) {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', minWidth: 0 }}>
                   <span style={{ fontSize: '16px', flexShrink: 0 }}>{tm.flag}</span>
                   <span style={{ fontSize: '12px', fontWeight: '600', color: '#e2e8f0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    {tm.name}
+                    {teamName(tm.name, lang)}
                   </span>
                   {isHost && <span style={{ fontSize: '9px', background: 'rgba(245,158,11,0.15)', color: '#f59e0b', padding: '1px 4px', borderRadius: '3px', fontWeight: '700', flexShrink: 0 }}>HOST</span>}
                   {isChamp && <span style={{ fontSize: '10px', flexShrink: 0 }}>🏆</span>}
@@ -617,7 +664,7 @@ export default function SentimentReportSection({ language = 'de' }) {
                     }}>
                       <span style={{ fontSize: '15px', flexShrink: 0 }}>{tm.flag}</span>
                       <span style={{ fontSize: '11px', color: '#e2e8f0', fontWeight: '500', flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                        {tm.name}
+                        {teamName(tm.name, lang)}
                         {tm.host ? ' 🏠' : tm.debut ? ' 🆕' : tm.champion ? ' 🏆' : ''}
                       </span>
                       {/* Mini bar */}
