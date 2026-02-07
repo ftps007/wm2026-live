@@ -1,530 +1,662 @@
 import React, { useState } from 'react';
-import { translations } from './translations';
 
-// Team data by group
-const TEAMS_BY_GROUP = {
-  A: [
-    { flag: '🇿🇦', nameKey: 'South Africa', translationKey: 'sentimentSouthAfrica', score: '+0.108' },
-    { flag: '🇲🇽', nameKey: 'Mexico', translationKey: 'sentimentMexico', score: '+0.103', host: true },
-    { flag: '🇰🇷', nameKey: 'South Korea', translationKey: 'sentimentSouthKorea', score: '+0.079' },
-  ],
-  B: [
-    { flag: '🇨🇦', nameKey: 'Canada', translationKey: 'sentimentCanada', score: '+0.105', host: true },
-    { flag: '🇨🇭', nameKey: 'Switzerland', translationKey: 'sentimentSwitzerland', score: '+0.091' },
-    { flag: '🇶🇦', nameKey: 'Qatar', translationKey: 'sentimentQatar', score: '+0.031' },
-  ],
-  C: [
-    { flag: '🇧🇷', nameKey: 'Brazil', translationKey: 'sentimentBrazil', score: '+0.075' },
-    { flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', nameKey: 'Scotland', translationKey: 'sentimentScotland', score: '+0.072' },
-    { flag: '🇲🇦', nameKey: 'Morocco', translationKey: 'sentimentMorocco', score: '+0.068' },
-    { flag: '🇭🇹', nameKey: 'Haiti', translationKey: 'sentimentHaiti', score: '+0.043', debut: true },
-  ],
-  D: [
-    { flag: '🇺🇸', nameKey: 'USA', translationKey: 'sentimentUSA', score: '+0.093', host: true },
-    { flag: '🇵🇾', nameKey: 'Paraguay', translationKey: 'sentimentParaguay', score: '+0.084' },
-    { flag: '🇦🇺', nameKey: 'Australia', translationKey: 'sentimentAustralia', score: '+0.018' },
-  ],
-  E: [
-    { flag: '🇪🇨', nameKey: 'Ecuador', translationKey: 'sentimentEcuador', score: '+0.110' },
-    { flag: '🇨🇮', nameKey: 'Ivory Coast', translationKey: 'sentimentIvoryCoast', score: '+0.083' },
-    { flag: '🇨🇼', nameKey: 'Curaçao', translationKey: 'sentimentCuracao', score: '+0.064', debut: true },
-    { flag: '🇩🇪', nameKey: 'Germany', translationKey: 'sentimentGermany', score: '+0.053' },
-  ],
-  F: [
-    { flag: '🇳🇱', nameKey: 'Netherlands', translationKey: 'sentimentNetherlands', score: '+0.113' },
-    { flag: '🇹🇳', nameKey: 'Tunisia', translationKey: 'sentimentTunisia', score: '+0.074' },
-    { flag: '🇯🇵', nameKey: 'Japan', translationKey: 'sentimentJapan', score: '+0.069' },
-  ],
-  G: [
-    { flag: '🇳🇿', nameKey: 'New Zealand', translationKey: 'sentimentNewZealand', score: '+0.147', highest: true },
-    { flag: '🇧🇪', nameKey: 'Belgium', translationKey: 'sentimentBelgium', score: '+0.076' },
-    { flag: '🇪🇬', nameKey: 'Egypt', translationKey: 'sentimentEgypt', score: '+0.033' },
-    { flag: '🇮🇷', nameKey: 'Iran', translationKey: 'sentimentIran', score: '-0.034', negative: true },
-  ],
-  H: [
-    { flag: '🇺🇾', nameKey: 'Uruguay', translationKey: 'sentimentUruguay', score: '+0.133' },
-    { flag: '🇨🇻', nameKey: 'Cape Verde', translationKey: 'sentimentCapeVerde', score: '+0.121', debut: true },
-    { flag: '🇪🇸', nameKey: 'Spain', translationKey: 'sentimentSpain', score: '+0.075' },
-    { flag: '🇸🇦', nameKey: 'Saudi Arabia', translationKey: 'sentimentSaudiArabia', score: '+0.003' },
-  ],
-  I: [
-    { flag: '🇸🇳', nameKey: 'Senegal', translationKey: 'sentimentSenegal', score: '+0.077' },
-    { flag: '🇫🇷', nameKey: 'France', translationKey: 'sentimentFrance', score: '+0.075' },
-    { flag: '🇳🇴', nameKey: 'Norway', translationKey: 'sentimentNorway', score: '+0.054' },
-  ],
-  J: [
-    { flag: '🇦🇷', nameKey: 'Argentina', translationKey: 'sentimentArgentina', score: '+0.133', champion: true },
-    { flag: '🇦🇹', nameKey: 'Austria', translationKey: 'sentimentAustria', score: '+0.107' },
-    { flag: '🇯🇴', nameKey: 'Jordan', translationKey: 'sentimentJordan', score: '+0.097', debut: true },
-    { flag: '🇩🇿', nameKey: 'Algeria', translationKey: 'sentimentAlgeria', score: '+0.047' },
-  ],
-  K: [
-    { flag: '🇺🇿', nameKey: 'Uzbekistan', translationKey: 'sentimentUzbekistan', score: '+0.144', debut: true, highest: true },
-    { flag: '🇵🇹', nameKey: 'Portugal', translationKey: 'sentimentPortugal', score: '+0.115' },
-    { flag: '🇨🇴', nameKey: 'Colombia', translationKey: 'sentimentColombia', score: '+0.070' },
-  ],
-  L: [
-    { flag: '🇬🇭', nameKey: 'Ghana', translationKey: 'sentimentGhana', score: '+0.102' },
-    { flag: '🇭🇷', nameKey: 'Croatia', translationKey: 'sentimentCroatia', score: '+0.056' },
-    { flag: '🇵🇦', nameKey: 'Panama', translationKey: 'sentimentPanama', score: '+0.047' },
-    { flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', nameKey: 'England', translationKey: 'sentimentEngland', score: '+0.044' },
-  ],
+/* ═══════════════════════════════════════════════════════════
+   WM 2026 — National Team Sentiment Visualization
+   Week 5: February 2 – 6, 2026 | 42 Qualified Teams
+   ═══════════════════════════════════════════════════════════ */
+
+// ─── Labels ─────────────────────────────────────────────────
+const L = {
+  en: {
+    title: 'National Team Sentiment',
+    subtitle: '42 qualified teams ranked by media & social sentiment',
+    period: 'Week 5 — Feb 2–6, 2026',
+    db: '21,478 articles in database',
+    ranked: 'Ranked',
+    byGroup: 'By Group',
+    rank: '#',
+    team: 'Team',
+    sentiment: 'Sentiment',
+    articles: 'Art.',
+    emotions: 'F / J / A',
+    group: 'Grp',
+    mostPositive: 'Most Positive',
+    mostNegative: 'Most Negative',
+    biggestMover: 'Biggest Mover',
+    hostAvg: 'Host Nations',
+    lowVolume: 'Low volume',
+    noData: 'No articles',
+    fear: 'Fear',
+    joy: 'Joy',
+    anger: 'Anger',
+    legend: 'Bar = sentiment score. Dots = Fear / Joy / Anger intensity. Opacity = strength.',
+    pos: 'Positive',
+    neg: 'Negative',
+    portugal: 'Ronaldo\'s last WC narrative driving excitement. Highest pos% among major teams (26.6%).',
+    uruguay: 'Only 5 articles, all skeptical. Questions whether Uruguay can compete in Group H.',
+    germany: 'From -0.261 to +0.005 after DFB boycott resolution. Most polarized team: 16.7% pos AND 14.6% neg.',
+    hosts: 'Mexico leads hosts at +0.131 (clean recovery from -0.028). USA improving but political drag persists.',
+    footer: 'Sentiment doesn\'t predict results — it reveals pressure.',
+    nextReport: 'Next report: February 13, 2026',
+    groupLabel: 'GROUP',
+    avgSent: 'avg',
+    teamsQualified: 'teams qualified',
+    spotsOpen: '6 spots via playoffs',
+    wow: 'WoW',
+  },
+  de: {
+    title: 'Nationalmannschaft-Sentiment',
+    subtitle: '42 qualifizierte Teams nach Medien- & Social-Sentiment',
+    period: 'Woche 5 — 2.–6. Feb 2026',
+    db: '21.478 Artikel in der Datenbank',
+    ranked: 'Rangliste',
+    byGroup: 'Nach Gruppe',
+    rank: '#',
+    team: 'Team',
+    sentiment: 'Sentiment',
+    articles: 'Art.',
+    emotions: 'F / J / A',
+    group: 'Gr.',
+    mostPositive: 'Positivstes Team',
+    mostNegative: 'Negativstes Team',
+    biggestMover: 'Größter Aufsteiger',
+    hostAvg: 'Gastgeber',
+    lowVolume: 'Wenig Daten',
+    noData: 'Keine Artikel',
+    fear: 'Angst',
+    joy: 'Freude',
+    anger: 'Wut',
+    legend: 'Balken = Sentiment. Punkte = Angst / Freude / Wut. Deckkraft = Stärke.',
+    pos: 'Positiv',
+    neg: 'Negativ',
+    portugal: 'Ronaldos letztes WM-Narrativ treibt Begeisterung. Höchste Pos-Rate unter Top-Teams (26,6%).',
+    uruguay: 'Nur 5 Artikel, alle skeptisch. Zweifel ob Uruguay in Gruppe H bestehen kann.',
+    germany: 'Von -0,261 auf +0,005 nach DFB-Boykott-Lösung. Polarisiertestes Team: 16,7% pos UND 14,6% neg.',
+    hosts: 'Mexiko führt die Gastgeber mit +0,131 (Erholung von -0,028). USA verbessert, politischer Drag bleibt.',
+    footer: 'Sentiment sagt keine Ergebnisse voraus — es zeigt Druck.',
+    nextReport: 'Nächster Bericht: 13. Februar 2026',
+    groupLabel: 'GRUPPE',
+    avgSent: 'Ø',
+    teamsQualified: 'Teams qualifiziert',
+    spotsOpen: '6 Plätze via Playoffs',
+    wow: 'WoW',
+  },
+  fr: {
+    title: 'Sentiment des Équipes',
+    subtitle: '42 équipes qualifiées classées par sentiment médias & social',
+    period: 'Semaine 5 — 2–6 fév. 2026',
+    db: '21 478 articles en base',
+    ranked: 'Classement',
+    byGroup: 'Par Groupe',
+    rank: '#',
+    team: 'Équipe',
+    sentiment: 'Sentiment',
+    articles: 'Art.',
+    emotions: 'P / J / C',
+    group: 'Gr.',
+    mostPositive: 'Le plus positif',
+    mostNegative: 'Le plus négatif',
+    biggestMover: 'Plus grande progression',
+    hostAvg: 'Pays hôtes',
+    lowVolume: 'Faible volume',
+    noData: 'Pas d\'articles',
+    fear: 'Peur',
+    joy: 'Joie',
+    anger: 'Colère',
+    legend: 'Barre = sentiment. Points = Peur / Joie / Colère. Opacité = intensité.',
+    pos: 'Positif',
+    neg: 'Négatif',
+    portugal: 'Le dernier Mondial de Ronaldo génère de l\'enthousiasme. Taux positif le plus élevé (26,6%).',
+    uruguay: 'Seulement 5 articles, tous sceptiques. L\'Uruguay peut-il rivaliser dans le Groupe H ?',
+    germany: 'De -0,261 à +0,005 après la résolution du boycott. Équipe la plus polarisée.',
+    hosts: 'Le Mexique mène les hôtes à +0,131. Les USA s\'améliorent mais le frein politique persiste.',
+    footer: 'Le sentiment ne prédit pas les résultats — il révèle la pression.',
+    nextReport: 'Prochain rapport : 13 février 2026',
+    groupLabel: 'GROUPE',
+    avgSent: 'moy',
+    teamsQualified: 'équipes qualifiées',
+    spotsOpen: '6 places via barrages',
+    wow: 'SsS',
+  },
+  pl: {
+    title: 'Sentyment Reprezentacji',
+    subtitle: '42 zakwalifikowane drużyny w rankingu sentymentu mediów i social media',
+    period: 'Tydzień 5 — 2–6 lut. 2026',
+    db: '21 478 artykułów w bazie',
+    ranked: 'Ranking',
+    byGroup: 'Wg Grupy',
+    rank: '#',
+    team: 'Drużyna',
+    sentiment: 'Sentyment',
+    articles: 'Art.',
+    emotions: 'S / R / Z',
+    group: 'Gr.',
+    mostPositive: 'Najbardziej pozytywny',
+    mostNegative: 'Najbardziej negatywny',
+    biggestMover: 'Największy awans',
+    hostAvg: 'Gospodarze',
+    lowVolume: 'Mało danych',
+    noData: 'Brak artykułów',
+    fear: 'Strach',
+    joy: 'Radość',
+    anger: 'Złość',
+    legend: 'Pasek = sentyment. Kropki = Strach / Radość / Złość. Przezroczystość = intensywność.',
+    pos: 'Pozytywny',
+    neg: 'Negatywny',
+    portugal: 'Ostatni mundial Ronaldo napędza entuzjazm. Najwyższy % pozytywnych wśród czołowych drużyn (26,6%).',
+    uruguay: 'Tylko 5 artykułów, wszystkie sceptyczne. Czy Urugwaj poradzi sobie w Grupie H?',
+    germany: 'Z -0,261 do +0,005 po rozwiązaniu bojkotu DFB. Najbardziej spolaryzowana drużyna: 16,7% poz. I 14,6% neg.',
+    hosts: 'Meksyk prowadzi wśród gospodarzy z +0,131 (odbicie od -0,028). USA się poprawia, ale hamulec polityczny trwa.',
+    footer: 'Sentyment nie przewiduje wyników — ujawnia presję.',
+    nextReport: 'Następny raport: 13 lutego 2026',
+    groupLabel: 'GRUPA',
+    avgSent: 'śr',
+    teamsQualified: 'drużyn zakwalifikowanych',
+    spotsOpen: '6 miejsc przez baraże',
+    wow: 'TnT',
+  },
+  es: {
+    title: 'Sentimiento por Selección',
+    subtitle: '42 selecciones clasificadas por sentimiento en medios y redes sociales',
+    period: 'Semana 5 — 2–6 feb. 2026',
+    db: '21.478 artículos en la base de datos',
+    ranked: 'Ranking',
+    byGroup: 'Por Grupo',
+    rank: '#',
+    team: 'Selección',
+    sentiment: 'Sentimiento',
+    articles: 'Art.',
+    emotions: 'M / A / I',
+    group: 'Gr.',
+    mostPositive: 'Más positivo',
+    mostNegative: 'Más negativo',
+    biggestMover: 'Mayor ascenso',
+    hostAvg: 'Anfitriones',
+    lowVolume: 'Bajo volumen',
+    noData: 'Sin artículos',
+    fear: 'Miedo',
+    joy: 'Alegría',
+    anger: 'Ira',
+    legend: 'Barra = sentimiento. Puntos = Miedo / Alegría / Ira. Opacidad = intensidad.',
+    pos: 'Positivo',
+    neg: 'Negativo',
+    portugal: 'El último Mundial de Ronaldo genera entusiasmo. Mayor % positivo entre grandes selecciones (26,6%).',
+    uruguay: 'Solo 5 artículos, todos escépticos. ¿Puede Uruguay competir en el Grupo H?',
+    germany: 'De -0,261 a +0,005 tras la resolución del boicot. Selección más polarizada: 16,7% pos Y 14,6% neg.',
+    hosts: 'México lidera los anfitriones con +0,131 (recuperación desde -0,028). EE.UU. mejora pero el lastre político persiste.',
+    footer: 'El sentimiento no predice resultados — revela presión.',
+    nextReport: 'Próximo informe: 13 de febrero de 2026',
+    groupLabel: 'GRUPO',
+    avgSent: 'prom',
+    teamsQualified: 'selecciones clasificadas',
+    spotsOpen: '6 plazas vía repechaje',
+    wow: 'SsS',
+  },
+  pt: {
+    title: 'Sentimento por Seleção',
+    subtitle: '42 seleções classificadas por sentimento na mídia e redes sociais',
+    period: 'Semana 5 — 2–6 fev. 2026',
+    db: '21.478 artigos na base de dados',
+    ranked: 'Ranking',
+    byGroup: 'Por Grupo',
+    rank: '#',
+    team: 'Seleção',
+    sentiment: 'Sentimento',
+    articles: 'Art.',
+    emotions: 'M / A / R',
+    group: 'Gr.',
+    mostPositive: 'Mais positivo',
+    mostNegative: 'Mais negativo',
+    biggestMover: 'Maior evolução',
+    hostAvg: 'Anfitriões',
+    lowVolume: 'Baixo volume',
+    noData: 'Sem artigos',
+    fear: 'Medo',
+    joy: 'Alegria',
+    anger: 'Raiva',
+    legend: 'Barra = sentimento. Pontos = Medo / Alegria / Raiva. Opacidade = intensidade.',
+    pos: 'Positivo',
+    neg: 'Negativo',
+    portugal: 'O último Mundial de Ronaldo gera entusiasmo. Maior % positivo entre grandes seleções (26,6%).',
+    uruguay: 'Apenas 5 artigos, todos céticos. O Uruguai consegue competir no Grupo H?',
+    germany: 'De -0,261 para +0,005 após resolução do boicote. Seleção mais polarizada: 16,7% pos E 14,6% neg.',
+    hosts: 'México lidera anfitriões com +0,131 (recuperação de -0,028). EUA melhoram mas arrasto político persiste.',
+    footer: 'Sentimento não prevê resultados — revela pressão.',
+    nextReport: 'Próximo relatório: 13 de fevereiro de 2026',
+    groupLabel: 'GRUPO',
+    avgSent: 'méd',
+    teamsQualified: 'seleções classificadas',
+    spotsOpen: '6 vagas via repescagem',
+    wow: 'SsS',
+  },
 };
 
-// Negative drivers data
-const NEGATIVE_DRIVERS = [
-  { key: 'trumpVisa', sentiment: '-0.171', negPercent: '66.5%', width: '66.5%' },
-  { key: 'venezuelaCrisis', sentiment: '-0.106', negPercent: '65.3%', width: '65.3%' },
-  { key: 'ticketPrices', sentiment: '-0.159', negPercent: '61.7%', width: '61.7%' },
-  { key: 'iranControversy', sentiment: '-0.034', negPercent: '35.9%', width: '35.9%' },
+// ─── Complete Team Data (42 teams) ──────────────────────────
+const TEAMS = [
+  { rank: 1,  flag: '🇨🇻', name: 'Cape Verde',    group: 'H', articles: 1,   sentiment: 0.874,  prev: null,   posPct: 100,  negPct: 0,    fear: 0.642, joy: 0.202, anger: 0.046, lowVol: true, debut: true },
+  { rank: 2,  flag: '🇹🇳', name: 'Tunisia',       group: 'F', articles: 5,   sentiment: 0.339,  prev: 0.472,  posPct: 40,   negPct: 0,    fear: 0.576, joy: 0.242, anger: 0.098, lowVol: true },
+  { rank: 3,  flag: '🇵🇹', name: 'Portugal',      group: 'K', articles: 64,  sentiment: 0.219,  prev: 0.276,  posPct: 26.6, negPct: 3.1,  fear: 0.589, joy: 0.115, anger: 0.097 },
+  { rank: 4,  flag: '🇪🇸', name: 'Spain',         group: 'H', articles: 84,  sentiment: 0.154,  prev: 0.113,  posPct: 19,   negPct: 3.6,  fear: 0.536, joy: 0.104, anger: 0.100 },
+  { rank: 5,  flag: '🇧🇪', name: 'Belgium',       group: 'G', articles: 16,  sentiment: 0.148,  prev: 0.231,  posPct: 18.8, negPct: 6.3,  fear: 0.446, joy: 0.141, anger: 0.122 },
+  { rank: 6,  flag: '🇨🇮', name: 'Ivory Coast',   group: 'E', articles: 9,   sentiment: 0.146,  prev: 0.172,  posPct: 22.2, negPct: 0,    fear: 0.187, joy: 0.065, anger: 0.188 },
+  { rank: 7,  flag: '🇳🇱', name: 'Netherlands',   group: 'F', articles: 18,  sentiment: 0.139,  prev: 0.037,  posPct: 22.2, negPct: 5.6,  fear: 0.238, joy: 0.164, anger: 0.106 },
+  { rank: 8,  flag: '🇲🇽', name: 'Mexico',        group: 'A', articles: 89,  sentiment: 0.131,  prev: -0.028, posPct: 22.5, negPct: 4.5,  fear: 0.265, joy: 0.101, anger: 0.092, host: true },
+  { rank: 9,  flag: '🇸🇳', name: 'Senegal',       group: 'I', articles: 6,   sentiment: 0.130,  prev: -0.140, posPct: 16.7, negPct: 0,    fear: 0.083, joy: 0.088, anger: 0.025 },
+  { rank: 10, flag: '🇮🇷', name: 'Iran',          group: 'G', articles: 6,   sentiment: 0.129,  prev: -0.146, posPct: 16.7, negPct: 0,    fear: 0.059, joy: 0.074, anger: 0.139 },
+  { rank: 11, flag: '🇯🇵', name: 'Japan',         group: 'F', articles: 9,   sentiment: 0.128,  prev: 0.244,  posPct: 11.1, negPct: 0,    fear: 0.383, joy: 0.102, anger: 0.063 },
+  { rank: 12, flag: '🇩🇿', name: 'Algeria',       group: 'J', articles: 6,   sentiment: 0.110,  prev: -0.008, posPct: 16.7, negPct: 0,    fear: 0.010, joy: 0.051, anger: 0.024 },
+  { rank: 13, flag: '🇫🇷', name: 'France',        group: 'I', articles: 83,  sentiment: 0.102,  prev: 0.059,  posPct: 20.5, negPct: 8.4,  fear: 0.563, joy: 0.121, anger: 0.110 },
+  { rank: 14, flag: '🇧🇷', name: 'Brazil',        group: 'C', articles: 90,  sentiment: 0.099,  prev: 0.076,  posPct: 16.7, negPct: 6.7,  fear: 0.318, joy: 0.162, anger: 0.079 },
+  { rank: 15, flag: '🇳🇴', name: 'Norway',        group: 'I', articles: 4,   sentiment: 0.085,  prev: 0.425,  posPct: 0,    negPct: 0,    fear: 0.235, joy: 0.060, anger: 0.020, lowVol: true },
+  { rank: 16, flag: '🇨🇭', name: 'Switzerland',   group: 'B', articles: 16,  sentiment: 0.082,  prev: 0.158,  posPct: 6.3,  negPct: 0,    fear: 0.128, joy: 0.235, anger: 0.082 },
+  { rank: 17, flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', name: 'England',      group: 'L', articles: 77,  sentiment: 0.077,  prev: -0.066, posPct: 14.3, negPct: 3.9,  fear: 0.195, joy: 0.113, anger: 0.058 },
+  { rank: 18, flag: '🇨🇦', name: 'Canada',        group: 'B', articles: 92,  sentiment: 0.071,  prev: 0.120,  posPct: 19.6, negPct: 9.8,  fear: 0.208, joy: 0.101, anger: 0.054, host: true },
+  { rank: 19, flag: '🇺🇸', name: 'United States', group: 'D', articles: 108, sentiment: 0.054,  prev: -0.131, posPct: 13.9, negPct: 7.4,  fear: 0.272, joy: 0.078, anger: 0.070, host: true },
+  { rank: 20, flag: '🇦🇷', name: 'Argentina',     group: 'J', articles: 61,  sentiment: 0.033,  prev: 0.149,  posPct: 8.2,  negPct: 3.3,  fear: 0.239, joy: 0.077, anger: 0.079, champion: true },
+  { rank: 21, flag: '🇶🇦', name: 'Qatar',         group: 'B', articles: 32,  sentiment: 0.032,  prev: 0.167,  posPct: 15.6, negPct: 9.4,  fear: 0.114, joy: 0.065, anger: 0.115 },
+  { rank: 22, flag: '🇬🇭', name: 'Ghana',         group: 'L', articles: 60,  sentiment: 0.021,  prev: -0.018, posPct: 3.3,  negPct: 0,    fear: 0.063, joy: 0.067, anger: 0.032 },
+  { rank: 23, flag: '🇦🇹', name: 'Austria',       group: 'J', articles: 6,   sentiment: 0.006,  prev: 0.116,  posPct: 0,    negPct: 0,    fear: 0.155, joy: 0.163, anger: 0.042 },
+  { rank: 24, flag: '🇩🇪', name: 'Germany',       group: 'E', articles: 48,  sentiment: 0.005,  prev: -0.261, posPct: 16.7, negPct: 14.6, fear: 0.424, joy: 0.139, anger: 0.102 },
+  { rank: 25, flag: '🇿🇦', name: 'South Africa',  group: 'A', articles: 18,  sentiment: 0.005,  prev: -0.068, posPct: 0,    negPct: 0,    fear: 0.175, joy: 0.059, anger: 0.044 },
+  { rank: 26, flag: '🇭🇷', name: 'Croatia',       group: 'L', articles: 18,  sentiment: 0.004,  prev: 0.313,  posPct: 5.6,  negPct: 5.6,  fear: 0.373, joy: 0.112, anger: 0.136 },
+  { rank: 27, flag: '🇰🇷', name: 'South Korea',   group: 'A', articles: 10,  sentiment: 0.000,  prev: 0.041,  posPct: 0,    negPct: 0,    fear: 0.370, joy: 0.067, anger: 0.055 },
+  { rank: 28, flag: '🇦🇺', name: 'Australia',     group: 'D', articles: 25,  sentiment: 0.000,  prev: 0.020,  posPct: 4,    negPct: 4,    fear: 0.102, joy: 0.120, anger: 0.070 },
+  { rank: 29, flag: '🇳🇿', name: 'New Zealand',   group: 'G', articles: 1,   sentiment: 0.000,  prev: -0.021, posPct: 0,    negPct: 0,    fear: 0.010, joy: 0.082, anger: 0.017, lowVol: true },
+  { rank: 30, flag: '🇵🇦', name: 'Panama',        group: 'L', articles: 4,   sentiment: 0.000,  prev: -0.043, posPct: 0,    negPct: 0,    fear: 0.021, joy: 0.035, anger: 0.021, lowVol: true },
+  { rank: 31, flag: '🇵🇾', name: 'Paraguay',      group: 'D', articles: 3,   sentiment: -0.003, prev: -0.313, posPct: 0,    negPct: 0,    fear: 0.048, joy: 0.082, anger: 0.026, lowVol: true },
+  { rank: 32, flag: '🇲🇦', name: 'Morocco',       group: 'C', articles: 39,  sentiment: -0.004, prev: -0.122, posPct: 5.1,  negPct: 5.1,  fear: 0.208, joy: 0.083, anger: 0.110 },
+  { rank: 33, flag: '🇪🇬', name: 'Egypt',         group: 'G', articles: 10,  sentiment: -0.006, prev: -0.045, posPct: 0,    negPct: 0,    fear: 0.120, joy: 0.046, anger: 0.072 },
+  { rank: 34, flag: '🇨🇴', name: 'Colombia',      group: 'K', articles: 5,   sentiment: -0.013, prev: -0.052, posPct: 0,    negPct: 0,    fear: 0.095, joy: 0.063, anger: 0.030 },
+  { rank: 35, flag: '🇸🇦', name: 'Saudi Arabia',  group: 'H', articles: 34,  sentiment: -0.014, prev: 0.211,  posPct: 2.9,  negPct: 5.9,  fear: 0.216, joy: 0.058, anger: 0.069 },
+  { rank: 36, flag: '🇪🇨', name: 'Ecuador',       group: 'E', articles: 6,   sentiment: -0.017, prev: -0.055, posPct: 0,    negPct: 0,    fear: 0.052, joy: 0.056, anger: 0.114 },
+  { rank: 37, flag: '🇯🇴', name: 'Jordan',        group: 'J', articles: 2,   sentiment: -0.020, prev: 0.011,  posPct: 0,    negPct: 0,    fear: 0.381, joy: 0.024, anger: 0.052, lowVol: true, debut: true },
+  { rank: 38, flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', name: 'Scotland',     group: 'C', articles: 45,  sentiment: -0.034, prev: 0.034,  posPct: 8.9,  negPct: 13.3, fear: 0.165, joy: 0.109, anger: 0.125 },
+  { rank: 39, flag: '🇭🇹', name: 'Haiti',         group: 'C', articles: 6,   sentiment: -0.091, prev: -0.021, posPct: 0,    negPct: 16.7, fear: 0.038, joy: 0.034, anger: 0.058 },
+  { rank: 40, flag: '🇺🇾', name: 'Uruguay',       group: 'H', articles: 5,   sentiment: -0.214, prev: 0.200,  posPct: 0,    negPct: 20,   fear: 0.024, joy: 0.024, anger: 0.188, lowVol: true },
+  { rank: 41, flag: '🇨🇼', name: 'Curaçao',       group: 'E', articles: 0,   sentiment: null,   prev: null,   posPct: null, negPct: null,  fear: null,  joy: null,  anger: null, debut: true },
+  { rank: 42, flag: '🇺🇿', name: 'Uzbekistan',    group: 'K', articles: 0,   sentiment: null,   prev: null,   posPct: null, negPct: null,  fear: null,  joy: null,  anger: null, debut: true },
 ];
 
-// Sponsor data
-const SPONSORS = [
-  { name: 'Diageo', translationKey: 'sentimentDiageo', score: '+0.379', negPercent: '0%', width: '85%', positive: true },
-  { name: 'Lenovo', translationKey: 'sentimentLenovo', score: '+0.332', negPercent: '6%', width: '78%', positive: true },
-  { name: 'Qatar Airways', translationKey: 'sentimentQatarAirways', score: '+0.319', negPercent: '0%', width: '76%', positive: true },
-  { name: 'Verizon', translationKey: 'sentimentVerizon', score: '+0.265', negPercent: '0%', width: '70%', positive: true },
-  { name: 'Aramco', translationKey: 'sentimentAramco', score: '-0.073', negPercent: '33%', width: '30%', positive: false },
-];
+// Group overview (avg sentiment)
+const GROUP_DATA = {
+  A: { teams: ['Mexico', 'South Korea', 'South Africa'], avg: 0.045 },
+  B: { teams: ['Switzerland', 'Canada', 'Qatar'], avg: 0.062 },
+  C: { teams: ['Brazil', 'Morocco', 'Scotland', 'Haiti'], avg: -0.008 },
+  D: { teams: ['United States', 'Australia', 'Paraguay'], avg: 0.017 },
+  E: { teams: ['Ivory Coast', 'Germany', 'Ecuador', 'Curaçao'], avg: 0.045 },
+  F: { teams: ['Tunisia', 'Netherlands', 'Japan'], avg: 0.202 },
+  G: { teams: ['Belgium', 'Iran', 'New Zealand', 'Egypt'], avg: 0.068 },
+  H: { teams: ['Cape Verde', 'Spain', 'Saudi Arabia', 'Uruguay'], avg: 0.200 },
+  I: { teams: ['Senegal', 'France', 'Norway'], avg: 0.106 },
+  J: { teams: ['Algeria', 'Argentina', 'Austria', 'Jordan'], avg: 0.032 },
+  K: { teams: ['Portugal', 'Colombia', 'Uzbekistan'], avg: 0.103 },
+  L: { teams: ['England', 'Ghana', 'Croatia', 'Panama'], avg: 0.026 },
+};
 
-// Modern Sentiment Gauge Component
-const SentimentGauge = ({ value, label, subtitle, isHighlighted, colors }) => {
-  const numValue = parseFloat(value);
-  const percentage = ((numValue + 1) / 2) * 100;
+// ─── CSS Animations ─────────────────────────────────────────
+const CSS = `
+@keyframes tsFadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes tsBarGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes tsPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.08); }
+  50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.2); }
+}
+@keyframes tsNumberIn {
+  from { opacity: 0; filter: blur(3px); }
+  to { opacity: 1; filter: blur(0); }
+}
+.ts-fade { animation: tsFadeUp 0.4s ease-out both; }
+.ts-bar { animation: tsBarGrow 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.ts-num { animation: tsNumberIn 0.5s ease-out both; }
+.ts-row { transition: background 0.15s ease; }
+.ts-row:hover { background: rgba(255,255,255,0.04) !important; }
+`;
 
+// ─── Helpers ────────────────────────────────────────────────
+const sColor = (v) => v > 0.03 ? '#10b981' : v < -0.03 ? '#ef4444' : '#f59e0b';
+const fmt = (v) => v === null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(3);
+const BAR_MAX = 0.25; // clamp bar scale
+
+// ─── Highlight Card ─────────────────────────────────────────
+function HighlightCard({ title, flag, name, value, note, accent, delay }) {
   return (
-    <div style={{
-      background: isHighlighted ? 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)' : 'white',
-      borderRadius: '16px',
-      padding: '24px',
-      textAlign: 'center',
-      border: isHighlighted ? `2px solid ${colors.green}` : '1px solid #e5e7eb',
-      boxShadow: isHighlighted ? '0 4px 12px rgba(0, 109, 78, 0.15)' : '0 2px 8px rgba(0,0,0,0.04)',
-      position: 'relative',
-      overflow: 'hidden',
+    <div className="ts-fade" style={{
+      background: `linear-gradient(135deg, ${accent}12, ${accent}06)`,
+      border: `1px solid ${accent}25`,
+      borderRadius: '14px',
+      padding: '16px',
+      animationDelay: `${delay}s`,
+      minWidth: 0,
     }}>
-      {isHighlighted && (
-        <div style={{
-          position: 'absolute',
-          top: '12px',
-          right: '12px',
-          background: colors.green,
-          color: 'white',
-          fontSize: '9px',
-          fontWeight: '700',
-          padding: '3px 8px',
-          borderRadius: '10px',
-          textTransform: 'uppercase',
-          letterSpacing: '0.5px',
-        }}>
-          +18%
-        </div>
-      )}
-
-      <div style={{
-        fontSize: '11px',
-        fontWeight: '700',
-        color: isHighlighted ? colors.green : colors.grey,
-        textTransform: 'uppercase',
-        letterSpacing: '0.5px',
-        marginBottom: '20px'
-      }}>
-        {label}
+      <div style={{ fontSize: '10px', fontWeight: '700', color: accent, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>
+        {title}
       </div>
-
-      {/* Circular Progress */}
-      <div style={{ position: 'relative', width: '140px', height: '70px', margin: '0 auto', overflow: 'hidden' }}>
-        <svg width="140" height="80" viewBox="0 0 140 80" style={{ position: 'absolute', top: 0, left: 0 }}>
-          <defs>
-            <linearGradient id={`gauge-gradient-${isHighlighted ? 'highlight' : 'normal'}`} x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor={colors.red} />
-              <stop offset="35%" stopColor="#fbbf24" />
-              <stop offset="65%" stopColor="#a3e635" />
-              <stop offset="100%" stopColor={colors.green} />
-            </linearGradient>
-          </defs>
-          {/* Background arc */}
-          <path
-            d="M 10 70 A 60 60 0 0 1 130 70"
-            fill="none"
-            stroke="#e5e7eb"
-            strokeWidth="12"
-            strokeLinecap="round"
-          />
-          {/* Colored arc based on value */}
-          <path
-            d="M 10 70 A 60 60 0 0 1 130 70"
-            fill="none"
-            stroke={`url(#gauge-gradient-${isHighlighted ? 'highlight' : 'normal'})`}
-            strokeWidth="12"
-            strokeLinecap="round"
-            strokeDasharray={`${percentage * 1.88} 188`}
-          />
-        </svg>
-
-        {/* Value display in center */}
-        <div style={{
-          position: 'absolute',
-          bottom: '0',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          textAlign: 'center',
-        }}>
-          <div style={{
-            fontSize: '26px',
-            fontWeight: '800',
-            color: numValue >= 0 ? colors.green : colors.red,
-            lineHeight: '1',
-            fontFamily: 'system-ui, -apple-system, sans-serif',
-          }}>
-            {value}
-          </div>
-        </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+        <span style={{ fontSize: '22px' }}>{flag}</span>
+        <span style={{ fontSize: '15px', fontWeight: '700', color: '#e2e8f0' }}>{name}</span>
+        <span className="ts-num" style={{ fontSize: '18px', fontWeight: '800', color: accent, fontFamily: 'system-ui', marginLeft: 'auto', animationDelay: `${delay + 0.2}s` }}>
+          {value}
+        </span>
       </div>
-
-      <div style={{
-        fontSize: '12px',
-        color: colors.grey,
-        marginTop: '12px',
-        lineHeight: '1.4',
-      }}>
-        {subtitle}
-      </div>
+      <div style={{ fontSize: '11px', color: '#94a3b8', lineHeight: '1.5' }}>{note}</div>
     </div>
   );
-};
+}
 
-// Tooltip component
-const Tooltip = ({ content, children, colors }) => {
-  const [isVisible, setIsVisible] = useState(false);
+// ─── Diverging Bar ──────────────────────────────────────────
+function DivergingBar({ sentiment, delay }) {
+  if (sentiment === null) return <div style={{ height: '10px' }} />;
+  const pct = Math.min(Math.abs(sentiment) / BAR_MAX, 1) * 48;
+  const isPos = sentiment >= 0;
 
   return (
-    <div
-      style={{ position: 'relative', cursor: 'pointer' }}
-      onMouseEnter={() => setIsVisible(true)}
-      onMouseLeave={() => setIsVisible(false)}
-      onClick={() => setIsVisible(!isVisible)}
-    >
-      {children}
-      {isVisible && content && (
-        <div style={{
-          position: 'absolute',
-          bottom: '100%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          background: colors.black,
-          color: 'white',
-          padding: '12px 14px',
-          borderRadius: '8px',
-          fontSize: '12px',
-          lineHeight: '1.5',
-          width: '280px',
-          zIndex: 1000,
-          boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-          marginBottom: '8px',
-        }}>
-          {content}
-          <div style={{
-            position: 'absolute',
-            bottom: '-6px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: 0,
-            height: 0,
-            borderLeft: '6px solid transparent',
-            borderRight: '6px solid transparent',
-            borderTop: `6px solid ${colors.black}`,
-          }}/>
-        </div>
-      )}
+    <div style={{ position: 'relative', height: '10px', width: '100%' }}>
+      {/* Center line */}
+      <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: '1px', background: 'rgba(255,255,255,0.12)' }} />
+      {/* Bar */}
+      <div className="ts-bar" style={{
+        position: 'absolute',
+        top: '1px',
+        bottom: '1px',
+        [isPos ? 'left' : 'right']: '50%',
+        width: `${pct}%`,
+        background: isPos
+          ? 'linear-gradient(90deg, #10b981, #34d399)'
+          : 'linear-gradient(270deg, #ef4444, #f87171)',
+        borderRadius: isPos ? '0 4px 4px 0' : '4px 0 0 4px',
+        transformOrigin: isPos ? 'left' : 'right',
+        animationDelay: `${delay}s`,
+        boxShadow: isPos ? '0 0 8px rgba(16,185,129,0.25)' : '0 0 8px rgba(239,68,68,0.25)',
+      }} />
     </div>
   );
-};
+}
 
+// ─── Emotion Dots ───────────────────────────────────────────
+function EmotionDots({ fear, joy, anger }) {
+  if (fear === null) return <span style={{ color: '#334155', fontSize: '11px' }}>—</span>;
+  return (
+    <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+      <div title={`Fear: ${fear.toFixed(2)}`} style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f97316', opacity: Math.max(fear * 1.5, 0.1), transition: 'opacity 0.3s' }} />
+      <div title={`Joy: ${joy.toFixed(2)}`} style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#22c55e', opacity: Math.max(joy * 2.5, 0.1), transition: 'opacity 0.3s' }} />
+      <div title={`Anger: ${anger.toFixed(2)}`} style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444', opacity: Math.max(anger * 3, 0.1), transition: 'opacity 0.3s' }} />
+    </div>
+  );
+}
+
+// ─── WoW Arrow ──────────────────────────────────────────────
+function WowArrow({ sentiment, prev }) {
+  if (prev === null || sentiment === null) return null;
+  const diff = sentiment - prev;
+  if (Math.abs(diff) < 0.005) return <span style={{ color: '#475569', fontSize: '10px' }}>→</span>;
+  const up = diff > 0;
+  const big = Math.abs(diff) > 0.1;
+  return (
+    <span style={{ fontSize: big ? '11px' : '10px', fontWeight: big ? '700' : '500', color: up ? '#10b981' : '#ef4444' }}>
+      {up ? '↑' : '↓'}
+    </span>
+  );
+}
+
+// ─── Main Component ─────────────────────────────────────────
 export default function SentimentReportSection({ language = 'de' }) {
-  const [expandedTeam, setExpandedTeam] = useState(null);
-  const [expandedSponsor, setExpandedSponsor] = useState(null);
+  const [view, setView] = useState('ranked');
 
-  const t = (key) => translations[language]?.[key] || translations.en?.[key] || key;
+  const lang = L[language] ? language : 'en';
+  const t = (k) => L[lang]?.[k] || L.en[k] || k;
 
-  const colors = {
-    salmon: '#FFF1E5',
-    green: '#006D4E',
-    red: '#C00000',
-    blue: '#0D7680',
-    grey: '#66605C',
-    lightGrey: '#E5E2DD',
-    black: '#33302E',
+  const teamsByGroup = {};
+  TEAMS.forEach(tm => {
+    if (!teamsByGroup[tm.group]) teamsByGroup[tm.group] = [];
+    teamsByGroup[tm.group].push(tm);
+  });
+
+  const card = {
+    background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.7))',
+    border: '1px solid rgba(255, 255, 255, 0.08)',
+    borderRadius: '16px',
+    padding: '20px',
   };
 
   return (
-    <div style={{ borderRadius: '16px', padding: '24px', marginTop: '16px' }}>
-      {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
-        <div style={{ fontSize: '12px', fontWeight: '600', color: colors.blue, letterSpacing: '1px', marginBottom: '8px' }}>
-          SENTIMENT INTELLIGENCE
+    <div style={{ padding: '16px 0', marginTop: '16px' }}>
+      <style>{CSS}</style>
+
+      {/* ═══ HEADER ═══ */}
+      <div className="ts-fade" style={{ textAlign: 'center', marginBottom: '24px' }}>
+        <div style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase', color: '#06b6d4', marginBottom: '6px' }}>
+          {t('period')}
         </div>
-        <h2 style={{ fontSize: '24px', fontWeight: '700', color: 'white', margin: '0 0 8px', lineHeight: '1.2' }}>
-          {t('sentimentSubtitle')}
+        <h2 style={{ fontSize: '26px', fontWeight: '800', color: '#fff', margin: '0 0 6px', lineHeight: '1.2' }}>
+          {t('title')}
         </h2>
-        <div style={{ fontSize: '13px', color: '#9ca3af' }}>
-          {t('sentimentAnalysisDate')} • 22,889 {t('sentimentArticlesAnalyzed')}
+        <div style={{ fontSize: '13px', color: '#64748b' }}>
+          {t('subtitle')}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginTop: '12px', fontSize: '12px', color: '#94a3b8' }}>
+          <span style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', padding: '3px 10px', borderRadius: '20px', fontWeight: '600' }}>42 {t('teamsQualified')}</span>
+          <span style={{ background: 'rgba(245,158,11,0.1)', color: '#f59e0b', padding: '3px 10px', borderRadius: '20px', fontWeight: '600' }}>{t('spotsOpen')}</span>
         </div>
       </div>
 
-      {/* Key Metrics Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
-        <SentimentGauge
-          value="+0.130"
-          label={t('sentimentOverall')}
-          subtitle={t('sentimentWithAllData')}
-          isHighlighted={false}
-          colors={colors}
-        />
-        <SentimentGauge
-          value="+0.153"
-          label={t('sentimentPureSports')}
-          subtitle={t('sentimentExclPolitical')}
-          isHighlighted={true}
-          colors={colors}
-        />
-
-        {/* Coverage Breakdown */}
-        <div style={{ background: 'white', borderRadius: '12px', padding: '20px' }}>
-          <div style={{ fontSize: '11px', fontWeight: '600', color: colors.grey, textTransform: 'uppercase', marginBottom: '16px' }}>
-            {t('sentimentCoverage')}
-          </div>
-          {[
-            { label: language === 'de' ? 'Positiv' : language === 'pl' ? 'Pozytywne' : 'Positive', value: '45.5%', color: colors.green },
-            { label: language === 'de' ? 'Neutral' : language === 'pl' ? 'Neutralne' : 'Neutral', value: '32.2%', color: colors.lightGrey },
-            { label: language === 'de' ? 'Negativ' : language === 'pl' ? 'Negatywne' : 'Negative', value: '22.3%', color: colors.red },
-          ].map((item, i) => (
-            <div key={i} style={{ marginBottom: '12px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px', fontSize: '13px', color: colors.black }}>
-                <span>{item.label}</span>
-                <span style={{ fontWeight: '600', color: item.color === colors.lightGrey ? colors.grey : item.color }}>{item.value}</span>
-              </div>
-              <div style={{ height: '10px', background: '#f0f0f0', borderRadius: '5px', overflow: 'hidden' }}>
-                <div style={{ height: '100%', width: item.value, background: item.color, borderRadius: '5px' }} />
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* ═══ HIGHLIGHTS ═══ */}
+      <div className="ts-fade" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', marginBottom: '20px', animationDelay: '0.05s' }}>
+        <HighlightCard title={t('mostPositive')} flag="🇵🇹" name="Portugal" value="+0.219" note={t('portugal')} accent="#10b981" delay={0.1} />
+        <HighlightCard title={t('biggestMover')} flag="🇩🇪" name="Germany" value="+0.266" note={t('germany')} accent="#06b6d4" delay={0.15} />
+        <HighlightCard title={t('mostNegative')} flag="🇺🇾" name="Uruguay" value="-0.214" note={t('uruguay')} accent="#ef4444" delay={0.2} />
+        <HighlightCard title={t('hostAvg')} flag="🇲🇽🇨🇦🇺🇸" name="+0.085 avg" value="" note={t('hosts')} accent="#f59e0b" delay={0.25} />
       </div>
 
-      {/* Key Insight */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '20px', marginBottom: '24px', borderLeft: `4px solid ${colors.blue}` }}>
-        <div style={{ fontSize: '12px', fontWeight: '700', color: colors.blue, marginBottom: '8px' }}>
-          {language === 'de' ? 'Kernerkenntnis' : language === 'pl' ? 'Kluczowy Wniosek' : 'Key Insight'}
-        </div>
-        <div style={{ fontSize: '14px', color: colors.black, lineHeight: '1.6' }}>
-          {language === 'de'
-            ? 'Das Headline-Sentiment (+0.130) unterschätzt die wahre Turnierbegeisterung. Wenn politische Kontroversen und Ticketpreis-Beschwerden ausgeschlossen werden, steigt das reine Sport-Sentiment auf +0.153 — eine Verbesserung von 18%.'
-            : language === 'pl'
-            ? 'Główny sentyment (+0.130) niedoszacowuje prawdziwego entuzjazmu. Po wykluczeniu kontrowersji politycznych, czysty sentyment sportowy rośnie do +0.153 — poprawa o 18%.'
-            : 'The headline sentiment (+0.130) understates true tournament enthusiasm. When political controversies and ticket pricing complaints are excluded, pure sports sentiment rises to +0.153 — an 18% improvement.'}
-        </div>
-      </div>
-
-      {/* Negative Drivers */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '18px', fontWeight: '700', color: colors.black, margin: '0 0 8px' }}>
-          {language === 'de' ? 'Was das Sentiment drückt' : language === 'pl' ? 'Co Obniża Sentyment' : 'What Drags Sentiment Down'}
-        </h3>
-        <p style={{ fontSize: '13px', color: colors.grey, margin: '0 0 16px' }}>
-          {language === 'de'
-            ? 'Fünf Kategorien machen 8,3% der Berichterstattung aus, drücken aber das Sentiment um 0,023 Punkte'
-            : language === 'pl'
-            ? 'Pięć kategorii stanowi 8,3% relacji, ale obniża sentyment o 0,023 punkta'
-            : 'Five categories account for 8.3% of coverage but drag sentiment down by 0.023 points'}
-        </p>
-
-        {NEGATIVE_DRIVERS.map((driver, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'center', padding: '12px 0', borderBottom: i < NEGATIVE_DRIVERS.length - 1 ? '1px solid #f0f0f0' : 'none', flexWrap: 'wrap', gap: '8px' }}>
-            <div style={{ width: '120px', fontSize: '13px', fontWeight: '600', color: colors.black }}>
-              {driver.key === 'trumpVisa' ? (language === 'de' ? 'US-Visa-Politik' : language === 'pl' ? 'Polityka wizowa USA' : 'US Visa Policy') :
-               driver.key === 'venezuelaCrisis' ? (language === 'de' ? 'Venezuela-Krise' : language === 'pl' ? 'Kryzys Wenezueli' : 'Venezuela Crisis') :
-               driver.key === 'ticketPrices' ? (language === 'de' ? 'Ticketpreise' : language === 'pl' ? 'Ceny Biletów' : 'Ticket Prices') :
-               (language === 'de' ? 'Iran-Kontroverse' : language === 'pl' ? 'Kontrowersja Iranu' : 'Iran Controversy')}
-            </div>
-            <div style={{ flex: 1, minWidth: '100px', height: '24px', background: '#f5f5f5', borderRadius: '4px', overflow: 'hidden' }}>
-              <div style={{ height: '100%', width: driver.width, background: `linear-gradient(90deg, ${colors.red}, #ff6666)`, borderRadius: '4px', display: 'flex', alignItems: 'center', paddingLeft: '8px' }}>
-                <span style={{ color: 'white', fontSize: '10px', fontWeight: '600' }}>{driver.negPercent} neg</span>
-              </div>
-            </div>
-            <div style={{ width: '70px', textAlign: 'right' }}>
-              <div style={{ fontSize: '15px', fontWeight: '700', color: colors.red }}>{driver.sentiment}</div>
-            </div>
-          </div>
+      {/* ═══ VIEW TOGGLE ═══ */}
+      <div style={{ display: 'flex', gap: '4px', marginBottom: '16px', background: 'rgba(255,255,255,0.04)', borderRadius: '10px', padding: '3px' }}>
+        {['ranked', 'groups'].map(v => (
+          <button key={v} onClick={() => setView(v)} style={{
+            flex: 1, padding: '8px 16px', border: 'none', borderRadius: '8px', fontSize: '13px', fontWeight: '600', cursor: 'pointer',
+            background: view === v ? 'rgba(6, 182, 212, 0.15)' : 'transparent',
+            color: view === v ? '#06b6d4' : '#64748b',
+            transition: 'all 0.2s',
+          }}>
+            {v === 'ranked' ? t('ranked') : t('byGroup')}
+          </button>
         ))}
       </div>
 
-      {/* Team Sentiment by Group */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '18px', fontWeight: '700', color: colors.black, margin: '0 0 8px' }}>
-          {language === 'de' ? 'Team-Sentiment nach Gruppe' : language === 'pl' ? 'Sentyment Drużyn wg Grupy' : 'Team Sentiment by Group'}
-        </h3>
-        <p style={{ fontSize: '13px', color: colors.grey, margin: '0 0 8px' }}>
-          {language === 'de'
-            ? '41 von 42 qualifizierten Teams positiv. Nur Iran negativ — aus geopolitischen, nicht sportlichen Gründen.'
-            : language === 'pl'
-            ? '41 z 42 zakwalifikowanych drużyn pozytywnie. Tylko Iran negatywnie — z powodów geopolitycznych.'
-            : '41 of 42 qualified teams positive. Only Iran negative — for geopolitical, not sporting reasons.'}
-        </p>
-        <p style={{ fontSize: '11px', color: colors.blue, margin: '0 0 16px', fontStyle: 'italic' }}>
-          {language === 'de' ? '💡 Klicken für Details' : language === 'pl' ? '💡 Kliknij po szczegóły' : '💡 Click for details'}
-        </p>
+      {/* ═══ RANKED LEADERBOARD ═══ */}
+      {view === 'ranked' && (
+        <div className="ts-fade" style={{ ...card }}>
+          {/* Table header */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '28px 1fr 44px minmax(80px, 160px) 58px 36px 52px 24px',
+            gap: '6px',
+            alignItems: 'center',
+            padding: '0 4px 10px',
+            borderBottom: '1px solid rgba(255,255,255,0.08)',
+            fontSize: '10px',
+            fontWeight: '700',
+            color: '#475569',
+            textTransform: 'uppercase',
+            letterSpacing: '0.5px',
+          }}>
+            <span>{t('rank')}</span>
+            <span>{t('team')}</span>
+            <span style={{ textAlign: 'center' }}>{t('group')}</span>
+            <span style={{ textAlign: 'center' }}>{t('sentiment')}</span>
+            <span style={{ textAlign: 'right' }}>{t('sentiment')}</span>
+            <span style={{ textAlign: 'right' }}>{t('articles')}</span>
+            <span style={{ textAlign: 'center' }}>{t('emotions')}</span>
+            <span style={{ textAlign: 'center' }}>{t('wow')}</span>
+          </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '12px' }}>
-          {Object.entries(TEAMS_BY_GROUP).map(([group, teams]) => (
-            <div key={group} style={{ background: '#fafafa', borderRadius: '8px', padding: '12px' }}>
-              <div style={{ fontSize: '11px', fontWeight: '700', color: colors.blue, marginBottom: '10px', paddingBottom: '6px', borderBottom: `2px solid ${colors.blue}` }}>
-                {language === 'de' ? 'GRUPPE' : language === 'pl' ? 'GRUPA' : 'GROUP'} {group} {group === 'J' && '⭐'}
-              </div>
-              {teams.map((team, i) => (
-                <Tooltip key={i} content={t(team.translationKey)} colors={colors}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      fontSize: '11px',
-                      background: expandedTeam === team.nameKey
-                        ? (team.negative ? '#fce8e8' : '#e8f5f0')
-                        : team.highest ? '#e8f5f0' : team.negative ? '#fce8e8' : 'transparent',
-                      margin: '2px -8px',
-                      padding: '6px 8px',
-                      borderRadius: '4px',
-                      transition: 'background 0.2s',
-                    }}
-                    onMouseEnter={() => setExpandedTeam(team.nameKey)}
-                    onMouseLeave={() => setExpandedTeam(null)}
-                  >
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: colors.black }}>
-                      <span style={{ fontSize: '14px' }}>{team.flag}</span>
-                      <span style={{ fontWeight: '500', color: colors.black }}>{team.nameKey}</span>
-                      {team.host && <span title="Host">🏠</span>}
-                      {team.debut && <span title="Debut">🆕</span>}
-                      {team.champion && <span title="Champion">🏆</span>}
-                    </span>
-                    <span style={{ fontWeight: '700', color: team.negative ? colors.red : colors.green, fontSize: '11px' }}>
-                      {team.score}
-                    </span>
-                  </div>
-                </Tooltip>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
+          {/* Team rows */}
+          {TEAMS.map((tm, i) => {
+            const isHost = tm.host;
+            const isChamp = tm.champion;
+            const isDebut = tm.debut;
+            const noData = tm.sentiment === null;
 
-      {/* Sponsor Sentiment */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '18px', fontWeight: '700', color: colors.black, margin: '0 0 8px' }}>
-          {language === 'de' ? 'Sponsor-Sentiment' : language === 'pl' ? 'Sentyment Sponsorów' : 'Sponsor Sentiment'}
-        </h3>
-        <p style={{ fontSize: '13px', color: colors.grey, margin: '0 0 8px' }}>
-          {language === 'de'
-            ? '21 von 22 Sponsoren positiv/neutral. Nur Aramco mit Risiko.'
-            : language === 'pl'
-            ? '21 z 22 sponsorów pozytywnie/neutralnie. Tylko Aramco z ryzykiem.'
-            : '21 of 22 sponsors positive/neutral. Only Aramco at risk.'}
-        </p>
-        <p style={{ fontSize: '11px', color: colors.blue, margin: '0 0 16px', fontStyle: 'italic' }}>
-          {language === 'de' ? '💡 Klicken für Details' : language === 'pl' ? '💡 Kliknij po szczegóły' : '💡 Click for details'}
-        </p>
-
-        {SPONSORS.map((sponsor, i) => (
-          <Tooltip key={i} content={t(sponsor.translationKey)} colors={colors}>
-            <div
-              style={{
-                display: 'flex',
+            return (
+              <div key={i} className="ts-row" style={{
+                display: 'grid',
+                gridTemplateColumns: '28px 1fr 44px minmax(80px, 160px) 58px 36px 52px 24px',
+                gap: '6px',
                 alignItems: 'center',
-                padding: '12px 8px',
-                margin: '0 -8px',
-                borderBottom: i < SPONSORS.length - 1 ? '1px solid #f0f0f0' : 'none',
+                padding: '7px 4px',
+                borderBottom: '1px solid rgba(255,255,255,0.03)',
                 borderRadius: '6px',
-                background: expandedSponsor === sponsor.name ? '#f5f5f5' : 'transparent',
-                transition: 'background 0.2s',
-                cursor: 'pointer',
-              }}
-              onMouseEnter={() => setExpandedSponsor(sponsor.name)}
-              onMouseLeave={() => setExpandedSponsor(null)}
-            >
-              <div style={{ width: '110px', fontSize: '14px', fontWeight: '600', color: sponsor.positive ? colors.black : colors.red }}>
-                {sponsor.name} {!sponsor.positive && '⚠️'}
-              </div>
-              <div style={{ flex: 1, height: '22px', background: '#f0f0f0', borderRadius: '11px', overflow: 'hidden', margin: '0 12px' }}>
-                <div style={{
-                  height: '100%',
-                  width: sponsor.width,
-                  background: sponsor.positive ? `linear-gradient(90deg, ${colors.green}, #00a878)` : `linear-gradient(90deg, ${colors.red}, #ff6666)`,
-                  borderRadius: '11px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'flex-end',
-                  paddingRight: '10px'
-                }}>
-                  <span style={{ color: 'white', fontSize: '11px', fontWeight: '700' }}>{sponsor.score}</span>
+                opacity: noData ? 0.4 : tm.lowVol ? 0.7 : 1,
+              }}>
+                {/* Rank */}
+                <span style={{ fontSize: '11px', fontWeight: '600', color: '#475569', textAlign: 'center' }}>{tm.rank}</span>
+
+                {/* Flag + Name + Badges */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', minWidth: 0 }}>
+                  <span style={{ fontSize: '16px', flexShrink: 0 }}>{tm.flag}</span>
+                  <span style={{ fontSize: '12px', fontWeight: '600', color: '#e2e8f0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {tm.name}
+                  </span>
+                  {isHost && <span style={{ fontSize: '9px', background: 'rgba(245,158,11,0.15)', color: '#f59e0b', padding: '1px 4px', borderRadius: '3px', fontWeight: '700', flexShrink: 0 }}>HOST</span>}
+                  {isChamp && <span style={{ fontSize: '10px', flexShrink: 0 }}>🏆</span>}
+                  {isDebut && <span style={{ fontSize: '9px', background: 'rgba(168,85,247,0.15)', color: '#a855f7', padding: '1px 4px', borderRadius: '3px', fontWeight: '700', flexShrink: 0 }}>NEW</span>}
+                </div>
+
+                {/* Group */}
+                <span style={{ fontSize: '11px', fontWeight: '600', color: '#06b6d4', textAlign: 'center', background: 'rgba(6,182,212,0.08)', borderRadius: '4px', padding: '2px 0' }}>
+                  {tm.group}
+                </span>
+
+                {/* Diverging bar */}
+                <DivergingBar sentiment={tm.sentiment} delay={0.15 + i * 0.02} />
+
+                {/* Score */}
+                <span style={{ fontSize: '12px', fontWeight: '700', color: noData ? '#334155' : sColor(tm.sentiment), textAlign: 'right', fontFamily: 'system-ui' }}>
+                  {fmt(tm.sentiment)}
+                </span>
+
+                {/* Articles */}
+                <span style={{ fontSize: '11px', color: '#64748b', textAlign: 'right' }}>
+                  {tm.articles || '—'}
+                </span>
+
+                {/* Emotion dots */}
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <EmotionDots fear={tm.fear} joy={tm.joy} anger={tm.anger} />
+                </div>
+
+                {/* WoW */}
+                <div style={{ textAlign: 'center' }}>
+                  <WowArrow sentiment={tm.sentiment} prev={tm.prev} />
                 </div>
               </div>
-              <div style={{ width: '55px', textAlign: 'right', fontSize: '11px', color: sponsor.positive ? colors.green : colors.red }}>
-                {sponsor.negPercent} neg
-              </div>
-            </div>
-          </Tooltip>
-        ))}
-      </div>
+            );
+          })}
 
-      {/* Key Takeaways */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '20px' }}>
-        <h3 style={{ fontSize: '18px', fontWeight: '700', color: colors.black, margin: '0 0 16px' }}>
-          {language === 'de' ? 'Kernaussagen' : language === 'pl' ? 'Kluczowe Wnioski' : 'Key Takeaways'}
-        </h3>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
-          {[
-            {
-              title: language === 'de' ? 'Die sportliche Story ist positiv' : language === 'pl' ? 'Historia sportowa jest pozytywna' : 'The sporting story is positive',
-              text: language === 'de' ? '41 von 42 qualifizierten Nationen positiv. Fünf WM-Debütanten werden gefeiert.' : language === 'pl' ? '41 z 42 zakwalifikowanych narodów pozytywnie. Pięciu debiutantów świętowanych.' : '41 of 42 qualified nations positive. Five World Cup debutants celebrated.',
-              color: colors.green, icon: '✓'
-            },
-            {
-              title: language === 'de' ? 'Politisches Overlay ist separat' : language === 'pl' ? 'Nakładka polityczna jest oddzielna' : 'Political overlay is separate',
-              text: language === 'de' ? 'US-Visa-Thema stieg um 455%. Dies beeinflusst Werte, spiegelt aber keine Ablehnung der WM wider.' : language === 'pl' ? 'Temat wiz USA wzrósł o 455%. Wpływa na wyniki, ale nie odzwierciedla odrzucenia Mundialu.' : 'US visa topic surged 455%. This affects scores but doesn\'t reflect rejection of the World Cup.',
-              color: '#b8860b', icon: '⚡'
-            },
-            {
-              title: language === 'de' ? 'Verbraucherbedenken = Nachfrage' : language === 'pl' ? 'Obawy konsumentów = popyt' : 'Consumer concerns = demand',
-              text: language === 'de' ? 'Ticket-Beschwerden zeigen, dass Fans teilnehmen wollen, sich aber ausgepreist fühlen.' : language === 'pl' ? 'Skargi na bilety pokazują, że fani chcą uczestniczyć, ale czują się wykluczeni cenowo.' : 'Ticket complaints show fans want to attend but feel priced out.',
-              color: colors.green, icon: '📊'
-            },
-            {
-              title: language === 'de' ? 'Sponsoren erfolgreich' : language === 'pl' ? 'Sponsorzy odnoszą sukces' : 'Sponsors succeeding',
-              text: language === 'de' ? '21 von 22 Sponsoren positiv/neutral. Kostenloser Zugang, Prominente und Produkt-Tie-ins funktionieren.' : language === 'pl' ? '21 z 22 sponsorów pozytywnie/neutralnie. Darmowy dostęp i celebryci działają.' : '21 of 22 sponsors positive/neutral. Free access, celebrities, and product tie-ins work.',
-              color: colors.green, icon: '💼'
-            },
-          ].map((item, i) => (
-            <div key={i} style={{
-              background: item.color === colors.green ? '#e8f5f0' : '#fff8e0',
-              borderRadius: '8px',
-              padding: '14px'
-            }}>
-              <div style={{ fontWeight: '700', color: item.color, marginBottom: '6px', fontSize: '13px' }}>
-                {item.icon} {item.title}
-              </div>
-              <div style={{ fontSize: '12px', color: colors.black, lineHeight: '1.5' }}>
-                {item.text}
-              </div>
+          {/* Legend */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center', marginTop: '14px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.06)', fontSize: '11px', color: '#475569' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <div style={{ width: '16px', height: '4px', background: 'linear-gradient(90deg, #10b981, #34d399)', borderRadius: '2px' }} />
+              <span>{t('pos')}</span>
             </div>
-          ))}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <div style={{ width: '16px', height: '4px', background: 'linear-gradient(90deg, #ef4444, #f87171)', borderRadius: '2px' }} />
+              <span>{t('neg')}</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f97316', opacity: 0.7 }} />
+              <span>{t('fear')}</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#22c55e', opacity: 0.7 }} />
+              <span>{t('joy')}</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444', opacity: 0.7 }} />
+              <span>{t('anger')}</span>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Footer */}
-      <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '12px', color: '#9ca3af' }}>
-        wm26.live • {language === 'de' ? 'Nächster Report' : language === 'pl' ? 'Następny raport' : 'Next Report'}: January 17, 2026 (KW3)
+      {/* ═══ GROUP VIEW ═══ */}
+      {view === 'groups' && (
+        <div className="ts-fade" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(175px, 1fr))', gap: '10px' }}>
+          {Object.entries(GROUP_DATA).map(([group, data]) => {
+            const groupTeams = teamsByGroup[group] || [];
+            return (
+              <div key={group} style={{
+                ...card, padding: '14px',
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.85))',
+              }}>
+                {/* Group header */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', paddingBottom: '8px', borderBottom: '2px solid rgba(6, 182, 212, 0.25)' }}>
+                  <span style={{ fontSize: '11px', fontWeight: '800', color: '#06b6d4', letterSpacing: '1px' }}>
+                    {t('groupLabel')} {group}
+                  </span>
+                  <span style={{ fontSize: '10px', fontWeight: '600', color: data.avg >= 0 ? '#10b981' : '#ef4444' }}>
+                    {t('avgSent')} {data.avg >= 0 ? '+' : ''}{data.avg.toFixed(3)}
+                  </span>
+                </div>
+
+                {/* Teams */}
+                {groupTeams.map((tm, i) => {
+                  const hasScore = tm.sentiment !== null;
+                  const barW = hasScore ? Math.min(Math.abs(tm.sentiment) / BAR_MAX * 100, 100) : 0;
+                  const isPos = hasScore && tm.sentiment >= 0;
+
+                  return (
+                    <div key={i} style={{
+                      display: 'flex', alignItems: 'center', gap: '6px',
+                      padding: '5px 0',
+                      borderBottom: i < groupTeams.length - 1 ? '1px solid rgba(255,255,255,0.03)' : 'none',
+                    }}>
+                      <span style={{ fontSize: '15px', flexShrink: 0 }}>{tm.flag}</span>
+                      <span style={{ fontSize: '11px', color: '#e2e8f0', fontWeight: '500', flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {tm.name}
+                        {tm.host ? ' 🏠' : tm.debut ? ' 🆕' : tm.champion ? ' 🏆' : ''}
+                      </span>
+                      {/* Mini bar */}
+                      {hasScore && (
+                        <div style={{ width: '24px', height: '4px', background: 'rgba(255,255,255,0.06)', borderRadius: '2px', overflow: 'hidden', flexShrink: 0 }}>
+                          <div style={{ height: '100%', width: `${barW}%`, background: isPos ? '#10b981' : '#ef4444', borderRadius: '2px' }} />
+                        </div>
+                      )}
+                      <span style={{
+                        fontSize: '11px', fontWeight: '700', flexShrink: 0, width: '44px', textAlign: 'right',
+                        color: !hasScore ? '#334155' : isPos ? '#10b981' : '#ef4444',
+                        fontFamily: 'system-ui',
+                      }}>
+                        {fmt(tm.sentiment)}
+                      </span>
+                    </div>
+                  );
+                })}
+
+                {/* TBD slot if group has only 3 */}
+                {groupTeams.length < 4 && (
+                  <div style={{ padding: '5px 0', fontSize: '11px', color: '#334155', fontStyle: 'italic' }}>
+                    TBD (playoff)
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* ═══ FOOTER ═══ */}
+      <div className="ts-fade" style={{ textAlign: 'center', padding: '20px 0 4px', animationDelay: '0.4s' }}>
+        <div style={{ fontSize: '13px', color: '#475569', fontStyle: 'italic', marginBottom: '4px' }}>
+          {t('footer')}
+        </div>
+        <div style={{ fontSize: '11px', color: '#334155' }}>
+          wm26.live &middot; {t('nextReport')}
+        </div>
       </div>
     </div>
   );
