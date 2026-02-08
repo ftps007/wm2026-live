@@ -43,6 +43,9 @@ const L = {
     teamsQualified: 'teams qualified',
     spotsOpen: '6 spots via playoffs',
     wow: 'WoW',
+    logScore: 'Impact',
+    heatMap: 'Heat Map',
+    heatMapSub: 'Sentiment vs. Coverage — bubble size = impact score',
   },
   de: {
     title: 'Nationalmannschaft-Sentiment',
@@ -80,6 +83,9 @@ const L = {
     teamsQualified: 'Teams qualifiziert',
     spotsOpen: '6 Plätze via Playoffs',
     wow: 'WoW',
+    logScore: 'Impact',
+    heatMap: 'Heatmap',
+    heatMapSub: 'Sentiment vs. Berichterstattung — Blasengröße = Impact-Score',
   },
   fr: {
     title: 'Sentiment des Équipes',
@@ -117,6 +123,9 @@ const L = {
     teamsQualified: 'équipes qualifiées',
     spotsOpen: '6 places via barrages',
     wow: 'SsS',
+    logScore: 'Impact',
+    heatMap: 'Carte thermique',
+    heatMapSub: 'Sentiment vs. Couverture — taille bulle = score d\'impact',
   },
   pl: {
     title: 'Sentyment Reprezentacji',
@@ -154,6 +163,9 @@ const L = {
     teamsQualified: 'drużyn zakwalifikowanych',
     spotsOpen: '6 miejsc przez baraże',
     wow: 'TnT',
+    logScore: 'Impact',
+    heatMap: 'Mapa ciepła',
+    heatMapSub: 'Sentyment vs. pokrycie medialne — rozmiar = wynik impact',
   },
   es: {
     title: 'Sentimiento por Selección',
@@ -191,6 +203,9 @@ const L = {
     teamsQualified: 'selecciones clasificadas',
     spotsOpen: '6 plazas vía repechaje',
     wow: 'SsS',
+    logScore: 'Impacto',
+    heatMap: 'Mapa de calor',
+    heatMapSub: 'Sentimiento vs. cobertura — tamaño burbuja = puntaje de impacto',
   },
   pt: {
     title: 'Sentimento por Seleção',
@@ -228,6 +243,9 @@ const L = {
     teamsQualified: 'seleções classificadas',
     spotsOpen: '6 vagas via repescagem',
     wow: 'SsS',
+    logScore: 'Impacto',
+    heatMap: 'Mapa de calor',
+    heatMapSub: 'Sentimento vs. cobertura — tamanho bolha = pontuação de impacto',
   },
 };
 
@@ -369,6 +387,7 @@ const CSS = `
 const sColor = (v) => v > 0.03 ? '#10b981' : v < -0.03 ? '#ef4444' : '#f59e0b';
 const fmt = (v) => v === null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(3);
 const BAR_MAX = 0.25; // clamp bar scale
+const logScore = (tm) => tm.sentiment === null ? null : tm.sentiment * Math.log2(1 + tm.articles);
 
 // ─── Highlight Card ─────────────────────────────────────────
 function HighlightCard({ title, flag, name, value, note, accent, delay }) {
@@ -456,6 +475,7 @@ export default function SentimentReportSection({ language = 'de' }) {
   const [view, setView] = useState('ranked');
   const [sortBy, setSortBy] = useState('rank');
   const [sortDir, setSortDir] = useState('asc');
+  const [hoveredTeam, setHoveredTeam] = useState(null);
 
   const lang = L[language] ? language : 'en';
   const t = (k) => L[lang]?.[k] || L.en[k] || k;
@@ -477,6 +497,7 @@ export default function SentimentReportSection({ language = 'de' }) {
       case 'group': return (a.group.localeCompare(b.group) || a.rank - b.rank) * dir;
       case 'sentiment': return ((a.sentiment ?? -999) - (b.sentiment ?? -999)) * dir;
       case 'articles': return ((a.articles || 0) - (b.articles || 0)) * dir;
+      case 'logScore': return ((logScore(a) ?? -999) - (logScore(b) ?? -999)) * dir;
       case 'wow': {
         const aDiff = (a.prev !== null && a.sentiment !== null) ? a.sentiment - a.prev : -999;
         const bDiff = (b.prev !== null && b.sentiment !== null) ? b.sentiment - b.prev : -999;
@@ -530,14 +551,14 @@ export default function SentimentReportSection({ language = 'de' }) {
 
       {/* ═══ VIEW TOGGLE ═══ */}
       <div style={{ display: 'flex', gap: '4px', marginBottom: '16px', background: 'rgba(255,255,255,0.04)', borderRadius: '10px', padding: '3px' }}>
-        {['ranked', 'groups'].map(v => (
+        {['ranked', 'groups', 'heatmap'].map(v => (
           <button key={v} onClick={() => setView(v)} style={{
             flex: 1, padding: '8px 16px', border: 'none', borderRadius: '8px', fontSize: '13px', fontWeight: '600', cursor: 'pointer',
             background: view === v ? 'rgba(6, 182, 212, 0.15)' : 'transparent',
             color: view === v ? '#06b6d4' : '#64748b',
             transition: 'all 0.2s',
           }}>
-            {v === 'ranked' ? t('ranked') : t('byGroup')}
+            {v === 'ranked' ? t('ranked') : v === 'groups' ? t('byGroup') : t('heatMap')}
           </button>
         ))}
       </div>
@@ -578,7 +599,7 @@ export default function SentimentReportSection({ language = 'de' }) {
                 <span style={{ textAlign: 'center', color: sortBy === 'sentiment' ? '#06b6d4' : '#475569', cursor: 'pointer', userSelect: 'none' }} onClick={() => toggleSort('sentiment')}>
                   {t('sentiment')}{sortBy === 'sentiment' ? (sortDir === 'asc' ? ' ↑' : ' ↓') : ''}
                 </span>
-                <span style={{ textAlign: 'right' }}></span>
+                <span onClick={() => toggleSort('logScore')} style={{ textAlign: 'right', cursor: 'pointer', color: sortBy === 'logScore' ? '#06b6d4' : '#475569', userSelect: 'none' }} title={t('logScore')}>⚡{sortBy === 'logScore' ? (sortDir === 'asc' ? '↑' : '↓') : ''}</span>
                 {hdr('articles', t('articles'), 'right')}
                 <span style={{ textAlign: 'center' }}>{t('emotions')}</span>
                 {hdr('wow', t('wow'), 'center')}
@@ -626,10 +647,13 @@ export default function SentimentReportSection({ language = 'de' }) {
                 {/* Diverging bar */}
                 <DivergingBar sentiment={tm.sentiment} delay={0.15 + i * 0.02} />
 
-                {/* Score */}
-                <span style={{ fontSize: '12px', fontWeight: '700', color: noData ? '#334155' : sColor(tm.sentiment), textAlign: 'right', fontFamily: 'system-ui' }}>
-                  {fmt(tm.sentiment)}
-                </span>
+                {/* Score + LogScore */}
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: '12px', fontWeight: '700', color: noData ? '#334155' : sColor(tm.sentiment), fontFamily: 'system-ui' }}>
+                    {fmt(tm.sentiment)}
+                  </div>
+                  {logScore(tm) !== null && <div style={{ fontSize: '9px', color: '#06b6d4', fontWeight: '600', fontFamily: 'system-ui' }}>⚡{logScore(tm).toFixed(1)}</div>}
+                </div>
 
                 {/* Articles */}
                 <span style={{ fontSize: '11px', color: '#64748b', textAlign: 'right' }}>
@@ -740,6 +764,99 @@ export default function SentimentReportSection({ language = 'de' }) {
           })}
         </div>
       )}
+
+      {/* ═══ HEAT MAP ═══ */}
+      {view === 'heatmap' && (() => {
+        const valid = TEAMS.filter(tm => tm.sentiment !== null && tm.articles > 0);
+        const ml = 52, mr = 25, mt = 28, mb = 50;
+        const W = 680, H = 400;
+        const pw = W - ml - mr, ph = H - mt - mb;
+        const sMin = -0.28, sMax = 0.92;
+        const aMax = 115;
+        const xS = (s) => ml + ((s - sMin) / (sMax - sMin)) * pw;
+        const yS = (a) => mt + ph - (a / aMax) * ph;
+        const x0 = xS(0);
+
+        return (
+          <div className="ts-fade" style={{ ...card }}>
+            <div style={{ fontSize: '11px', color: '#64748b', marginBottom: '12px', textAlign: 'center' }}>
+              {t('heatMapSub')}
+            </div>
+            <div style={{ width: '100%', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+              <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', minWidth: '460px', height: 'auto', display: 'block' }}>
+                <defs>
+                  <filter id="tsGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+
+                {/* Quadrant fills */}
+                <rect x={x0} y={mt} width={ml + pw - x0 + mr} height={ph * 0.55} fill="rgba(16,185,129,0.04)" rx="4" />
+                <rect x={ml} y={mt} width={x0 - ml} height={ph * 0.55} fill="rgba(239,68,68,0.04)" rx="4" />
+
+                {/* Quadrant labels */}
+                <text x={x0 + 8} y={mt + 15} fill="rgba(16,185,129,0.25)" fontSize="9" fontWeight="700" style={{ textTransform: 'uppercase' }}>Positive + High Coverage</text>
+                <text x={ml + 4} y={mt + 15} fill="rgba(239,68,68,0.25)" fontSize="9" fontWeight="700" style={{ textTransform: 'uppercase' }}>Negative + High Coverage</text>
+                <text x={x0 + 8} y={mt + ph - 8} fill="rgba(16,185,129,0.18)" fontSize="8" fontWeight="600">Hidden Gems</text>
+                <text x={ml + 4} y={mt + ph - 8} fill="rgba(239,68,68,0.18)" fontSize="8" fontWeight="600">Off Radar</text>
+
+                {/* Zero line */}
+                <line x1={x0} y1={mt} x2={x0} y2={mt + ph} stroke="rgba(255,255,255,0.12)" strokeDasharray="5,4" />
+
+                {/* Grid */}
+                {[20, 40, 60, 80, 100].map(v => (
+                  <line key={`h${v}`} x1={ml} y1={yS(v)} x2={ml + pw} y2={yS(v)} stroke="rgba(255,255,255,0.04)" />
+                ))}
+                {[-0.2, -0.1, 0.1, 0.2, 0.3, 0.5, 0.8].map(v => (
+                  <line key={`v${v}`} x1={xS(v)} y1={mt} x2={xS(v)} y2={mt + ph} stroke="rgba(255,255,255,0.04)" />
+                ))}
+
+                {/* Axes */}
+                <line x1={ml} y1={mt + ph} x2={ml + pw} y2={mt + ph} stroke="rgba(255,255,255,0.1)" />
+                <line x1={ml} y1={mt} x2={ml} y2={mt + ph} stroke="rgba(255,255,255,0.1)" />
+
+                {/* X ticks */}
+                {[-0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.5, 0.8].map(v => (
+                  <text key={`xt${v}`} x={xS(v)} y={mt + ph + 16} fill="#475569" fontSize="9" textAnchor="middle" fontFamily="system-ui">
+                    {v >= 0 ? '+' : ''}{v.toFixed(1)}
+                  </text>
+                ))}
+                <text x={ml + pw / 2} y={H - 4} fill="#64748b" fontSize="11" textAnchor="middle" fontWeight="600">{t('sentiment')}</text>
+
+                {/* Y ticks */}
+                {[0, 20, 40, 60, 80, 100].map(v => (
+                  <text key={`yt${v}`} x={ml - 6} y={yS(v) + 3} fill="#475569" fontSize="9" textAnchor="end" fontFamily="system-ui">{v}</text>
+                ))}
+                <text x={14} y={mt + ph / 2} fill="#64748b" fontSize="11" textAnchor="middle" fontWeight="600" transform={`rotate(-90, 14, ${mt + ph / 2})`}>{t('articles')}</text>
+
+                {/* Bubbles */}
+                {valid.map((tm, i) => {
+                  const ls = logScore(tm);
+                  const cx = xS(tm.sentiment);
+                  const cy = yS(tm.articles);
+                  const r = 5 + Math.min(Math.abs(ls) * 8, 13);
+                  const col = sColor(tm.sentiment);
+                  const hov = hoveredTeam === tm.name;
+                  const flipTip = cx > W - 180;
+
+                  return (
+                    <g key={i} onMouseEnter={() => setHoveredTeam(tm.name)} onMouseLeave={() => setHoveredTeam(null)} onTouchStart={(e) => { e.preventDefault(); setHoveredTeam(hov ? null : tm.name); }} style={{ cursor: 'pointer' }}>
+                      <circle cx={cx} cy={cy} r={r} fill={col} opacity={hov ? 0.9 : 0.3} filter={hov ? 'url(#tsGlow)' : undefined} style={{ transition: 'all 0.2s' }} />
+                      <text x={cx} y={cy + 4} textAnchor="middle" fontSize={hov ? '15' : '12'} style={{ transition: 'font-size 0.2s', pointerEvents: 'none' }}>{tm.flag}</text>
+                      {hov && (
+                        <g>
+                          <rect x={flipTip ? cx - r - 152 : cx + r + 6} y={cy - 32} width={146} height={58} rx="6" fill="rgba(15,23,42,0.95)" stroke="rgba(255,255,255,0.12)" strokeWidth="0.5" />
+                          <text x={flipTip ? cx - r - 144 : cx + r + 14} y={cy - 15} fill="#e2e8f0" fontSize="11" fontWeight="700">{teamName(tm.name, lang)}</text>
+                          <text x={flipTip ? cx - r - 144 : cx + r + 14} y={cy} fill="#94a3b8" fontSize="9">{t('sentiment')}: {fmt(tm.sentiment)} · {t('articles')}: {tm.articles}</text>
+                          <text x={flipTip ? cx - r - 144 : cx + r + 14} y={cy + 15} fill="#06b6d4" fontSize="9" fontWeight="600">⚡ {t('logScore')}: {ls.toFixed(2)}</text>
+                        </g>
+                      )}
+                    </g>
+                  );
+                })}
+              </svg>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* ═══ FOOTER ═══ */}
       <div className="ts-fade" style={{ textAlign: 'center', padding: '20px 0 4px', animationDelay: '0.4s' }}>
