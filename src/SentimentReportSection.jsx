@@ -551,14 +551,14 @@ export default function SentimentReportSection({ language = 'de' }) {
 
       {/* ═══ VIEW TOGGLE ═══ */}
       <div style={{ display: 'flex', gap: '4px', marginBottom: '16px', background: 'rgba(255,255,255,0.04)', borderRadius: '10px', padding: '3px' }}>
-        {['ranked', 'groups', 'heatmap'].map(v => (
+        {['ranked', 'impact', 'groups', 'heatmap'].map(v => (
           <button key={v} onClick={() => setView(v)} style={{
-            flex: 1, padding: '8px 16px', border: 'none', borderRadius: '8px', fontSize: '13px', fontWeight: '600', cursor: 'pointer',
+            flex: 1, padding: '8px 12px', border: 'none', borderRadius: '8px', fontSize: '12px', fontWeight: '600', cursor: 'pointer',
             background: view === v ? 'rgba(6, 182, 212, 0.15)' : 'transparent',
             color: view === v ? '#06b6d4' : '#64748b',
             transition: 'all 0.2s',
           }}>
-            {v === 'ranked' ? t('ranked') : v === 'groups' ? t('byGroup') : t('heatMap')}
+            {v === 'ranked' ? t('ranked') : v === 'impact' ? `⚡ ${t('logScore')}` : v === 'groups' ? t('byGroup') : t('heatMap')}
           </button>
         ))}
       </div>
@@ -599,7 +599,7 @@ export default function SentimentReportSection({ language = 'de' }) {
                 <span style={{ textAlign: 'center', color: sortBy === 'sentiment' ? '#06b6d4' : '#475569', cursor: 'pointer', userSelect: 'none' }} onClick={() => toggleSort('sentiment')}>
                   {t('sentiment')}{sortBy === 'sentiment' ? (sortDir === 'asc' ? ' ↑' : ' ↓') : ''}
                 </span>
-                <span onClick={() => toggleSort('logScore')} style={{ textAlign: 'right', cursor: 'pointer', color: sortBy === 'logScore' ? '#06b6d4' : '#475569', userSelect: 'none' }} title={t('logScore')}>⚡{sortBy === 'logScore' ? (sortDir === 'asc' ? '↑' : '↓') : ''}</span>
+                <span style={{ textAlign: 'right' }}></span>
                 {hdr('articles', t('articles'), 'right')}
                 <span style={{ textAlign: 'center' }}>{t('emotions')}</span>
                 {hdr('wow', t('wow'), 'center')}
@@ -647,13 +647,10 @@ export default function SentimentReportSection({ language = 'de' }) {
                 {/* Diverging bar */}
                 <DivergingBar sentiment={tm.sentiment} delay={0.15 + i * 0.02} />
 
-                {/* Score + LogScore */}
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: '12px', fontWeight: '700', color: noData ? '#334155' : sColor(tm.sentiment), fontFamily: 'system-ui' }}>
-                    {fmt(tm.sentiment)}
-                  </div>
-                  {logScore(tm) !== null && <div style={{ fontSize: '9px', color: '#06b6d4', fontWeight: '600', fontFamily: 'system-ui' }}>⚡{logScore(tm).toFixed(1)}</div>}
-                </div>
+                {/* Score */}
+                <span style={{ fontSize: '12px', fontWeight: '700', color: noData ? '#334155' : sColor(tm.sentiment), textAlign: 'right', fontFamily: 'system-ui' }}>
+                  {fmt(tm.sentiment)}
+                </span>
 
                 {/* Articles */}
                 <span style={{ fontSize: '11px', color: '#64748b', textAlign: 'right' }}>
@@ -698,6 +695,123 @@ export default function SentimentReportSection({ language = 'de' }) {
           </div>
         </div>
       )}
+
+      {/* ═══ IMPACT LEADERBOARD ═══ */}
+      {view === 'impact' && (() => {
+        const impactTeams = TEAMS
+          .filter(tm => tm.sentiment !== null && tm.articles > 0)
+          .map(tm => ({ ...tm, ls: logScore(tm) }))
+          .sort((a, b) => b.ls - a.ls);
+        const maxAbs = Math.max(...impactTeams.map(tm => Math.abs(tm.ls)));
+
+        return (
+          <div className="ts-fade" style={{ ...card }}>
+            <div style={{ fontSize: '11px', color: '#64748b', marginBottom: '14px', textAlign: 'center' }}>
+              {t('heatMapSub')}
+            </div>
+
+            {/* Header */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '28px 1fr 52px minmax(100px, 1fr) 58px 40px 54px',
+              gap: '6px',
+              alignItems: 'center',
+              padding: '0 4px 10px',
+              borderBottom: '1px solid rgba(255,255,255,0.08)',
+              fontSize: '10px',
+              fontWeight: '700',
+              color: '#475569',
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px',
+            }}>
+              <span>#</span>
+              <span>{t('team')}</span>
+              <span style={{ textAlign: 'right' }}>⚡ {t('logScore')}</span>
+              <span></span>
+              <span style={{ textAlign: 'right' }}>{t('sentiment')}</span>
+              <span style={{ textAlign: 'right' }}>{t('articles')}</span>
+              <span style={{ textAlign: 'center' }}>log₂</span>
+            </div>
+
+            {/* Rows */}
+            {impactTeams.map((tm, i) => {
+              const pct = Math.min(Math.abs(tm.ls) / maxAbs, 1) * 100;
+              const isPos = tm.ls >= 0;
+
+              return (
+                <div key={i} className="ts-row" style={{
+                  display: 'grid',
+                  gridTemplateColumns: '28px 1fr 52px minmax(100px, 1fr) 58px 40px 54px',
+                  gap: '6px',
+                  alignItems: 'center',
+                  padding: '7px 4px',
+                  borderBottom: '1px solid rgba(255,255,255,0.03)',
+                  borderRadius: '6px',
+                  opacity: tm.lowVol ? 0.65 : 1,
+                }}>
+                  {/* Rank */}
+                  <span style={{ fontSize: '11px', fontWeight: '600', color: i < 3 ? '#06b6d4' : '#475569', textAlign: 'center' }}>
+                    {i + 1}
+                  </span>
+
+                  {/* Flag + Name */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', minWidth: 0 }}>
+                    <span style={{ fontSize: '16px', flexShrink: 0 }}>{tm.flag}</span>
+                    <span style={{ fontSize: '12px', fontWeight: '600', color: '#e2e8f0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      {teamName(tm.name, lang)}
+                    </span>
+                    {tm.host && <span style={{ fontSize: '9px', background: 'rgba(245,158,11,0.15)', color: '#f59e0b', padding: '1px 4px', borderRadius: '3px', fontWeight: '700', flexShrink: 0 }}>HOST</span>}
+                    {tm.champion && <span style={{ fontSize: '10px', flexShrink: 0 }}>🏆</span>}
+                    {tm.debut && <span style={{ fontSize: '9px', background: 'rgba(168,85,247,0.15)', color: '#a855f7', padding: '1px 4px', borderRadius: '3px', fontWeight: '700', flexShrink: 0 }}>NEW</span>}
+                  </div>
+
+                  {/* Impact score */}
+                  <span style={{ fontSize: '13px', fontWeight: '800', color: isPos ? '#06b6d4' : '#f97316', textAlign: 'right', fontFamily: 'system-ui' }}>
+                    {tm.ls >= 0 ? '+' : ''}{tm.ls.toFixed(2)}
+                  </span>
+
+                  {/* Impact bar */}
+                  <div style={{ position: 'relative', height: '10px', width: '100%', background: 'rgba(255,255,255,0.03)', borderRadius: '5px', overflow: 'hidden' }}>
+                    <div className="ts-bar" style={{
+                      position: 'absolute',
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      width: `${pct}%`,
+                      background: isPos
+                        ? 'linear-gradient(90deg, #06b6d4, #22d3ee)'
+                        : 'linear-gradient(90deg, #f97316, #fb923c)',
+                      borderRadius: '5px',
+                      animationDelay: `${0.1 + i * 0.02}s`,
+                      boxShadow: isPos ? '0 0 10px rgba(6,182,212,0.3)' : '0 0 10px rgba(249,115,22,0.3)',
+                    }} />
+                  </div>
+
+                  {/* Sentiment */}
+                  <span style={{ fontSize: '11px', fontWeight: '600', color: sColor(tm.sentiment), textAlign: 'right', fontFamily: 'system-ui' }}>
+                    {fmt(tm.sentiment)}
+                  </span>
+
+                  {/* Articles */}
+                  <span style={{ fontSize: '11px', color: '#64748b', textAlign: 'right' }}>
+                    {tm.articles}
+                  </span>
+
+                  {/* Log multiplier */}
+                  <span style={{ fontSize: '10px', color: '#475569', textAlign: 'center', fontFamily: 'system-ui' }}>
+                    ×{Math.log2(1 + tm.articles).toFixed(1)}
+                  </span>
+                </div>
+              );
+            })}
+
+            {/* Formula */}
+            <div style={{ marginTop: '14px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.06)', fontSize: '11px', color: '#475569', textAlign: 'center' }}>
+              ⚡ {t('logScore')} = {t('sentiment')} × log₂(1 + {t('articles')})
+            </div>
+          </div>
+        );
+      })()}
 
       {/* ═══ GROUP VIEW ═══ */}
       {view === 'groups' && (
